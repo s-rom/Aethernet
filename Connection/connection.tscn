@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkj7orbx7wf8m"]
+
+[ext_resource type="Texture2D" uid="uid://tpj7b4kefudj" path="res://Connection/lines_2.png" id="1_1rgrk"]
+[ext_resource type="Script" path="res://Connection/connection.gd" id="2_vcqye"]
+
+[node name="Line2D" type="Line2D"]
+light_mask = 0
+z_index = -1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 95.985, 0)
+width = 31.095
+default_color = Color(0.662745, 0.686275, 0.956863, 1)
+texture = ExtResource("1_1rgrk")
+texture_mode = 1
+antialiased = true
+script = ExtResource("2_vcqye")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+debug_color = Color(0.786781, 0.337647, 0.691059, 0.42)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

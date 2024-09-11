@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1mauc4mykub7"]
+
+[ext_resource type="Script" path="res://planet.gd" id="1_e7w4k"]
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="2_cwdkh"]
+[ext_resource type="Script" path="res://PlanetSprite.gd" id="3_8dkmm"]
+[ext_resource type="PackedScene" uid="uid://dkj7orbx7wf8m" path="res://connection.tscn" id="4_7sxnp"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_e7w4k")
+
+[node name="PlanetSprite5" type="Sprite2D" parent="."]
+position = Vector2(930, 404)
+texture = ExtResource("2_cwdkh")
+script = ExtResource("3_8dkmm")
+
+[node name="PlanetSprite4" type="Sprite2D" parent="."]
+position = Vector2(936, 134)
+texture = ExtResource("2_cwdkh")
+script = ExtResource("3_8dkmm")
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+position = Vector2(532, 551)
+texture = ExtResource("2_cwdkh")
+script = ExtResource("3_8dkmm")
+
+[node name="PlanetSprite2" type="Sprite2D" parent="."]
+position = Vector2(161, 117)
+texture = ExtResource("2_cwdkh")
+script = ExtResource("3_8dkmm")
+
+[node name="PlanetSprite3" type="Sprite2D" parent="."]
+position = Vector2(138, 475)
+texture = ExtResource("2_cwdkh")
+script = ExtResource("3_8dkmm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Line2D" parent="." instance=ExtResource("4_7sxnp")]
+position = Vector2(348, 313)
+points = PackedVector2Array(0, 0, 411, -42)

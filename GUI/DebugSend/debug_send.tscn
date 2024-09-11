@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm2uy0antohin"]
+
+[ext_resource type="Script" path="res://GUI/DebugSend/debug_send.gd" id="1_05f42"]
+[ext_resource type="Texture2D" uid="uid://ctj5vw6lxbdpf" path="res://GUI/Vector/Grey/button_rectangle_depth_flat.svg" id="2_43bvd"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="3_7a35l"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="4_mgxn4"]
+[ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="4_pav8n"]
+[ext_resource type="Texture2D" uid="uid://m1c7d5n27oxm" path="res://GUI/Vector/Green/button_rectangle_depth_gradient.svg" id="5_oyam2"]
+[ext_resource type="Texture2D" uid="uid://cgc8gbjv5e5ei" path="res://GUI/Vector/Green/button_rectangle_flat.svg" id="6_hfflg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ke6k2"]
+texture = ExtResource("2_43bvd")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h32rc"]
+texture = ExtResource("5_oyam2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt2yh"]
+texture = ExtResource("6_hfflg")
+
+[node name="DebugSend" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.240451
+anchor_bottom = 0.364198
+offset_left = -1.0
+offset_right = -1.0
+theme = ExtResource("4_mgxn4")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ke6k2")
+script = ExtResource("1_05f42")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"MainLabel"
+theme_override_colors/font_outline_color = Color(0.905882, 0.427451, 0.662745, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 33
+text = "Panel de envio"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"GuiLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Origen"
+
+[node name="Origin" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"GuiTextField"
+alignment = 1
+max_length = 2
+script = ExtResource("4_pav8n")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"GuiLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+text = "Destino"
+
+[node name="Destination" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"GuiTextField"
+alignment = 1
+max_length = 2
+script = ExtResource("4_pav8n")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_7a35l")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_h32rc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yt2yh")
+text = "Lanzar"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

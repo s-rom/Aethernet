@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://doqk12n1reyke"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_j2aly"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_lklvl"]
+[ext_resource type="Texture2D" uid="uid://djbpicp8c8is2" path="res://GUI/metalPanel.png" id="3_f2s7i"]
+[ext_resource type="Texture2D" uid="uid://cfag7glrinfyl" path="res://Slides/connect.png" id="4_ie1q2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhog6"]
+texture = ExtResource("3_f2s7i")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+modulate_color = Color(0.891416, 0.877171, 0.889025, 1)
+
+[node name="HelpSlide" type="VBoxContainer"]
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 557.0
+offset_bottom = 579.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_j2aly")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.584314, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_lklvl")
+theme_override_font_sizes/font_size = 53
+text = "AYUDA
+"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_j2aly")
+theme_type_variation = &"PanelContainerInner"
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhog6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.794888, 0.790056, 0.993993, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_j2aly")
+theme_type_variation = &"PanelContainerInner"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+texture = ExtResource("4_ie1q2")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("2_lklvl")
+theme_override_fonts/bold_font = ExtResource("2_lklvl")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "[center] Haz [u]click[/u] en los planetas para conectarlos mediante una ruta directa. 
+
+Puedes [u]eliminar[/u] una conexión haciendo [u]click derecho[/u] en ella
+
+"
+fit_content = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2

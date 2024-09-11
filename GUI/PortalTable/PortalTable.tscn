@@ -1,0 +1,174 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjqm7ub12fxpk"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_njrcu"]
+[ext_resource type="Script" path="res://GUI/PortalTable/PortalTable.gd" id="2_2vtkm"]
+[ext_resource type="PackedScene" uid="uid://q2kgd4c4fghj" path="res://GUI/PortalTable/PortalRule.tscn" id="2_8elrm"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="3_1tgcf"]
+[ext_resource type="Texture2D" uid="uid://c3g7pg3u2eoh0" path="res://GUI/Vector/Grey/button_square_depth_flat.svg" id="3_33dk6"]
+[ext_resource type="Texture2D" uid="uid://bl1bjj60ekxnf" path="res://GUI/Vector/Blue/slide_horizontal_color.svg" id="4_r2qtf"]
+[ext_resource type="Texture2D" uid="uid://dgy2eddjthy2g" path="res://GUI/Vector/Grey/icon_outline_square.svg" id="6_d2vrg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5e8ph"]
+texture = ExtResource("3_33dk6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.288518, 0.288518, 0.288518, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s6sh3"]
+texture = ExtResource("4_r2qtf")
+texture_margin_left = 20.0
+texture_margin_right = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_32n3a"]
+texture = ExtResource("6_d2vrg")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[node name="PortalTable" type="Control" node_paths=PackedStringArray("rulesContainer", "targetNetworkLineEdit", "nextHopLineEdit", "nameLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_njrcu")
+script = ExtResource("2_2vtkm")
+rulesContainer = NodePath("PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox")
+targetNetworkLineEdit = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Origin")
+nextHopLineEdit = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Destination")
+nameLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Nombre")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 374.0
+offset_bottom = 370.0
+theme_type_variation = &"PanelContainerKenneyGreen"
+theme_override_styles/panel = SubResource("StyleBoxTexture_5e8ph")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_njrcu")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Nombre" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_1tgcf")
+theme_override_font_sizes/font_size = 33
+text = "Nombre
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_right = 70
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1tgcf")
+theme_override_font_sizes/font_size = 28
+text = "Sistema destino"
+
+[node name="Origin" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 1
+max_length = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_right = 70
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1tgcf")
+theme_override_font_sizes/font_size = 28
+text = "Siguiente salto"
+
+[node name="Destination" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+alignment = 1
+max_length = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_njrcu")
+theme_type_variation = &"MainGUIButton"
+text = "Agregar"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxTexture_s6sh3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1tgcf")
+theme_override_font_sizes/font_size = 23
+text = "Reglas del portal"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_njrcu")
+theme_override_styles/panel = SubResource("StyleBoxTexture_32n3a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RulesVBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox" instance=ExtResource("2_8elrm")]
+layout_mode = 2
+
+[node name="HBoxContainer3" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox" instance=ExtResource("2_8elrm")]
+layout_mode = 2
+
+[node name="HBoxContainer4" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox" instance=ExtResource("2_8elrm")]
+layout_mode = 2
+
+[node name="HBoxContainer5" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox" instance=ExtResource("2_8elrm")]
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

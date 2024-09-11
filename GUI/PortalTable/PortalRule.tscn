@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2kgd4c4fghj"]
+
+[ext_resource type="Script" path="res://GUI/PortalTable/PortalRule.gd" id="1_8iybc"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="2_a57db"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_cf45b"]
+
+[node name="HBoxContainer2" type="HBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_8iybc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_right = 20
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cf45b")
+theme_override_font_sizes/font_size = 22
+text = "A via Y2"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("2_a57db")
+theme_type_variation = &"DeleteButton"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

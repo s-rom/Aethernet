@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://dv41hkd5wd3u5"]
+
+[ext_resource type="Script" path="res://Station/Station.gd" id="1_qtt3d"]
+[ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="2_0x0ah"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="2_u0ela"]
+[ext_resource type="Script" path="res://Scripts/port.gd" id="3_18i2q"]
+[ext_resource type="Texture2D" uid="uid://dvuj7jt4yig3x" path="res://Station/station_C.png" id="3_ldjl8"]
+[ext_resource type="Texture2D" uid="uid://cf4fqlerivivl" path="res://Station/station_C_normal.png" id="4_abkyp"]
+[ext_resource type="Script" path="res://Scripts/port_component.gd" id="5_ubgrs"]
+[ext_resource type="Script" path="res://Station/PortHighlighter.gd" id="6_ae131"]
+[ext_resource type="Texture2D" uid="uid://btyjsjncrylhh" path="res://Pruebas/crosshair038.png" id="8_0bp0s"]
+[ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="8_b17xu"]
+[ext_resource type="Texture2D" uid="uid://dh25w5d4bxchu" path="res://Pruebas/crosshair175.png" id="10_6t3ov"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43r6j"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l6l6l"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_02yd8"]
+diffuse_texture = ExtResource("3_ldjl8")
+normal_texture = ExtResource("4_abkyp")
+
+[node name="Station" type="Node2D" groups=["port"]]
+material = SubResource("CanvasItemMaterial_43r6j")
+script = ExtResource("1_qtt3d")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.76
+texture = ExtResource("2_0x0ah")
+
+[node name="StationSprite" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_l6l6l")
+position = Vector2(-1, 1)
+rotation = 0.785398
+texture = SubResource("CanvasTexture_02yd8")
+
+[node name="Port1" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
+position = Vector2(35.7973, 36.3276)
+rotation = -0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="PortComponent" type="Node" parent="StationSprite/Port1"]
+script = ExtResource("5_ubgrs")
+
+[node name="PortHighlighter" type="Node" parent="StationSprite/Port1" node_paths=PackedStringArray("portSprite")]
+script = ExtResource("6_ae131")
+portSprite = NodePath("..")
+
+[node name="Port2" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
+position = Vector2(-36.0624, 36.0624)
+rotation = 0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="PortHighlighter2" type="Node" parent="StationSprite/Port2"]
+script = ExtResource("6_ae131")
+
+[node name="PortComponent" type="Node" parent="StationSprite/Port2"]
+script = ExtResource("5_ubgrs")
+
+[node name="Port3" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
+position = Vector2(36.0625, -36.0624)
+rotation = 0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="PortComponent" type="Node" parent="StationSprite/Port3"]
+script = ExtResource("5_ubgrs")
+
+[node name="PortHighlighter2" type="Node" parent="StationSprite/Port3"]
+script = ExtResource("6_ae131")
+
+[node name="Port4" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
+position = Vector2(-36.0624, -36.0625)
+rotation = -0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="PortComponent" type="Node" parent="StationSprite/Port4"]
+script = ExtResource("5_ubgrs")
+
+[node name="PortHighlighter2" type="Node" parent="StationSprite/Port4"]
+script = ExtResource("6_ae131")
+
+[node name="Lights" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -61)
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="Crosshair038" type="Sprite2D" parent="Animations"]
+self_modulate = Color(0.300455, 0.279524, 0.504265, 1)
+position = Vector2(-1, 1)
+rotation = 3.14159
+texture = ExtResource("8_0bp0s")
+
+[node name="Crosshair175" type="Sprite2D" parent="Animations"]
+self_modulate = Color(0.301961, 0.278431, 0.505882, 1)
+position = Vector2(-0.915, 0.935)
+rotation = 5.95634
+scale = Vector2(0.524537, 0.524537)
+texture = ExtResource("10_6t3ov")
+script = ExtResource("8_b17xu")
+rotationSpeed = 0.5

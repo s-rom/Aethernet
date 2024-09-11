@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://p837s3sbt7vu"]
+
+[ext_resource type="Texture2D" uid="uid://qruglpeqhv7o" path="res://Ships/ship_sidesA.png" id="1_3pcit"]
+[ext_resource type="Texture2D" uid="uid://hjw72d6ixkif" path="res://Ships/ship_sidesA_normal.png" id="2_dee2d"]
+[ext_resource type="Texture2D" uid="uid://crxc6evjd2t38" path="res://Ships/spaceEffects_011.png" id="2_s231h"]
+[ext_resource type="Script" path="res://Ships/ship.gd" id="2_yhfm6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fga7o"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_df8wv"]
+diffuse_texture = ExtResource("1_3pcit")
+normal_texture = ExtResource("2_dee2d")
+
+[sub_resource type="Curve" id="Curve_jlbfg"]
+_data = [Vector2(0.00314465, 0.764375), 0.0, 0.0, 0, 0, Vector2(0.616352, 0.0493749), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c8brw"]
+curve = SubResource("Curve_jlbfg")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_i4scv"]
+
+[sub_resource type="Curve" id="Curve_e7ft0"]
+_data = [Vector2(0, 0.6425), 0.0, 0.0, 0, 0, Vector2(0.977987, 0.065625), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_giic6"]
+curve = SubResource("Curve_e7ft0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0u7k"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 1)
+angle_min = 66.6
+angle_max = 369.0
+initial_velocity_max = 85.93
+directional_velocity_min = 117.53
+directional_velocity_max = 143.6
+directional_velocity_curve = SubResource("CurveXYZTexture_i4scv")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 22.56
+radial_accel_max = 100.0
+scale_min = 0.1
+scale_curve = SubResource("CurveTexture_giic6")
+alpha_curve = SubResource("CurveTexture_c8brw")
+
+[node name="Ship" type="Sprite2D"]
+self_modulate = Color(0.864675, 0.864675, 0.864675, 1)
+material = SubResource("CanvasItemMaterial_fga7o")
+scale = Vector2(0.6, 0.6)
+texture = SubResource("CanvasTexture_df8wv")
+script = ExtResource("2_yhfm6")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(1.0142, 43.3215)
+rotation = 1.54585
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_u0u7k")
+texture = ExtResource("2_s231h")
+lifetime = 0.7
+local_coords = true

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhyh2l84m7ihr"]
+
+[ext_resource type="Script" path="res://Planet/planet.gd" id="1_jmkuo"]
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="1_wuty0"]
+[ext_resource type="Script" path="res://PlanetSprite.gd" id="2_3766x"]
+[ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="4_fcnc4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jmkuo")
+
+[node name="PlanetSprite2" type="Sprite2D" parent="."]
+texture = ExtResource("1_wuty0")
+script = ExtResource("2_3766x")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 17.0
+offset_top = -48.0
+offset_right = 84.063
+offset_bottom = -17.0
+placeholder_text = "A?"
+alignment = 1
+max_length = 2
+expand_to_text_length = true
+script = ExtResource("4_fcnc4")
+
+[connection signal="focus_exited" from="LineEdit" to="LineEdit" method="_on_focus_exited"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1mauc4mykub7"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_e7w4k"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="2_wkka5"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="3_1knfw"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="4_2xqbk"]
+[ext_resource type="Script" path="res://planet_system.gd" id="5_rrpmx"]
+
+[sub_resource type="Environment" id="Environment_aor6d"]
+background_mode = 3
+background_energy_multiplier = 9.92
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 4.64
+tonemap_mode = 1
+tonemap_white = 0.78
+glow_normalized = true
+glow_intensity = 0.74
+glow_strength = 1.29
+glow_blend_mode = 0
+glow_hdr_threshold = 1.06
+glow_hdr_scale = 2.19
+glow_map_strength = 0.62
+adjustment_enabled = true
+adjustment_brightness = 0.78
+adjustment_contrast = 0.9
+adjustment_saturation = 1.06
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_e7w4k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(592, 439)
+
+[node name="StationLeft" parent="." instance=ExtResource("3_1knfw")]
+position = Vector2(357, 360)
+rotation = -0.130091
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_2xqbk")]
+
+[node name="Planet" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(99, 442)
+
+[node name="LineEdit" parent="Planet" index="2"]
+text = "A2"
+placeholder_text = ""
+
+[node name="Planet2" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(998, 442)
+
+[node name="LineEdit" parent="Planet2" index="2"]
+text = "A7"
+placeholder_text = ""
+
+[node name="Planet3" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(952, 191)
+
+[node name="PlanetSprite" parent="Planet3" index="0"]
+position = Vector2(-283, 529)
+
+[node name="LineEdit" parent="Planet3" index="2"]
+text = "A3"
+placeholder_text = ""
+
+[node name="StationRight" parent="." instance=ExtResource("3_1knfw")]
+position = Vector2(690, 356)
+rotation = -0.854259
+
+[node name="Node2" type="Node" parent="."]
+script = ExtResource("5_rrpmx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aor6d")
+
+[node name="StationRight2" parent="." instance=ExtResource("3_1knfw")]
+position = Vector2(639, 557)
+rotation = -1.70852
+
+[connection signal="send_ship" from="CanvasLayer" to="." method="_on_canvas_layer_send_ship"]
+
+[editable path="Planet"]
+[editable path="Planet2"]
+[editable path="Planet3"]

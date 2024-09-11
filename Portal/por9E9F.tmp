@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://boyrjboqn8hjt"]
+
+[ext_resource type="Texture2D" uid="uid://086t0d4olpuj" path="res://Portal/star_07.png" id="1_wg5am"]
+[ext_resource type="Texture2D" uid="uid://ceo8is3g6lhkx" path="res://Portal/star_03.png" id="2_wxjke"]
+[ext_resource type="Texture2D" uid="uid://0qc2ru6i4ef1" path="res://Portal/star_02.png" id="3_5k268"]
+[ext_resource type="Texture2D" uid="uid://dp2dfpfkvx4g7" path="res://Portal/circle.svg" id="4_3xk1j"]
+[ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="5_p1xeb"]
+[ext_resource type="Script" path="res://Portal/portal_basic_animation.gd" id="6_8wyih"]
+[ext_resource type="Script" path="res://Portal/AnimationPlayerPortal.gd" id="7_75o7h"]
+
+[sub_resource type="Animation" id="Animation_ooidu"]
+resource_name = "portal"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Magic03:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1.03527),
+"update": 0,
+"values": [Vector2(0.46, 0.46), Vector2(1.215, 1.215)]
+}
+
+[sub_resource type="Animation" id="Animation_q2ec8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Magic03:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.46, 0.46)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp7kp"]
+_data = {
+"RESET": SubResource("Animation_q2ec8"),
+"portal": SubResource("Animation_ooidu")
+}
+
+[node name="Portal" type="Node2D"]
+position = Vector2(621, 347)
+rotation = -0.00494416
+
+[node name="Star07" type="Sprite2D" parent="."]
+rotation = -0.893609
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("1_wg5am")
+
+[node name="Star03" type="Sprite2D" parent="."]
+rotation = -2.14888
+texture = ExtResource("2_wxjke")
+
+[node name="PortalAnimation" type="Node2D" parent="Star03"]
+rotation = 2.14888
+script = ExtResource("6_8wyih")
+rotationSpeed = 0.7
+
+[node name="Star02" type="Sprite2D" parent="."]
+rotation = -0.227777
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("3_5k268")
+
+[node name="PortalAnimation" type="Node2D" parent="Star02"]
+script = ExtResource("6_8wyih")
+rotationSpeed = -0.2
+
+[node name="Circle" type="Sprite2D" parent="."]
+texture = ExtResource("4_3xk1j")
+
+[node name="Magic03" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.0705882)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("5_p1xeb")
+
+[node name="PortalAnimation" type="Node2D" parent="Magic03"]
+script = ExtResource("6_8wyih")
+rotationSpeed = 0.325
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pp7kp")
+}
+speed_scale = 0.25
+script = ExtResource("7_75o7h")

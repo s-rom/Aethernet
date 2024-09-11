@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4sjfggkg3k5c"]
+
+[ext_resource type="PackedScene" uid="uid://dkj7orbx7wf8m" path="res://connection.tscn" id="1_1jhnr"]
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="2_l3vfx"]
+[ext_resource type="Script" path="res://PlanetSprite.gd" id="3_hboyi"]
+[ext_resource type="Script" path="res://MouseManager.gd" id="4_nyx42"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Line2D" parent="." instance=ExtResource("1_1jhnr")]
+position = Vector2(-164, 160)
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+position = Vector2(212, 203)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="MouseManager" type="Node" parent="."]
+script = ExtResource("4_nyx42")
+
+[node name="Line2D2" parent="." instance=ExtResource("1_1jhnr")]

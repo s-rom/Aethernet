@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv41hkd5wd3u5"]
+
+[ext_resource type="Texture2D" uid="uid://dvuj7jt4yig3x" path="res://station_C.png" id="1_goeic"]
+[ext_resource type="Script" path="res://Station/Station.gd" id="1_qtt3d"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="2_u0ela"]
+[ext_resource type="Script" path="res://Station/port.gd" id="3_18i2q"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qtt3d")
+
+[node name="StationSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+rotation = 0.785398
+texture = ExtResource("1_goeic")
+
+[node name="Port1" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.780136, 0.0424346, 0.470014, 1)
+position = Vector2(35.7973, 36.3276)
+rotation = -0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="Port2" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.780136, 0.0424346, 0.470014, 1)
+position = Vector2(-36.0624, 36.0624)
+rotation = 0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="Port3" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.780136, 0.0424346, 0.470014, 1)
+position = Vector2(36.0625, -36.0624)
+rotation = 0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")
+
+[node name="Port4" type="Sprite2D" parent="StationSprite"]
+modulate = Color(0.780136, 0.0424346, 0.470014, 1)
+position = Vector2(-36.0624, -36.0625)
+rotation = -0.785398
+scale = Vector2(0.636628, 0.244186)
+texture = ExtResource("2_u0ela")
+script = ExtResource("3_18i2q")

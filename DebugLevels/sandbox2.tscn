@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dclsmasic3xes"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_8jpof"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="2_3cpcc"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_co4dm"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_d7rf8"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_xvewt"]
+
+[sub_resource type="Environment" id="Environment_aor6d"]
+background_mode = 3
+background_energy_multiplier = 9.92
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 4.64
+tonemap_mode = 1
+tonemap_white = 0.78
+glow_enabled = true
+glow_intensity = 2.41
+glow_strength = 1.54
+glow_blend_mode = 1
+glow_hdr_threshold = 1.06
+glow_hdr_scale = 2.19
+glow_map_strength = 0.62
+adjustment_enabled = true
+adjustment_brightness = 0.78
+adjustment_contrast = 0.9
+adjustment_saturation = 1.06
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_8jpof")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 326)
+rotation = 0.470424
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_co4dm")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aor6d")
+
+[node name="Portal" parent="." instance=ExtResource("5_xvewt")]
+position = Vector2(829, 321)
+
+[node name="Station" parent="." instance=ExtResource("2_3cpcc")]
+position = Vector2(386, 419)
+rotation = 0.933154
+
+[node name="Station2" parent="." instance=ExtResource("2_3cpcc")]
+position = Vector2(1160, 375)
+scale = Vector2(0.993545, 1)
+
+[node name="Planet" parent="." instance=ExtResource("4_d7rf8")]
+position = Vector2(94, 414)
+
+[node name="Planet2" parent="." instance=ExtResource("4_d7rf8")]
+position = Vector2(101, 623)
+
+[node name="Planet3" parent="." instance=ExtResource("4_d7rf8")]
+position = Vector2(355, 619)
+
+[node name="Planet4" parent="." instance=ExtResource("4_d7rf8")]
+position = Vector2(1178, 175)
+
+[node name="Planet5" parent="." instance=ExtResource("4_d7rf8")]
+position = Vector2(1344, 402)
+
+[connection signal="send_ship" from="CanvasLayer" to="." method="_on_canvas_layer_send_ship"]

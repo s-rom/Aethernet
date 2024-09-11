@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bedvn1cn5n3md"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_kgi8q"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="2_i04k0"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_flsw7"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_eae0v"]
+[ext_resource type="Script" path="res://planet_system.gd" id="5_yrn2l"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_kgi8q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(596, 156)
+
+[node name="StationC2" parent="." instance=ExtResource("2_i04k0")]
+position = Vector2(861, 323)
+rotation = -0.260182
+
+[node name="StationC" parent="." instance=ExtResource("2_i04k0")]
+position = Vector2(250, 361)
+rotation = -0.667688
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_flsw7")]
+
+[node name="Planet" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(79, 495)
+
+[node name="Planet2" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(315, 545)
+
+[node name="Planet3" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(1045, 305)
+
+[node name="Node2" type="Node" parent="."]
+script = ExtResource("5_yrn2l")
+
+[node name="Planet4" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(869, 505)
+
+[node name="Planet5" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(844, 157)
+
+[node name="StationC4" parent="." instance=ExtResource("2_i04k0")]
+position = Vector2(421, -52)
+rotation = -1.33538
+
+[node name="StationC3" parent="." instance=ExtResource("2_i04k0")]
+position = Vector2(525, 191)
+rotation = -0.667688
+
+[node name="Planet8" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(453, -223)
+
+[node name="Planet7" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(200, -110)
+
+[node name="Planet6" parent="." instance=ExtResource("4_eae0v")]
+position = Vector2(632, -63)
+
+[connection signal="send_ship" from="CanvasLayer" to="." method="_on_canvas_layer_send_ship"]

@@ -1,0 +1,458 @@
+[gd_scene load_steps=31 format=3 uid="uid://boyrjboqn8hjt"]
+
+[ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
+[ext_resource type="Texture2D" uid="uid://086t0d4olpuj" path="res://Portal/star_07.png" id="1_wg5am"]
+[ext_resource type="Texture2D" uid="uid://ceo8is3g6lhkx" path="res://Portal/star_03.png" id="2_wxjke"]
+[ext_resource type="Texture2D" uid="uid://0qc2ru6i4ef1" path="res://Portal/star_02.png" id="3_5k268"]
+[ext_resource type="Script" path="res://Scripts/port.gd" id="3_6q58t"]
+[ext_resource type="Texture2D" uid="uid://6s1nlcgihf2w" path="res://Portal/spaceStation_009_normal.png" id="4_uwqn2"]
+[ext_resource type="Script" path="res://Scripts/port_component.gd" id="4_x7y2p"]
+[ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="5_p1xeb"]
+[ext_resource type="Script" path="res://Station/PortHighlighter.gd" id="6_4xt3q"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_5ae3r"]
+[ext_resource type="Shader" path="res://Portal/energy.gdshader" id="6_o1fet"]
+[ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="7_begl1"]
+[ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="8_1d827"]
+[ext_resource type="Texture2D" uid="uid://cgb2wwetmcyas" path="res://Portal/circle2.svg" id="9_620mx"]
+[ext_resource type="Shader" path="res://Portal/port.gdshader" id="9_ah1gn"]
+[ext_resource type="Texture2D" uid="uid://dcvr6vyb43t5n" path="res://Pruebas/crosshair135_normal.png" id="11_32sf2"]
+[ext_resource type="Animation" uid="uid://b2wvw8obglrg0" path="res://Portal/Idle.res" id="11_p0d7f"]
+[ext_resource type="Script" path="res://Portal/HighlightCircle.gd" id="14_s6jug"]
+[ext_resource type="Texture2D" uid="uid://y5yd5e8r0k22" path="res://Portal/circle3.svg" id="14_sjuo0"]
+[ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="16_tpn24"]
+[ext_resource type="Texture2D" uid="uid://bxyms6ewgdx14" path="res://Pruebas/crosshair135.png" id="17_s7pub"]
+[ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="18_yj1sx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blicw"]
+shader = ExtResource("9_ah1gn")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mlklw"]
+diffuse_texture = ExtResource("8_1d827")
+normal_texture = ExtResource("4_uwqn2")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i7m2x"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x73we"]
+diffuse_texture = ExtResource("17_s7pub")
+normal_texture = ExtResource("11_32sf2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdgt5"]
+shader = ExtResource("6_o1fet")
+shader_parameter/dt = -5.725
+
+[sub_resource type="Animation" id="Animation_i6yw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Core:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.16185]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.14888]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PointLight2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5274a"]
+resource_name = "send_ship"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Core:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 4.71239, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Halo1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.525, 1.05, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Halo2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.785398, 0.785398]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Halo2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9975, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(0.8, 0.8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Magic1:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.9, 0.9), Vector2(0.3, 0.3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Magic1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.675, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Magic2:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Core:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.41, 0.41), Vector2(1.2, 1.2), Vector2(0.41, 0.41)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Core2:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.980392, 0.94902, 1, 0.176471), Color(0.980392, 0.94902, 1, 0.988235)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Core2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Core3:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.075, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0666667), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Core3:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Core2:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.5, 0.5)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Core3:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.01, 1.01), Vector2(1.1, 1.1), Vector2(0.7, 0.7)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../PointLight2D:texture_scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.9),
+"transitions": PackedFloat32Array(1, 0.189465, 0.108819),
+"update": 0,
+"values": [0.6, 1.2, 0.6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5lvyn"]
+_data = {
+"Idle": ExtResource("11_p0d7f"),
+"RESET": SubResource("Animation_i6yw4"),
+"send_ship": SubResource("Animation_5274a")
+}
+
+[node name="Portal" type="Node2D" groups=["port"]]
+light_mask = 2
+position = Vector2(0, -1)
+rotation = -0.00494416
+scale = Vector2(0.41, 0.41)
+script = ExtResource("1_skunw")
+
+[node name="Port2" type="Sprite2D" parent="."]
+modulate = Color(0.999045, 0.988887, 0.985435, 1)
+light_mask = 2
+material = SubResource("ShaderMaterial_blicw")
+position = Vector2(231.415, 59.6815)
+rotation = -2.88518
+scale = Vector2(1.41, 1.41)
+texture = SubResource("CanvasTexture_mlklw")
+script = ExtResource("3_6q58t")
+
+[node name="PortComponent" type="Node" parent="Port2" node_paths=PackedStringArray("coordinatesLineEdit")]
+script = ExtResource("4_x7y2p")
+coordinatesLineEdit = NodePath("../LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="Port2"]
+light_mask = 0
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.01
+anchor_right = 0.108
+anchor_bottom = 0.01
+offset_left = -40.4341
+offset_top = 70.2413
+offset_right = 26.6284
+offset_bottom = 101.241
+rotation = 2.89997
+scale = Vector2(1.91, 1.91)
+theme = ExtResource("6_5ae3r")
+theme_type_variation = &"InLevelTextField"
+placeholder_text = "??"
+alignment = 1
+script = ExtResource("7_begl1")
+
+[node name="PortHighlighter" type="Node" parent="Port2" node_paths=PackedStringArray("portSprite")]
+script = ExtResource("6_4xt3q")
+portSprite = NodePath("..")
+selfModulate = true
+
+[node name="Port1" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_blicw")
+position = Vector2(-212.699, 101.389)
+rotation = -0.447552
+scale = Vector2(1.41, 1.41)
+texture = SubResource("CanvasTexture_mlklw")
+script = ExtResource("3_6q58t")
+
+[node name="PortComponent" type="Node" parent="Port1" node_paths=PackedStringArray("coordinatesLineEdit")]
+script = ExtResource("4_x7y2p")
+coordinatesLineEdit = NodePath("../LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="Port1"]
+light_mask = 0
+offset_left = -75.7957
+offset_top = -136.863
+offset_right = -8.73325
+offset_bottom = -105.863
+rotation = 0.460699
+scale = Vector2(1.91, 1.91)
+theme = ExtResource("6_5ae3r")
+theme_type_variation = &"InLevelTextField"
+placeholder_text = "??"
+alignment = 1
+script = ExtResource("7_begl1")
+
+[node name="PortHighlighter" type="Node" parent="Port1" node_paths=PackedStringArray("portSprite")]
+script = ExtResource("6_4xt3q")
+portSprite = NodePath("..")
+selfModulate = true
+
+[node name="Port3" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_blicw")
+position = Vector2(-6.14727, -236.619)
+rotation = 1.54594
+scale = Vector2(1.41, 1.41)
+texture = SubResource("CanvasTexture_mlklw")
+script = ExtResource("3_6q58t")
+
+[node name="PortComponent" type="Node" parent="Port3" node_paths=PackedStringArray("coordinatesLineEdit")]
+script = ExtResource("4_x7y2p")
+coordinatesLineEdit = NodePath("../LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="Port3"]
+light_mask = 0
+offset_left = -73.0082
+offset_top = -47.1712
+offset_right = 2.9918
+offset_bottom = -1.17122
+rotation = -1.5429
+scale = Vector2(1.91, 1.91)
+theme = ExtResource("6_5ae3r")
+theme_type_variation = &"InLevelTextField"
+placeholder_text = "??"
+alignment = 1
+script = ExtResource("7_begl1")
+
+[node name="PortHighlighter" type="Node" parent="Port3" node_paths=PackedStringArray("portSprite")]
+script = ExtResource("6_4xt3q")
+portSprite = NodePath("..")
+selfModulate = true
+
+[node name="Circle2" type="Sprite2D" parent="."]
+self_modulate = Color(0.301961, 0.278431, 0.505882, 1)
+light_mask = 2
+material = SubResource("CanvasItemMaterial_i7m2x")
+scale = Vector2(3.18368, 3.18368)
+texture = SubResource("CanvasTexture_x73we")
+script = ExtResource("18_yj1sx")
+rotationSpeed = 0.2
+
+[node name="Circle" type="Sprite2D" parent="."]
+light_mask = 3
+scale = Vector2(1.055, 1.055)
+texture = ExtResource("14_sjuo0")
+
+[node name="MagicEffect" type="Node2D" parent="."]
+
+[node name="Core" type="Sprite2D" parent="MagicEffect"]
+self_modulate = Color(1, 1, 1, 0.509804)
+rotation = 1.16185
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_wg5am")
+
+[node name="Core2" type="Sprite2D" parent="MagicEffect"]
+visible = false
+self_modulate = Color(0.980392, 0.94902, 1, 0.176471)
+rotation = 0.886275
+texture = ExtResource("1_wg5am")
+
+[node name="Core3" type="Sprite2D" parent="MagicEffect"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.0666667)
+rotation = 1.5352
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("1_wg5am")
+
+[node name="Halo1" type="Sprite2D" parent="MagicEffect"]
+self_modulate = Color(0.980392, 0.94902, 1, 0.823529)
+rotation = -2.14888
+texture = ExtResource("2_wxjke")
+
+[node name="Halo2" type="Sprite2D" parent="MagicEffect"]
+self_modulate = Color(0.980392, 0.94902, 1, 0.823529)
+rotation = -0.785398
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_5k268")
+
+[node name="Magic1" type="Sprite2D" parent="MagicEffect"]
+self_modulate = Color(0.980392, 0.94902, 1, 0.823529)
+material = SubResource("ShaderMaterial_cdgt5")
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_p1xeb")
+
+[node name="Magic2" type="Sprite2D" parent="MagicEffect"]
+self_modulate = Color(0.980392, 0.94902, 1, 1)
+material = SubResource("ShaderMaterial_cdgt5")
+rotation = 1.5708
+scale = Vector2(0.625925, 0.625925)
+texture = ExtResource("5_p1xeb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MagicEffect"]
+libraries = {
+"": SubResource("AnimationLibrary_5lvyn")
+}
+
+[node name="HighlightCircle" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.318944, 0.854946, 0, 1)
+rotation = 0.18326
+scale = Vector2(1.055, 1.055)
+texture = ExtResource("9_620mx")
+script = ExtResource("14_s6jug")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(12.207, -2.3787)
+scale = Vector2(3.3801, 3.02844)
+energy = 2.0
+texture = ExtResource("16_tpn24")

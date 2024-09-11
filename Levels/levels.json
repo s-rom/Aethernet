@@ -1,0 +1,192 @@
+{ 
+	"base_path": "res://Levels/",
+	"levels": [
+		{
+			"name": "Planetas",
+			"path": "ConnectTwoPlanets.tscn",
+			
+			"slides": [
+				{
+					"text": "Haz clic izquierdo sobre los planetas para conectarlos con una ruta.",
+					"video": "res://Slides/connect.ogv"
+				  },
+				  {
+					"text": "Haz clic derecho sobre una ruta para eliminarla.",
+					"video": "res://Slides/delete.ogv"
+				  },
+				  {
+					"text": "Usa la rueda del ratón para acercar o alejar la vista.",
+					"video": "res://Slides/zoom.ogv"
+				  },
+				  {
+					"text": "Presiona la rueda del ratón para desplazar la vista.",
+					"video": "res://Slides/drag.ogv"
+				  }				  
+			]
+		},
+		{
+			"name": "Coordenadas",
+			"path": "ConnectTwoCoordinates.tscn",
+			"slides": [
+				{
+					"text": "Cada planeta tiene coordenadas únicas asociadas. \nEstas coordenadas se representan con una letra y un número.",
+					"video": "res://Slides/set_coordinates.ogv"
+				},
+				{
+					"text": "Haz clic izquierdo sobre un planeta que esté conectado y configurado con sus coordenadas para abrir el menú de envío.\n\nUtilízalo para enviar naves de prueba."
+					,"video": "res://Slides/debug_send.ogv" 
+				},
+				{
+					"text": "Puedes ocultar todos los menús contextuales presionando la tecla [i]Escape[/i]"
+				}
+			]
+		},
+		
+		{
+			"name": "Estación espacial",
+			"path": "Station1.tscn",
+			"slides": [
+				{
+					"text": "Una estación espacial puede conectar varios portales entre si.\n\nConecta los planetas a sus puertos para crear rutas complejas",
+					"video": "res://Slides/station_connect.ogv"
+				},
+				{
+					"text": "Una estación recuerda que planeta se encuentra conectado a cada puerto.\nInicialmente no tiene información al respecto"
+				},
+				{
+					"text": "La estación se encargará de enviar una copia de la nave a todos sus puertos dado que no conoce donde se encuentra el destino",
+					"video": "res://Slides/station1.ogv"
+				},
+
+				{
+					"text": "La próxima vez, la estación se acordará de donde se encontraba el destino y no enviará la nave por todos sus puertos",
+					"video": "res://Slides/station2.ogv"
+				}
+			]
+		},
+		
+		{
+			"name": "Varias estaciones",
+			"path": "Station2.tscn",
+			"slides": [
+				{
+					"text": "Puedes conectar dos estaciones entre sí para conectar más de cuatro portales a la vez"
+				}
+			]
+		},
+		
+		{
+			"name": "Dos redes",
+			"path": "TwoNetsStation.tscn",
+			"slides": [
+				{
+					"text": "La letra de las coordenadas determina un grupo o red de planetas concreto\n\nDos planetas de distintas redes no pueden comunicarse entre sí"
+				},
+				{
+					"text": "Si un planeta envía una nave a un destino en otra red, cualquier estación espacial lo bloqueará\n\nSi dos planetas están configurados en dos redes distintas y se conectan directamente, no se podrá enviar la nave"
+				}
+			]
+		},
+		
+		{
+			"name": "Portal simple",
+			"path": "SimplePortal.tscn",
+			"slides": [
+				{
+					"text": "La función de un portal es conectar dos redes de planetas"
+				},
+				{
+					"text": "Cada puerto de un portal tiene una coordenada asociada\n\nConfigura cada puerto del portal con una combinación de cada red",
+					"video": "res://Slides/gateway.ogv"
+				},
+				{
+					"text": "Dado que el portal conecta directamente dos redes distintas, no es necesario ninguna configuración"
+				}
+			]
+		},
+		
+		{
+			"name": "Tres redes",
+			"path": "SimplePortal2.tscn",
+			"slides": [
+				{
+					"text": "Realiza el mismo procedimiento que el nivel anterior, ahora con tres redes en lugar de dos"
+				}
+			]
+		},
+		
+		{
+			"name": "Estaciones y portales",
+			"path": "SimplePortal3.tscn",
+			"slides": [
+				{
+					"text": "Conecta cada planeta a su estacion más cercana y cada estación a un puerto del portal\n\nRecuerda configurar cada puerto del portal con una coordenada de cada red"
+				}
+			]
+		},
+		
+		{
+			"name": "Demasiados planetas",
+			"path": "SimplePortal4.tscn",
+			"slides": [
+				{
+					"text": "Combina el conocimiento de los niveles anteriores para resolver este nivel"
+				}
+			]
+		},
+		
+		{
+			"name": "Dos portales",
+			"path": "TwoPortals.tscn",
+			"slides": [
+				{
+					"text": "Ahora los portales tienen menos puertos lo que complica la configuración"
+				},
+				{
+					"text": "En este tipo de escenarios, puedes asignar reglas a cada portal para que las naves encuentren su destino"
+				},
+				{
+					"video": "res://Slides/add_rule.ogv",
+					"text": "Las reglas se expresan a partir de un portal, indicando la [b]red destino[/b] (únicamente la letra) y el [b]siguiente salto[/b]\nEl [b]siguiente salto[/b] es el puerto opuesto al que está conectado un portal que dirige a la [b]red destino[/b]"
+				},
+				{
+					"text": "Configura las reglas para que exista comunicación entre redes",
+				},
+				{
+					"text": "Elimina cualquier regla errónea",
+					"video": "res://Slides/delete_rule.ogv"
+				}
+			]
+		},
+		
+		{
+			"name": "Demsiadas redes",
+			"path": "TwoPortalsThreeNets.tscn",
+			"slides": [
+				{
+					"text": "Puedes añadir más de una regla a un portal\n\nDebes añadir a cada portal, una regla por cada red"
+				},
+				{
+					"text": "[b]EJEMPLO[/b]\n\n\nEl portal de la izquierda necesita añadir dos redes: una para llegar a la red [b]B[/b] y otra a la red [b]C[/b]"
+				},
+				{
+					"text": "El [b]siguiente salto[/b] será el mismo en ambas reglas (en el caso del portal de la izquierda)"
+				},
+				{
+					"text": "Al conectar dos portales entre si, la ruta se configura automáticamente con los valores de [b]salto[/b]",
+					"video": "res://Slides/interportal_connection.ogv"
+				}
+			]
+		},
+		
+		{
+			"name": "Bus galáctico",
+			"path": "PortalBus.tscn",
+			"slides": [
+				{
+					"text": "Utiliza el conocimiento previo para configurar este nivel"
+				}
+			]
+		}
+	]
+}

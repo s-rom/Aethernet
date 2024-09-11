@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsr7d8inu4qh4"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_xwafx"]
+[ext_resource type="Script" path="res://GUI/level_selection_panel.gd" id="2_17pfx"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_x2hyq"]
+[ext_resource type="Texture2D" uid="uid://c25cviej1rol0" path="res://GUI/Vector/Green/check_square_grey.svg" id="4_05l82"]
+[ext_resource type="Texture2D" uid="uid://bvbwlpm37j32c" path="res://GUI/Vector/Grey/arrow_basic_e.svg" id="4_nxfs8"]
+[ext_resource type="Texture2D" uid="uid://d0jyu0my70psl" path="res://GUI/Vector/Grey/arrow_decorative_e.svg" id="5_2x8ji"]
+
+[node name="LevelPanel" type="PanelContainer"]
+offset_right = 288.0
+offset_bottom = 58.0
+size_flags_vertical = 3
+theme = ExtResource("1_xwafx")
+theme_type_variation = &"LevelLoadPanel"
+script = ExtResource("2_17pfx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_x2hyq")
+theme_override_font_sizes/font_size = 32
+text = "Nivel1
+"
+
+[node name="TextureButton" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_05l82")
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_nxfs8")
+texture_hover = ExtResource("5_2x8ji")
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TextureButton2" to="." method="_on_play_button_pressed"]

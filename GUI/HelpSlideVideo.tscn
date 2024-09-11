@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6webnls1b04e"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_rosfd"]
+[ext_resource type="Script" path="res://GUI/HelpSlideVideo.gd" id="1_ydgrq"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_it17s"]
+[ext_resource type="VideoStream" path="res://Slides/connect.ogv" id="4_2dk4r"]
+[ext_resource type="Texture2D" uid="uid://dl0e316bghyo" path="res://GUI/Prinbles/Panel/Body/Headed.svg" id="4_urepd"]
+[ext_resource type="FontFile" uid="uid://dd8ofcoa1xlsx" path="res://GUI/exo2_font/Exo2-Regular.otf" id="6_lqdo6"]
+[ext_resource type="FontFile" uid="uid://bx6thfa8y7hle" path="res://GUI/exo2_font/Exo2-Bold.otf" id="7_2yine"]
+[ext_resource type="FontFile" uid="uid://d3hm1nkt66t6d" path="res://GUI/exo2_font/Exo2-Italic.otf" id="8_n3os8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhog6"]
+texture = ExtResource("4_urepd")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 25.0
+modulate_color = Color(0.891416, 0.877171, 0.889025, 1)
+
+[node name="HelpSlide" type="VBoxContainer"]
+anchors_preset = -1
+anchor_left = 0.273
+anchor_top = 0.06
+anchor_right = 0.726
+anchor_bottom = 0.826
+offset_left = -0.496002
+offset_top = 2.12
+offset_right = 1.64801
+offset_bottom = -0.247986
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+script = ExtResource("1_ydgrq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_rosfd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.584314, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_it17s")
+theme_override_font_sizes/font_size = 53
+text = "AYUDA
+"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+light_mask = 0
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_rosfd")
+theme_type_variation = &"PanelContainerInner"
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhog6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+size_flags_vertical = 3
+ratio = 2.0083
+
+[node name="Panel" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/AspectRatioContainer"]
+self_modulate = Color(0.686275, 0.635294, 0.843137, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_rosfd")
+theme_type_variation = &"PanelContainerInner"
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer/AspectRatioContainer/Panel"]
+layout_mode = 2
+stream = ExtResource("4_2dk4r")
+autoplay = true
+expand = true
+loop = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(474, 95.82)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_lqdo6")
+theme_override_fonts/bold_font = ExtResource("7_2yine")
+theme_override_fonts/italics_font = ExtResource("8_n3os8")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "[fill] Haz [u]click[/u] en los planetas para conectarlos mediante una ruta directa.  [/fill]
+"
+fit_content = true
+
+[node name="SlideIdx" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.584314, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_it17s")
+theme_override_font_sizes/font_size = 38
+text = "1/2"
+horizontal_alignment = 2
