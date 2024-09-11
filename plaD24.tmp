@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4sjfggkg3k5c"]
+
+[ext_resource type="Script" path="res://planet.gd" id="1_3efra"]
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="2_l3vfx"]
+[ext_resource type="Script" path="res://PlanetSprite.gd" id="3_hboyi"]
+[ext_resource type="Texture2D" uid="uid://qruglpeqhv7o" path="res://Ships/ship_sidesA.png" id="4_ulfaq"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_3efra")
+
+[node name="PlanetSprite5" type="Sprite2D" parent="."]
+position = Vector2(930, 404)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="PlanetSprite4" type="Sprite2D" parent="."]
+position = Vector2(936, 134)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+position = Vector2(532, 551)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="PlanetSprite2" type="Sprite2D" parent="."]
+position = Vector2(161, 117)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="PlanetSprite3" type="Sprite2D" parent="."]
+position = Vector2(138, 475)
+texture = ExtResource("2_l3vfx")
+script = ExtResource("3_hboyi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="ShipSidesA" type="Sprite2D" parent="."]
+position = Vector2(184, 413)
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("4_ulfaq")

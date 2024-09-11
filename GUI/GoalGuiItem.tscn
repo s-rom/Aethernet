@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://bksqrsilqdx53"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_mqnmm"]
+[ext_resource type="Texture2D" uid="uid://djbpicp8c8is2" path="res://GUI/metalPanel.png" id="2_hjgbu"]
+[ext_resource type="Script" path="res://GUI/GoalGuiItem.gd" id="3_ljf8o"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="3_pliq3"]
+[ext_resource type="Texture2D" uid="uid://dde4bd0rhp2br" path="res://GUI/Vector/Blue/icon_checkmark.svg" id="4_0wip6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shjnt"]
+texture = ExtResource("2_hjgbu")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 50)
+theme = ExtResource("1_mqnmm")
+theme_type_variation = &"PanelContainerInner"
+theme_override_styles/panel = SubResource("StyleBoxTexture_shjnt")
+script = ExtResource("3_ljf8o")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_mqnmm")
+theme_override_colors/font_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+theme_override_colors/font_shadow_color = Color(0.830335, 0.830335, 0.830335, 0.6)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("3_pliq3")
+theme_override_font_sizes/font_size = 20
+text = "Conecta los planetas mediante rutas"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("4_0wip6")
+expand_mode = 3
+stretch_mode = 4

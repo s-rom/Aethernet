@@ -1,0 +1,277 @@
+[gd_scene load_steps=19 format=3 uid="uid://bkfhf21107vjb"]
+
+[ext_resource type="Script" path="res://Levels/LevelSelectionMenu.gd" id="1_8vvga"]
+[ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="1_xctw6"]
+[ext_resource type="Script" path="res://Scripts/WebFix.gd" id="2_2k62o"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="2_82wa5"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="3_hoyjo"]
+[ext_resource type="Texture2D" uid="uid://8a64iq176c48" path="res://GUI/Vector/Yellow/star.svg" id="6_arovq"]
+[ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="7_a3v4t"]
+[ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="7_qeulm"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="8_44n66"]
+[ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="8_o8clx"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="9_x0aad"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="9_x4jwi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fu7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15oue"]
+texture = ExtResource("7_qeulm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tbd6"]
+texture = ExtResource("7_qeulm")
+modulate_color = Color(0.724643, 0.724643, 0.724643, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45bqk"]
+bg_color = Color(0.34902, 0.34902, 0.34902, 0.34902)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.905882, 0.427451, 0.662745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h73xp"]
+bg_color = Color(0.905882, 0.427451, 0.662745, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Gradient" id="Gradient_e47fy"]
+offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[node name="LevelSelectionMenu" type="Node2D"]
+script = ExtResource("1_8vvga")
+
+[node name="WebFix" type="Node" parent="."]
+script = ExtResource("2_2k62o")
+
+[node name="MenuAnimations" type="Node2D" parent="."]
+script = ExtResource("1_xctw6")
+shipColor = Color(1, 1, 1, 0.709804)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.034
+anchor_right = 0.023
+anchor_bottom = 0.034
+offset_left = -0.496002
+offset_top = -0.0320015
+offset_right = 419.504
+offset_bottom = 118.968
+theme = ExtResource("2_82wa5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.906687, 0.428696, 0.663031, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("3_hoyjo")
+theme_override_font_sizes/font_size = 55
+text = "NIVELES"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.19437
+anchor_right = 0.429597
+anchor_bottom = 0.964
+offset_left = -0.32
+offset_top = -8.95201
+offset_right = 4.104
+offset_bottom = 3.32794
+theme = ExtResource("2_82wa5")
+theme_type_variation = &"PanelContainerInner"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_82wa5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0fu7h")
+
+[node name="LevelsContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HomeButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.034
+anchor_right = 0.023
+anchor_bottom = 0.034
+offset_left = -0.496002
+offset_top = -0.0320015
+offset_right = 49.504
+offset_bottom = 49.968
+theme_override_styles/normal = SubResource("StyleBoxTexture_15oue")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1tbd6")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.985
+anchor_top = 0.961
+anchor_right = 0.985
+anchor_bottom = 0.961
+offset_left = -321.72
+offset_top = -153.728
+offset_right = 0.279907
+offset_bottom = 0.271973
+theme = ExtResource("2_82wa5")
+theme_type_variation = &"PanelContainerInner"
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_arovq")
+expand_mode = 3
+
+[node name="StarsLabel" type="Label" parent="CanvasLayer/PanelContainer2/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_82wa5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.906687, 0.428696, 0.663031, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("3_hoyjo")
+theme_override_font_sizes/font_size = 55
+text = "x 3"
+horizontal_alignment = 1
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PanelContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_hoyjo")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/background = SubResource("StyleBoxFlat_45bqk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h73xp")
+step = 1.0
+value = 62.0
+
+[node name="ShipsLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 323)
+script = ExtResource("7_a3v4t")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+lifetime = 12.0
+preprocess = 16.0
+texture = ExtResource("8_44n66")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_e47fy")
+hue_variation_min = 0.73
+hue_variation_max = 0.75
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227981, 0.196153, 0.367317, 1)
+light_mask = 5
+z_index = -2
+position = Vector2(268, 464)
+scale = Vector2(164.779, 111.942)
+texture = ExtResource("9_x0aad")
+
+[node name="Container" type="Container" parent="."]
+z_index = -2
+anchors_preset = -1
+anchor_left = 0.727
+anchor_top = 0.5
+anchor_right = 0.727
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+
+[node name="Portal" parent="Container" instance=ExtResource("9_x4jwi")]
+position = Vector2(839, 298)
+
+[node name="LineEdit" parent="Container/Portal/Port2" index="1"]
+visible = false
+
+[node name="LineEdit" parent="Container/Portal/Port1" index="1"]
+visible = false
+
+[node name="LineEdit" parent="Container/Portal/Port3" index="1"]
+visible = false
+
+[node name="PointLight2D" parent="Container/Portal" index="7"]
+energy = 2.65
+
+[node name="MeteorDetailedLarge" parent="Container" instance=ExtResource("8_o8clx")]
+position = Vector2(600, 182)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge2" parent="Container" instance=ExtResource("8_o8clx")]
+position = Vector2(589, 518)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge3" parent="Container" instance=ExtResource("8_o8clx")]
+position = Vector2(1064, 553)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge4" parent="Container" instance=ExtResource("8_o8clx")]
+position = Vector2(1074, 106)
+rotationSpeed = 0.3
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.59
+range_item_cull_mask = 3
+
+[connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
+
+[editable path="Container/Portal"]

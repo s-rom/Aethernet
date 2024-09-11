@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1mauc4mykub7"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_e7w4k"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="2_wkka5"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="3_1knfw"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_e7w4k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(564, 372)
+
+[node name="PlanetSprite2" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(153, 414)
+
+[node name="PlanetSprite3" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(789, 202)
+
+[node name="PlanetSprite4" parent="." instance=ExtResource("2_wkka5")]
+position = Vector2(904, 563)
+
+[node name="StationC" parent="." instance=ExtResource("3_1knfw")]
+position = Vector2(564, 398)

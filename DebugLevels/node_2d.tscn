@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqjowy6uexofu"]
+
+[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="1_likvj"]
+[ext_resource type="Script" path="res://DebugLevels/node_2d.gd" id="1_o8gho"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="2_7mvni"]
+[ext_resource type="Shader" path="res://laser.gdshader" id="4_un21v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33odm"]
+shader = ExtResource("4_un21v")
+shader_parameter/scroll_speed = Vector2(1, 0)
+shader_parameter/time_scale = 1.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/threshold = 0.5
+shader_parameter/noise_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18fjb"]
+shader = ExtResource("4_un21v")
+shader_parameter/scroll_speed = Vector2(1, 0)
+shader_parameter/time_scale = 1.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/threshold = 0.2
+shader_parameter/noise_speed = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_o8gho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(180, 430)
+texture = ExtResource("1_likvj")
+script = ExtResource("2_7mvni")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_33odm")
+position = Vector2(136, 233)
+points = PackedVector2Array(70, 336, 354, 376, 692, 330, 905, 196)
+width = 23.465
+texture = ExtResource("1_likvj")
+texture_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_18fjb")
+offset_left = 422.0
+offset_top = 361.0
+offset_right = 909.0
+offset_bottom = 400.0
+rotation = -0.049315
+texture = ExtResource("1_likvj")
+expand_mode = 1

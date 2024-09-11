@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4sjfggkg3k5c"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_3efra"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="2_y4cty"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_3efra")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="PlanetSprite2" parent="." instance=ExtResource("2_y4cty")]
+position = Vector2(226, 217)
+
+[node name="PlanetSprite3" parent="." instance=ExtResource("2_y4cty")]
+position = Vector2(798, 204)

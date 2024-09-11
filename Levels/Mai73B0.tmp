@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1cqqvhua3hmw"]
+
+[ext_resource type="Script" path="res://Levels/MainMenu.gd" id="1_n3hf3"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="2_g6eir"]
+[ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="2_hi3ja"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_uhirk"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="4_p0xkf"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="4_y76wo"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="6_164uq"]
+
+[sub_resource type="Gradient" id="Gradient_dnhq7"]
+offsets = PackedFloat32Array(0, 0.460606, 0.730303, 0.851515, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.705882, 0.992917, 0.992917, 0.992917, 0.0437757, 0.996078, 0.996078, 0.996078, 0, 1, 1, 1, 0)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_n3hf3")
+
+[node name="MenuAnimations" type="Node2D" parent="."]
+script = ExtResource("2_hi3ja")
+shipColor = Color(1, 1, 1, 0.690196)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.164
+anchor_right = 0.069
+anchor_bottom = 0.164
+offset_left = -0.488007
+offset_top = -0.272003
+offset_right = 437.512
+offset_bottom = 118.728
+theme = ExtResource("2_g6eir")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.906687, 0.428696, 0.663031, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 7
+theme_override_fonts/font = ExtResource("2_uhirk")
+theme_override_font_sizes/font_size = 100
+text = "AETHERNET"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.426
+anchor_right = 0.391
+anchor_bottom = 0.817
+offset_left = 0.127991
+offset_top = -0.0480042
+offset_right = 2.56796
+offset_bottom = -6.41602
+
+[node name="LevelsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"MainGUIButton"
+text = "NIVELES"
+
+[node name="SandboxButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"MainGUIButton"
+text = "Modo Libre"
+
+[node name="LoadButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"MainGUIButton"
+text = "Cargar"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(607, 292)
+amount = 64
+lifetime = 12.0
+preprocess = 12.0
+texture = ExtResource("4_y76wo")
+emission_shape = 3
+emission_rect_extents = Vector2(750, 750)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_dnhq7")
+
+[node name="Portal" parent="." instance=ExtResource("4_p0xkf")]
+position = Vector2(836, 292)
+
+[node name="ShipsLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Planet" parent="." instance=ExtResource("6_164uq")]
+position = Vector2(609, 469)
+
+[node name="Planet2" parent="." instance=ExtResource("6_164uq")]
+position = Vector2(1042, 537)
+
+[node name="Planet3" parent="." instance=ExtResource("6_164uq")]
+position = Vector2(698, 111)
+
+[node name="Planet4" parent="." instance=ExtResource("6_164uq")]
+position = Vector2(1084, 192)
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
+
+[editable path="Portal"]

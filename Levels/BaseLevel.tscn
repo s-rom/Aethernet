@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2xak4b355737"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_iuii2"]
+[ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_4cuuf"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="2_57y6j"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_3af17"]
+[ext_resource type="Script" path="res://Levels/GoalTracker.gd" id="4_by8m6"]
+[ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="5_1xq47"]
+
+[sub_resource type="Gradient" id="Gradient_e66pd"]
+offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_iuii2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(560, 337)
+script = ExtResource("2_4cuuf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+lifetime = 12.0
+preprocess = 16.0
+texture = ExtResource("3_3af17")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_e66pd")
+hue_variation_min = 0.73
+hue_variation_max = 0.75
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227981, 0.196153, 0.367317, 1)
+light_mask = 5
+z_index = -2
+position = Vector2(268, 464)
+scale = Vector2(164.779, 111.942)
+texture = ExtResource("2_57y6j")
+
+[node name="GoalTracker" type="Node" parent="."]
+script = ExtResource("4_by8m6")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_1xq47")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.59
+range_item_cull_mask = 3

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhrd7ej1s48rq"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_kxbgr"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="2_62abc"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_r8chl"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_d3h4e"]
+[ext_resource type="Script" path="res://planet_system.gd" id="5_j8fp3"]
+
+[sub_resource type="Environment" id="Environment_lmakv"]
+background_mode = 3
+background_energy_multiplier = 9.92
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 4.64
+tonemap_mode = 1
+tonemap_white = 0.78
+glow_enabled = true
+glow_intensity = 0.93
+glow_strength = 1.11
+glow_bloom = 0.04
+glow_blend_mode = 0
+glow_hdr_threshold = 1.06
+glow_hdr_scale = 2.19
+glow_map_strength = 0.62
+adjustment_enabled = true
+adjustment_brightness = 0.78
+adjustment_contrast = 0.9
+adjustment_saturation = 1.06
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_kxbgr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(564, 316)
+
+[node name="StationC" parent="." instance=ExtResource("2_62abc")]
+position = Vector2(571, 263)
+rotation = -0.130091
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_r8chl")]
+
+[node name="Planet" parent="." instance=ExtResource("4_d3h4e")]
+position = Vector2(221, 432)
+
+[node name="Planet2" parent="." instance=ExtResource("4_d3h4e")]
+position = Vector2(642, 557)
+
+[node name="Planet3" parent="." instance=ExtResource("4_d3h4e")]
+position = Vector2(965, 326)
+
+[node name="Node2" type="Node" parent="."]
+script = ExtResource("5_j8fp3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lmakv")
+
+[connection signal="send_ship" from="CanvasLayer" to="." method="_on_canvas_layer_send_ship"]

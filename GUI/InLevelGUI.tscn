@@ -1,0 +1,338 @@
+[gd_scene load_steps=34 format=3 uid="uid://cois2m5p2dndf"]
+
+[ext_resource type="Script" path="res://GUI/UIManager.gd" id="1_0doye"]
+[ext_resource type="PackedScene" uid="uid://bjqm7ub12fxpk" path="res://GUI/PortalTable/PortalTable.tscn" id="2_j8y8a"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_y2dkg"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="4_ej2v3"]
+[ext_resource type="Texture2D" uid="uid://dksuyorf061r6" path="res://GUI/ButtonsPropios/play_depth.png" id="5_thyr0"]
+[ext_resource type="Texture2D" uid="uid://cex2rqeuw6biu" path="res://GUI/ButtonsPropios/stop_depth.png" id="6_cmitt"]
+[ext_resource type="Texture2D" uid="uid://b7e84juqqvhn7" path="res://GUI/ButtonsPropios/excl_depth.png" id="6_t2a78"]
+[ext_resource type="Script" path="res://GUI/PlayButton.gd" id="6_v6puq"]
+[ext_resource type="Texture2D" uid="uid://d3h66n5ceuh80" path="res://GUI/ButtonsPropios/b_interrog.png" id="7_n00t6"]
+[ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="8_otag5"]
+[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="8_pdr4e"]
+[ext_resource type="Texture2D" uid="uid://conp2txwfyxg7" path="res://GUI/glassPanel_cornerTR.png" id="9_51md7"]
+[ext_resource type="Texture2D" uid="uid://clsg27b0i1yym" path="res://GUI/glassPanel.png" id="11_yuojx"]
+[ext_resource type="Script" path="res://GUI/HelpPanel.gd" id="12_1cc74"]
+[ext_resource type="Texture2D" uid="uid://dn81dru6jrapr" path="res://GUI/Vector/Grey/arrow_basic_w.svg" id="12_tjauy"]
+[ext_resource type="PackedScene" uid="uid://c6webnls1b04e" path="res://GUI/HelpSlideVideo.tscn" id="13_5niwy"]
+[ext_resource type="Texture2D" uid="uid://bvbwlpm37j32c" path="res://GUI/Vector/Grey/arrow_basic_e.svg" id="15_yqyhw"]
+[ext_resource type="Texture2D" uid="uid://c1qg07juucgdj" path="res://GUI/ButtonsPropios/next_depth.png" id="18_fr634"]
+[ext_resource type="Texture2D" uid="uid://cmpq3flx253tv" path="res://GUI/ButtonsPropios/redo_depth.png" id="18_fvb4e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uent1"]
+texture = ExtResource("5_thyr0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j0hm6"]
+texture = ExtResource("6_cmitt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_33lt6"]
+texture = ExtResource("6_t2a78")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hntpv"]
+texture = ExtResource("6_t2a78")
+modulate_color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0bu1"]
+texture = ExtResource("7_n00t6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_188c0"]
+texture = ExtResource("7_n00t6")
+modulate_color = Color(0.548963, 0.548963, 0.548963, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yup47"]
+texture = ExtResource("8_otag5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xd0w0"]
+texture = ExtResource("8_otag5")
+modulate_color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1eaua"]
+texture = ExtResource("9_51md7")
+texture_margin_left = 10.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qm6b"]
+texture = ExtResource("11_yuojx")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iu61"]
+texture = ExtResource("18_fvb4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8mwjj"]
+texture = ExtResource("18_fvb4e")
+modulate_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryhgl"]
+texture = ExtResource("18_fr634")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0wtfm"]
+texture = ExtResource("18_fr634")
+modulate_color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("goalPanel", "helpPanel", "goalCompleted")]
+script = ExtResource("1_0doye")
+goalPanel = NodePath("GoalPanel")
+helpPanel = NodePath("HelpPanel")
+goalCompleted = NodePath("GoalCompleted")
+
+[node name="PortalTable" parent="." instance=ExtResource("2_j8y8a")]
+visible = false
+anchors_preset = -1
+anchor_left = 0.042
+anchor_top = 0.275
+anchor_right = 0.36
+anchor_bottom = 0.854
+offset_left = -0.384003
+offset_top = -29.2
+offset_right = -366.72
+offset_bottom = -404.392
+size_flags_horizontal = 0
+
+[node name="DebugSend" parent="." instance=ExtResource("3_y2dkg")]
+visible = false
+anchor_left = 1.00006
+anchor_top = 0.999923
+anchor_right = 1.00006
+anchor_bottom = 0.999923
+offset_left = -309.35
+offset_top = -197.0
+offset_right = -49.0657
+offset_bottom = -48.95
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MainButtons" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.014
+anchor_right = 0.244
+anchor_bottom = 0.106
+offset_left = -0.52
+offset_top = -0.0720005
+offset_right = 0.911987
+offset_bottom = 0.312004
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayButton" type="Button" parent="MainButtons/AspectRatioContainer"]
+layout_mode = 2
+script = ExtResource("6_v6puq")
+playTexture = SubResource("StyleBoxTexture_uent1")
+stopTexture = SubResource("StyleBoxTexture_j0hm6")
+hoverColor = Color(0.381703, 0.381703, 0.381703, 1)
+disabledColor = Color(0.396078, 0.396078, 0.396078, 0.560784)
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+
+[node name="GoalButton" type="Button" parent="MainButtons/AspectRatioContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/normal = SubResource("StyleBoxTexture_33lt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hntpv")
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+
+[node name="HelpButton" type="Button" parent="MainButtons/AspectRatioContainer3"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/normal = SubResource("StyleBoxTexture_o0bu1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_188c0")
+
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HomeButton" type="Button" parent="MainButtons/AspectRatioContainer4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/normal = SubResource("StyleBoxTexture_yup47")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xd0w0")
+
+[node name="GoalPanel" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.467
+anchor_right = 0.407
+anchor_bottom = 0.941
+offset_left = -3.016
+offset_top = 231.384
+offset_right = -231.864
+offset_bottom = 5.23199
+grow_vertical = 0
+size_flags_horizontal = 0
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"PanelContainerKenney"
+theme_override_styles/panel = SubResource("StyleBoxTexture_1eaua")
+
+[node name="MarginContainer" type="MarginContainer" parent="GoalPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GoalPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GoalPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_ej2v3")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.493545, 0.493546, 0.493546, 1)
+theme_override_fonts/font = ExtResource("8_pdr4e")
+theme_override_font_sizes/font_size = 38
+text = "OBJETIVOS"
+
+[node name="HelpPanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.396
+anchor_top = 0.338
+anchor_right = 0.673
+anchor_bottom = 0.834
+offset_left = -164.192
+offset_top = -163.524
+offset_right = 84.704
+offset_bottom = 52.068
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"PanelContainerKenney"
+theme_override_styles/panel = SubResource("StyleBoxTexture_0qm6b")
+script = ExtResource("12_1cc74")
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpPanel"]
+layout_mode = 2
+theme = ExtResource("4_ej2v3")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="TextureButton" type="TextureButton" parent="HelpPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("12_tjauy")
+stretch_mode = 5
+
+[node name="HelpSlideVideo" parent="HelpPanel/MarginContainer/HBoxContainer" instance=ExtResource("13_5niwy")]
+layout_mode = 2
+
+[node name="TextureButton2" type="TextureButton" parent="HelpPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("15_yqyhw")
+stretch_mode = 5
+
+[node name="GoalCompleted" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -67.0
+offset_right = 316.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"PanelContainerKenneyGreen"
+
+[node name="MarginContainer" type="MarginContainer" parent="GoalCompleted"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GoalCompleted/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GoalCompleted/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"PanelContainerInner"
+
+[node name="MarginContainer" type="MarginContainer" parent="GoalCompleted/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="GoalCompleted/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_ej2v3")
+theme_type_variation = &"MainLabel"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_pdr4e")
+theme_override_font_sizes/font_size = 70
+text = "OBJETIVO COMPLETADO"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GoalCompleted/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RedoButton" type="Button" parent="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_0iu61")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8mwjj")
+
+[node name="NextLevelButton" type="Button" parent="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ryhgl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0wtfm")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+offset_left = 893.0
+offset_top = 19.0
+offset_right = 1116.0
+offset_bottom = 65.0
+
+[connection signal="pressed" from="MainButtons/AspectRatioContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer2/GoalButton" to="." method="_on_goal_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer3/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer4/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="HelpPanel/MarginContainer/HBoxContainer/TextureButton" to="HelpPanel" method="_on_previous_slide_pressed"]
+[connection signal="pressed" from="HelpPanel/MarginContainer/HBoxContainer/TextureButton2" to="HelpPanel" method="_on_next_slide_pressed"]
+[connection signal="pressed" from="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]
+[connection signal="pressed" from="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

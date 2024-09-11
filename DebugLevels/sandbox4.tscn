@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://eje0poou28jx"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_gfoqq"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="2_qiggn"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="3_uagyu"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_lv0un"]
+[ext_resource type="PackedScene" uid="uid://bjqm7ub12fxpk" path="res://GUI/PortalTable/PortalTable.tscn" id="5_6pnn5"]
+[ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="6_670s7"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_gfoqq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 326)
+rotation = 0.470424
+
+[node name="Portal" parent="." instance=ExtResource("2_qiggn")]
+position = Vector2(951, 275)
+rotation = 0.0231379
+
+[node name="Station" parent="." instance=ExtResource("3_uagyu")]
+position = Vector2(168, 492)
+rotation = 0.933154
+
+[node name="Station2" parent="." instance=ExtResource("3_uagyu")]
+position = Vector2(1232, 172)
+rotation = -0.783631
+scale = Vector2(0.993545, 1)
+
+[node name="Planet" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(-1, 400)
+scale = Vector2(1, 0.975707)
+
+[node name="Planet2" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(18, 620)
+rotation = -0.00202975
+
+[node name="Planet3" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(288, 637)
+
+[node name="Planet4" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(1126, 30)
+
+[node name="Planet5" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(1384, 70)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PortalTable" parent="CanvasLayer" instance=ExtResource("5_6pnn5")]
+visible = false
+offset_left = 49.0
+offset_top = 18.0
+offset_right = 49.0
+offset_bottom = 18.0
+
+[node name="DebugSend" parent="CanvasLayer" instance=ExtResource("6_670s7")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.35
+offset_top = -197.0
+offset_right = -49.0657
+offset_bottom = -48.95
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Portal2" parent="." instance=ExtResource("2_qiggn")]
+position = Vector2(416, 334)
+
+[node name="Portal3" parent="." instance=ExtResource("2_qiggn")]
+position = Vector2(688, -297)
+
+[node name="Station3" parent="." instance=ExtResource("3_uagyu")]
+position = Vector2(259, -262)
+
+[node name="Station4" parent="." instance=ExtResource("3_uagyu")]
+position = Vector2(1295, -474)
+
+[node name="Planet6" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(344, -435)
+
+[node name="Planet7" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(108, -147)
+
+[node name="Planet8" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(152, -404)
+
+[node name="Planet9" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(1405, -347)
+
+[node name="Planet10" parent="." instance=ExtResource("4_lv0un")]
+position = Vector2(1480, -506)
+
+[connection signal="send_ship" from="CanvasLayer/DebugSend" to="." method="_on_debug_send_send_ship"]

@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://bukavruhwui2b"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_k6fy4"]
+[ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_3irba"]
+[ext_resource type="Script" path="res://Levels/TwoPortalsLevel.gd" id="2_fi81w"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_iyi88"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="4_kr7vp"]
+[ext_resource type="Script" path="res://Levels/GoalTracker.gd" id="5_xtcdk"]
+[ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="6_0woo0"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="7_cyvf7"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="8_vc2ir"]
+[ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="9_xnlh8"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="10_xido3"]
+
+[sub_resource type="Gradient" id="Gradient_e66pd"]
+offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_k6fy4")
+
+[node name="LevelSpecific" type="Node" parent="." node_paths=PackedStringArray("PortA", "PortB")]
+script = ExtResource("2_fi81w")
+PortA = NodePath("../Portal/Port2")
+PortB = NodePath("../Portal2/Port1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(560, 337)
+script = ExtResource("2_3irba")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+lifetime = 12.0
+preprocess = 16.0
+texture = ExtResource("3_iyi88")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_e66pd")
+hue_variation_min = 0.73
+hue_variation_max = 0.75
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227981, 0.196153, 0.367317, 1)
+light_mask = 5
+z_index = -2
+position = Vector2(268, 464)
+scale = Vector2(164.779, 111.942)
+texture = ExtResource("4_kr7vp")
+
+[node name="GoalTracker" type="Node" parent="."]
+script = ExtResource("5_xtcdk")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_0woo0")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.59
+range_item_cull_mask = 3
+
+[node name="Portal" parent="." instance=ExtResource("7_cyvf7")]
+position = Vector2(278, 325)
+
+[node name="Port3" parent="Portal" index="2"]
+visible = false
+
+[node name="Portal2" parent="." instance=ExtResource("7_cyvf7")]
+position = Vector2(915, 315)
+
+[node name="Station" parent="." instance=ExtResource("8_vc2ir")]
+position = Vector2(-44, 433)
+
+[node name="Station2" parent="." instance=ExtResource("8_vc2ir")]
+position = Vector2(911, 3)
+
+[node name="planet_network" type="Node2D" parent="."]
+position = Vector2(-255, 402)
+script = ExtResource("9_xnlh8")
+
+[node name="Planet" parent="planet_network" instance=ExtResource("10_xido3")]
+position = Vector2(169, 213)
+
+[node name="Planet2" parent="planet_network" instance=ExtResource("10_xido3")]
+
+[node name="planet_network2" type="Node2D" parent="."]
+position = Vector2(1116, -130)
+script = ExtResource("9_xnlh8")
+set_network_tooltip = "B"
+
+[node name="Planet" parent="planet_network2" instance=ExtResource("10_xido3")]
+position = Vector2(-461, 16)
+
+[node name="Planet2" parent="planet_network2" instance=ExtResource("10_xido3")]
+
+[node name="planet_network3" type="Node2D" parent="."]
+script = ExtResource("9_xnlh8")
+set_network_tooltip = "C"
+
+[node name="Planet" parent="planet_network3" instance=ExtResource("10_xido3")]
+position = Vector2(1382, 513)
+
+[node name="Planet2" parent="planet_network3" instance=ExtResource("10_xido3")]
+position = Vector2(1180, 652)
+
+[node name="Planet3" parent="planet_network3" instance=ExtResource("10_xido3")]
+position = Vector2(1328, 292)
+
+[node name="Station3" parent="." instance=ExtResource("8_vc2ir")]
+position = Vector2(1207, 433)
+rotation = 0.261799
+
+[editable path="Portal"]
+[editable path="Portal2"]

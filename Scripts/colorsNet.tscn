@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1fayemvy217o"]
+
+[ext_resource type="Script" path="res://Scripts/NetworkColors.gd" id="1_o6qlu"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_o6qlu")
+colorsData = PackedColorArray(0.682353, 0.682353, 0.682353, 1, 0.622925, 0.726526, 0.823351, 1, 0.71521, 0.63194, 0.790179, 1, 0.738273, 0.658735, 0.683373, 1)

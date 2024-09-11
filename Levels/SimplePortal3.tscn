@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1gk0v50ycmv2"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_kisbu"]
+[ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_j1b65"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_wig7m"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="4_7msyp"]
+[ext_resource type="Script" path="res://Levels/GoalTracker.gd" id="5_uocbf"]
+[ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="6_hcha8"]
+[ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="7_cbyr5"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="8_6jnhp"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="9_e682p"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="10_rwqrx"]
+
+[sub_resource type="Gradient" id="Gradient_e66pd"]
+offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_kisbu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(560, 337)
+script = ExtResource("2_j1b65")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+lifetime = 12.0
+preprocess = 16.0
+texture = ExtResource("3_wig7m")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_e66pd")
+hue_variation_min = 0.73
+hue_variation_max = 0.75
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227981, 0.196153, 0.367317, 1)
+light_mask = 5
+z_index = -2
+position = Vector2(268, 464)
+scale = Vector2(164.779, 111.942)
+texture = ExtResource("4_7msyp")
+
+[node name="GoalTracker" type="Node" parent="."]
+script = ExtResource("5_uocbf")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_hcha8")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.59
+range_item_cull_mask = 3
+
+[node name="planet_network" type="Node2D" parent="."]
+script = ExtResource("7_cbyr5")
+
+[node name="Planet" parent="planet_network" instance=ExtResource("8_6jnhp")]
+position = Vector2(-197, 549)
+
+[node name="Planet2" parent="planet_network" instance=ExtResource("8_6jnhp")]
+position = Vector2(-85, 317)
+
+[node name="Planet3" parent="planet_network" instance=ExtResource("8_6jnhp")]
+position = Vector2(45, 651)
+
+[node name="planet_network2" type="Node2D" parent="."]
+position = Vector2(99, 96)
+script = ExtResource("7_cbyr5")
+set_network_tooltip = "B"
+
+[node name="Planet" parent="planet_network2" instance=ExtResource("8_6jnhp")]
+position = Vector2(964, 715)
+
+[node name="Planet2" parent="planet_network2" instance=ExtResource("8_6jnhp")]
+position = Vector2(1027, 484)
+
+[node name="Planet3" parent="planet_network2" instance=ExtResource("8_6jnhp")]
+position = Vector2(653, 753)
+
+[node name="planet_network3" type="Node2D" parent="."]
+position = Vector2(614, -18)
+script = ExtResource("7_cbyr5")
+set_network_tooltip = "C"
+
+[node name="Planet" parent="planet_network3" instance=ExtResource("8_6jnhp")]
+position = Vector2(170, -150)
+
+[node name="Planet2" parent="planet_network3" instance=ExtResource("8_6jnhp")]
+position = Vector2(598, 118)
+
+[node name="Planet3" parent="planet_network3" instance=ExtResource("8_6jnhp")]
+position = Vector2(572, -144)
+
+[node name="Portal" parent="." instance=ExtResource("9_e682p")]
+position = Vector2(483, 299)
+
+[node name="Station" parent="." instance=ExtResource("10_rwqrx")]
+position = Vector2(81, 387)
+
+[node name="Station2" parent="." instance=ExtResource("10_rwqrx")]
+position = Vector2(926, 651)
+rotation = 0.785398
+
+[node name="Station3" parent="." instance=ExtResource("10_rwqrx")]
+position = Vector2(939, 9.00002)
+rotation = 1.0472

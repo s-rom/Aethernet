@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt17ubcke2xa1"]
+
+[ext_resource type="Script" path="res://Connection/connection.gd" id="2_8uo31"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p3sio"]
+
+[node name="Line2D" type="Line2D"]
+self_modulate = Color(2.7, 1.8, 3.2, 1)
+z_index = -1
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_p3sio")
+points = PackedVector2Array(0, 0, 95.985, 0)
+width = 4.0
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_8uo31")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+debug_color = Color(0.786781, 0.337647, 0.691059, 0.42)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

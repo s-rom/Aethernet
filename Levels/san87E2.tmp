@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr0qgwxk6abyo"]
+
+[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_lj6nu"]
+[ext_resource type="Script" path="res://Levels/GoalTracker.gd" id="2_fvkiq"]
+[ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="3_3qch5"]
+[ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="4_giwc5"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_wg7dm"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_lj6nu")
+
+[node name="GoalTracker" type="Node" parent="."]
+script = ExtResource("2_fvkiq")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_3qch5")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 326)
+rotation = 0.470424
+
+[node name="planet_network" type="Node2D" parent="."]
+script = ExtResource("4_giwc5")
+
+[node name="Planet" parent="planet_network" instance=ExtResource("4_wg7dm")]
+position = Vector2(339, 300)
+
+[node name="LineEdit" parent="planet_network/Planet" index="2"]
+visible = false
+text = "A2"
+
+[node name="Planet2" parent="planet_network" instance=ExtResource("4_wg7dm")]
+position = Vector2(830, 201)
+
+[node name="PortComponent" parent="planet_network/Planet2" index="1"]
+coordinates = "A1"
+
+[node name="LineEdit" parent="planet_network/Planet2" index="2"]
+visible = false
+text = "A1"
+
+[editable path="planet_network/Planet"]
+[editable path="planet_network/Planet2"]
