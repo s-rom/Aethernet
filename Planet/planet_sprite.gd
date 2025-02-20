@@ -51,6 +51,7 @@ func _ready():
 	debugSender = find_child("DebugSend")
 	
 	$CanvasLayer/DebugSend.connect("send_ship", _on_debug_send_send_ship)
+	
 
 
 	var stations_and_portals = get_tree().get_nodes_in_group("port")

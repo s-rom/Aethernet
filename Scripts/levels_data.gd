@@ -67,6 +67,6 @@ func _parse_json():
 	for level in levels_data:
 		level_data_by_name[level["name"]] = level
 	
-	print(level_data_by_name)
+	#print(level_data_by_name)
 		
 

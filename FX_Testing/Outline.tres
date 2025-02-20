@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cle15udw5c3ed"]
+
+[ext_resource type="Shader" path="res://FX_Testing/Outline.gdshader" id="1_4a76q"]
+
+[resource]
+shader = ExtResource("1_4a76q")
+shader_parameter/outline_c = null
+shader_parameter/progress = null

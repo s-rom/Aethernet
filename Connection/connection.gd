@@ -10,7 +10,6 @@ var can_be_deleted = true
 			self.default_color = Color.RED
 			self.width = _originalWidth
 			
-				
 			_hightlightTween = create_tween()
 			#tween.connect("finished", _on_goal_reached)
 			#self.rotation = position.angle_to_point(goal) + deg_to_rad(90)
@@ -36,7 +35,7 @@ func _ready():
 
 func change_to_portal_connection():
 	self.default_color = Color.WHITE
-	self.self_modulate = Color("cfa6e1")
+	self.self_modulate = self.default_color
 	self.texture = null
 	self.width = 16.0
 	self._originalWidth = 16.0
@@ -54,7 +53,7 @@ func initColliderShape(startGlobalPos: Vector2):
 
 
 func updateShape():
-
+ 
 	var length: float = self.points[1].distance_to(self.points[0])
 	var rotation: float = self.points[0].angle_to_point(self.points[1])
 	

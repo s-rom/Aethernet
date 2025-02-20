@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://7jjolwtmcmlh"]
+
+[ext_resource type="Texture2D" uid="uid://c5nulm7vsk751" path="res://Build/Web/index.icon.png" id="1_j44ws"]
+[ext_resource type="Material" uid="uid://lfenn3dfe1cf" path="res://FX_Testing/noise_material.tres" id="1_k4rsj"]
+[ext_resource type="Shader" path="res://FX_Testing/Outline.gdshader" id="2_gan65"]
+[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="3_0bbbf"]
+[ext_resource type="Shader" path="res://FX_Testing/chess_shader.gdshader" id="4_b5g45"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hr0h"]
+shader = ExtResource("2_gan65")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/direction = -1.0
+shader_parameter/frequency = 15.0
+shader_parameter/speed = 3.0
+shader_parameter/radius = 1.0
+shader_parameter/line_thickness = 0.03
+
+[sub_resource type="Animation" id="Animation_u5vey"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_a0tqr"]
+resource_name = "test_shader"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jhrc8"]
+_data = {
+"RESET": SubResource("Animation_u5vey"),
+"test_shader": SubResource("Animation_a0tqr")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmph8"]
+shader = ExtResource("4_b5g45")
+shader_parameter/frequency = 1.5
+shader_parameter/amplitude = 1000.0
+shader_parameter/speed = 10.0
+shader_parameter/direction = 1.0
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/opacity = 1.0
+
+[node name="TestShaders" type="Node2D"]
+
+[node name="Line2D2" type="Line2D" parent="."]
+material = ExtResource("1_k4rsj")
+position = Vector2(112, 66)
+points = PackedVector2Array(130, 523, 788, 523)
+width = 75.0
+default_color = Color(0.787801, 0.646229, 0.824257, 1)
+texture_mode = 1
+
+[node name="Index_icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6hr0h")
+position = Vector2(-264, 204)
+scale = Vector2(1.74219, 1.74219)
+texture = ExtResource("1_j44ws")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("1_k4rsj")
+position = Vector2(604, 342)
+scale = Vector2(2.41183, 2.36734)
+texture = ExtResource("3_0bbbf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
+root_node = NodePath("../../Sprite2D2")
+libraries = {
+"": SubResource("AnimationLibrary_jhrc8")
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_vmph8")
+position = Vector2(-1072, -125)
+points = PackedVector2Array(130, 523, 1014, 518)
+width = 75.0
+texture_mode = 1

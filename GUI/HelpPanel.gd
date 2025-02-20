@@ -10,9 +10,7 @@ func _ready():
 	print("------------------- current slides -------------- ")
 	print(_slides)
 	
-	
 	_current_slide_idx = 0
-	
 	_set_slide_data()
 	
 	
