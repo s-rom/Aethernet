@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_gqpt7"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_333ng"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_b4a7j"]
-[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="4_hfa2h"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="4_hfa2h"]
 [ext_resource type="Script" path="res://Levels/GoalTracker.gd" id="5_c6eur"]
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="6_164pk"]
 [ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="7_e1gur"]

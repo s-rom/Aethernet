@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="7_qeulm"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="8_44n66"]
 [ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="8_o8clx"]
-[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="9_x0aad"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="9_x0aad"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="9_x4jwi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fu7h"]

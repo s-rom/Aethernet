@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="2_62abc"]
 [ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_r8chl"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_d3h4e"]
-[ext_resource type="Script" path="res://planet_system.gd" id="5_j8fp3"]
+[ext_resource type="Script" path="res://DebugLevels/planet_system.gd" id="5_j8fp3"]
 
 [sub_resource type="Environment" id="Environment_lmakv"]
 background_mode = 3

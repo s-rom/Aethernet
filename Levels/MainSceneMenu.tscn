@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="4_bibmi"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_0jv6b"]
 [ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="7_dpdx7"]
-[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://Station/rect.png" id="8_l10oo"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="8_l10oo"]
 
 [sub_resource type="Gradient" id="Gradient_guf61"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)

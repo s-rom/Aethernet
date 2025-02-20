@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="1_likvj"]
 [ext_resource type="Script" path="res://DebugLevels/node_2d.gd" id="1_o8gho"]
-[ext_resource type="Script" path="res://Sprite2D.gd" id="2_7mvni"]
-[ext_resource type="Shader" path="res://laser.gdshader" id="4_un21v"]
+[ext_resource type="Script" path="res://DebugLevels/Sprite2D.gd" id="2_7mvni"]
+[ext_resource type="Shader" path="res://FX_Testing/laser.gdshader" id="4_un21v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33odm"]
 shader = ExtResource("4_un21v")
