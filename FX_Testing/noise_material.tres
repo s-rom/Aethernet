@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://FX_Testing/noise_shader.gdshader" id="1_5oa02"]
 
 [sub_resource type="Gradient" id="Gradient_l7jvy"]
-offsets = PackedFloat32Array(0, 0.189189, 0.258687, 0.378378, 0.552124, 0.779923, 1)
+offsets = PackedFloat32Array(0, 0.182796, 0.258687, 0.378378, 0.552124, 0.779923, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.764706, 0.650479, 0.0790132, 0.0189436, 0.85098, 0.707814, 0.157133, 4.81307e-07, 1, 0.89, 0.721048, 0.2937, 1, 0.994248, 0.985414, 0.963069, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3akth"]

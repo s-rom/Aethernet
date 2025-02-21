@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2jfj1"]
 shader = ExtResource("1_ttnkt")
-shader_parameter/dt = 24.955
+shader_parameter/dt = 26.525
 
 [node name="TestShaders" type="Node2D"]
 

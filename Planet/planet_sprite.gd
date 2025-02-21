@@ -360,4 +360,3 @@ func send_ship(from, to):
 
 func _on_debug_send_send_ship(from, to):
 	send_ship(from, to)
-
