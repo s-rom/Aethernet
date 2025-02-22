@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://FX_Testing/portal_connection.gdshader" id="1_1n3bi"]
 
 [sub_resource type="Gradient" id="Gradient_wldm5"]
-offsets = PackedFloat32Array(0.0107527, 0.419355, 0.650538, 1)
+offsets = PackedFloat32Array(0, 0.209677, 0.505376, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.011, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_oub0m"]
@@ -24,10 +24,12 @@ noise = SubResource("FastNoiseLite_pj8wg")
 
 [resource]
 shader = ExtResource("1_1n3bi")
-shader_parameter/hdr_color = Color(0.631373, 0.439216, 0.929412, 1)
-shader_parameter/hdr_intensity = 5.045
-shader_parameter/noise_movement = Vector2(-0.095, 0.045)
-shader_parameter/noise2_movement = Vector2(0.085, 0)
+shader_parameter/hdr_color = Color(0.711004, 0.40074, 0.924924, 1)
+shader_parameter/hdr_intensity = 8.37
+shader_parameter/width = 0.32
+shader_parameter/height = 1.0
+shader_parameter/noise_movement = Vector2(-1.165, 0.31)
+shader_parameter/noise2_movement = Vector2(1.155, 0)
 shader_parameter/noise = SubResource("NoiseTexture2D_tak78")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_ejhb4")
 shader_parameter/color_texture = SubResource("GradientTexture1D_oub0m")

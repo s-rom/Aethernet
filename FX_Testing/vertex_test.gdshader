@@ -9,11 +9,11 @@ uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad de la onda
 void fragment() {
     // Calculamos el desplazamiento senoidal basado en la coordenada UV y el tiempo
     float wave = sin(UV.x * frequency + TIME * speed) * amplitude / 100.0;
-    
+
     // Desplazamos la coordenada UV en Y asegurando que no salga del rango válido
     vec2 distorted_uv = UV;
     distorted_uv.y = clamp(UV.y + wave, 0.0, 1.0);
-    
+
     // Aplicamos la textura con la UV modificada
     COLOR = texture(TEXTURE, distorted_uv);
 }
