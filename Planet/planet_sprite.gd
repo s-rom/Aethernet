@@ -164,7 +164,7 @@ func _pop_portal_connection_network():
 # endpoint1 and 2 is the immediate parent of a PortComponent (Sprite2D)
 func create_connection(endpoint1, endpoint2, deletable = true):
 	var new_connection = connectionScn.instantiate()
-	self.add_child(new_connection)
+	
 	
 	new_connection.can_be_deleted = deletable
 	new_connection.clear_points()
@@ -189,12 +189,12 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 		portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
 		portA.coordinates = nextPortalNetwork + "1"
 		portB.coordinates = nextPortalNetwork + "2"
-			
+		
 		# print("coord portA: " + portA.coordinates)
 		# print("coord portB: " + portB.coordinates)
-		new_connection.change_to_portal_connection()
+		new_connection = new_connection.convert_to_portal_connection() as PortalConnection
 		
-
+	self.add_child(new_connection)
 	
 	
 func _on_connector_click(connector: Node2D):
@@ -234,6 +234,8 @@ func _on_connector_click(connector: Node2D):
 
 		# print("Create a connection between " + parentA.name + " and " + parentB.name)
 		
+		currentConnection.updateShape()
+		
 		if parentA is Portal and parentB is Portal:
 			var nextPortalNetwork = _pop_portal_connection_network()
 			
@@ -247,11 +249,10 @@ func _on_connector_click(connector: Node2D):
 			
 			# print("coord portA: " + portA.coordinates)
 			# print("coord portB: " + portB.coordinates)
-			currentConnection.change_to_portal_connection()
+			var portalConnection = currentConnection.convert_to_portal_connection() as PortalConnection
+			add_child(portalConnection)
+			currentConnection.queue_free()
 
-
-
-		currentConnection.updateShape()
 		currentConnection = null
 		return
 		

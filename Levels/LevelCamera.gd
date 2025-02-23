@@ -50,4 +50,3 @@ func _process(delta):
 
 func _on_item_rect_changed():
 	print(self.zoom)
-

@@ -1,28 +1,213 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt17ubcke2xa1"]
+[gd_scene load_steps=10 format=3 uid="uid://dixmi2m5egtqq"]
 
-[ext_resource type="Script" path="res://Connection/connection.gd" id="2_8uo31"]
-[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="2_26mft"]
+[ext_resource type="Material" uid="uid://bml4kio4dn5kq" path="res://FX_Testing/portal_connection.tres" id="1_rqf5o"]
+[ext_resource type="Script" path="res://Connection/portal_connection.gd" id="1_yggp4"]
+[ext_resource type="Material" uid="uid://b6k7nt8s4do6f" path="res://FX_Testing/portal_connection_particles.tres" id="3_o1sqf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wde1"]
+[sub_resource type="Gradient" id="Gradient_3wn4l"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[node name="Line2D" type="Line2D"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8qaok"]
+gradient = SubResource("Gradient_3wn4l")
+fill = 1
+fill_from = Vector2(0.534188, 0.444444)
+fill_to = Vector2(0.982906, 0)
+
+[sub_resource type="Animation" id="Animation_jeo24"]
+resource_name = "PortalConnection_Create"
+
+[sub_resource type="Animation" id="Animation_vurkd"]
+resource_name = "PortalConnection_Delete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 5.65685),
+"update": 0,
+"values": [Color(0.711004, 0.40074, 0.924924, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [8.37, 2.255]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 0.153893),
+"update": 0,
+"values": [0.32, 0.083]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 0.15932),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles1:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vs15w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.711004, 0.40074, 0.924924, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.37]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.216]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles1:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Particles2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b88k4"]
+_data = {
+"PortalConnection_Create": SubResource("Animation_jeo24"),
+"PortalConnection_Delete": SubResource("Animation_vurkd"),
+"RESET": SubResource("Animation_vs15w")
+}
+
+[node name="PortalConnection" type="Line2D"]
 z_index = -1
-texture_repeat = 2
-material = SubResource("ShaderMaterial_2wde1")
-points = PackedVector2Array(0, 0, 95.985, 0)
-width = 4.0
-texture = ExtResource("2_26mft")
-texture_mode = 1
+material = ExtResource("1_rqf5o")
+position = Vector2(4, -3)
+points = PackedVector2Array(0, 0, 120, 0)
+width = 30.0
+texture_mode = 2
 joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("2_8uo31")
+script = ExtResource("1_yggp4")
+particles_distance = 7.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Particles1" type="GPUParticles2D" parent="."]
+position = Vector2(-16, 0)
+amount = 64
+process_material = ExtResource("3_o1sqf")
+texture = SubResource("GradientTexture2D_8qaok")
+lifetime = 0.5
+local_coords = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-debug_color = Color(0.786781, 0.337647, 0.691059, 0.42)
+[node name="Particles2" type="GPUParticles2D" parent="."]
+position = Vector2(135, 0)
+rotation = 3.14159
+amount = 64
+process_material = ExtResource("3_o1sqf")
+texture = SubResource("GradientTexture2D_8qaok")
+lifetime = 0.5
+local_coords = true
+trail_lifetime = 0.1
+trail_sections = 2
+trail_section_subdivisions = 1
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b88k4")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hvqo3bwwj2g7"]
+[gd_scene load_steps=14 format=3 uid="uid://hvqo3bwwj2g7"]
 
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="1_k2uki"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="1_os6s7"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/DebugTesting.gd" id="2_wkhfv"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="3_wc6c7"]
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="4_npvjp"]
-[ext_resource type="Material" uid="uid://bml4kio4dn5kq" path="res://FX_Testing/portal_connection.tres" id="7_fptdi"]
-[ext_resource type="Material" uid="uid://b6k7nt8s4do6f" path="res://FX_Testing/portal_connection_particles.tres" id="8_8vqh0"]
 [ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="8_jqu7k"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_drre8"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="10_bp55m"]
@@ -17,38 +15,6 @@
 [sub_resource type="Gradient" id="Gradient_4f86q"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
-
-[sub_resource type="Gradient" id="Gradient_7v04n"]
-offsets = PackedFloat32Array(0.639785, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_htguc"]
-gradient = SubResource("Gradient_7v04n")
-
-[sub_resource type="Curve" id="Curve_xel3x"]
-_data = [Vector2(0, 0.450549), 0.0, 0.207498, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_s5c76"]
-curve = SubResource("Curve_xel3x")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tcuu7"]
-lifetime_randomness = 0.45
-particle_flag_disable_z = true
-emission_shape = 4
-emission_point_count = 1
-spread = 37.562
-initial_velocity_min = 100.0
-initial_velocity_max = 150.0
-orbit_velocity_min = -0.392
-orbit_velocity_max = 0.232
-gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 1.2
-scale_curve = SubResource("CurveTexture_s5c76")
-color = Color(25.946, 7.027, 51.892, 1)
-color_ramp = SubResource("GradientTexture1D_htguc")
-turbulence_noise_strength = 1.94
 
 [sub_resource type="Environment" id="Environment_nelw5"]
 background_mode = 3
@@ -62,7 +28,8 @@ adjustment_saturation = 1.17
 script = ExtResource("1_skcfm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(560, 337)
+position = Vector2(572, 329)
+zoom = Vector2(1.145, 1.145)
 script = ExtResource("1_os6s7")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
@@ -93,48 +60,9 @@ position = Vector2(1, -1)
 range_item_cull_mask = 3
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_npvjp")]
-visible = false
 
 [node name="DebugHack" type="Node" parent="."]
 script = ExtResource("2_wkhfv")
-
-[node name="Line2D3" type="Line2D" parent="."]
-texture_repeat = 2
-material = ExtResource("7_fptdi")
-position = Vector2(-16, 287)
-rotation = -0.000584974
-points = PackedVector2Array(275.098, 101.736, 369.889, -115.355)
-width = 18.0
-texture_mode = 2
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-antialiased = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Line2D3"]
-position = Vector2(376.87, -135.362)
-rotation = 1.78913
-amount = 64
-process_material = SubResource("ParticleProcessMaterial_tcuu7")
-lifetime = 0.5
-local_coords = true
-trail_lifetime = 0.1
-trail_sections = 2
-trail_section_subdivisions = 1
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Line2D3"]
-position = Vector2(271.105, 109.74)
-rotation = 4.82184
-amount = 64
-process_material = ExtResource("8_8vqh0")
-lifetime = 0.5
-local_coords = true
-trail_lifetime = 0.1
-trail_sections = 2
-trail_section_subdivisions = 1
-
-[node name="Portal" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(259, 501)
 
 [node name="planet_network3" type="Node2D" parent="."]
 script = ExtResource("8_jqu7k")
@@ -154,7 +82,7 @@ script = ExtResource("8_jqu7k")
 set_network_tooltip = "C"
 
 [node name="Planet" parent="planet_network" instance=ExtResource("9_drre8")]
-position = Vector2(587, 460)
+position = Vector2(737, 496)
 
 [node name="Station" parent="." instance=ExtResource("10_bp55m")]
 position = Vector2(774, 342)
@@ -163,13 +91,21 @@ position = Vector2(774, 342)
 position = Vector2(892, 241)
 
 [node name="Ship2" parent="." instance=ExtResource("11_x016h")]
-position = Vector2(219, 239)
+position = Vector2(312, 314)
 
 [node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nelw5")
 
+[node name="Portal" parent="." instance=ExtResource("1_k2uki")]
+position = Vector2(406, 60)
+rotation = 0.125318
+
+[node name="Portal2" parent="." instance=ExtResource("1_k2uki")]
+position = Vector2(34, 462)
+rotation = 0.452387
+
 [node name="Portal3" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(449, 118)
-rotation = -0.00765979
+position = Vector2(546, 422)
+rotation = -0.365456
 
 [editable path="CanvasLayer"]

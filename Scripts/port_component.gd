@@ -13,13 +13,31 @@ class_name PortComponent
 		return coordinates
 
 var shipScn = load("res://Ships/ship.tscn")
+var portalLineEdit = load("res://Portal/PortalLineEdit.tscn")
 var _connection: Connection = null
+var isPortal = false
 
 
 signal ship_arrived(shipData)
 
 
+@onready var camera2D = get_viewport().get_camera_2d()
+
 func _ready():
+	
+	isPortal = self.owner is Portal
+	var canvasLayer = get_tree().root.find_child("CanvasLayer", true, false)
+	if canvasLayer and isPortal:
+		coordinatesLineEdit = portalLineEdit.instantiate()
+		canvasLayer.add_child(coordinatesLineEdit)
+
+
+		#var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
+		#if lineEditPositionNode:
+			#coordinatesLineEdit.followTarget = lineEditPositionNode
+		#else:
+		coordinatesLineEdit.followTarget = self.get_parent()
+
 	if coordinatesLineEdit:
 		coordinatesLineEdit.connect("text_changed", on_coordinates_text_changed)
 
@@ -74,4 +92,3 @@ func _clear():
 func _on_connection_destroyed():
 	#print("Connection was destroyed on " + self.get_parent().name)
 	_clear()
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://boyrjboqn8hjt"]
+[gd_scene load_steps=29 format=3 uid="uid://boyrjboqn8hjt"]
 
 [ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
 [ext_resource type="Texture2D" uid="uid://086t0d4olpuj" path="res://Portal/star_07.png" id="1_wg5am"]
@@ -9,9 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/port_component.gd" id="4_x7y2p"]
 [ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="5_p1xeb"]
 [ext_resource type="Script" path="res://Station/PortHighlighter.gd" id="6_4xt3q"]
-[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_5ae3r"]
 [ext_resource type="Shader" path="res://Portal/energy.gdshader" id="6_o1fet"]
-[ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="7_begl1"]
 [ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="8_1d827"]
 [ext_resource type="Texture2D" uid="uid://cgb2wwetmcyas" path="res://Portal/circle2.svg" id="9_620mx"]
 [ext_resource type="Shader" path="res://Portal/port.gdshader" id="9_ah1gn"]
@@ -278,42 +276,24 @@ scale = Vector2(0.41, 0.41)
 script = ExtResource("1_skunw")
 
 [node name="Port2" type="Sprite2D" parent="."]
-modulate = Color(0.999045, 0.988887, 0.985435, 1)
 light_mask = 2
 material = SubResource("ShaderMaterial_blicw")
-position = Vector2(231.415, 59.6815)
-rotation = -2.88518
+position = Vector2(214.161, 96.182)
+rotation = -2.61799
 scale = Vector2(1.41, 1.41)
 texture = SubResource("CanvasTexture_mlklw")
 script = ExtResource("3_6q58t")
 
-[node name="PortComponent" type="Node" parent="Port2" node_paths=PackedStringArray("coordinatesLineEdit")]
+[node name="PortComponent" type="Node" parent="Port2"]
 script = ExtResource("4_x7y2p")
-coordinatesLineEdit = NodePath("../LineEdit")
-
-[node name="LineEdit" type="LineEdit" parent="Port2"]
-light_mask = 0
-anchors_preset = -1
-anchor_left = 0.108
-anchor_top = 0.01
-anchor_right = 0.108
-anchor_bottom = 0.01
-offset_left = -40.4341
-offset_top = 70.2413
-offset_right = 26.6284
-offset_bottom = 101.241
-rotation = 2.89997
-scale = Vector2(1.91, 1.91)
-theme = ExtResource("6_5ae3r")
-theme_type_variation = &"InLevelTextField"
-placeholder_text = "??"
-alignment = 1
-script = ExtResource("7_begl1")
 
 [node name="PortHighlighter" type="Node" parent="Port2" node_paths=PackedStringArray("portSprite")]
 script = ExtResource("6_4xt3q")
 portSprite = NodePath("..")
 selfModulate = true
+
+[node name="LineEditPosition" type="Node2D" parent="Port2"]
+position = Vector2(227.968, 214.453)
 
 [node name="Port1" type="Sprite2D" parent="."]
 light_mask = 2
@@ -324,28 +304,16 @@ scale = Vector2(1.41, 1.41)
 texture = SubResource("CanvasTexture_mlklw")
 script = ExtResource("3_6q58t")
 
-[node name="PortComponent" type="Node" parent="Port1" node_paths=PackedStringArray("coordinatesLineEdit")]
+[node name="PortComponent" type="Node" parent="Port1"]
 script = ExtResource("4_x7y2p")
-coordinatesLineEdit = NodePath("../LineEdit")
-
-[node name="LineEdit" type="LineEdit" parent="Port1"]
-light_mask = 0
-offset_left = -75.7957
-offset_top = -136.863
-offset_right = -8.73325
-offset_bottom = -105.863
-rotation = 0.460699
-scale = Vector2(1.91, 1.91)
-theme = ExtResource("6_5ae3r")
-theme_type_variation = &"InLevelTextField"
-placeholder_text = "??"
-alignment = 1
-script = ExtResource("7_begl1")
 
 [node name="PortHighlighter" type="Node" parent="Port1" node_paths=PackedStringArray("portSprite")]
 script = ExtResource("6_4xt3q")
 portSprite = NodePath("..")
 selfModulate = true
+
+[node name="LineEditPosition" type="Node2D" parent="Port1"]
+position = Vector2(386.64, 122.565)
 
 [node name="Port3" type="Sprite2D" parent="."]
 light_mask = 2
@@ -356,28 +324,16 @@ scale = Vector2(1.41, 1.41)
 texture = SubResource("CanvasTexture_mlklw")
 script = ExtResource("3_6q58t")
 
-[node name="PortComponent" type="Node" parent="Port3" node_paths=PackedStringArray("coordinatesLineEdit")]
+[node name="PortComponent" type="Node" parent="Port3"]
 script = ExtResource("4_x7y2p")
-coordinatesLineEdit = NodePath("../LineEdit")
-
-[node name="LineEdit" type="LineEdit" parent="Port3"]
-light_mask = 0
-offset_left = -73.0082
-offset_top = -47.1712
-offset_right = 2.9918
-offset_bottom = -1.17122
-rotation = -1.5429
-scale = Vector2(1.91, 1.91)
-theme = ExtResource("6_5ae3r")
-theme_type_variation = &"InLevelTextField"
-placeholder_text = "??"
-alignment = 1
-script = ExtResource("7_begl1")
 
 [node name="PortHighlighter" type="Node" parent="Port3" node_paths=PackedStringArray("portSprite")]
 script = ExtResource("6_4xt3q")
 portSprite = NodePath("..")
 selfModulate = true
+
+[node name="LineEditPosition" type="Node2D" parent="Port3"]
+position = Vector2(171.11, 297.567)
 
 [node name="Circle2" type="Sprite2D" parent="."]
 self_modulate = Color(0.301961, 0.278431, 0.505882, 1)

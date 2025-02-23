@@ -56,5 +56,3 @@ func set_play_mode():
 func set_stop_mode():
 	_mode = STOP_MODE
 	self.theme = _stopTheme
-
-

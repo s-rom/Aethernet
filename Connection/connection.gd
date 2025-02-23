@@ -2,6 +2,7 @@ extends Line2D
 
 class_name Connection
 
+@export var portalConnectionScn: PackedScene = null
 var can_be_deleted = true
 
 @export var highligted: bool = false : 
@@ -28,19 +29,12 @@ var _originalWidth = self.width
 var _originalColor = self.default_color
 var _highlightedWidth = self.width + 0.2 * self.width
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
-
-func change_to_portal_connection():
-	self.default_color = Color.WHITE
-	self.self_modulate = self.default_color
-	self.texture = null
-	self.width = 16.0
-	self._originalWidth = 16.0
-	self._highlightedWidth = width * .2 + width
-	self._originalColor = self.self_modulate
+	if $Area2D:
+		$Area2D.connect("input_event", _on_area_2d_input_event)
+		$Area2D.connect("mouse_entered", _on_area_2d_mouse_entered)
+		$Area2D.connect("mouse_exited", _on_area_2d_mouse_exited)
+	
 
 func initColliderShape(startGlobalPos: Vector2):
 	var collisionShape = self.find_child("CollisionShape2D") as CollisionShape2D
@@ -52,29 +46,41 @@ func initColliderShape(startGlobalPos: Vector2):
 	area2D.global_position = startGlobalPos
 
 
+
+func convert_to_portal_connection() -> PortalConnection:
+	var newConnection = portalConnectionScn.instantiate()
+	newConnection.points = self.points
+	var area2D = $Area2D
+	self.remove_child(area2D)
+	newConnection.add_child(area2D)	
+	return newConnection;
+
 func updateShape():
  
 	var length: float = self.points[1].distance_to(self.points[0])
-	var rotation: float = self.points[0].angle_to_point(self.points[1])
+	var new_rotation: float = self.points[0].angle_to_point(self.points[1])
 	
 	var collisionShape = self.find_child("CollisionShape2D") as CollisionShape2D
 	collisionShape.shape.size = Vector2(length, 20)
 	
 	var area2D = $Area2D as Area2D
-	area2D.rotation = rotation
+	area2D.rotation = new_rotation
 	area2D.position = (points[1] + points[0]) / 2
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func delete_connection():
+	self.queue_free()
+
+
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT):
 		if can_be_deleted:
-			self.queue_free()
+			delete_connection()
 
 
 

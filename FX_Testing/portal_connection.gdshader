@@ -14,9 +14,7 @@ uniform float height: hint_range(0.0, 1.0);
 uniform vec2 noise_movement = vec2(0.1, 0.1);
 uniform vec2 noise2_movement = vec2(0.1, 0.1);
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+
 
 void fragment() {
 	
@@ -28,15 +26,17 @@ void fragment() {
 	
 	float alpha = smoothstep(1.0 - width, 0.0, UV.y);
 	alpha += smoothstep(1.0 - width, 0.0, 1.0 - UV.y);
-	
-	alpha += smoothstep(1.0 - height, 0.0, 1.0 - UV.x);
-	alpha += smoothstep(1.0 - height, 0.0, UV.x);
-	
 	alpha = clamp(alpha, 0.0, 1.0);
+	
+	float alpha2 = smoothstep(height, 0.0, UV.x);
+	alpha2 += smoothstep(height, 0.0, 1.0 - UV.x);
+	alpha2 = clamp(alpha2, 0.0, 1.0);
+	
+	//
+	//alpha += smoothstep(1.0 - height, 0.0, 1.0 - UV.x);
+	//alpha += smoothstep(1.0 - height, 0.0, UV.x);
 
-	
-	colored_noise *= 1.0 - alpha;
-	
+	colored_noise *= (1.0 - alpha) * alpha2;
 	COLOR = colored_noise * hdr_color * hdr_intensity;
 	//COLOR.a *= 1.0 - alpha;
 }

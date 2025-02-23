@@ -26,26 +26,26 @@ texture = ExtResource("5_thyr0")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j0hm6"]
 texture = ExtResource("6_cmitt")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_33lt6"]
-texture = ExtResource("6_t2a78")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hntpv"]
 texture = ExtResource("6_t2a78")
 modulate_color = Color(0.462291, 0.462291, 0.462291, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0bu1"]
-texture = ExtResource("7_n00t6")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_33lt6"]
+texture = ExtResource("6_t2a78")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_188c0"]
 texture = ExtResource("7_n00t6")
 modulate_color = Color(0.548963, 0.548963, 0.548963, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yup47"]
-texture = ExtResource("8_otag5")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0bu1"]
+texture = ExtResource("7_n00t6")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xd0w0"]
 texture = ExtResource("8_otag5")
 modulate_color = Color(0.485703, 0.485704, 0.485703, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yup47"]
+texture = ExtResource("8_otag5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1eaua"]
 texture = ExtResource("9_51md7")
@@ -61,19 +61,19 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iu61"]
-texture = ExtResource("18_fvb4e")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8mwjj"]
 texture = ExtResource("18_fvb4e")
 modulate_color = Color(0.4, 0.4, 0.4, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryhgl"]
-texture = ExtResource("18_fr634")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iu61"]
+texture = ExtResource("18_fvb4e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0wtfm"]
 texture = ExtResource("18_fr634")
 modulate_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryhgl"]
+texture = ExtResource("18_fr634")
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("goalPanel", "helpPanel", "goalCompleted")]
 script = ExtResource("1_0doye")
@@ -143,8 +143,8 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
-theme_override_styles/normal = SubResource("StyleBoxTexture_33lt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_hntpv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_33lt6")
 
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MainButtons"]
 layout_mode = 2
@@ -156,8 +156,8 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
-theme_override_styles/normal = SubResource("StyleBoxTexture_o0bu1")
 theme_override_styles/hover = SubResource("StyleBoxTexture_188c0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o0bu1")
 
 [node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MainButtons"]
 layout_mode = 2
@@ -168,8 +168,8 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
-theme_override_styles/normal = SubResource("StyleBoxTexture_yup47")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xd0w0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yup47")
 
 [node name="GoalPanel" type="PanelContainer" parent="."]
 anchors_preset = -1
@@ -312,14 +312,14 @@ size_flags_horizontal = 4
 [node name="RedoButton" type="Button" parent="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_0iu61")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8mwjj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0iu61")
 
 [node name="NextLevelButton" type="Button" parent="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_ryhgl")
 theme_override_styles/hover = SubResource("StyleBoxTexture_0wtfm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ryhgl")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false

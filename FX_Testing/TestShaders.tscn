@@ -61,11 +61,11 @@ glow_normalized = true
 glow_blend_mode = 0
 adjustment_saturation = 1.17
 
-[sub_resource type="Gradient" id="Gradient_3wn4l"]
+[sub_resource type="Gradient" id="Gradient_wsxh2"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_m50t8"]
-gradient = SubResource("Gradient_3wn4l")
+gradient = SubResource("Gradient_wsxh2")
 fill = 1
 fill_from = Vector2(0.534188, 0.444444)
 fill_to = Vector2(0.982906, 0)
@@ -144,9 +144,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Line2D4"]
-position = Vector2(762.008, -3.47775)
-rotation = 3.14159
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Line2D4"]
+position = Vector2(482.999, 0.964879)
+scale = Vector2(1, 1)
 amount = 64
 process_material = ExtResource("8_4i6dq")
 texture = SubResource("GradientTexture2D_m50t8")
@@ -156,7 +156,7 @@ trail_lifetime = 0.1
 trail_sections = 2
 trail_section_subdivisions = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Line2D4/GPUParticles2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Line2D4"]
 position = Vector2(762.008, -3.47775)
 rotation = 3.14159
 amount = 64
