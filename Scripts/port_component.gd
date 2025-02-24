@@ -13,10 +13,10 @@ class_name PortComponent
 		return coordinates
 
 var shipScn = load("res://Ships/ship.tscn")
-var portalLineEdit = load("res://Portal/PortalLineEdit.tscn")
+var lineEditScn = load("res://Portal/PortalLineEdit.tscn")
 var _connection: Connection = null
 var isPortal = false
-
+var isPlanet = false
 
 signal ship_arrived(shipData)
 
@@ -26,11 +26,12 @@ signal ship_arrived(shipData)
 func _ready():
 	
 	isPortal = self.owner is Portal
-	var canvasLayer = get_tree().root.find_child("CanvasLayer", true, false)
-	if canvasLayer and isPortal:
-		coordinatesLineEdit = portalLineEdit.instantiate()
-		canvasLayer.add_child(coordinatesLineEdit)
+	isPlanet = self.owner is Planet
 
+	var canvasLayer = get_tree().root.find_child("CanvasLayer", true, false)
+	if canvasLayer and (isPortal or isPlanet):
+		coordinatesLineEdit = lineEditScn.instantiate()
+		canvasLayer.add_child(coordinatesLineEdit)
 
 		#var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
 		#if lineEditPositionNode:

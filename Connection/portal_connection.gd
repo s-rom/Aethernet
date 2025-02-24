@@ -22,10 +22,6 @@ func _ready() -> void:
 	$Particles2.rotation = point2.angle_to_point(point1)
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("right_click"):
-		self.play_send_animation()
-
 func play_send_animation() -> void:
 	$AnimationPlayer.play(_animationSend)
 

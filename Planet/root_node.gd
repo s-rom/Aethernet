@@ -291,7 +291,7 @@ func _on_planet_click(planet: Planet):
 	
 	_on_connector_click(planet)
 
-func _on_station_port_clicked(portParent, port):
+func _on_station_port_clicked(portParent, _port):
 	_on_connector_click(portParent)
 
 
@@ -344,8 +344,6 @@ func send_ship(from, to):
 	var destination_network = planet_network._extract_network_from_coordinates(to)
 	
 	var color = ColorsNet.getColor(origin_network)
-	
-	
 	var shipData = ShipData.new()
 	shipData.color = color
 	

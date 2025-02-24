@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dclsmasic3xes"]
 
-[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_8jpof"]
+[ext_resource type="Script" path="res://Planet/root_node.gd" id="1_8jpof"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="2_3cpcc"]
 [ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_co4dm"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_d7rf8"]

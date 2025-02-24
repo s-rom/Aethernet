@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="1_k2uki"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="1_os6s7"]
-[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_skcfm"]
+[ext_resource type="Script" path="res://Planet/root_node.gd" id="1_skcfm"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="2_l0ogh"]
 [ext_resource type="Script" path="res://Scripts/DebugTesting.gd" id="2_wkhfv"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="3_wc6c7"]
@@ -68,14 +68,14 @@ script = ExtResource("2_wkhfv")
 script = ExtResource("8_jqu7k")
 
 [node name="Planet" parent="planet_network3" instance=ExtResource("9_drre8")]
-position = Vector2(951, 446)
+position = Vector2(1096, 149)
 
 [node name="planet_network2" type="Node2D" parent="."]
 script = ExtResource("8_jqu7k")
 set_network_tooltip = "B"
 
 [node name="Planet" parent="planet_network2" instance=ExtResource("9_drre8")]
-position = Vector2(838, 168)
+position = Vector2(806, 107)
 
 [node name="planet_network" type="Node2D" parent="."]
 script = ExtResource("8_jqu7k")

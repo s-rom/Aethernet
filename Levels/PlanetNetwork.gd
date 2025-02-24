@@ -20,7 +20,8 @@ func _ready():
 		highlighter._originalModulate = ColorsNet.getColor(self.set_network_tooltip)
 		sprite.self_modulate = ColorsNet.getColor(self.set_network_tooltip)
 		
-		var lineEdit = planet.find_child("LineEdit")
+		var portComponent = planet.find_child("PortComponent") as PortComponent
+		var lineEdit = portComponent.coordinatesLineEdit as LineEdit
 		if lineEdit:
 			lineEdit.placeholder_text = set_network_tooltip + "?"
 	
@@ -102,4 +103,3 @@ func check_same_network():
 			
 	
 	
-

@@ -9,6 +9,7 @@ func _ready():
 	_format.compile("^[a-zA-Z][0-9]{1,2}$")
 	_text = ""
 	self.connect("text_changed", _on_text_changed)
+	self.focus_exited.connect(_on_focus_exited)
 
 func _process(_delta: float):
 	if not followTarget:
@@ -19,6 +20,10 @@ func _process(_delta: float):
 	self.set_position(screenPos)
 	self.scale = camera2D.zoom
 
+
+func _on_focus_exited() -> void:
+	if not _format.search(self.text):
+		self.text = "";
 
 func _on_text_changed(new_text):
 	var caret_pos = self.caret_column 

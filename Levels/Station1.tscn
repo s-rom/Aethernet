@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://kv31dda48w0p"]
 
-[ext_resource type="Script" path="res://Planet/planet_sprite.gd" id="1_68onf"]
+[ext_resource type="Script" path="res://Planet/root_node.gd" id="1_68onf"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_to28y"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_swelx"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="4_1od5v"]
