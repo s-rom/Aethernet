@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://7jjolwtmcmlh"]
+[gd_scene load_steps=26 format=3 uid="uid://7jjolwtmcmlh"]
 
 [ext_resource type="Texture2D" uid="uid://c5nulm7vsk751" path="res://Build/Web/index.icon.png" id="1_j44ws"]
 [ext_resource type="Material" uid="uid://lfenn3dfe1cf" path="res://FX_Testing/noise_material.tres" id="1_k4rsj"]
@@ -7,8 +7,10 @@
 [ext_resource type="Shader" path="res://FX_Testing/chess_shader.gdshader" id="4_b5g45"]
 [ext_resource type="Shader" path="res://FX_Testing/distort_screen.gdshader" id="6_m2prp"]
 [ext_resource type="Material" uid="uid://bml4kio4dn5kq" path="res://FX_Testing/portal_connection.tres" id="7_818x1"]
-[ext_resource type="Shader" path="res://FX_Testing/vertex_test.gdshader" id="8_2ftrl"]
 [ext_resource type="Material" uid="uid://b6k7nt8s4do6f" path="res://FX_Testing/portal_connection_particles.tres" id="8_4i6dq"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="10_ay5n5"]
+[ext_resource type="Shader" path="res://FX_Testing/VertexRotation.gdshader" id="11_4n1vd"]
+[ext_resource type="Material" uid="uid://bwidme6mcdwtg" path="res://FX_Testing/InnerPortal.tres" id="11_kyr12"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6hr0h"]
 shader = ExtResource("2_gan65")
@@ -41,19 +43,6 @@ shader_parameter/color1 = Color(1, 1, 1, 1)
 shader_parameter/color2 = Color(0, 0, 0, 1)
 shader_parameter/opacity = 1.0
 
-[sub_resource type="Gradient" id="Gradient_whuvk"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_07pis"]
-gradient = SubResource("Gradient_whuvk")
-fill = 1
-fill_from = Vector2(0.491453, 0.495726)
-fill_to = Vector2(0.871795, 0.209402)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwxug"]
-shader = ExtResource("6_m2prp")
-shader_parameter/DISTORTION_TEXTURE = SubResource("GradientTexture2D_07pis")
-
 [sub_resource type="Environment" id="Environment_y23s7"]
 background_mode = 3
 glow_enabled = true
@@ -70,18 +59,55 @@ fill = 1
 fill_from = Vector2(0.534188, 0.444444)
 fill_to = Vector2(0.982906, 0)
 
+[sub_resource type="Shader" id="Shader_atjtj"]
+code = "// Shader de deformación por ondas en Godot 4 para un Sprite2D (corrige bandas negras)
+shader_type canvas_item;
+
+// Variables uniformes para controlar la onda
+uniform float amplitude : hint_range(0.0, 10.0) = 5.0; // Altura de la onda
+uniform float frequency : hint_range(0.0, 10.0) = 3.0; // Frecuencia de la onda
+uniform float speed : hint_range(0.0, 5.0) = 1.0; // Velocidad de la onda
+
+void fragment() {
+    // Calculamos el desplazamiento senoidal basado en la coordenada UV y el tiempo
+    float wave = sin(UV.x * frequency + TIME * speed) * amplitude / 100.0;
+
+    // Desplazamos la coordenada UV en Y asegurando que no salga del rango válido
+    vec2 distorted_uv = UV;
+    distorted_uv.y = clamp(UV.y + wave, 0.0, 1.0);
+
+    // Aplicamos la textura con la UV modificada
+    COLOR = texture(TEXTURE, distorted_uv);
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_naqvj"]
-shader = ExtResource("8_2ftrl")
+shader = SubResource("Shader_atjtj")
 shader_parameter/amplitude = 5.0
 shader_parameter/frequency = 3.0
 shader_parameter/speed = 1.0
+
+[sub_resource type="Gradient" id="Gradient_whuvk"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4hhe3"]
+gradient = SubResource("Gradient_whuvk")
+fill = 1
+fill_from = Vector2(0.491453, 0.495726)
+fill_to = Vector2(0.871795, 0.209402)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwxug"]
+shader = ExtResource("6_m2prp")
+shader_parameter/DISTORTION_TEXTURE = SubResource("GradientTexture2D_4hhe3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_foyg4"]
+shader = ExtResource("11_4n1vd")
 
 [node name="TestShaders" type="Node2D"]
 position = Vector2(83, 45)
 
 [node name="Line2D2" type="Line2D" parent="."]
 material = ExtResource("1_k4rsj")
-position = Vector2(180, 82)
+position = Vector2(-988, 323)
 points = PackedVector2Array(130, 523, 874, 532)
 width = 75.0
 default_color = Color(0.787801, 0.646229, 0.824257, 1)
@@ -96,8 +122,8 @@ texture = ExtResource("1_j44ws")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = ExtResource("1_k4rsj")
-position = Vector2(-196, 604)
-scale = Vector2(2.41183, 2.36734)
+position = Vector2(-552, 730)
+scale = Vector2(1.00279, 0.984292)
 texture = ExtResource("3_0bbbf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2"]
@@ -116,12 +142,6 @@ texture_mode = 1
 [node name="Icon2" type="Sprite2D" parent="."]
 position = Vector2(-538, 186)
 scale = Vector2(2.00781, 2.00781)
-texture = ExtResource("3_0bbbf")
-
-[node name="Icon" type="Sprite2D" parent="Icon2"]
-material = SubResource("ShaderMaterial_fwxug")
-position = Vector2(0, -0.498047)
-scale = Vector2(0.784047, 0.784047)
 texture = ExtResource("3_0bbbf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -189,6 +209,27 @@ texture = ExtResource("3_0bbbf")
 
 [node name="Icon3" type="Sprite2D" parent="."]
 material = ExtResource("7_818x1")
-position = Vector2(-573, 605)
-scale = Vector2(2.68457, 2.68457)
+position = Vector2(99, 530)
+scale = Vector2(1.22925, 1.22925)
+texture = ExtResource("3_0bbbf")
+
+[node name="Portal" parent="." instance=ExtResource("10_ay5n5")]
+position = Vector2(143, 237)
+scale = Vector2(0.414672, 0.414672)
+
+[node name="Icon5" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fwxug")
+position = Vector2(486, 286)
+scale = Vector2(1.33158, 1.6872)
+texture = ExtResource("3_0bbbf")
+
+[node name="Icon6" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_foyg4")
+position = Vector2(380, 138)
+texture = ExtResource("3_0bbbf")
+
+[node name="Icon7" type="Sprite2D" parent="."]
+material = ExtResource("11_kyr12")
+position = Vector2(455, 473)
+scale = Vector2(1.33174, 1.33174)
 texture = ExtResource("3_0bbbf")

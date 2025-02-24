@@ -52,7 +52,7 @@ modulate = Color(0.227981, 0.196153, 0.367317, 1)
 light_mask = 5
 z_index = -2
 position = Vector2(268, 464)
-scale = Vector2(164.779, 111.942)
+scale = Vector2(163.761, 113.213)
 texture = ExtResource("3_wc6c7")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]

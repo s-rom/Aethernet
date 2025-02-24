@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://boyrjboqn8hjt"]
+[gd_scene load_steps=31 format=3 uid="uid://boyrjboqn8hjt"]
 
 [ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
 [ext_resource type="Texture2D" uid="uid://086t0d4olpuj" path="res://Portal/star_07.png" id="1_wg5am"]
@@ -15,11 +15,13 @@
 [ext_resource type="Shader" path="res://Portal/port.gdshader" id="9_ah1gn"]
 [ext_resource type="Texture2D" uid="uid://dcvr6vyb43t5n" path="res://Pruebas/crosshair135_normal.png" id="11_32sf2"]
 [ext_resource type="Animation" uid="uid://b2wvw8obglrg0" path="res://Portal/Idle.res" id="11_p0d7f"]
+[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="13_g5nvq"]
 [ext_resource type="Script" path="res://Portal/HighlightCircle.gd" id="14_s6jug"]
 [ext_resource type="Texture2D" uid="uid://y5yd5e8r0k22" path="res://Portal/circle3.svg" id="14_sjuo0"]
 [ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="16_tpn24"]
 [ext_resource type="Texture2D" uid="uid://bxyms6ewgdx14" path="res://Pruebas/crosshair135.png" id="17_s7pub"]
 [ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="18_yj1sx"]
+[ext_resource type="Material" uid="uid://bwidme6mcdwtg" path="res://FX_Testing/InnerPortal.tres" id="21_j50ip"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_blicw"]
 shader = ExtResource("9_ah1gn")
@@ -350,6 +352,7 @@ scale = Vector2(1.055, 1.055)
 texture = ExtResource("14_sjuo0")
 
 [node name="MagicEffect" type="Node2D" parent="."]
+visible = false
 
 [node name="Core" type="Sprite2D" parent="MagicEffect"]
 self_modulate = Color(1, 1, 1, 0.509804)
@@ -359,15 +362,15 @@ texture = ExtResource("1_wg5am")
 
 [node name="Core2" type="Sprite2D" parent="MagicEffect"]
 visible = false
-self_modulate = Color(0.980392, 0.94902, 1, 0.176471)
+self_modulate = Color(0.980392, 0.94902, 1, 0.988235)
 rotation = 0.886275
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_wg5am")
 
 [node name="Core3" type="Sprite2D" parent="MagicEffect"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.0666667)
 rotation = 1.5352
-scale = Vector2(1.01, 1.01)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_wg5am")
 
 [node name="Halo1" type="Sprite2D" parent="MagicEffect"]
@@ -377,20 +380,21 @@ texture = ExtResource("2_wxjke")
 
 [node name="Halo2" type="Sprite2D" parent="MagicEffect"]
 self_modulate = Color(0.980392, 0.94902, 1, 0.823529)
-rotation = -0.785398
-scale = Vector2(0.8, 0.8)
+rotation = 0.343345
+scale = Vector2(1.01106, 1.01106)
 texture = ExtResource("3_5k268")
 
 [node name="Magic1" type="Sprite2D" parent="MagicEffect"]
 self_modulate = Color(0.980392, 0.94902, 1, 0.823529)
 material = SubResource("ShaderMaterial_cdgt5")
-scale = Vector2(0.8, 0.8)
+rotation = 2.31274
+scale = Vector2(0.852766, 0.852766)
 texture = ExtResource("5_p1xeb")
 
 [node name="Magic2" type="Sprite2D" parent="MagicEffect"]
 self_modulate = Color(0.980392, 0.94902, 1, 1)
 material = SubResource("ShaderMaterial_cdgt5")
-rotation = 1.5708
+rotation = 0.442053
 scale = Vector2(0.625925, 0.625925)
 texture = ExtResource("5_p1xeb")
 
@@ -412,3 +416,8 @@ position = Vector2(12.207, -2.3787)
 scale = Vector2(3.3801, 3.02844)
 energy = 2.0
 texture = ExtResource("16_tpn24")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = ExtResource("21_j50ip")
+scale = Vector2(2.97592, 2.97592)
+texture = ExtResource("13_g5nvq")

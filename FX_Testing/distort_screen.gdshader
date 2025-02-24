@@ -13,18 +13,14 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
 	
-	float s = sin(TIME);
+	vec2 distortedUV = SCREEN_UV +  texture(DISTORTION_TEXTURE, UV).a * 0.05;	
 	
-	vec2 distortedUV = SCREEN_UV + s * texture(DISTORTION_TEXTURE, UV).a * 0.05;	
+	vec4 distortedScreen = texture(SCREEN_TEXTURE, distortedUV);
+	vec4 screen = texture(SCREEN_TEXTURE, SCREEN_UV);
 	
-	vec4 screen = texture(SCREEN_TEXTURE, distortedUV);
+	float circle = distance(UV, vec2(0.5, 0.5));
+	float alpha = smoothstep(0.0, 0.4, circle); 
+
 	
-	if (UV.x == UV.y)
-	{
-		COLOR = vec4(1.0);
-	}
-	else 
-	{
-		COLOR = screen;
-	}
+	COLOR = distortedScreen * (1.0 - alpha);
 }
