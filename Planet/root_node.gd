@@ -333,8 +333,8 @@ func send_ship(from, to):
 		print("[ERROR] Destination not found")
 		return
 	
-	var originPort = origin_planet.find_child("PortComponent")
-	var destinationPort = destination_planet.find_child("PortComponent")
+	var originPort = origin_planet.find_child("PortComponent") as PortComponent
+	var destinationPort = destination_planet.find_child("PortComponent") as PortComponent
 	
 	print(originPort)
 	print(destinationPort)
@@ -349,8 +349,11 @@ func send_ship(from, to):
 	
 	shipData.mustBeRouted = (origin_network != destination_network)
 	
-	if shipData.mustBeRouted:
-		print("SHIP MUST BE ROUTED")
+	var otherPort = originPort.connected_to 
+	if shipData.mustBeRouted and !(otherPort.owner is Station or otherPort.owner is Portal):
+		print("Trying to send a ship to another network without a station or router")
+		origin_planet.play_error()
+		return
 	
 	shipData.originCoordinates = from
 	shipData.destinationCoordinates = to

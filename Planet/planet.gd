@@ -20,6 +20,12 @@ var has_coordinates: bool:
 	get:
 		return _portComponent and coordinates != ""
 
+func play_success() -> void:
+	$SendShipFeedback.play_success()
+
+
+func play_error() -> void:
+	$SendShipFeedback.play_error()
 
 func _on_port_component_ship_arrived(shipData: ShipData):
 	var myPort = self.find_child("PortComponent")
