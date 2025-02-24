@@ -97,8 +97,8 @@ position = Vector2(312, 314)
 environment = SubResource("Environment_nelw5")
 
 [node name="Portal" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(406, 60)
-rotation = 0.125318
+position = Vector2(227, 92)
+rotation = -0.550786
 
 [node name="Portal2" parent="." instance=ExtResource("1_k2uki")]
 position = Vector2(34, 462)

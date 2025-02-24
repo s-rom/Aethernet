@@ -6,6 +6,8 @@ class_name PortalConnection
 @export var particles_distance: float = 10.0
 
 var _animationDelete = "PortalConnection_Delete"
+var _animationCreate = "PortalConnection_Create"
+var _animationSend = "PortalConnection_SendShip"
 
 func _ready() -> void:
 	super()
@@ -20,12 +22,22 @@ func _ready() -> void:
 	$Particles2.rotation = point2.angle_to_point(point1)
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("right_click"):
+		self.play_send_animation()
+
+func play_send_animation() -> void:
+	$AnimationPlayer.play(_animationSend)
+
 
 func delete_connection() -> void:
 	$AnimationPlayer.play(_animationDelete)
 	await $AnimationPlayer.animation_finished
 	self.queue_free()
 
+
+func _enter_tree() -> void:
+	$AnimationPlayer.play(_animationCreate)
 
 
 # func _process(delta: float) -> void:

@@ -1,34 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckqjr1pj0k0pq"]
+[gd_scene load_steps=2 format=3 uid="uid://ckqjr1pj0k0pq"]
 
-[ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="1_op1jj"]
-[ext_resource type="Texture2D" uid="uid://bcptnu4g8tjwk" path="res://Ships/enemy_A.png" id="2_btuso"]
+[sub_resource type="Curve2D" id="Curve2D_2pmrr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27.4837, -17.8226, 0, 0, 0, 0, 50.3254, -23.5023, 0, 0, 0, 0, 66.1701, -28.9744, 0, 0, 0, 0, 91.1295, -30.7151, 0, 0, 0, 0, 114.119, -31.397, 0, 0, 0, 0, 161.277, -26.793, 0, 0, 0, 0, 191.797, -9.69025, 0, 0, 0, 0, 227.612, 17.2598)
+}
+point_count = 9
 
 [node name="GeneralTesting" type="Node2D"]
-position = Vector2(-121, -6)
+position = Vector2(90, 57)
 rotation = 0.0296502
 
-[node name="Node" type="Node2D" parent="."]
-position = Vector2(715.375, 271.912)
-rotation = 0.777304
-scale = Vector2(1.07214, 1.07214)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node"]
-position = Vector2(251.123, 15.0663)
-rotation = -0.00365932
-scale = Vector2(1, 1)
-remote_path = NodePath("../EnemyA")
-update_rotation = false
-update_scale = false
-
-[node name="Magic03" type="Sprite2D" parent="Node"]
-position = Vector2(-7.52319, 15.7841)
-rotation = 0.0099449
-scale = Vector2(1, 1)
-texture = ExtResource("1_op1jj")
-
-[node name="EnemyA" type="Sprite2D" parent="Node"]
-top_level = true
-position = Vector2(760.568, 492.614)
-rotation = -0.00365932
-scale = Vector2(1, 1)
-texture = ExtResource("2_btuso")
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2pmrr")
