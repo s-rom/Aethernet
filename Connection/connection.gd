@@ -57,15 +57,15 @@ func convert_to_portal_connection() -> PortalConnection:
 
 func updateShape():
  
-	var length: float = self.points[1].distance_to(self.points[0])
-	var new_rotation: float = self.points[0].angle_to_point(self.points[1])
+	var length: float = self.points[-1].distance_to(self.points[0])
+	var new_rotation: float = self.points[0].angle_to_point(self.points[-1])
 	
 	var collisionShape = self.find_child("CollisionShape2D") as CollisionShape2D
 	collisionShape.shape.size = Vector2(length, 20)
 	
 	var area2D = $Area2D as Area2D
 	area2D.rotation = new_rotation
-	area2D.position = (points[1] + points[0]) / 2
+	area2D.position = (points[-1] + points[0]) / 2
 
 
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://t0excofo1yk3"]
+
+[ext_resource type="Script" path="res://DebugLevels/BezierLine.gd" id="1_tila2"]
+[ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="2_0r0yo"]
+[ext_resource type="PackedScene" uid="uid://dixmi2m5egtqq" path="res://Connection/portal_connection.tscn" id="3_ni2ka"]
+[ext_resource type="Shader" path="res://FX_Testing/portal_connection.gdshader" id="4_pv3pc"]
+
+[sub_resource type="Environment" id="Environment_q2m78"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 5.6
+glow_normalized = true
+glow_blend_mode = 0
+adjustment_saturation = 1.17
+
+[sub_resource type="Gradient" id="Gradient_wldm5"]
+offsets = PackedFloat32Array(0, 0.209677, 0.505376, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.011, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oub0m"]
+gradient = SubResource("Gradient_wldm5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ywoxa"]
+offset = Vector3(447.76, -388.96, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tak78"]
+seamless = true
+noise = SubResource("FastNoiseLite_ywoxa")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pj8wg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ejhb4"]
+seamless = true
+noise = SubResource("FastNoiseLite_pj8wg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4lkx"]
+resource_local_to_scene = true
+shader = ExtResource("4_pv3pc")
+shader_parameter/hdr_color = Color(0.711004, 0.40074, 0.924924, 1)
+shader_parameter/hdr_intensity = 8.37
+shader_parameter/width = 0.216
+shader_parameter/height = 1.0
+shader_parameter/noise_movement = Vector2(-1.06, 0.795)
+shader_parameter/noise2_movement = Vector2(1.155, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_tak78")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_ejhb4")
+shader_parameter/color_texture = SubResource("GradientTexture1D_oub0m")
+
+[node name="Testing" type="Node2D"]
+script = ExtResource("1_tila2")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(82, 67, 211, 86)
+width = 30.0
+texture_mode = 2
+joint_mode = 2
+
+[node name="Port1" type="Sprite2D" parent="."]
+position = Vector2(148, 364)
+rotation = 2.35619
+scale = Vector2(1, 1)
+texture = ExtResource("2_0r0yo")
+
+[node name="Port2" type="Sprite2D" parent="."]
+position = Vector2(625, 408)
+rotation = 0.785398
+texture = ExtResource("2_0r0yo")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q2m78")
+
+[node name="PortalConnection" parent="." instance=ExtResource("3_ni2ka")]
+material = SubResource("ShaderMaterial_a4lkx")
+position = Vector2(589, 186)
+points = PackedVector2Array(0, 0, 487, 0)
