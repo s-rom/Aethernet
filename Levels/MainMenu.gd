@@ -16,3 +16,7 @@ func _process(delta):
 
 func _on_levels_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/LevelSelectionMenu.tscn")
+
+
+func _on_debug_test() -> void:
+	get_tree().change_scene_to_file("res://DebugLevels/2025_debug.tscn")

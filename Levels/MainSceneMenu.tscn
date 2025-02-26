@@ -102,6 +102,11 @@ layout_mode = 2
 theme_type_variation = &"MainGUIButton"
 text = "Cargar"
 
+[node name="SandboxButton2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"MainGUIButton"
+text = "2025 DEBUG"
+
 [node name="ShipsLayer" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -120,15 +125,6 @@ grow_horizontal = 0
 
 [node name="Portal" parent="Container" instance=ExtResource("5_0jv6b")]
 position = Vector2(839, 298)
-
-[node name="LineEdit" parent="Container/Portal/Port2" index="1"]
-visible = false
-
-[node name="LineEdit" parent="Container/Portal/Port1" index="1"]
-visible = false
-
-[node name="LineEdit" parent="Container/Portal/Port3" index="1"]
-visible = false
 
 [node name="PointLight2D" parent="Container/Portal" index="7"]
 energy = 2.65
@@ -156,5 +152,6 @@ energy = 0.59
 range_item_cull_mask = 3
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/SandboxButton2" to="." method="_on_debug_test"]
 
 [editable path="Container/Portal"]
