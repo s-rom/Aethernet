@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hvqo3bwwj2g7"]
+[gd_scene load_steps=14 format=3 uid="uid://hvqo3bwwj2g7"]
 
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="1_k2uki"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="1_os6s7"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_drre8"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="10_bp55m"]
 [ext_resource type="PackedScene" uid="uid://p837s3sbt7vu" path="res://Ships/ship.tscn" id="11_x016h"]
-[ext_resource type="PackedScene" uid="uid://t0excofo1yk3" path="res://DebugLevels/Testing.tscn" id="12_nfoou"]
 
 [sub_resource type="Gradient" id="Gradient_4f86q"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -109,7 +108,5 @@ rotation = 0.452387
 position = Vector2(546, 422)
 rotation = -0.365456
 
-[node name="Testing" parent="." instance=ExtResource("12_nfoou")]
-position = Vector2(728, 333)
-
 [editable path="CanvasLayer"]
+[editable path="Portal"]

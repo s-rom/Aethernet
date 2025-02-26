@@ -69,6 +69,25 @@ func updateShape():
 
 
 
+func update_curve(rotation1, rotation2):
+	var curve = Curve2D.new()
+	var P0 = points[0]
+	var P3 = points[-1]  
+
+	var direction1 = Vector2.from_angle(rotation1) * 100 
+	var direction2 = Vector2.from_angle(rotation2) * 100 
+
+	var out_handle_P0 = direction1
+	var in_handle_P3 = direction2
+
+	curve.add_point(P0, Vector2.ZERO, out_handle_P0)
+	curve.add_point(P3, in_handle_P3, Vector2.ZERO)
+
+	var simplified_points = curve.tessellate(2, 4)
+	self.points = simplified_points
+
+
+
 func _process(_delta):
 	pass
 

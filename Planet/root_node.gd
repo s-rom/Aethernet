@@ -229,16 +229,21 @@ func _on_connector_click(connector: Node2D):
 		portA.link(portB, currentConnection)
 		portB.link(portA, currentConnection)
 
-		var parentA = portA.owner
-		var parentB = portB.owner
+		var ownerA = portA.owner
+		var ownerB = portB.owner
 
 		# print("Create a connection between " + parentA.name + " and " + parentB.name)
 		
 		currentConnection.updateShape()
 		
-		if parentA is Portal and parentB is Portal:
+		if ownerA is Portal and ownerB is Portal:
 			var nextPortalNetwork = _pop_portal_connection_network()
 			
+
+			# var portSpriteA = portA.get_parent() as Node2D
+			# var portSpriteB = portB.get_parent() as Node2D
+			# currentConnection.update_curve(portSpriteA.global_rotation, portSpriteB.global_rotation)
+
 			# --- Conflictivo
 			portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
 			portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
