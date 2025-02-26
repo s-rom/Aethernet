@@ -40,4 +40,3 @@ void fragment() {
 	COLOR = colored_noise * hdr_color * hdr_intensity;
 	//COLOR.a *= 1.0 - alpha;
 }
-

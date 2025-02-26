@@ -12,14 +12,17 @@ var _animationSend = "PortalConnection_SendShip"
 func _ready() -> void:
 	super()
 	
-	var point1 = points[0]
-	var point2 = points[-1]
+	var point1_start = points[0]
+	var point1_end = points[1]
 
-	$Particles1.position = point1 + particles_distance * point1.direction_to(point2)
-	$Particles2.position = point2 + particles_distance * point2.direction_to(point1)
+	var point2_start = points[-1]
+	var point2_end = points[-2]
 
-	$Particles1.rotation = point1.angle_to_point(point2)
-	$Particles2.rotation = point2.angle_to_point(point1)
+	$Particles1.position = point1_start + particles_distance * point1_start.direction_to(point1_end)
+	$Particles2.position = point2_start + particles_distance * point2_start.direction_to(point1_end)
+
+	$Particles1.rotation = point1_start.angle_to_point(point1_end)
+	$Particles2.rotation = point2_start.angle_to_point(point2_end)
 
 
 func play_send_animation() -> void:

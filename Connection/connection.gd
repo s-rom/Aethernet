@@ -70,20 +70,27 @@ func updateShape():
 
 
 func update_curve(rotation1, rotation2):
-	var curve = Curve2D.new()
+
+	var direction1 = Vector2.from_angle(rotation1)
+	var direction2 = Vector2.from_angle(rotation2)
+
+	var angle_between = direction1.angle_to(direction2)
+	var angle_diff = abs((abs(angle_between) - PI))
+	if angle_diff < deg_to_rad(20):
+		return
+
+
+
 	var P0 = points[0]
 	var P3 = points[-1]  
-
-	var direction1 = Vector2.from_angle(rotation1) * 100 
-	var direction2 = Vector2.from_angle(rotation2) * 100 
-
-	var out_handle_P0 = direction1
-	var in_handle_P3 = direction2
+	var curve = Curve2D.new()
+	var out_handle_P0 = direction1 * 100 * angle_diff 
+	var in_handle_P3 = direction2 * 100  * angle_diff
 
 	curve.add_point(P0, Vector2.ZERO, out_handle_P0)
 	curve.add_point(P3, in_handle_P3, Vector2.ZERO)
 
-	var simplified_points = curve.tessellate(2, 4)
+	var simplified_points = curve.get_baked_points() #curve.tessellate(2, 4)
 	self.points = simplified_points
 
 

@@ -239,10 +239,17 @@ func _on_connector_click(connector: Node2D):
 		if ownerA is Portal and ownerB is Portal:
 			var nextPortalNetwork = _pop_portal_connection_network()
 			
+			
+			
+			var portSpriteA = portA.get_parent() as Node2D
+			var portSpriteB = portB.get_parent() as Node2D
+			
 
-			# var portSpriteA = portA.get_parent() as Node2D
-			# var portSpriteB = portB.get_parent() as Node2D
-			# currentConnection.update_curve(portSpriteA.global_rotation, portSpriteB.global_rotation)
+			currentConnection.update_curve(
+				portSpriteB.global_rotation - PI, 
+				portSpriteA.global_rotation - PI)
+			
+
 
 			# --- Conflictivo
 			portA.coordinatesLineEdit.text = nextPortalNetwork + "1"

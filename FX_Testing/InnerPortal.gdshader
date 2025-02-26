@@ -46,4 +46,3 @@ void fragment() {
 
 	COLOR = coloredNoise * hdr_color * hdr_intensity; // * texture(TEXTURE, UV);
 }
-
