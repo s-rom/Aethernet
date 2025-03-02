@@ -8,19 +8,9 @@ var can_be_deleted = true
 @export var highligted: bool = false : 
 	set(value):
 		if value:
-			self.default_color = Color.RED
-			self.width = _originalWidth
-			
-			_hightlightTween = create_tween()
-			#tween.connect("finished", _on_goal_reached)
-			#self.rotation = position.angle_to_point(goal) + deg_to_rad(90)
-			_hightlightTween.set_ease(Tween.EASE_IN_OUT)
-			_hightlightTween.set_trans(Tween.TRANS_QUAD)
-			_hightlightTween.tween_property(self, "width", _highlightedWidth, 0.1)
-			
+			_highlight()
 		else:
-			self.default_color = _originalColor
-			self.width = _originalWidth
+			_unhighlight()
 		highligted = value
 
 
@@ -29,6 +19,22 @@ var curve: Curve2D = null
 var _originalWidth = self.width
 var _originalColor = self.default_color
 var _highlightedWidth = self.width + 0.2 * self.width
+
+func _unhighlight():
+	self.default_color = _originalColor
+	self.width = _originalWidth
+
+func _highlight():
+	self.default_color = Color.RED
+	self.width = _originalWidth
+	
+	_hightlightTween = create_tween()
+	#tween.connect("finished", _on_goal_reached)
+	#self.rotation = position.angle_to_point(goal) + deg_to_rad(90)
+	_hightlightTween.set_ease(Tween.EASE_IN_OUT)
+	_hightlightTween.set_trans(Tween.TRANS_QUAD)
+	_hightlightTween.tween_property(self, "width", _highlightedWidth, 0.1)
+	
 
 func _ready():
 	for area2D in self.find_children("*", "Area2D"):

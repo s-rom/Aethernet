@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dixmi2m5egtqq"]
+[gd_scene load_steps=12 format=3 uid="uid://dixmi2m5egtqq"]
 
 [ext_resource type="Material" uid="uid://bml4kio4dn5kq" path="res://FX_Testing/portal_connection.tres" id="1_rqf5o"]
 [ext_resource type="Script" path="res://Connection/portal_connection.gd" id="1_yggp4"]
@@ -177,7 +177,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7),
 "transitions": PackedFloat32Array(1, 5.65685, 1, 1),
 "update": 0,
-"values": [Color(0.75768, 0.28878, 0.626921, 1), Color(0.906871, 0.315373, 0.59294, 1), Color(0.778722, 0.313389, 0.783651, 1), Color(0.756863, 0.290196, 0.627451, 1)]
+"values": [Color(0.497781, 0.390983, 0.906761, 1), Color(0.37044, 0.460607, 0.899362, 1), Color(0.146604, 0.56464, 0.848664, 1), Color(0.548903, 0.463933, 0.936791, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -238,6 +238,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3.485, 0), Vector2(3.485, -0.2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Particles1:process_material:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.2, 3), Vector2(0.2, 6), Vector2(0.2, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_vs15w"]
@@ -351,10 +363,39 @@ tracks/8/keys = {
 "values": [Vector2(1.155, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_v3uea"]
+resource_name = "PortalConnection_Highlight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.858824, 0.231373, 0.580392, 1), Color(0.859244, 0.233009, 0.579453, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [30.0, 50.0, 30.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b88k4"]
 _data = {
 "PortalConnection_Create": SubResource("Animation_jeo24"),
 "PortalConnection_Delete": SubResource("Animation_vurkd"),
+"PortalConnection_Highlight": SubResource("Animation_v3uea"),
 "PortalConnection_SendShip": SubResource("Animation_olwi4"),
 "RESET": SubResource("Animation_vs15w")
 }

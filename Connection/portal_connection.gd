@@ -6,6 +6,11 @@ class_name PortalConnection extends Connection
 var _animationDelete = "PortalConnection_Delete"
 var _animationCreate = "PortalConnection_Create"
 var _animationSend = "PortalConnection_SendShip"
+var _animationReset = "RESET"
+var _animationHighlight = "PortalConnection_Highlight"
+
+
+var _deleting = false
 
 func _ready() -> void:
 	super()
@@ -60,12 +65,28 @@ func updateShape() -> void:
 
 
 
+func _highlight() -> void:
+	if _deleting: 
+		return
+
+	if $AnimationPlayer.is_playing():
+		return
+
+	$AnimationPlayer.play(_animationHighlight)
+
+func _unhighlight() -> void:		
+	if _deleting:
+		return
+		
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play(_animationReset)
 
 func play_send_animation() -> void:
 	$AnimationPlayer.play(_animationSend)
 
 
 func delete_connection() -> void:
+	_deleting = true
 	$AnimationPlayer.play(_animationDelete)
 	await $AnimationPlayer.animation_finished
 	self.queue_free()
