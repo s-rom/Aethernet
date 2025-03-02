@@ -163,7 +163,7 @@ func _pop_portal_connection_network():
 	return _front
 
 
-# endpoint1 and 2 is the immediate parent of a PortComponent (Sprite2D)
+# both endpoints are the immediate parent of a PortComponent (Sprite2D)
 func create_connection(endpoint1, endpoint2, deletable = true):
 	var new_connection = connectionScn.instantiate()
 	
@@ -173,13 +173,9 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	new_connection.add_point(endpoint1.global_position)
 	new_connection.initColliderShape(endpoint2.global_position)
 	new_connection.add_point(endpoint2.global_position)
-	new_connection.updateShape()
 	
 	var portA = endpoint1.find_child("PortComponent") as PortComponent
 	var portB = endpoint2.find_child("PortComponent") as PortComponent
-	
-	portA.link(portB, new_connection)
-	portB.link(portA, new_connection)
 	
 	var parentA = portA.owner
 	var parentB = portB.owner
@@ -192,10 +188,17 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 		portA.coordinates = nextPortalNetwork + "1"
 		portB.coordinates = nextPortalNetwork + "2"
 		
+		new_connection.update_curve(
+			endpoint1.global_rotation - PI, 
+			endpoint2.global_rotation - PI)
+		
 		# print("coord portA: " + portA.coordinates)
 		# print("coord portB: " + portB.coordinates)
 		new_connection = new_connection.convert_to_portal_connection() as PortalConnection
 		
+	portA.link(portB, new_connection)
+	portB.link(portA, new_connection)
+	new_connection.updateShape()
 	self.add_child(new_connection)
 	
 	

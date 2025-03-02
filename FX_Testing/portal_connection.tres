@@ -25,7 +25,7 @@ noise = SubResource("FastNoiseLite_pj8wg")
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_1n3bi")
-shader_parameter/hdr_color = Color(0.858963, 0.231917, 0.58008, 1)
+shader_parameter/hdr_color = Color(0.859137, 0.232594, 0.579691, 1)
 shader_parameter/hdr_intensity = 8.37
 shader_parameter/width = 0.216
 shader_parameter/height = 1.0

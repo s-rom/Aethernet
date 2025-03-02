@@ -92,7 +92,7 @@ position = Vector2(892, 241)
 [node name="Ship2" parent="." instance=ExtResource("11_x016h")]
 position = Vector2(312, 314)
 
-[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nelw5")
 
 [node name="Portal" parent="." instance=ExtResource("1_k2uki")]

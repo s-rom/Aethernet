@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ftunv7pswyxm"]
+[gd_scene load_steps=11 format=3 uid="uid://ftunv7pswyxm"]
 
 [ext_resource type="Script" path="res://Planet/root_node.gd" id="1_mywej"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_o5nsm"]
@@ -12,6 +12,13 @@
 [sub_resource type="Gradient" id="Gradient_e66pd"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="Environment" id="Environment_oyw5e"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 0
+adjustment_saturation = 1.17
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_mywej")
@@ -61,3 +68,6 @@ position = Vector2(283, 338)
 
 [node name="Planet2" parent="planet_network" instance=ExtResource("8_qg5c2")]
 position = Vector2(713, 406)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oyw5e")

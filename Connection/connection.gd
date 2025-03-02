@@ -3,7 +3,9 @@ extends Line2D
 class_name Connection
 
 @export var portalConnectionScn: PackedScene = null
+
 var can_be_deleted = true
+var curve: Curve2D = null
 
 @export var highligted: bool = false : 
 	set(value):
@@ -15,7 +17,6 @@ var can_be_deleted = true
 
 
 var _hightlightTween: Tween = null
-var curve: Curve2D = null
 var _originalWidth = self.width
 var _originalColor = self.default_color
 var _highlightedWidth = self.width + 0.2 * self.width
@@ -63,6 +64,7 @@ func convert_to_portal_connection() -> PortalConnection:
 	var newConnection = portalConnectionScn.instantiate()
 	newConnection.points = self.points
 	newConnection.curve = self.curve
+	newConnection.can_be_deleted = self.can_be_deleted
 	# var area2D = $Area2D
 	# self.remove_child(area2D)
 	# newConnection.add_child(area2D)	
