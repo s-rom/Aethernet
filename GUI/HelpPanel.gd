@@ -52,9 +52,6 @@ func previous_slide():
 	_current_slide_idx = (_current_slide_idx - 1) % len(_slides)
 	_set_slide_data()
 
-func _process(delta):
-	pass
-
 
 func _on_previous_slide_pressed():
 	previous_slide()

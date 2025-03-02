@@ -24,9 +24,6 @@ func _input(event):
 		(self.get_parent() as Planet).onPlanetClick.emit(self.get_parent())
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _physics_process(delta):

@@ -22,8 +22,3 @@ func _ready():
 	_highlightTween.set_trans(Tween.TRANS_QUAD)
 	_highlightTween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.5)
 	_highlightTween.tween_property(self, "scale", _originalScale, 0.5)
-
-
-
-func _process(delta):
-	pass

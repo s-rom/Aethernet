@@ -10,7 +10,7 @@ signal portClicked(portParent: Node2D, port: PortComponent)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for port in self.find_children("Port*"):
+	for port in self.find_children("Port*", "PortSprite"):
 		port.connect("portClicked", _on_port_clicked)
 	
 	for portComponent  in self.find_children("PortComponent"):
@@ -128,8 +128,3 @@ func clear_port_table():
 func _update_port_table(portComponent: PortComponent, endpointCoordinates: String):
 	self.port_by_coordinates[endpointCoordinates] = portComponent
 	self.coordinates_by_port[portComponent] = endpointCoordinates
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

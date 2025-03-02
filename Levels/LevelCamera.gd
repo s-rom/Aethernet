@@ -43,10 +43,5 @@ func _on_window_size_changed():
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_item_rect_changed():
 	print(self.zoom)

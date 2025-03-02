@@ -22,7 +22,7 @@ func _ready():
 	var anim = $MagicEffect/AnimationPlayer
 	anim.play(ANIMATION_IDLE)
 	
-	for port in self.find_children("Port*"):
+	for port in self.find_children("Port*", "PortSprite"):
 		port.connect("portClicked", _on_port_clicked)
 	
 	for portComponent  in self.find_children("PortComponent"):

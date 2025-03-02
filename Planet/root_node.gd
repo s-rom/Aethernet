@@ -46,6 +46,8 @@ func _ready():
 			var portalLight = portal.find_child("PointLight2D", true, false) as PointLight2D
 			portalLight.energy = portalLight.energy * 0.4
 	
+		
+	
 	
 	print("CURRENT LEVEL: ", LevelsData.current_level)
 	debugSender = find_child("DebugSend")
@@ -226,45 +228,42 @@ func _on_connector_click(connector: Node2D):
 		var portB = connectionOrigin.find_child("PortComponent") as PortComponent
 		
 
-		portA.link(portB, currentConnection)
-		portB.link(portA, currentConnection)
+		
 
 		var ownerA = portA.owner
-		var ownerB = portB.owner
-
-		# print("Create a connection between " + parentA.name + " and " + parentB.name)
-		
-		currentConnection.updateShape()
+		var ownerB = portB.owner		
 		
 		if ownerA is Portal and ownerB is Portal:
-			var nextPortalNetwork = _pop_portal_connection_network()
-			
-			
 			
 			var portSpriteA = portA.get_parent() as Node2D
 			var portSpriteB = portB.get_parent() as Node2D
 			
-
 			currentConnection.update_curve(
 				portSpriteB.global_rotation - PI, 
 				portSpriteA.global_rotation - PI)
 			
-
-
 			# --- Conflictivo
+			var nextPortalNetwork = _pop_portal_connection_network()
 			portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
 			portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
 			portA.coordinates = nextPortalNetwork + "1"
 			portB.coordinates = nextPortalNetwork + "2"
-			
 			# --- 
-			
-			# print("coord portA: " + portA.coordinates)
-			# print("coord portB: " + portB.coordinates)
+
 			var portalConnection = currentConnection.convert_to_portal_connection() as PortalConnection
 			add_child(portalConnection)
 			currentConnection.queue_free()
+			currentConnection = portalConnection
 
+
+		# Linking must happen after connection is (optionally) converted to PortalConnection
+		# link() connects to 'tree_exiting' signal
+		# when converting: the "original" connection is destroyed and the ports are clear()'ed 
+		portA.link(portB, currentConnection)
+		portB.link(portA, currentConnection)
+
+
+		currentConnection.updateShape()
 		currentConnection = null
 		return
 		

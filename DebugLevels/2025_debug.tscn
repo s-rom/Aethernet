@@ -19,7 +19,6 @@ colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.
 [sub_resource type="Environment" id="Environment_nelw5"]
 background_mode = 3
 glow_enabled = true
-glow_levels/3 = 5.6
 glow_normalized = true
 glow_blend_mode = 0
 adjustment_saturation = 1.17

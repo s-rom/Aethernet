@@ -24,9 +24,9 @@ func _on_subgoal_completed(subgoal, status):
 		else:
 			set_failed()
 
-func set_goal(goal_text, subgoalName):
+func set_goal(goal_text, sub_goal_name):
 	$VBoxContainer/Label.text = goal_text
-	self.subgoalName = subgoalName
+	self.subgoalName = sub_goal_name
 	
 func set_completed():
 	$VBoxContainer/TextureRect.texture = check_icon

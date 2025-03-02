@@ -13,10 +13,6 @@ func _ready():
 	_label = self.find_child("RichTextLabel") as RichTextLabel	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func set_slide_idx_text(text):
 	var label = self.find_child("SlideIdx")
 	label.text = text

@@ -9,11 +9,6 @@ var ruleControl = preload("res://GUI/PortalTable/PortalRule.tscn")
 
 var _linkedPortal: Portal = null
 
-func _ready():
-	pass
-	
-func _process(delta):
-	pass
 
 func linkPortal(portal: Portal):
 	nameLabel.text = portal.name

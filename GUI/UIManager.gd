@@ -49,7 +49,7 @@ func _show_line_edits():
 		lineEdit.visible = true
 
 
-func _on_subgoal_completed(subgoal, status):
+func _on_subgoal_completed(_subgoal, status):
 	if not status:
 		print("Some subgoal failed")
 		_show_line_edits()

@@ -64,7 +64,5 @@ toggle_fullscreen={
 
 [rendering]
 
-renderer/rendering_method.web="forward_plus"
 environment/defaults/default_clear_color=Color(0.23703, 0.173501, 0.400533, 1)
-anti_aliasing/quality/msaa_2d=3
 viewport/hdr_2d=true

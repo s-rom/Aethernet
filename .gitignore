@@ -16,5 +16,6 @@ mono_crash.*.json
 
 *.tmp
 Build/Web/
+Build/
 
 .vscode

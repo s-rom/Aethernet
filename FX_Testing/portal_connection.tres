@@ -25,10 +25,10 @@ noise = SubResource("FastNoiseLite_pj8wg")
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_1n3bi")
-shader_parameter/hdr_color = Color(0.711004, 0.40074, 0.924924, 1)
-shader_parameter/hdr_intensity = 8.0
-shader_parameter/width = 0.256
-shader_parameter/height = 0.968
+shader_parameter/hdr_color = Color(0.718803, 0.655774, 0.722568, 1)
+shader_parameter/hdr_intensity = 2.55
+shader_parameter/width = 0.1
+shader_parameter/height = 0.0
 shader_parameter/noise_movement = Vector2(-1.06, 0.795)
 shader_parameter/noise2_movement = Vector2(1.155, 0)
 shader_parameter/noise = SubResource("NoiseTexture2D_tak78")

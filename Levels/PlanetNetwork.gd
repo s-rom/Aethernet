@@ -4,7 +4,7 @@ class_name planet_network
 
 static var _networkPattern = RegEx.new()
 var _planets
-var _rng = RandomNumberGenerator.new()
+#var _rng = RandomNumberGenerator.new()
 
 @export var set_network_tooltip = "A"
 
@@ -80,10 +80,10 @@ func check_same_network():
 		if not planet.has_coordinates:
 			return false
 		
-		var planet_network = planet_network._extract_network_from_coordinates(planet.coordinates)
+		var network = planet_network._extract_network_from_coordinates(planet.coordinates)
 		if last_network == null:
-			last_network = planet_network
-		elif last_network != planet_network:
+			last_network = network
+		elif last_network != network:
 			return false
 
 	return last_network == self.set_network_tooltip

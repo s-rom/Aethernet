@@ -3,7 +3,6 @@ extends Node
 
 class_name GoalTracker
 
-var _planetStatus = {}
 
 const SUBGOAL_CONNECTED: String = "planets_connected"
 const SUBGOAL_COORD: String = "planets_coord"
@@ -47,7 +46,7 @@ func _ready():
 
 func send_test_ship(origin: Planet, destination: Planet):
 	var originPort = origin.find_child("PortComponent")
-	var destinationPort = destination.find_child("PortComponent")
+	#var destinationPort = destination.find_child("PortComponent")
 
 	var originNet = planet_network._extract_network_from_coordinates(origin.coordinates)
 	var destNet = planet_network._extract_network_from_coordinates(destination.coordinates)

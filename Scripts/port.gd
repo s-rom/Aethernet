@@ -1,5 +1,6 @@
 extends Sprite2D
 
+class_name PortSprite
 
 signal portClicked(portParent: Node2D, port: PortComponent)
 
@@ -16,6 +17,3 @@ func _input(event):
 		portClicked.emit(self, $PortComponent)
 		
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
