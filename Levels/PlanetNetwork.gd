@@ -70,6 +70,9 @@ static func _extract_network_from_coordinates(coordinates):
 		var network = result.get_string(1)
 		return network
 
+static func same_network(coordA: String, coordB: String) -> bool:
+	return _extract_network_from_coordinates(coordA) == _extract_network_from_coordinates(coordB)
+
 
 # Checks if all their planet children belong to the same network
 func check_same_network():	

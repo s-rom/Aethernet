@@ -23,32 +23,6 @@ var _mouseMovement: Vector2
 signal camera_zoom_changed()
 
 
-func _init_portal_networks():
-
-	# Base characters
-	var char_set = ["Z", "X", "Y", "W", "U", "T", "S"]
-	for c in char_set:
-		_push_stack_portal_network(c)
-	
-	# All combinations with base characters 
-	for c1 in char_set:
-		for c2 in char_set:
-			if c1 == c2:
-				continue
-			_push_stack_portal_network(c1 + c2)	
-	
-	
-	for x in range("A".unicode_at(0), "R".unicode_at(0) + 1):
-		for y in char_set:
-			_push_stack_portal_network(str(char(x))  + y)
-	
-	_availablePortalNetworks.reverse()
-	
-	var network = _pop_stack_portal_network()
-	while network != null:
-		print(network)
-		network = _pop_stack_portal_network()
-
 
 func _ready():
 	
@@ -92,6 +66,30 @@ func _ready():
 	for planet in planets:
 		planet.connect("onPlanetClick", _on_planet_click)	
 
+
+func _init_portal_networks():
+
+	# Base characters
+	var char_set = ["Z", "X", "Y", "W", "U", "T", "S"]
+	for c in char_set:
+		_push_stack_portal_network(c)
+	
+	# All combinations with base characters 
+	for c1 in char_set:
+		for c2 in char_set:
+			if c1 == c2:
+				continue
+			_push_stack_portal_network(c1 + c2)	
+	
+	
+	for x in range("A".unicode_at(0), "R".unicode_at(0) + 1):
+		for y in char_set:
+			_push_stack_portal_network(str(char(x))  + y)
+	
+	_availablePortalNetworks.reverse()
+
+
+
 func _process(_delta: float):
 	if currentConnection != null:
 		currentConnection.remove_point(1)
@@ -99,6 +97,8 @@ func _process(_delta: float):
 			
 
 func _input(event):
+
+	## Remove the current connection preview
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
 		and currentConnection != null):
 			currentConnection.queue_free()
@@ -113,6 +113,7 @@ func _input(event):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
+	## Camera zoom
 	if event.is_action_pressed("zoom_in"):
 		var qty = 0.1 * $Camera2D.zoom.length() # quantiy of zoom = 10% of current zoom
 		
@@ -140,12 +141,10 @@ func _input(event):
 		get_tree().call_group("ClickHighlight", "disable_highlight")
 				
 	if event.is_action_pressed("ui_drag_camera"):
-		#print("Start moving camera")
 		_lastMousePosition = get_global_mouse_position()
 		_draggingCamera = true
 
 	if event.is_action_released("ui_drag_camera"):
-		#print("Stop moving camera")
 		_draggingCamera = false
 
 	if _draggingCamera:
@@ -208,27 +207,31 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	var parentB = portB.owner
 	
 	if parentA is Portal and parentB is Portal:
-		var nextPortalNetwork = _pop_stack_portal_network()
-
-		portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
-		portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
-		portA.coordinates = nextPortalNetwork + "1"
-		portB.coordinates = nextPortalNetwork + "2"
-		
+		_set_portal_ports_coordinates(portA, portB)
 		new_connection.update_curve(
 			endpoint1.global_rotation - PI, 
 			endpoint2.global_rotation - PI)
-		
-		# print("coord portA: " + portA.coordinates)
-		# print("coord portB: " + portB.coordinates)
-		new_connection = new_connection.convert_to_portal_connection() as PortalConnection
+		new_connection = new_connection.convert_to_portal_connection(portA, portB)
 		
 	portA.link(portB, new_connection)
 	portB.link(portA, new_connection)
 	new_connection.update_shape()
 	self.add_child(new_connection)
 	
+
+func _set_portal_ports_coordinates(portA: PortComponent, portB: PortComponent):
+	if portA.has_ip and portB.has_ip and planet_network.same_network(portA.coordinates, portB.coordinates):
+		return	
 	
+	var nextPortalNetwork = _pop_stack_portal_network()
+	if nextPortalNetwork == null:
+		print("[ERROR] No portal networks available")
+	else:
+		portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
+		portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
+		portA.coordinates = nextPortalNetwork + "1"
+		portB.coordinates = nextPortalNetwork + "2"
+
 func _on_connector_click(connector: Node2D):
 	
 	# print("Click on ", connector, typeof(connector))
@@ -266,13 +269,8 @@ func _on_connector_click(connector: Node2D):
 				portSpriteB.global_rotation - PI, 
 				portSpriteA.global_rotation - PI)
 			
-			var nextPortalNetwork = _pop_stack_portal_network()
-			portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
-			portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
-			portA.coordinates = nextPortalNetwork + "1"
-			portB.coordinates = nextPortalNetwork + "2"
-
-			var portalConnection = currentConnection.convert_to_portal_connection() as PortalConnection
+			_set_portal_ports_coordinates(portA, portB)
+			var portalConnection = currentConnection.convert_to_portal_connection(portA, portB)
 			add_child(portalConnection)
 			currentConnection.queue_free()
 			currentConnection = portalConnection

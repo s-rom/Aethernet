@@ -36,7 +36,7 @@ func _ready() -> void:
 
 
 func associate_port(port: PortComponent) -> void:
-	self._port_components.add(port)
+	self._port_components.append(port)
 
 func update_shape() -> void:	
 
