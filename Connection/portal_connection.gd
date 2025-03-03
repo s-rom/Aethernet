@@ -9,6 +9,7 @@ var _animationSend = "PortalConnection_SendShip"
 var _animationReset = "RESET"
 var _animationHighlight = "PortalConnection_Highlight"
 
+var _port_components = []
 
 var _deleting = false
 var _creating = false
@@ -34,6 +35,8 @@ func _ready() -> void:
 	_creating = false
 
 
+func associate_port(port: PortComponent) -> void:
+	self._port_components.add(port)
 
 func update_shape() -> void:	
 

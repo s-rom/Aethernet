@@ -6,8 +6,50 @@ extends Node2D
 var curve := Curve2D.new()
 
 var portalMaterial = load("res://FX_Testing/portal_connection.tres")
+var _availablePortalNetworks = []
+
+func _pop_stack_portal_network() -> Variant:
+	
+	var length = len(_availablePortalNetworks)
+	if length == 0:
+		return null
+		
+	var _back = _availablePortalNetworks[-1]
+	_availablePortalNetworks.remove_at(length - 1)	
+	return _back
+
+
+func _push_stack_portal_network(network: String) -> void:
+	_availablePortalNetworks.push_back(network)
 
 func _ready():
+	
+	# Base characters
+	var char_set = ["Z", "X", "Y", "W", "U", "T", "S"]
+	for c in char_set:
+		_push_stack_portal_network(c)
+	
+	# All combinations with base characters 
+	for c1 in char_set:
+		for c2 in char_set:
+			if c1 == c2:
+				continue
+			_push_stack_portal_network(c1 + c2)	
+	
+	
+	for x in range("A".unicode_at(0), "R".unicode_at(0) + 1):
+		for y in char_set:
+			_push_stack_portal_network(str(char(x))  + y)
+	
+	_availablePortalNetworks.reverse()
+	
+	var network = _pop_stack_portal_network()
+	while network != null:
+		print(network)
+		network = _pop_stack_portal_network()
+	
+
+	
 	line.material = portalMaterial
 	update_curve()
 
@@ -27,8 +69,6 @@ func _process(delta: float) -> void:
 	var dir2 = Vector2.from_angle(object2.global_rotation - PI)
 
 	update_curve()
-	print(rad_to_deg(dir1.angle_to(dir2)), dir1.angle_to(dir2))
-
 
 func _draw() -> void:
 	var pos1 = object1.global_position

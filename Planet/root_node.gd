@@ -7,10 +7,10 @@ var cameraSpeed = 25.
 
 var connectionScn = preload("res://Connection/connection.tscn")
 
-
 @export var debugSender: Control = null
 var connectionOrigin = null
 var currentConnection: Connection = null
+var _availablePortalNetworks = []
 
 var _draggingCamera = false
 var _lastMousePosition: Vector2
@@ -20,19 +20,39 @@ var _mouseMovement: Vector2
 @export var MAX_CAMERA_ZOOM = 2.5
 
 
-
-var _availablePortalNetworks = PackedStringArray([
-	"Z", "Y", "X", "W", "V", "U", "T", "S", "R", "ZY", "ZX", "ZW", "ZV", "ZU", "ZT",
-	"ZS", "ZR", "YX", "YW", "YV", "YU", "YT", "YS", "YR", "XW", "XV", "XU", "XT", "XS", "XR",
-	"VU", "VT", "VS", "VR", "TS", "TR", "SR"
-])
-
 signal camera_zoom_changed()
 
 
+func _init_portal_networks():
+
+	# Base characters
+	var char_set = ["Z", "X", "Y", "W", "U", "T", "S"]
+	for c in char_set:
+		_push_stack_portal_network(c)
+	
+	# All combinations with base characters 
+	for c1 in char_set:
+		for c2 in char_set:
+			if c1 == c2:
+				continue
+			_push_stack_portal_network(c1 + c2)	
+	
+	
+	for x in range("A".unicode_at(0), "R".unicode_at(0) + 1):
+		for y in char_set:
+			_push_stack_portal_network(str(char(x))  + y)
+	
+	_availablePortalNetworks.reverse()
+	
+	var network = _pop_stack_portal_network()
+	while network != null:
+		print(network)
+		network = _pop_stack_portal_network()
+
+
 func _ready():
-	var portal_animation = find_child("Portal").find_child("AnimationPlayer") as AnimationPlayer
-	portal_animation.animation_set_next("Portal_SendShip", "RESET")
+	
+	_init_portal_networks()
 	
 	var levelSpecific = self.find_child("LevelSpecific")
 	if levelSpecific:
@@ -76,12 +96,7 @@ func _process(_delta: float):
 	if currentConnection != null:
 		currentConnection.remove_point(1)
 		currentConnection.add_point(get_global_mouse_position())
-	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
-		var portal_animation = find_child("Portal").find_child("AnimationPlayer") as AnimationPlayer
-		portal_animation.play("Portal_SendShip")
-		await portal_animation.animation_finished
-		portal_animation.play("RESET")
+			
 
 func _input(event):
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
@@ -163,11 +178,17 @@ func _on_portal_click(portal: Portal):
 
 
 
-func _pop_portal_connection_network():
-	var _front = _availablePortalNetworks[0]
-	_availablePortalNetworks.remove_at(0)
-	return _front
+func _pop_stack_portal_network() -> Variant:	
+	var length = len(_availablePortalNetworks)
+	if length == 0:
+		return null
+		
+	var _back = _availablePortalNetworks[-1]
+	_availablePortalNetworks.remove_at(length - 1)	
+	return _back
 
+func _push_stack_portal_network(network: String) -> void:
+	_availablePortalNetworks.push_back(network)
 
 # both endpoints are the immediate parent of a PortComponent (Sprite2D)
 func create_connection(endpoint1, endpoint2, deletable = true):
@@ -187,7 +208,7 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	var parentB = portB.owner
 	
 	if parentA is Portal and parentB is Portal:
-		var nextPortalNetwork = _pop_portal_connection_network()
+		var nextPortalNetwork = _pop_stack_portal_network()
 
 		portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
 		portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
@@ -245,13 +266,11 @@ func _on_connector_click(connector: Node2D):
 				portSpriteB.global_rotation - PI, 
 				portSpriteA.global_rotation - PI)
 			
-			# --- Conflictivo
-			var nextPortalNetwork = _pop_portal_connection_network()
+			var nextPortalNetwork = _pop_stack_portal_network()
 			portA.coordinatesLineEdit.text = nextPortalNetwork + "1"
 			portB.coordinatesLineEdit.text = nextPortalNetwork + "2"
 			portA.coordinates = nextPortalNetwork + "1"
 			portB.coordinates = nextPortalNetwork + "2"
-			# --- 
 
 			var portalConnection = currentConnection.convert_to_portal_connection() as PortalConnection
 			add_child(portalConnection)

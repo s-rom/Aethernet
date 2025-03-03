@@ -57,25 +57,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.731, 1.0, 3.044, 1.36924]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PointLight2D:scale")
+tracks/2/path = NodePath("..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.36, 0.88, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(3.3801, 3.02844), Vector2(2.25, 2.016), Vector2(3.955, 3.543), Vector2(3.3801, 3.02844)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.36),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -83,25 +71,25 @@ tracks/3/keys = {
 "method": &"_restart_particles"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:material:shader_parameter/hdr_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.366667, 0.6, 0.866667, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.595389, 0.372356, 0.782502, 1), Color(0.296806, 0.306877, 0.649065, 1), Color(0.172959, 0.177372, 0.413943, 1), Color(0.637705, 0.336379, 0.790747, 1), Color(0.595389, 0.372356, 0.782502, 1)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.466667, 0.866667, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
@@ -137,34 +125,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../PointLight2D:scale")
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3.3801, 3.02844)]
+"values": [Color(0.595389, 0.372356, 0.782502, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.595389, 0.372356, 0.782502, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -260,7 +236,7 @@ portSprite = NodePath("..")
 selfModulate = true
 
 [node name="LineEditPosition" type="Node2D" parent="Port1"]
-position = Vector2(237.36, -151.96)
+position = Vector2(-5.42337, -0.713364)
 
 [node name="Port3" type="Sprite2D" parent="."]
 light_mask = 2
@@ -280,7 +256,7 @@ portSprite = NodePath("..")
 selfModulate = true
 
 [node name="LineEditPosition" type="Node2D" parent="Port3"]
-position = Vector2(235.904, 155.861)
+position = Vector2(0.0518036, -1.72903)
 
 [node name="Circle2" type="Sprite2D" parent="."]
 self_modulate = Color(0.301961, 0.278431, 0.505882, 1)

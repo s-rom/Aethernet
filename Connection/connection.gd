@@ -60,14 +60,13 @@ func initColliderShape(startGlobalPos: Vector2):
 
 
 
-func convert_to_portal_connection() -> PortalConnection:
-	var newConnection = portalConnectionScn.instantiate()
+func convert_to_portal_connection(port_a: PortComponent, port_b: PortComponent) -> PortalConnection:
+	var newConnection = portalConnectionScn.instantiate() as PortalConnection
 	newConnection.points = self.points
 	newConnection.curve = self.curve
 	newConnection.can_be_deleted = self.can_be_deleted
-	# var area2D = $Area2D
-	# self.remove_child(area2D)
-	# newConnection.add_child(area2D)	
+	newConnection.associate_port(port_a)
+	newConnection.associate_port(port_b)
 	return newConnection;
 
 func update_shape() -> void: 
@@ -96,9 +95,6 @@ func update_shape() -> void:
 	# self.points[-1] += dir_b_a
 
 
-
-
-
 func update_curve(rotation1, rotation2) -> void:
 
 	var direction1 = Vector2.from_angle(rotation1)
@@ -123,23 +119,16 @@ func update_curve(rotation1, rotation2) -> void:
 	self.points = simplified_points
 
 
-
 func delete_connection() -> void:
 	self.queue_free()
-
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT):
 		if can_be_deleted:
 			delete_connection()
 
-
-
 func _on_area_2d_mouse_entered():
 	self.highligted = true
-
-
-
 
 func _on_area_2d_mouse_exited():
 	self.highligted = false
