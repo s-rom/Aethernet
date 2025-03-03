@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hvqo3bwwj2g7"]
+[gd_scene load_steps=22 format=3 uid="uid://hvqo3bwwj2g7"]
 
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="1_k2uki"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="1_os6s7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_drre8"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="10_bp55m"]
 [ext_resource type="PackedScene" uid="uid://p837s3sbt7vu" path="res://Ships/ship.tscn" id="11_x016h"]
+[ext_resource type="Shader" path="res://FX_Testing/InnerPortal.gdshader" id="12_ndwso"]
 
 [sub_resource type="Gradient" id="Gradient_4f86q"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -22,6 +23,43 @@ glow_enabled = true
 glow_normalized = true
 glow_blend_mode = 0
 adjustment_saturation = 1.17
+
+[sub_resource type="Gradient" id="Gradient_tgyix"]
+offsets = PackedFloat32Array(0.016129, 0.0967742, 0.182796)
+colors = PackedColorArray(0.118581, 0.118581, 0.118581, 0, 1, 1, 1, 1, 0, 0, 0, 0.227)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4k7xa"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tcxas"]
+noise_type = 2
+frequency = 0.0199
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ahn2p"]
+seamless = true
+noise = SubResource("FastNoiseLite_tcxas")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pa5f"]
+frequency = 0.0139
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dyib"]
+seamless = true
+noise = SubResource("FastNoiseLite_2pa5f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3cafo"]
+resource_local_to_scene = true
+shader = ExtResource("12_ndwso")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_4k7xa")
 
 [node name="2025Debug" type="Node2D"]
 script = ExtResource("1_skcfm")
@@ -99,8 +137,11 @@ environment = SubResource("Environment_nelw5")
 position = Vector2(227, 91.065)
 rotation = -0.550786
 
+[node name="Energy" parent="Portal" index="7"]
+material = SubResource("ShaderMaterial_3cafo")
+
 [node name="Portal2" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(34, 462)
+position = Vector2(81, 406)
 rotation = 0.452387
 
 [node name="Portal3" parent="." instance=ExtResource("1_k2uki")]

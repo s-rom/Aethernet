@@ -31,6 +31,8 @@ signal camera_zoom_changed()
 
 
 func _ready():
+	var portal_animation = find_child("Portal").find_child("AnimationPlayer") as AnimationPlayer
+	portal_animation.animation_set_next("Portal_SendShip", "RESET")
 	
 	var levelSpecific = self.find_child("LevelSpecific")
 	if levelSpecific:
@@ -74,8 +76,12 @@ func _process(_delta: float):
 	if currentConnection != null:
 		currentConnection.remove_point(1)
 		currentConnection.add_point(get_global_mouse_position())
-		
 	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+		var portal_animation = find_child("Portal").find_child("AnimationPlayer") as AnimationPlayer
+		portal_animation.play("Portal_SendShip")
+		await portal_animation.animation_finished
+		portal_animation.play("RESET")
 
 func _input(event):
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT
@@ -198,7 +204,7 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 		
 	portA.link(portB, new_connection)
 	portB.link(portA, new_connection)
-	new_connection.updateShape()
+	new_connection.update_shape()
 	self.add_child(new_connection)
 	
 	
@@ -210,15 +216,12 @@ func _on_connector_click(connector: Node2D):
 	if port.is_linked():
 		print("[ERROR] Port is already linked")
 		return
-	
-	
-	 
+
 	if currentConnection != null and connectionOrigin != null and connector == connectionOrigin:
 		print("[ERROR] Cannot connect to the same object") 
 		return
 	
-	
-	
+		
 	if currentConnection != null:
 		get_tree().call_group("ClickHighlight", "disable_highlight")
 		
@@ -230,9 +233,6 @@ func _on_connector_click(connector: Node2D):
 		var portA = connector.find_child("PortComponent") as PortComponent
 		var portB = connectionOrigin.find_child("PortComponent") as PortComponent
 		
-
-		
-
 		var ownerA = portA.owner
 		var ownerB = portB.owner		
 		
@@ -266,14 +266,12 @@ func _on_connector_click(connector: Node2D):
 		portB.link(portA, currentConnection)
 
 
-		currentConnection.updateShape()
+		currentConnection.update_shape()
 		currentConnection = null
 		return
 		
 	# Create a new connection
-	if currentConnection == null:
-		#print("Creating connection")
-		
+	if currentConnection == null:		
 		get_tree().call_group("ClickHighlight", "set_highlighted")
 		
 		connectionOrigin = connector
@@ -282,7 +280,6 @@ func _on_connector_click(connector: Node2D):
 		currentConnection.add_point(connector.global_position)
 		currentConnection.add_point(get_global_mouse_position())
 		currentConnection.initColliderShape(connector.global_position)
-		
 		
 		# Create connection collider		
 		self.add_child(currentConnection)

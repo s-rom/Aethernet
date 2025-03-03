@@ -70,18 +70,31 @@ func convert_to_portal_connection() -> PortalConnection:
 	# newConnection.add_child(area2D)	
 	return newConnection;
 
-func updateShape() -> void: 
+func update_shape() -> void: 
 
-	var length: float = self.points[-1].distance_to(self.points[0])
-	var new_rotation: float = self.points[0].angle_to_point(self.points[-1])
+	var point_a: Vector2 = self.points[0]
+	var point_b: Vector2 = self.points[-1]
+	
+
+	var length: float = point_b.distance_to(point_a)
+	var new_rotation: float = point_a.angle_to_point(point_b)
 	
 	var collisionShape = self.find_child("CollisionShape2D") as CollisionShape2D
 	collisionShape.shape.size = Vector2(length, self.width)
-	
-
 	var area2D = $Area2D as Area2D
 	area2D.rotation = new_rotation
-	area2D.position = (points[-1] + points[0]) / 2
+	area2D.position = (point_b + point_a) / 2
+
+
+	#### To skip a few positions between the endpoint and the line
+	
+	# var skip_distance: float = 30.0
+	# var dir_a_b = Vector2.from_angle(point_a.angle_to_point(point_b)) * skip_distance
+	# var dir_b_a = Vector2.from_angle(point_b.angle_to_point(point_a)) * skip_distance
+
+	# self.points[0] += dir_a_b
+	# self.points[-1] += dir_b_a
+
 
 
 

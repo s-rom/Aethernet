@@ -11,6 +11,7 @@ var _animationHighlight = "PortalConnection_Highlight"
 
 
 var _deleting = false
+var _creating = false
 
 func _ready() -> void:
 	super()
@@ -27,10 +28,14 @@ func _ready() -> void:
 	$Particles1.rotation = point1_start.angle_to_point(point1_end)
 	$Particles2.rotation = point2_start.angle_to_point(point2_end)
 
+	$AnimationPlayer.play(_animationCreate)
+	_creating = true
+	await $AnimationPlayer.animation_finished
+	_creating = false
 
-func updateShape() -> void:
-	print("Update shape portal connection")
-	
+
+
+func update_shape() -> void:	
 
 	# hack fix to create update the shape of straight PortalConnection
 	if self.curve == null:
@@ -63,10 +68,12 @@ func updateShape() -> void:
 		self.add_child(area2D)
 		_connect_to_area_signals(area2D)
 
+	
+
 
 
 func _highlight() -> void:
-	if _deleting: 
+	if _deleting:
 		return
 
 	if $AnimationPlayer.is_playing():
@@ -75,26 +82,25 @@ func _highlight() -> void:
 	$AnimationPlayer.play(_animationHighlight)
 
 func _unhighlight() -> void:		
-	if _deleting:
+	if _deleting or _creating:
 		return
 		
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play(_animationReset)
 
 func play_send_animation() -> void:
-	$AnimationPlayer.play(_animationSend)
+	$AnimationPlayer.queue(_animationSend)
 
 
 func delete_connection() -> void:
+	if _creating: 
+		return
+
 	_deleting = true
 	$AnimationPlayer.play(_animationDelete)
 	await $AnimationPlayer.animation_finished
 	self.queue_free()
 
 
-func _enter_tree() -> void:
-	$AnimationPlayer.play(_animationCreate)
-
-
-# func _process(delta: float) -> void:
-# 	pass
+# func _enter_tree() -> void:
+# 	$AnimationPlayer.play(_animationCreate)

@@ -15,6 +15,7 @@ fill_to = Vector2(0.982906, 0)
 
 [sub_resource type="Animation" id="Animation_jeo24"]
 resource_name = "PortalConnection_Create"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,7 +23,7 @@ tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.9),
+"times": PackedFloat32Array(0, 0.266667, 0.6),
 "transitions": PackedFloat32Array(1, 1, 5.65685),
 "update": 0,
 "values": [Color(0.718803, 0.655774, 0.722568, 1), Color(1, 1, 1, 1), Color(0.709804, 0.4, 0.92549, 1)]
@@ -34,7 +35,7 @@ tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.733333, 0.9),
+"times": PackedFloat32Array(0, 0.166667, 0.366667, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 0.366021),
 "update": 0,
 "values": [2.55, 2.0, 8.0, 8.0]
@@ -46,7 +47,7 @@ tracks/2/path = NodePath(".:material:shader_parameter/width")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 0.153893),
 "update": 0,
 "values": [0.1, 0.32]
@@ -58,7 +59,7 @@ tracks/3/path = NodePath(".:material:shader_parameter/height")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 0.15932),
 "update": 0,
 "values": [0.0, 1.0]
@@ -161,6 +162,34 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_v3uea"]
+resource_name = "PortalConnection_Highlight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.858824, 0.231373, 0.580392, 1), Color(0.859244, 0.233009, 0.579453, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [30.0, 50.0, 30.0]
 }
 
 [sub_resource type="Animation" id="Animation_olwi4"]
@@ -276,7 +305,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [8.37]
+"values": [9.2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -361,34 +390,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1.155, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_v3uea"]
-resource_name = "PortalConnection_Highlight"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.858824, 0.231373, 0.580392, 1), Color(0.859244, 0.233009, 0.579453, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:width")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.533333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [30.0, 50.0, 30.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b88k4"]

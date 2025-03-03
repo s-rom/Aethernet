@@ -10,8 +10,8 @@ signal portalClicked(portal: Portal)
 var _rules = {}
 
 
-const ANIMATION_IDLE = "Idle"
-const ANIMATION_SEND = "send_ship"
+const ANIMATION_IDLE = "RESET"
+const ANIMATION_SEND = "Portal_SendShip"
 
 
 var base_energy = 0.6
@@ -19,7 +19,7 @@ var base_energy = 0.6
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	var anim = $MagicEffect/AnimationPlayer
+	var anim = $Energy/AnimationPlayer
 	anim.play(ANIMATION_IDLE)
 	
 	for port in self.find_children("Port*", "PortSprite"):
@@ -82,7 +82,13 @@ func _on_port_clicked(portParent, port):
 	# print("Clicked on port " + port.name + " from " + portParent.name)
 	portClicked.emit(portParent, port)
 	
+
+func _restart_particles():
+	$Energy/GPUParticles2D.one_shot = true
+	$Energy/GPUParticles2D.restart()
+	$Energy/GPUParticles2D.emitting = true
 	
+
 func _on_ship_arrived(shipData: ShipData):
 	# print("Ship arrived on " + self.name)
 	
@@ -109,15 +115,15 @@ func _on_ship_arrived(shipData: ShipData):
 		# Find trivial port (port with same network as destination)
 		if port.has_ip and targetNetwork == portNetwork:
 			port.send_ship_to_linked_port(shipData)
-			$MagicEffect/AnimationPlayer.stop()
-			$MagicEffect/AnimationPlayer.play(ANIMATION_SEND, -1, 2.0)
+			#$MagicEffect/AnimationPlayer.stop()
+			#$MagicEffect/AnimationPlayer.play(ANIMATION_SEND, -1, 2.0)
 			var tween = get_tree().create_tween()
 			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.set_trans(Tween.TRANS_QUAD)
 			tween.tween_property($PointLight2D, "energy", base_energy * 1.2, 0.6)
 			tween.tween_property($PointLight2D, "energy", base_energy, 0.3)
 			
-			$MagicEffect/AnimationPlayer.queue(ANIMATION_IDLE)
+			#$MagicEffect/AnimationPlayer.queue(ANIMATION_IDLE)
 			foundDirectConnection = true
 			return 
 			
@@ -149,18 +155,19 @@ func _on_ship_arrived(shipData: ShipData):
 					# print(" * sending on " + port.coordinates)
 
 					port.send_ship_to_linked_port(shipData)
-					$MagicEffect/AnimationPlayer.stop()
-					$MagicEffect/AnimationPlayer.play(ANIMATION_SEND, -1, 2.0)
+					#$MagicEffect/AnimationPlayer.stop()
+					#$MagicEffect/AnimationPlayer.play(ANIMATION_SEND, -1, 2.0)
 					var tween = get_tree().create_tween()
 					tween.set_ease(Tween.EASE_IN_OUT)
 					tween.set_trans(Tween.TRANS_QUAD)
 					tween.tween_property($PointLight2D, "energy", base_energy * 1.2, 0.6)
 					tween.tween_property($PointLight2D, "energy", base_energy, 0.3)
 
-					$MagicEffect/AnimationPlayer.queue(ANIMATION_IDLE)
+					#$MagicEffect/AnimationPlayer.queue(ANIMATION_IDLE)
 					return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		$Energy/AnimationPlayer.play(ANIMATION_SEND)

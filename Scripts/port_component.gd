@@ -33,11 +33,11 @@ func _ready():
 		coordinatesLineEdit = lineEditScn.instantiate()
 		canvasLayer.add_child(coordinatesLineEdit)
 
-		#var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
-		#if lineEditPositionNode:
-			#coordinatesLineEdit.followTarget = lineEditPositionNode
-		#else:
-		coordinatesLineEdit.followTarget = self.get_parent()
+		var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
+		if lineEditPositionNode:
+			coordinatesLineEdit.followTarget = lineEditPositionNode
+		else:
+			coordinatesLineEdit.followTarget = self.get_parent()
 
 	if coordinatesLineEdit:
 		coordinatesLineEdit.connect("text_changed", on_coordinates_text_changed)
