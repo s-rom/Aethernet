@@ -32,11 +32,12 @@ func _navigate_to(goal: Vector2, seconds: float):
 	tween.set_trans(Tween.TRANS_QUAD)
 	
 	var originalScale = self.scale
-	self.scale = Vector2(0.3, 0.3)
+	var reducedScale = Vector2(0.1, 0.1)
+	self.scale = reducedScale
 	
 	tween.tween_property(self, "scale", originalScale, 1)
-	tween.tween_property(self, "position", goal, seconds).set_delay(0.5)
-	tween.tween_property(self, "scale", Vector2(0.3, 0.3), 1).set_delay(seconds)
+	tween.tween_property(self, "position", goal, seconds).set_delay(0.3)
+	tween.tween_property(self, "scale", reducedScale, 1).set_delay(seconds)
 	tween.tween_property(self, "modulate:a", 0.1, 0.5).set_delay(seconds)
 	tween.connect("finished", _on_goal_reached)
 

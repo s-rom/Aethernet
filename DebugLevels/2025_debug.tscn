@@ -25,6 +25,7 @@ adjustment_saturation = 1.17
 
 [node name="2025Debug" type="Node2D"]
 script = ExtResource("1_skcfm")
+metadata/_edit_vertical_guides_ = [-718.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(572, 329)
@@ -50,7 +51,6 @@ hue_variation_max = 0.75
 modulate = Color(0.227981, 0.196153, 0.367317, 1)
 light_mask = 5
 z_index = -2
-position = Vector2(268, 464)
 scale = Vector2(163.761, 113.213)
 texture = ExtResource("3_wc6c7")
 
@@ -92,7 +92,8 @@ position = Vector2(843, 345)
 rotation = -0.261799
 
 [node name="Ship" parent="." instance=ExtResource("11_x016h")]
-position = Vector2(702, 345)
+self_modulate = Color(0.471904, 0.485416, 0.52284, 1)
+position = Vector2(620, 245)
 
 [node name="Ship2" parent="." instance=ExtResource("11_x016h")]
 position = Vector2(232, 307)
@@ -109,7 +110,8 @@ position = Vector2(-34, 416)
 rotation = 0.452387
 
 [node name="Portal3" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(501, 394)
+position = Vector2(492, 382)
 rotation = -0.365456
 
 [editable path="CanvasLayer"]
+[editable path="Ship"]

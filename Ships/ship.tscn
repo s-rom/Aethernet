@@ -44,7 +44,7 @@ scale_curve = SubResource("CurveTexture_giic6")
 alpha_curve = SubResource("CurveTexture_c8brw")
 
 [node name="Ship" type="Sprite2D"]
-self_modulate = Color(0.864675, 0.864675, 0.864675, 1)
+self_modulate = Color(0.724643, 0.724643, 0.724643, 1)
 material = SubResource("CanvasItemMaterial_fga7o")
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CanvasTexture_df8wv")
