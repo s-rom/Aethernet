@@ -61,14 +61,14 @@ func send_ship_to_linked_port(shipData: ShipData):
 	# TODO Cuando se copia shipData se rompe esto
 	# ship.self_modulate = shipData.color
 	
-	var origin = (self.get_parent() as Node2D).global_position
 	if not connected_to:
 		#print("Trying to send a ship on an unlinked port!")
 		return
 		
+	var origin = (self.get_parent() as Node2D).global_position
 	var destination = (connected_to.get_parent() as Node2D).global_position
 	ship.position = origin
-	get_tree().root.add_child(ship)
+	get_tree().current_scene.add_child(ship)
 	
 	#shipData.originCoordinates = originCoord
 	#shipData.destinationCoordinates = dstCoord
@@ -76,7 +76,19 @@ func send_ship_to_linked_port(shipData: ShipData):
 	shipData.destinationPort = connected_to
 	
 	ship.set_network_data(shipData)
-	ship.set_navigation_goal_based_on_velocity(destination, 200)
+
+	if _connection and _connection is PortalConnection:
+
+		var reversed = false
+		var dest_point = self.connected_to.get_parent().global_position 
+		var curve_points = _connection.curve.get_baked_points()
+		if dest_point == curve_points[0]:
+			reversed = true
+			ship.position = destination
+
+		ship.set_navigation_curve(_connection.curve, 1.0, reversed)
+	else:
+		ship.set_navigation_goal_based_on_velocity(destination, 200)
 
 func link(port: PortComponent, connection: Connection):
 	#print("linked")

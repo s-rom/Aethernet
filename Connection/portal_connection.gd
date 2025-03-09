@@ -29,6 +29,8 @@ func _ready() -> void:
 	$Particles1.rotation = point1_start.angle_to_point(point1_end)
 	$Particles2.rotation = point2_start.angle_to_point(point2_end)
 
+	$AnimationPlayer.animation_set_next(_animationSend, _animationReset)
+
 	$AnimationPlayer.play(_animationCreate)
 	_creating = true
 	await $AnimationPlayer.animation_finished

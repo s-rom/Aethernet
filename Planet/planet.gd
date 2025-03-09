@@ -15,6 +15,9 @@ var is_linked: bool:
 var coordinates: String: 
 	get: 
 		return _portComponent.coordinates
+	set(new_coordinates):
+		_portComponent.coordinates = new_coordinates
+		
 
 var has_coordinates: bool:
 	get:

@@ -52,23 +52,67 @@ func _ready():
 	
 	line.material = portalMaterial
 	update_curve()
+	$Path2D.curve = self.curve
 
 
 func _process(delta: float) -> void:
 	
+	var must_update_curve = false
+	
 	if Input.is_key_pressed(KEY_A):
 		(object1 as Node2D).global_rotation += (PI * delta)
+		must_update_curve = true
 		queue_redraw()
 		
 	if Input.is_key_pressed(KEY_D):
 		(object2 as Node2D).global_rotation += (PI * delta)
+		must_update_curve = true
 		queue_redraw()
 	
 	
 	var dir1 = Vector2.from_angle(object1.global_rotation - PI)
 	var dir2 = Vector2.from_angle(object2.global_rotation - PI)
 
-	update_curve()
+	if (must_update_curve):
+		update_curve()
+		$Path2D.curve = self.curve
+	
+	if Input.is_key_pressed(KEY_W):
+		var tween = get_tree().create_tween()
+		
+		var ship = $Path2D/PathFollow2D/ShipSidesA
+		$Path2D/PathFollow2D.progress_ratio = 0.0
+		$Path2D/PathFollow2D/ShipSidesA.rotation_degrees = 90
+		
+
+		var seconds: float = 1.0
+		tween.tween_property(self, "scale", 0.6, 1)
+		tween.tween_property($Path2D/PathFollow2D, "progress_ratio", 1.0, 1.0).\
+			 set_delay(0.3)
+		tween.tween_property(self, "scale", Vector2(0.1, 0.1), 1).set_delay(seconds)
+		tween.tween_property(self, "modulate:a", 0.1, 0.5).set_delay(seconds)
+		tween.tween_callback(_on_path_follow_end)
+		
+	if Input.is_key_pressed(KEY_S):
+		var tween = get_tree().create_tween()
+		$Path2D/PathFollow2D/ShipSidesA.rotation_degrees = -90 
+		$Path2D/PathFollow2D.progress_ratio = 1.0
+		tween.tween_property($Path2D/PathFollow2D, "progress_ratio", 0.0, 1.0)
+		tween.tween_callback(_on_path_follow_end)
+
+		#$Path2D/PathFollow2D.progress += 75.0 * delta
+	
+	
+	
+	print(self.curve.get_baked_points()[0])
+	print($Port1.global_position)
+	print(self.curve.get_baked_points()[-1])
+	print($Port2.global_position)
+
+
+
+func _on_path_follow_end() -> void:
+	print("End")
 
 func _draw() -> void:
 	var pos1 = object1.global_position
@@ -110,3 +154,4 @@ func update_curve():
 
 	var simplified_points = curve.get_baked_points() # curve.tessellate(2, 4)
 	line.points = simplified_points
+	

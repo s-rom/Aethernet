@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://t0excofo1yk3"]
+[gd_scene load_steps=14 format=3 uid="uid://t0excofo1yk3"]
 
 [ext_resource type="Script" path="res://DebugLevels/BezierLine.gd" id="1_tila2"]
 [ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="2_0r0yo"]
 [ext_resource type="PackedScene" uid="uid://dixmi2m5egtqq" path="res://Connection/portal_connection.tscn" id="3_ni2ka"]
 [ext_resource type="Shader" path="res://FX_Testing/portal_connection.gdshader" id="4_pv3pc"]
+[ext_resource type="Texture2D" uid="uid://qruglpeqhv7o" path="res://Ships/ship_sidesA.png" id="5_yr8ad"]
 
 [sub_resource type="Environment" id="Environment_q2m78"]
 background_mode = 3
@@ -72,3 +73,12 @@ environment = SubResource("Environment_q2m78")
 material = SubResource("ShaderMaterial_a4lkx")
 position = Vector2(589, 186)
 points = PackedVector2Array(0, 0, 487, 0)
+
+[node name="Path2D" type="Path2D" parent="."]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+
+[node name="ShipSidesA" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = 1.57079
+scale = Vector2(0.706844, 0.706844)
+texture = ExtResource("5_yr8ad")

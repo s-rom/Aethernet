@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hvqo3bwwj2g7"]
+[gd_scene load_steps=15 format=3 uid="uid://hvqo3bwwj2g7"]
 
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="1_k2uki"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="1_os6s7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_drre8"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="10_bp55m"]
 [ext_resource type="PackedScene" uid="uid://p837s3sbt7vu" path="res://Ships/ship.tscn" id="11_x016h"]
+[ext_resource type="Script" path="res://DebugLevels/auto_config.gd" id="12_vqpi3"]
 
 [sub_resource type="Gradient" id="Gradient_4f86q"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -67,29 +68,29 @@ script = ExtResource("2_wkhfv")
 script = ExtResource("8_jqu7k")
 
 [node name="Planet" parent="planet_network3" instance=ExtResource("9_drre8")]
-position = Vector2(239, -197)
+position = Vector2(718, -162)
 
 [node name="planet_network2" type="Node2D" parent="."]
 script = ExtResource("8_jqu7k")
 set_network_tooltip = "B"
 
 [node name="Planet" parent="planet_network2" instance=ExtResource("9_drre8")]
-position = Vector2(-186, 152)
+position = Vector2(-502, 171)
 
 [node name="planet_network" type="Node2D" parent="."]
 script = ExtResource("8_jqu7k")
 set_network_tooltip = "C"
 
 [node name="Planet" parent="planet_network" instance=ExtResource("9_drre8")]
-position = Vector2(902, 549)
+position = Vector2(1020, 534)
 
 [node name="Station2" parent="." instance=ExtResource("10_bp55m")]
 position = Vector2(-325, 307)
 rotation = 0.523598
 
 [node name="Station" parent="." instance=ExtResource("10_bp55m")]
-position = Vector2(843, 345)
-rotation = -0.261799
+position = Vector2(867, 390)
+rotation = 0.785397
 
 [node name="Ship" parent="." instance=ExtResource("11_x016h")]
 self_modulate = Color(0.471904, 0.485416, 0.52284, 1)
@@ -102,16 +103,21 @@ position = Vector2(232, 307)
 environment = SubResource("Environment_nelw5")
 
 [node name="Portal" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(211, 65)
-rotation = 0.0
+position = Vector2(399, 8.99998)
+rotation = 0.523598
 
 [node name="Portal2" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(-34, 416)
-rotation = 0.452387
+position = Vector2(-84, 434)
+rotation = 0.261799
 
 [node name="Portal3" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(492, 382)
-rotation = -0.365456
+position = Vector2(476, 452)
+rotation = 0.523598
+
+[node name="AutoConfig" type="Node" parent="." node_paths=PackedStringArray("sprites")]
+script = ExtResource("12_vqpi3")
+sprites = [NodePath("../Portal/Port2"), NodePath("../Portal3/Port3"), NodePath("../Portal/Port1"), NodePath("../Portal2/Port3"), NodePath("../Portal2/Port1"), NodePath("../Station2/StationSprite/Port3"), NodePath("../Portal2/Port2"), NodePath("../Portal3/Port1")]
 
 [editable path="CanvasLayer"]
+[editable path="planet_network3/Planet"]
 [editable path="Ship"]

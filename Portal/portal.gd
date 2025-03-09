@@ -16,7 +16,6 @@ const ANIMATION_SEND = "Portal_SendShip"
 
 var base_energy = 0.6
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	var anim = $Energy/AnimationPlayer as AnimationPlayer
@@ -37,7 +36,6 @@ func add_rule(targetNetwork, nextHop):
 	_rules[targetNetwork] = nextHop
 
 func delete_rule_from_string(ruleString: String):
-	# _rules.erase(targetNetwork)
 	var targetNetwork = ruleString.split(' ')[0]
 	print("First token: " + targetNetwork)
 	_rules.erase(targetNetwork)
@@ -60,7 +58,7 @@ func set_hightlight(state):
 	
 	
 	if highlightCircle:
-		circle.visible = not state  # visible when not highlighted
+		circle.visible = not state
 		highlightCircle.visible = state
 		highlightCircle.highligted = state
 
@@ -81,7 +79,6 @@ func _input(event):
 
 
 func _on_port_clicked(portParent, port):
-	# print("Clicked on port " + port.name + " from " + portParent.name)
 	portClicked.emit(portParent, port)
 	
 
@@ -92,7 +89,7 @@ func _restart_particles():
 
 
 
-func _send_animation():
+func _play_send_animation():
 	if $Energy/AnimationPlayer.is_playing():
 		$Energy/AnimationPlayer.stop()
 
@@ -104,6 +101,13 @@ func _send_animation():
 	tween.tween_property($PointLight2D, "energy", base_energy * 1.2, 0.6)
 	tween.tween_property($PointLight2D, "energy", base_energy, 0.3)
 			
+
+func _play_connection_send_animation(port: PortComponent):
+	if not port._connection or port._connection is not PortalConnection:
+		return
+	
+	var connection: PortalConnection = port._connection
+	connection.play_send_animation()
 
 
 func _on_ship_arrived(shipData: ShipData):
@@ -132,7 +136,8 @@ func _on_ship_arrived(shipData: ShipData):
 		# Find trivial port (port with same network as destination)
 		if port.has_ip and targetNetwork == portNetwork:
 			port.send_ship_to_linked_port(shipData)
-			_send_animation()
+			_play_send_animation()
+			_play_connection_send_animation(port)
 			foundDirectConnection = true
 			return 
 			
@@ -164,5 +169,6 @@ func _on_ship_arrived(shipData: ShipData):
 					# print(" * sending on " + port.coordinates)
 
 					port.send_ship_to_linked_port(shipData)
-					_send_animation()
+					_play_send_animation()
+					_play_connection_send_animation(port)
 					return

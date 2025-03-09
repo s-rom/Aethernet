@@ -216,6 +216,7 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	portA.link(portB, new_connection)
 	portB.link(portA, new_connection)
 	new_connection.update_shape()
+	#self.add_child.call_deferred(new_connection)
 	self.add_child(new_connection)
 	
 

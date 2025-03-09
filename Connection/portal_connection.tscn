@@ -194,8 +194,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_olwi4"]
 resource_name = "PortalConnection_SendShip"
-length = 0.7
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -203,7 +201,7 @@ tracks/0/path = NodePath(".:material:shader_parameter/hdr_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.7),
+"times": PackedFloat32Array(0, 0.233333, 0.7, 1),
 "transitions": PackedFloat32Array(1, 5.65685, 1, 1),
 "update": 0,
 "values": [Color(0.497781, 0.390983, 0.906761, 1), Color(0.37044, 0.460607, 0.899362, 1), Color(0.146604, 0.56464, 0.848664, 1), Color(0.548903, 0.463933, 0.936791, 1)]
@@ -215,7 +213,7 @@ tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.566667, 0.7),
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.533333, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.366021),
 "update": 0,
 "values": [8.0, 10.0, 6.0, 7.0, 9.0, 8.0]
@@ -227,7 +225,7 @@ tracks/2/path = NodePath(".:material:shader_parameter/width")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.4, 0.6, 0.7),
+"times": PackedFloat32Array(0, 0.233333, 0.433333, 0.6, 1),
 "transitions": PackedFloat32Array(1, 0.153893, 1, 1, 1),
 "update": 0,
 "values": [0.1, 0.32, 0.2, 0.25, 0.32]
@@ -239,7 +237,7 @@ tracks/3/path = NodePath(".:width")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.533333),
+"times": PackedFloat32Array(0, 0.266667, 0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [30.0, 40.0, 35.0, 25.0]
@@ -251,7 +249,7 @@ tracks/4/path = NodePath(".:material:shader_parameter/noise_movement")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-1.06, 0.795), Vector2(-3.59, 1.18)]
@@ -263,7 +261,7 @@ tracks/5/path = NodePath(".:material:shader_parameter/noise2_movement")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3.485, 0), Vector2(3.485, -0.2)]
@@ -275,10 +273,22 @@ tracks/6/path = NodePath("Particles1:process_material:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.7),
+"times": PackedFloat32Array(0, 0.533333, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.2, 3), Vector2(0.2, 6), Vector2(0.2, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Particles1:process_material:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(25.946, 7.027, 51.892, 1), Color(25.946, 7.027, 72.433, 1), Color(25.946, 7.027, 72.433, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_vs15w"]
@@ -390,6 +400,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1.155, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Particles1:process_material:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(25.946, 7.027, 51.892, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b88k4"]
