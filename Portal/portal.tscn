@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://boyrjboqn8hjt"]
+[gd_scene load_steps=32 format=3 uid="uid://boyrjboqn8hjt"]
 
 [ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
 [ext_resource type="Script" path="res://Scripts/port.gd" id="3_6q58t"]
@@ -147,8 +147,60 @@ tracks/3/keys = {
 "values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
 }
 
+[sub_resource type="Animation" id="Animation_fdp3c"]
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1.68179, 1, 1),
+"update": 0,
+"values": [0.603, 0.3, 0.3, 0.603]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36, 0.88, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.731, 1.0, 3.044, 1.36924]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.666667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.595389, 0.372356, 0.782502, 1), Color(0.360558, 0.0650346, 0.168343, 1), Color(0.180956, 0.0178813, 0.0717416, 1), Color(0.595389, 0.372356, 0.782502, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.466667, 0.866667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796), PackedFloat32Array(0.016129, 0.022, 0.09), PackedFloat32Array(0.01, 0.02, 0.08), PackedFloat32Array(0.016129, 0.0967742, 0.182796), PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7a8h"]
 _data = {
+"Portal_DestroyShip": SubResource("Animation_fdp3c"),
 "Portal_SendShip": SubResource("Animation_5a1va"),
 "RESET": SubResource("Animation_nrpq2")
 }

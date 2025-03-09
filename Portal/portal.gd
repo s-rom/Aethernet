@@ -12,6 +12,8 @@ var _rules = {}
 
 const ANIMATION_RESET = "RESET"
 const ANIMATION_SEND = "Portal_SendShip"
+const ANIMATION_DESTROY = "Portal_DestroyShip"
+
 
 
 var base_energy = 0.6
@@ -125,7 +127,7 @@ func _on_ship_arrived(shipData: ShipData):
 
 	var foundDirectConnection = false
 
-	for port in portalPorts:
+	for port: PortComponent in portalPorts:
 		
 		var portNetwork = planet_network._extract_network_from_coordinates(port.coordinates)
 		assert(port is PortComponent)
@@ -134,7 +136,7 @@ func _on_ship_arrived(shipData: ShipData):
 			continue
 		
 		# Find trivial port (port with same network as destination)
-		if port.has_ip and targetNetwork == portNetwork:
+		if port.has_ip and targetNetwork == portNetwork and port.is_linked():
 			port.send_ship_to_linked_port(shipData)
 			_play_send_animation()
 			_play_connection_send_animation(port)
@@ -172,3 +174,5 @@ func _on_ship_arrived(shipData: ShipData):
 					_play_send_animation()
 					_play_connection_send_animation(port)
 					return
+					
+	$Energy/AnimationPlayer.play(ANIMATION_DESTROY)

@@ -167,5 +167,8 @@ libraries = {
 "": SubResource("AnimationLibrary_rltj8")
 }
 
+[node name="LineEditPosition" type="Node2D" parent="."]
+position = Vector2(34, -49)
+
 [connection signal="ship_arrived" from="PortComponent" to="." method="_on_port_component_ship_arrived"]
 [connection signal="animation_finished" from="SendShipFeedback/AnimationPlayer" to="SendShipFeedback" method="_on_animation_player_animation_finished"]
