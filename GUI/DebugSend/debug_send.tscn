@@ -15,15 +15,15 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 15.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt2yh"]
+texture = ExtResource("6_hfflg")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h32rc"]
 texture = ExtResource("5_oyam2")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 12.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yt2yh"]
-texture = ExtResource("6_hfflg")
 
 [node name="DebugSend" type="PanelContainer"]
 anchors_preset = -1
@@ -109,8 +109,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_7a35l")
 theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxTexture_h32rc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_yt2yh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h32rc")
 text = "Lanzar"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

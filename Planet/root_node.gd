@@ -96,7 +96,7 @@ func _process(_delta: float):
 		currentConnection.add_point(get_global_mouse_position())
 			
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
 
 	## Remove the current connection preview
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT

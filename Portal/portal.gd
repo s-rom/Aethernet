@@ -64,7 +64,7 @@ func set_hightlight(state):
 
 	
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	var circleSprite: Sprite2D = self.find_child("Circle")
 	
 	if (event is InputEventMouse and event.is_pressed() and

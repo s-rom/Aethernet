@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if (event is InputEventMouse and event.is_pressed() and
 	 	self.get_rect().has_point(to_local(get_global_mouse_position())) and 
 		event.button_index == MOUSE_BUTTON_LEFT):
