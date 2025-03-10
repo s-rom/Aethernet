@@ -15,6 +15,7 @@ const ANIMATION_SEND = "Portal_SendShip"
 const ANIMATION_DESTROY = "Portal_DestroyShip"
 
 
+var _dragging = false
 
 var base_energy = 0.6
 
@@ -32,6 +33,22 @@ func _ready():
 		portComponent.connect("ship_arrived", _on_ship_arrived)
 		
 	set_hightlight(false)
+	$SpawnInputButtons.connect("rotated", _update_all_connections)
+	$SpawnInputButtons.connect("start_moving", func(): _dragging = true)
+	$SpawnInputButtons.connect("stop_moving", func(): _dragging = false)
+
+
+func _process(_delta: float):
+	if _dragging:
+		_update_all_connections()
+
+
+func _update_all_connections() -> void:
+	var ports = self.find_children("PortComponent*", "PortComponent", true, false)
+	for port: PortComponent in ports:
+		var connection = port._connection
+		if connection and connection is PortalConnection:
+			connection.update_curve()	
 
 
 func add_rule(targetNetwork, nextHop):

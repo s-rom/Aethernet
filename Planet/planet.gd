@@ -30,6 +30,17 @@ func play_success() -> void:
 func play_error() -> void:
 	$SendShipFeedback.play_error()
 
+
+func to_json_dict() -> Variant:
+	var json_dict = {
+		"scene_filename" : get_scene_file_path(),
+		"x": self.position.x,
+		"y": self.position.y,
+		"rotation": self.rotation,
+		"coordinates": self.coordinates 
+	}
+	return json_dict
+
 func _on_port_component_ship_arrived(shipData: ShipData):
 	var myPort = self.find_child("PortComponent")
 	

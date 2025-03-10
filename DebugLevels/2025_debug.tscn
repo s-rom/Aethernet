@@ -103,15 +103,15 @@ position = Vector2(232, 307)
 environment = SubResource("Environment_nelw5")
 
 [node name="Portal" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(399, 8.99998)
-rotation = 0.523598
+position = Vector2(270, -0.999992)
+rotation = 0.261799
 
 [node name="Portal2" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(-84, 434)
+position = Vector2(-25, 404)
 rotation = 0.261799
 
 [node name="Portal3" parent="." instance=ExtResource("1_k2uki")]
-position = Vector2(476, 452)
+position = Vector2(502, 416)
 rotation = 0.523598
 
 [node name="AutoConfig" type="Node" parent="." node_paths=PackedStringArray("sprites")]

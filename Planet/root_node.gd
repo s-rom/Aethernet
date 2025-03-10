@@ -208,9 +208,9 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	
 	if parentA is Portal and parentB is Portal:
 		_set_portal_ports_coordinates(portA, portB)
-		new_connection.update_curve(
-			endpoint1.global_rotation - PI, 
-			endpoint2.global_rotation - PI)
+		new_connection.start = endpoint1 
+		new_connection.end = endpoint2
+		new_connection.update_curve()
 		new_connection = new_connection.convert_to_portal_connection(portA, portB)
 		
 	portA.link(portB, new_connection)
@@ -266,9 +266,9 @@ func _on_connector_click(connector: Node2D):
 			var portSpriteA = portA.get_parent() as Node2D
 			var portSpriteB = portB.get_parent() as Node2D
 			
-			currentConnection.update_curve(
-				portSpriteB.global_rotation - PI, 
-				portSpriteA.global_rotation - PI)
+			currentConnection.start = portSpriteA
+			currentConnection.end = portSpriteB
+			currentConnection.update_curve()
 			
 			_set_portal_ports_coordinates(portA, portB)
 			var portalConnection = currentConnection.convert_to_portal_connection(portA, portB)

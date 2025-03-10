@@ -3,6 +3,7 @@ extends Node
 @export var sprites: Array[Sprite2D] =  []
 
 func _ready():
+	
 	var networks = get_tree().root.find_children("planet_network*", "", true, false)
 	for network: planet_network in networks:
 		var planets = network.find_children("Planet", "", true, false)

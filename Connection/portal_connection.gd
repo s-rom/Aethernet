@@ -36,6 +36,26 @@ func _ready() -> void:
 	await $AnimationPlayer.animation_finished
 	_creating = false
 
+func update_curve():
+	super()
+	
+	var shapes = self.find_children("*Area2D*", "Area2D", true, false)
+	for shape in shapes:
+		shape.queue_free()
+		
+	update_shape()
+	var point1_start = points[0]
+	var point1_end = points[1]
+
+	var point2_start = points[-1]
+	var point2_end = points[-2]
+
+	$Particles1.position = point1_start + particles_distance * point1_start.direction_to(point1_end)
+	$Particles2.position = point2_start + particles_distance * point2_start.direction_to(point1_end)
+
+	$Particles1.rotation = point1_start.angle_to_point(point1_end)
+	$Particles2.rotation = point2_start.angle_to_point(point2_end)
+
 
 func associate_port(port: PortComponent) -> void:
 	self._port_components.append(port)
@@ -78,7 +98,7 @@ func update_shape() -> void:
 
 
 func _highlight() -> void:
-	if _deleting:
+	if _deleting: 
 		return
 
 	if $AnimationPlayer.is_playing():

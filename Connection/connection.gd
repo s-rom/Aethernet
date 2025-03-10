@@ -16,6 +16,9 @@ var curve: Curve2D = null
 		highligted = value
 
 
+var start: Node2D
+var end: Node2D
+
 var _hightlightTween: Tween = null
 var _originalWidth = self.width
 var _originalColor = self.default_color
@@ -48,7 +51,6 @@ func _connect_to_area_signals(area2D: Area2D):
 	area2D.connect("mouse_exited", _on_area_2d_mouse_exited)
 
 
-
 func initColliderShape(startGlobalPos: Vector2):
 	var collisionShape = self.find_child("CollisionShape2D") as CollisionShape2D
 	
@@ -67,6 +69,8 @@ func convert_to_portal_connection(port_a: PortComponent, port_b: PortComponent) 
 	newConnection.can_be_deleted = self.can_be_deleted
 	newConnection.associate_port(port_a)
 	newConnection.associate_port(port_b)
+	newConnection.start = self.start 
+	newConnection.end = self.end
 	return newConnection;
 
 func update_shape() -> void: 
@@ -95,18 +99,24 @@ func update_shape() -> void:
 	# self.points[-1] += dir_b_a
 
 
-func update_curve(rotation1, rotation2) -> void:
+func update_curve() -> void:
 
+	var rotation1 = start.global_rotation - PI 
+	var rotation2 = end.global_rotation - PI
+
+	points[0] = start.global_position
+	points[-1] = end.global_position
+	
 	var direction1 = Vector2.from_angle(rotation1)
 	var direction2 = Vector2.from_angle(rotation2)
 
 	var angle_between = direction1.angle_to(direction2)
 	var angle_diff = abs((abs(angle_between) - PI))
-	if angle_diff < deg_to_rad(20):
+	if angle_diff < deg_to_rad(10):
 		return
 
 	var P0 = points[0]
-	var P3 = points[-1]  
+	var P3 = points[-1]
 
 	self.curve = Curve2D.new()
 	var out_handle_P0 = direction1 * 100 * angle_diff 
