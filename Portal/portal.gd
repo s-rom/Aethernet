@@ -47,8 +47,11 @@ func _update_all_connections() -> void:
 	var ports = self.find_children("PortComponent*", "PortComponent", true, false)
 	for port: PortComponent in ports:
 		var connection = port._connection
-		if connection and connection is PortalConnection:
-			connection.update_curve()	
+		if connection: # and connection is PortalConnection:
+			if connection is PortalConnection:
+				connection.update_curve()	
+			else:
+				connection.update_shape()
 
 
 func add_rule(targetNetwork, nextHop):

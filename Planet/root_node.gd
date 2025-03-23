@@ -190,9 +190,8 @@ func _push_stack_portal_network(network: String) -> void:
 	_availablePortalNetworks.push_back(network)
 
 # both endpoints are the immediate parent of a PortComponent (Sprite2D)
-func create_connection(endpoint1, endpoint2, deletable = true):
+func create_connection(endpoint1, endpoint2, deletable = true, manual = false):
 	var new_connection = connectionScn.instantiate()
-	
 	
 	new_connection.can_be_deleted = deletable
 	new_connection.clear_points()
@@ -205,14 +204,23 @@ func create_connection(endpoint1, endpoint2, deletable = true):
 	
 	var parentA = portA.owner
 	var parentB = portB.owner
+	new_connection.start = endpoint1 
+	new_connection.end = endpoint2
 	
 	if parentA is Portal and parentB is Portal:
 		_set_portal_ports_coordinates(portA, portB)
-		new_connection.start = endpoint1 
-		new_connection.end = endpoint2
 		new_connection.update_curve()
 		new_connection = new_connection.convert_to_portal_connection(portA, portB)
-		
+
+
+		# Only in case this connection is created manually
+		# Remove current connection
+		if manual and currentConnection != null: 
+			currentConnection.queue_free()
+			currentConnection = null
+
+
+
 	portA.link(portB, new_connection)
 	portB.link(portA, new_connection)
 	new_connection.update_shape()
@@ -254,37 +262,8 @@ func _on_connector_click(connector: Node2D):
 		currentConnection.remove_point(1)
 		# Add second connector point
 		currentConnection.add_point(connector.global_position)
-		
-		var portA = connector.find_child("PortComponent") as PortComponent
-		var portB = connectionOrigin.find_child("PortComponent") as PortComponent
-		
-		var ownerA = portA.owner
-		var ownerB = portB.owner		
-		
-		if ownerA is Portal and ownerB is Portal:
-			
-			var portSpriteA = portA.get_parent() as Node2D
-			var portSpriteB = portB.get_parent() as Node2D
-			
-			currentConnection.start = portSpriteA
-			currentConnection.end = portSpriteB
-			currentConnection.update_curve()
-			
-			_set_portal_ports_coordinates(portA, portB)
-			var portalConnection = currentConnection.convert_to_portal_connection(portA, portB)
-			add_child(portalConnection)
-			currentConnection.queue_free()
-			currentConnection = portalConnection
-
-
-		# Linking must happen after connection is (optionally) converted to PortalConnection
-		# link() connects to 'tree_exiting' signal
-		# when converting: the "original" connection is destroyed and the ports are clear()'ed 
-		portA.link(portB, currentConnection)
-		portB.link(portA, currentConnection)
-
-
-		currentConnection.update_shape()
+		create_connection(connector, connectionOrigin, true, true)
+		currentConnection.queue_free()
 		currentConnection = null
 		return
 		

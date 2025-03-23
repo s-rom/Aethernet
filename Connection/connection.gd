@@ -75,6 +75,10 @@ func convert_to_portal_connection(port_a: PortComponent, port_b: PortComponent) 
 
 func update_shape() -> void: 
 
+
+	print("Base update shape called")
+	self.points[0] = self.start.global_position
+	self.points[1] = self.end.global_position
 	var point_a: Vector2 = self.points[0]
 	var point_b: Vector2 = self.points[-1]
 	
