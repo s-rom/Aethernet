@@ -32,6 +32,9 @@ func _set_slide_data():
 
 func next_slide():
 	
+	if not _slides:
+		return
+	
 	# Pressed next on last slide
 	if _current_slide_idx == len(_slides) - 1:
 		self.visible = false
@@ -45,6 +48,9 @@ func next_slide():
 	
 	
 func previous_slide():
+	
+	if not _slides:
+		return
 	
 	if _current_slide_idx == 0:
 		return

@@ -114,9 +114,9 @@ anchor_top = 0.014
 anchor_right = 0.244
 anchor_bottom = 0.106
 offset_left = -0.52
-offset_top = -0.0720005
+offset_top = 0.927999
 offset_right = 0.911987
-offset_bottom = 0.312004
+offset_bottom = 1.312
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 10
@@ -135,7 +135,6 @@ disabledColor = Color(0.396078, 0.396078, 0.396078, 0.560784)
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MainButtons"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 5
 
 [node name="GoalButton" type="Button" parent="MainButtons/AspectRatioContainer2"]
@@ -148,7 +147,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_33lt6")
 
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MainButtons"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 5
 
 [node name="HelpButton" type="Button" parent="MainButtons/AspectRatioContainer3"]
@@ -161,7 +159,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_o0bu1")
 
 [node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MainButtons"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HomeButton" type="Button" parent="MainButtons/AspectRatioContainer4"]
 custom_minimum_size = Vector2(60, 60)

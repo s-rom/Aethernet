@@ -20,3 +20,7 @@ func _on_levels_button_pressed():
 
 func _on_debug_test() -> void:
 	get_tree().change_scene_to_file("res://DebugLevels/2025_debug.tscn")
+
+
+func _on_sandbox_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://SandboxMode/SandboxMode.tscn")

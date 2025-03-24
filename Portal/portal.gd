@@ -110,6 +110,9 @@ func _restart_particles():
 	$Energy/GPUParticles2D.emitting = true
 
 
+func _exit_tree() -> void:
+	pass
+
 
 func _play_send_animation():
 	if $Energy/AnimationPlayer.is_playing():

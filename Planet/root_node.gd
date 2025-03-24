@@ -3,7 +3,7 @@ extends Node2D
 
 class_name root_script
 
-var cameraSpeed = 25.
+@export var cameraSpeed = 25.
 
 var connectionScn = preload("res://Connection/connection.tscn")
 
@@ -11,6 +11,8 @@ var connectionScn = preload("res://Connection/connection.tscn")
 var connectionOrigin = null
 var currentConnection: Connection = null
 var _availablePortalNetworks = []
+
+@export var camera: MainCamera
 
 var _draggingCamera = false
 var _lastMousePosition: Vector2
@@ -41,16 +43,19 @@ func _ready():
 		for portal in self.find_children("*", "Portal", true, false):
 			var portalLight = portal.find_child("PointLight2D", true, false) as PointLight2D
 			portalLight.energy = portalLight.energy * 0.4
-	
-		
-	
+
 	
 	print("CURRENT LEVEL: ", LevelsData.current_level)
 	debugSender = find_child("DebugSend")
 	
 	$CanvasLayer/DebugSend.connect("send_ship", _on_debug_send_send_ship)
 	
-
+	var toolbox = $CanvasLayer.find_child("Toolbox", false, true) as Toolbox
+	print(toolbox)
+	if toolbox:
+		toolbox.object_dropped.connect(_on_object_created)
+		toolbox.visible = true
+	
 
 	var stations_and_portals = get_tree().get_nodes_in_group("port")
 	for port_entity in stations_and_portals:
@@ -65,6 +70,8 @@ func _ready():
 	var planets = self.find_children("Planet*")
 	for planet in planets:
 		planet.connect("onPlanetClick", _on_planet_click)	
+
+
 
 
 func _init_portal_networks():
@@ -90,11 +97,15 @@ func _init_portal_networks():
 
 
 
-func _process(_delta: float):
+func _process(delta: float):
 	if currentConnection != null:
 		currentConnection.remove_point(1)
 		currentConnection.add_point(get_global_mouse_position())
-			
+	
+	if _draggingCamera:
+		$Camera2D.position -= _mouseMovement * delta * cameraSpeed
+		_mouseMovement = Vector2.ZERO
+
 
 func _unhandled_input(event: InputEvent) -> void:
 
@@ -151,10 +162,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event is InputEventMouseMotion:
 			_mouseMovement  = event.relative
 			
-func _physics_process(delta):
-	if _draggingCamera:
-		$Camera2D.position -= _mouseMovement * delta * cameraSpeed
-		_mouseMovement = Vector2.ZERO
 
 
 func _on_portal_click(portal: Portal):
@@ -366,6 +373,27 @@ func send_ship(from, to):
 	shipData.originCoordinates = from
 	shipData.destinationCoordinates = to
 	originPort.send_ship_to_linked_port(shipData)
+
+
+func add_portal(object: Portal):
+	object.connect("portalClicked", _on_portal_click)
+	object.connect("portClicked", _on_station_port_clicked)
+	camera.register_portal(object)
+
+func add_planet(object: Planet):
+	object.connect("onPlanetClick", _on_planet_click)	
+	
+func add_station(object: Station):
+	object.connect("portClicked", _on_station_port_clicked)
+
+
+func _on_object_created(object):
+	if object is Portal:
+		add_portal(object)
+	elif object is Planet:
+		add_planet(object)
+	elif object is Station:
+		add_station(object)	
 
 
 func _on_debug_send_send_ship(from, to):

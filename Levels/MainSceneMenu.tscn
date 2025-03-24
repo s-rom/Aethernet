@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gl4eipjtscdy"]
+[gd_scene load_steps=20 format=3 uid="uid://gl4eipjtscdy"]
 
 [ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="1_2b7hx"]
 [ext_resource type="Script" path="res://Levels/MainMenu.gd" id="1_ukv4a"]
@@ -10,10 +10,48 @@
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_0jv6b"]
 [ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="7_dpdx7"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="8_l10oo"]
+[ext_resource type="Shader" path="res://FX_Testing/InnerPortal.gdshader" id="10_y2bsr"]
 
 [sub_resource type="Gradient" id="Gradient_guf61"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_tgyix"]
+offsets = PackedFloat32Array(0.016129, 0.0967742, 0.182796)
+colors = PackedColorArray(0.118581, 0.118581, 0.118581, 0, 1, 1, 1, 1, 0, 0, 0, 0.227)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_071tq"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tcxas"]
+noise_type = 2
+frequency = 0.0199
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ahn2p"]
+seamless = true
+noise = SubResource("FastNoiseLite_tcxas")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pa5f"]
+frequency = 0.0139
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dyib"]
+seamless = true
+noise = SubResource("FastNoiseLite_2pa5f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2ex3"]
+resource_local_to_scene = true
+shader = ExtResource("10_y2bsr")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_071tq")
 
 [node name="MainSceneMenu" type="Node2D"]
 script = ExtResource("1_ukv4a")
@@ -126,8 +164,11 @@ grow_horizontal = 0
 [node name="Portal" parent="Container" instance=ExtResource("5_0jv6b")]
 position = Vector2(839, 298)
 
-[node name="PointLight2D" parent="Container/Portal" index="7"]
+[node name="PointLight2D" parent="Container/Portal" index="6"]
 energy = 2.65
+
+[node name="Energy" parent="Container/Portal" index="7"]
+material = SubResource("ShaderMaterial_j2ex3")
 
 [node name="MeteorDetailedLarge" parent="Container" instance=ExtResource("7_dpdx7")]
 position = Vector2(600, 182)
@@ -152,6 +193,7 @@ energy = 0.59
 range_item_cull_mask = 3
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/SandboxButton" to="." method="_on_sandbox_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SandboxButton2" to="." method="_on_debug_test"]
 
 [editable path="Container/Portal"]

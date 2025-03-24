@@ -80,8 +80,6 @@ func _on_goal_completed():
 
 func _on_play_button_pressed():
 	
-
-	
 	if _playButton.is_play_mode():
 		_hide_line_edits()
 		
@@ -89,7 +87,6 @@ func _on_play_button_pressed():
 		playButtonPressed.emit()
 		goalPanel.visible = true
 
-	
 	else:
 		stopButtonPressed.emit()
 		_show_line_edits()

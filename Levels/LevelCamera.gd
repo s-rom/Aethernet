@@ -1,5 +1,6 @@
 extends Camera2D
 
+class_name MainCamera
 
 var _amount_area_ratio
 var _base_rect_size
@@ -21,9 +22,12 @@ func _ready():
 	
 	var portals = get_tree().root.find_children("Portal*", "Portal", true, false)
 	for portal: Portal in portals:
-		portal.portalClicked.connect(_on_portal_clicked)
+		register_portal(portal)
 
-	
+
+func register_portal(portal: Portal):
+	portal.portalClicked.connect(_on_portal_clicked)
+
 
 func _on_portal_clicked(portal: Portal):
 	var tween = get_tree().create_tween() as Tween

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://cppqdavaeudcq"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_yexpy"]
+[ext_resource type="Script" path="res://SandboxMode/Toolbox.gd" id="2_56k2l"]
+[ext_resource type="Texture2D" uid="uid://dvuj7jt4yig3x" path="res://Station/station_C.png" id="2_sxesv"]
+[ext_resource type="PackedScene" uid="uid://5iaswq83b80c" path="res://SandboxMode/ToolboxItemButton.tscn" id="3_l5s1i"]
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="4_7lddq"]
+[ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="4_dvw38"]
+[ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_f3eln"]
+[ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="7_neo1u"]
+[ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_6heom"]
+
+[node name="Toolbox" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.5
+anchor_right = 0.039
+anchor_bottom = 0.5
+offset_left = 0.0719986
+offset_top = -151.0
+offset_right = 88.072
+offset_bottom = 159.0
+grow_vertical = 2
+theme = ExtResource("1_yexpy")
+theme_type_variation = &"PanelContainerInner"
+script = ExtResource("2_56k2l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ButtonPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yexpy")
+theme_type_variation = &"PanelContainerKenney"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ButtonPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ButtonTexture" parent="MarginContainer/VBoxContainer/ButtonPanel/MarginContainer" instance=ExtResource("3_l5s1i")]
+layout_mode = 2
+texture = ExtResource("4_dvw38")
+object_scene = ExtResource("5_f3eln")
+
+[node name="ButtonPanel2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yexpy")
+theme_type_variation = &"PanelContainerKenney"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ButtonPanel2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ButtonTexture" parent="MarginContainer/VBoxContainer/ButtonPanel2/MarginContainer" instance=ExtResource("3_l5s1i")]
+layout_mode = 2
+texture = ExtResource("2_sxesv")
+object_scene = ExtResource("7_neo1u")
+
+[node name="ButtonPanel3" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yexpy")
+theme_type_variation = &"PanelContainerKenney"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ButtonPanel3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ButtonTexture" parent="MarginContainer/VBoxContainer/ButtonPanel3/MarginContainer" instance=ExtResource("3_l5s1i")]
+layout_mode = 2
+texture = ExtResource("4_7lddq")
+object_scene = ExtResource("9_6heom")
