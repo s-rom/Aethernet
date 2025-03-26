@@ -96,6 +96,13 @@ func link(port: PortComponent, connection: Connection):
 	self._connection = connection
 	self._connection.connect("tree_exiting", _on_connection_destroyed)
 
+func hide_line_edit() -> void:
+	if coordinatesLineEdit:
+		coordinatesLineEdit.visible = false
+		
+func show_line_edit() -> void:
+	if coordinatesLineEdit:
+		coordinatesLineEdit.visible = true
 
 func _exit_tree() -> void:
 	if coordinatesLineEdit:

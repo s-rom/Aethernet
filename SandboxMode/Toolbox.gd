@@ -8,7 +8,7 @@ var _buttons = []
 
 var _dragging = false
 var _dragging_scene = null
-var _dragging_object = null
+var _dragging_object: Node2D = null
 
 var _camera: Camera2D 
 
@@ -45,7 +45,9 @@ func _on_object_clicked(scene: PackedScene):
 	_dragging_object = _dragging_scene.instantiate()
 	main_scene.add_child(_dragging_object)
 	_dragging_object.owner = main_scene
-	
+	for pc: PortComponent in\
+				_dragging_object.find_children("*", "PortComponent", true, false):
+				pc.hide_line_edit()
 	_dragging_object.scale = 0.5 * _dragging_object.scale
 	
 
@@ -64,5 +66,8 @@ func _input(event: InputEvent) -> void:
 			_dragging = false
 			_dragging_scene = null
 			_dragging_object.scale = 2 * _dragging_object.scale
-			_dragging_object.find_child("")
+			_dragging_object.find_child("SpawnInputButtons").show_buttons()
+			for pc: PortComponent in\
+				_dragging_object.find_children("*", "PortComponent", true, false):
+				pc.show_line_edit()
 			_dragging_object = null

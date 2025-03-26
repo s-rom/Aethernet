@@ -8,7 +8,14 @@ var _dragging = false
 
 func _ready() -> void:
 	_create_texture_rect()
+	hide_buttons()
 	
+
+func show_buttons():
+	_buttons_instance.visible = true
+
+func hide_buttons():
+	_buttons_instance.visible = false
 
 #$SpawnInputButtons.connect("rotated", _update_all_connections)
 #$SpawnInputButtons.connect("start_moving", func(): _dragging = true)
