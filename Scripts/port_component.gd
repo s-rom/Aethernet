@@ -97,11 +97,18 @@ func link(port: PortComponent, connection: Connection):
 	self._connection.connect("tree_exiting", _on_connection_destroyed)
 
 
-func _clear():
+func _exit_tree() -> void:
+	if coordinatesLineEdit:
+		coordinatesLineEdit.queue_free()
+		
+	if _connection:
+		_connection.queue_free()
+
+func _unlink():
 	#print("connection cleared")
 	self.connected_to = null
 	self._connection = null
 
 func _on_connection_destroyed():
 	#print("Connection was destroyed on " + self.get_parent().name)
-	_clear()
+	_unlink()

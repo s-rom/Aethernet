@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhyh2l84m7ihr"]
+[gd_scene load_steps=20 format=3 uid="uid://bhyh2l84m7ihr"]
 
 [ext_resource type="Script" path="res://Planet/planet.gd" id="1_jmkuo"]
 [ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="1_wuty0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dseb3a4ogemns" path="res://GUI/Vector/Green/Icon_Check.png" id="6_q8mnm"]
 [ext_resource type="Script" path="res://Planet/SendShipFeedback.gd" id="7_3rues"]
 [ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="10_qqlhi"]
+[ext_resource type="Script" path="res://Scripts/rotation_input.gd" id="12_d8ba8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6oaoi"]
 
@@ -169,6 +170,11 @@ libraries = {
 
 [node name="LineEditPosition" type="Node2D" parent="."]
 position = Vector2(34, -49)
+
+[node name="SpawnInputButtons" type="Node2D" parent="."]
+position = Vector2(-84, -92)
+scale = Vector2(4.16667, -11.8333)
+script = ExtResource("12_d8ba8")
 
 [connection signal="ship_arrived" from="PortComponent" to="." method="_on_port_component_ship_arrived"]
 [connection signal="animation_finished" from="SendShipFeedback/AnimationPlayer" to="SendShipFeedback" method="_on_animation_player_animation_finished"]

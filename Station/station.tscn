@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv41hkd5wd3u5"]
+[gd_scene load_steps=16 format=3 uid="uid://dv41hkd5wd3u5"]
 
 [ext_resource type="Script" path="res://Station/Station.gd" id="1_qtt3d"]
 [ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="2_0x0ah"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://btyjsjncrylhh" path="res://Pruebas/crosshair038.png" id="8_0bp0s"]
 [ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="8_b17xu"]
 [ext_resource type="Texture2D" uid="uid://dh25w5d4bxchu" path="res://Pruebas/crosshair175.png" id="10_6t3ov"]
+[ext_resource type="Script" path="res://Scripts/rotation_input.gd" id="12_2wwin"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43r6j"]
 light_mode = 1
@@ -113,3 +114,8 @@ scale = Vector2(0.524537, 0.524537)
 texture = ExtResource("10_6t3ov")
 script = ExtResource("8_b17xu")
 rotationSpeed = 0.5
+
+[node name="SpawnInputButtons" type="Node2D" parent="."]
+position = Vector2(-81, -87)
+scale = Vector2(4.16667, -11.8333)
+script = ExtResource("12_2wwin")

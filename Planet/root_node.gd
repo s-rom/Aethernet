@@ -270,8 +270,9 @@ func _on_connector_click(connector: Node2D):
 		# Add second connector point
 		currentConnection.add_point(connector.global_position)
 		create_connection(connector, connectionOrigin, true, true)
-		currentConnection.queue_free()
-		currentConnection = null
+		if currentConnection:
+			currentConnection.queue_free()
+			currentConnection = null
 		return
 		
 	# Create a new connection

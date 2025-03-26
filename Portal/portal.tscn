@@ -246,7 +246,6 @@ fill_to = Vector2(0.0854701, 0.918803)
 [node name="Portal" type="Node2D" groups=["port"]]
 light_mask = 2
 position = Vector2(0, -1)
-rotation = -0.00494416
 scale = Vector2(0.41, 0.41)
 script = ExtResource("1_skunw")
 
@@ -358,5 +357,5 @@ preprocess = 0.5
 explosiveness = 1.0
 
 [node name="SpawnInputButtons" type="Node2D" parent="."]
-position = Vector2(-200.941, -303.436)
+position = Vector2(-126.829, -136.585)
 script = ExtResource("17_0cl0e")

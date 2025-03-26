@@ -10,7 +10,7 @@ var _planets
 
 func _ready():
 	_planets = self.find_children("Planet*", "Planet", false, true)
-	_networkPattern.compile("^([A-Z]+)[0-9]+$")
+	_compilePattern()
 	
 	for planet in _planets:
 		var sprite = planet.find_child("PlanetSprite") as Sprite2D
@@ -24,7 +24,15 @@ func _ready():
 		var lineEdit = portComponent.coordinatesLineEdit as LineEdit
 		if lineEdit:
 			lineEdit.placeholder_text = set_network_tooltip + "?"
-	
+
+static func _compilePattern():
+	if not _networkPattern:
+		_networkPattern = RegEx.new()
+		
+	if _networkPattern.get_pattern().is_empty():
+		_networkPattern.compile("^([A-Z]+)[0-9]+$")
+
+
 
 func number_of_planets():
 	var planets = self.find_children("Planet*", "Planet")
@@ -65,6 +73,7 @@ func check_all_connected():
 	return true
 
 static func _extract_network_from_coordinates(coordinates):
+	_compilePattern()
 	var result = _networkPattern.search(coordinates)
 	if result:
 		var network = result.get_string(1)

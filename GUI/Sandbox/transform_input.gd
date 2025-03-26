@@ -5,12 +5,18 @@ class_name TransformInput
 signal rotated()
 signal start_moving()
 signal stop_moving()
+signal deleted()
 
 @onready var camera2D: Camera2D = get_viewport().get_camera_2d()
 
 var position_target: Node2D = null
 var rotation_target: Node2D = null
-var follow_target: Node2D = null
+var input_position: Node2D = null:
+	set(value):
+		input_position = value
+		_offset = input_position.position
+	
+var _offset: Vector2 = Vector2.ZERO
 
 var _rotating = false
 var _moving = false
@@ -21,13 +27,17 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if not follow_target:
+	if not input_position:
 		return
 	
-	var screenPos = camera2D.get_screen_transform() * follow_target.global_position
+	
+
+	var screenPos = camera2D.get_screen_transform() * position_target.global_position\
+					+ _offset * camera2D.zoom
 	screenPos -= camera2D.get_screen_center_position() * camera2D.zoom
 	self.set_position(screenPos)
 	self.scale = camera2D.zoom
+	
 		
 
 
@@ -56,3 +66,8 @@ func _on_rotate_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and _rotating:
 		rotation_target.rotate(event.screen_relative.x * 0.005)
 		rotated.emit()
+
+
+func _on_delete_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		deleted.emit()

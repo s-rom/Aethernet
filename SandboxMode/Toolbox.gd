@@ -46,6 +46,7 @@ func _on_object_clicked(scene: PackedScene):
 	main_scene.add_child(_dragging_object)
 	_dragging_object.owner = main_scene
 	
+	_dragging_object.scale = 0.5 * _dragging_object.scale
 	
 
 func _input(event: InputEvent) -> void:
@@ -62,4 +63,6 @@ func _input(event: InputEvent) -> void:
 			object_dropped.emit(_dragging_object)
 			_dragging = false
 			_dragging_scene = null
+			_dragging_object.scale = 2 * _dragging_object.scale
+			_dragging_object.find_child("")
 			_dragging_object = null
