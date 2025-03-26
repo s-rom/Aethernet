@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5mj83jjunecl"]
+
+[ext_resource type="Texture2D" uid="uid://dvuj7jt4yig3x" path="res://Station/station_C.png" id="2_t7x2t"]
+[ext_resource type="Texture2D" uid="uid://cf4fqlerivivl" path="res://Station/station_C_normal.png" id="3_wpyuf"]
+[ext_resource type="Texture2D" uid="uid://btyjsjncrylhh" path="res://Pruebas/crosshair038.png" id="4_0xiyv"]
+[ext_resource type="Texture2D" uid="uid://dh25w5d4bxchu" path="res://Pruebas/crosshair175.png" id="5_vf1te"]
+[ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="6_5o4uu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2cetl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_0ncug"]
+diffuse_texture = ExtResource("2_t7x2t")
+normal_texture = ExtResource("3_wpyuf")
+
+[node name="StationClone" type="Node2D"]
+
+[node name="StationSprite" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("CanvasItemMaterial_2cetl")
+position = Vector2(-1, 1)
+rotation = 0.785398
+texture = SubResource("CanvasTexture_0ncug")
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="Crosshair038" type="Sprite2D" parent="Animations"]
+self_modulate = Color(0.300455, 0.279524, 0.504265, 1)
+position = Vector2(-1, 1)
+rotation = 3.14159
+texture = ExtResource("4_0xiyv")
+
+[node name="Crosshair175" type="Sprite2D" parent="Animations"]
+self_modulate = Color(0.301961, 0.278431, 0.505882, 1)
+position = Vector2(-0.915, 0.935)
+rotation = 5.95634
+scale = Vector2(0.524537, 0.524537)
+texture = ExtResource("5_vf1te")
+script = ExtResource("6_5o4uu")
+rotationSpeed = 0.5

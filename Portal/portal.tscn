@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://boyrjboqn8hjt"]
+[gd_scene load_steps=36 format=3 uid="uid://boyrjboqn8hjt"]
 
 [ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
 [ext_resource type="Script" path="res://Scripts/port.gd" id="3_6q58t"]
@@ -198,11 +198,271 @@ tracks/3/keys = {
 "update": 0,
 "values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i6uvn"]
+resource_name = "Portal_Dropped"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 1),
+"transitions": PackedFloat32Array(1, 3.605, 1.93187, 0.353554),
+"update": 0,
+"values": [0.0, 0.3, 0.15, 0.603]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.731]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0177324, 0.0177324, 0.0177324, 1), Color(0.595389, 0.372356, 0.782502, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796), PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_all_line_edits"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q16r1"]
+resource_name = "Portal_Shutdown"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide_all_line_edits"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oa3yy"]
+resource_name = "Portal_Delete"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.603, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.731]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.595389, 0.372356, 0.782502, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4),
+"transitions": PackedFloat32Array(1, 0.392292, 1),
+"update": 0,
+"values": [2.0, 0.2, 0.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide_all_line_edits"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.536), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7a8h"]
 _data = {
+"Portal_Delete": SubResource("Animation_oa3yy"),
 "Portal_DestroyShip": SubResource("Animation_fdp3c"),
+"Portal_Dropped": SubResource("Animation_i6uvn"),
 "Portal_SendShip": SubResource("Animation_5a1va"),
+"Portal_Shutdown": SubResource("Animation_q16r1"),
 "RESET": SubResource("Animation_nrpq2")
 }
 
@@ -210,14 +470,14 @@ _data = {
 _data = [Vector2(0.00409836, 0), 0.0, -0.905159, 0, 0, Vector2(0.217213, 0.274725), -0.40626, -0.40626, 0, 0, Vector2(0.729508, 0.89011), 5.06471, 5.06471, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_h6uee"]
+[sub_resource type="CurveTexture" id="CurveTexture_irfhc"]
 curve = SubResource("Curve_yh8sf")
 
 [sub_resource type="Curve" id="Curve_1q5ef"]
 _data = [Vector2(0, 0.076923), 0.0, 0.0, 0, 0, Vector2(0.27459, 0.549451), 0.928149, 0.928149, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_smiu2"]
+[sub_resource type="CurveTexture" id="CurveTexture_v6ja6"]
 curve = SubResource("Curve_1q5ef")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_viacc"]
@@ -229,16 +489,16 @@ initial_velocity_min = 42.86
 initial_velocity_max = 85.72
 gravity = Vector3(0, 0, 0)
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_smiu2")
+scale_curve = SubResource("CurveTexture_v6ja6")
 color = Color(1.622, 1.2, 3, 1)
-alpha_curve = SubResource("CurveTexture_h6uee")
+alpha_curve = SubResource("CurveTexture_irfhc")
 
-[sub_resource type="Gradient" id="Gradient_oi0cx"]
+[sub_resource type="Gradient" id="Gradient_yrequ"]
 offsets = PackedFloat32Array(0, 0.995968)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7okdr"]
-gradient = SubResource("Gradient_oi0cx")
+gradient = SubResource("Gradient_yrequ")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.0854701, 0.918803)
@@ -253,7 +513,7 @@ script = ExtResource("1_skunw")
 light_mask = 2
 material = SubResource("ShaderMaterial_blicw")
 position = Vector2(214.161, 96.182)
-rotation = -2.7276
+rotation = -2.72795
 scale = Vector2(1.41, 1.41)
 texture = SubResource("CanvasTexture_mlklw")
 script = ExtResource("3_6q58t")

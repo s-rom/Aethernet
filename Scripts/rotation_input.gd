@@ -7,7 +7,7 @@ var _buttons_instance = null
 var _dragging = false
 
 func _ready() -> void:
-	_create_texture_rect()
+	_create_buttons()
 	hide_buttons()
 	
 
@@ -38,7 +38,7 @@ func _update_all_connections() -> void:
 			else:
 				connection.update_shape()
 
-func _create_texture_rect() -> void:
+func _create_buttons() -> void:
 	var canvasLayer = get_tree().current_scene.find_child("CanvasLayer", true, false)
 	if canvasLayer:
 		_buttons_instance = _rotationInputControlScn.instantiate() as TransformInput
@@ -52,7 +52,14 @@ func _create_texture_rect() -> void:
 		_buttons_instance.rotated.connect(func(): _update_all_connections())
 		_buttons_instance.start_moving.connect(func(): _dragging = true)
 		_buttons_instance.stop_moving.connect(func(): _dragging = false)
-		_buttons_instance.deleted.connect(func(): self.owner.queue_free())
+		_buttons_instance.deleted.connect(_on_delete)
+
+func _on_delete():
+	if self.owner.has_method("destroy"):
+		self.owner.call("destroy")
+	else:
+		self.owner.queue_free()
+
 
 func _exit_tree():
 	if _buttons_instance:

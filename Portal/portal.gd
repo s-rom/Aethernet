@@ -11,8 +11,11 @@ var _rules = {}
 
 
 const ANIMATION_RESET = "RESET"
+const ANIMATION_SHUTDOWN = "Portal_Shutdown"
 const ANIMATION_SEND = "Portal_SendShip"
 const ANIMATION_DESTROY = "Portal_DestroyShip"
+const ANIMATION_DROPPED = "Portal_Dropped"
+const ANIMATION_DELETE = "Portal_Delete"
 
 
 var _dragging = false
@@ -22,9 +25,13 @@ var base_energy = 0.6
 func _ready():
 	
 	var anim = $Energy/AnimationPlayer as AnimationPlayer
-	anim.play(ANIMATION_RESET)
+	anim.play(ANIMATION_SHUTDOWN)
+	
 	anim.animation_set_next(ANIMATION_SEND, ANIMATION_RESET)
-
+	anim.animation_set_next(ANIMATION_DROPPED, ANIMATION_RESET)
+	
+	hide_all_line_edits()
+	anim.play(ANIMATION_DROPPED)
 	
 	for port in self.find_children("Port*", "PortSprite"):
 		port.connect("portClicked", _on_port_clicked)
@@ -33,6 +40,24 @@ func _ready():
 		portComponent.connect("ship_arrived", _on_ship_arrived)
 		
 	set_hightlight(false)
+
+func destroy():
+	var anim = $Energy/AnimationPlayer as AnimationPlayer
+	anim.play(ANIMATION_DELETE)
+	await anim.animation_finished
+	queue_free()
+
+func hide_all_line_edits():
+	print("hide le")
+	var ports = self.find_children("", "PortComponent")
+	for port: PortComponent in ports:
+		port.hide_line_edit()
+
+func show_all_line_edits():
+	print("show le")
+	var ports = self.find_children("", "PortComponent")
+	for port: PortComponent in ports:
+		port.show_line_edit()
 
 
 

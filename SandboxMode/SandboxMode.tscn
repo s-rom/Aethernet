@@ -26,7 +26,7 @@ camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(572, 329)
-zoom = Vector2(1.145, 1.145)
+zoom = Vector2(0.995, 0.995)
 script = ExtResource("2_1gvom")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
@@ -78,5 +78,6 @@ visible = false
 environment = SubResource("Environment_1q0gd")
 
 [node name="DragLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [editable path="CanvasLayer"]

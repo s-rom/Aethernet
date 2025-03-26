@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://beffkwwrr44mv"]
+
+[ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="1_r2s1u"]
+[ext_resource type="Texture2D" uid="uid://cvpcgwvaq685m" path="res://Planet/meteor_detailedLarge_normal.png" id="2_q7dw5"]
+[ext_resource type="Script" path="res://Planet/PlanetSprite.gd" id="3_j0xu7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rjc4c"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_77lim"]
+diffuse_texture = ExtResource("1_r2s1u")
+normal_texture = ExtResource("2_q7dw5")
+
+[node name="PlanetClone" type="Node2D"]
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+self_modulate = Color(0.683078, 0.683077, 0.683077, 1)
+light_mask = 5
+material = SubResource("CanvasItemMaterial_rjc4c")
+texture = SubResource("CanvasTexture_77lim")
+script = ExtResource("3_j0xu7")

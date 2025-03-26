@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cppqdavaeudcq"]
+[gd_scene load_steps=13 format=3 uid="uid://cppqdavaeudcq"]
 
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_yexpy"]
 [ext_resource type="Script" path="res://SandboxMode/Toolbox.gd" id="2_56k2l"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="4_7lddq"]
 [ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="4_dvw38"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_f3eln"]
+[ext_resource type="PackedScene" uid="uid://dn80dblp2fqoj" path="res://Portal/portal_clone.tscn" id="6_lvk6h"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="7_neo1u"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="9_6heom"]
+[ext_resource type="PackedScene" uid="uid://c5mj83jjunecl" path="res://Station/station_clone.tscn" id="9_7qpvi"]
+[ext_resource type="PackedScene" uid="uid://beffkwwrr44mv" path="res://Planet/planet_clone.tscn" id="12_5k4fv"]
 
 [node name="Toolbox" type="PanelContainer"]
 anchors_preset = -1
@@ -52,6 +55,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 texture = ExtResource("4_dvw38")
 object_scene = ExtResource("5_f3eln")
+clone_scene = ExtResource("6_lvk6h")
 
 [node name="ButtonPanel2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -69,6 +73,7 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 texture = ExtResource("2_sxesv")
 object_scene = ExtResource("7_neo1u")
+clone_scene = ExtResource("9_7qpvi")
 
 [node name="ButtonPanel3" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -86,3 +91,4 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 texture = ExtResource("4_7lddq")
 object_scene = ExtResource("9_6heom")
+clone_scene = ExtResource("12_5k4fv")
