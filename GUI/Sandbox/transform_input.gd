@@ -22,8 +22,11 @@ var _rotating = false
 var _moving = false
 
 func _ready() -> void:
-	pass
-
+	var sandbox_manager: SandboxManager = get_tree().current_scene.find_child("SandboxManager", true, false)
+	if sandbox_manager:
+		print("Sandbox manager found: is_locked = " + str(sandbox_manager.is_locked()))
+		if sandbox_manager.is_locked():
+			call_deferred("hide")
 
 
 func _process(delta: float) -> void:

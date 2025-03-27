@@ -44,6 +44,11 @@ func _ready():
 func destroy():
 	var anim = $Energy/AnimationPlayer as AnimationPlayer
 	anim.play(ANIMATION_DELETE)
+	
+	for pc: PortComponent in self.find_children("", "PortComponent"):
+		if pc.is_linked():
+			pc._connection.delete_connection()
+	
 	await anim.animation_finished
 	queue_free()
 

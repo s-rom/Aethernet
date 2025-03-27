@@ -121,7 +121,7 @@ toggle_mode = true
 [node name="GoalPanel" parent="CanvasLayer" index="3"]
 visible = false
 
-[node name="Toolbox" parent="CanvasLayer" instance=ExtResource("6_rhqn8")]
+[node name="Toolbox" parent="CanvasLayer" groups=["SandboxShowHide"] instance=ExtResource("6_rhqn8")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q0gd")
@@ -131,5 +131,8 @@ follow_viewport_enabled = true
 
 [node name="SandboxManager" type="Node" parent="."]
 script = ExtResource("11_0r7h5")
+
+[connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_toggled"]
 
 [editable path="CanvasLayer"]
