@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnwg2vvn3j27d"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_c11hx"]
+[ext_resource type="Script" path="res://SandboxMode/Gui/LevelLoader/level_item.gd" id="1_sjyoy"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 40)
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_sjyoy")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_c11hx")
+theme_type_variation = &"PanelContainerKenneyGreen"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "asdfasdf"
+
+[connection signal="gui_input" from="PanelContainer" to="." method="_on_panel_container_gui_input"]

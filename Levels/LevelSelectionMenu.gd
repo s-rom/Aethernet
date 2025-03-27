@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name LevelSelectionMenu
 
 var _level_selection_panel_scene = preload("res://GUI/level_selection_panel.tscn")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkfhf21107vjb"]
+[gd_scene load_steps=27 format=3 uid="uid://bkfhf21107vjb"]
 
 [ext_resource type="Script" path="res://Levels/LevelSelectionMenu.gd" id="1_8vvga"]
 [ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="1_xctw6"]
@@ -12,15 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="8_o8clx"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="9_x0aad"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="9_x4jwi"]
+[ext_resource type="Shader" path="res://FX_Testing/InnerPortal.gdshader" id="12_txjdp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0fu7h"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15oue"]
-texture = ExtResource("7_qeulm")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tbd6"]
 texture = ExtResource("7_qeulm")
 modulate_color = Color(0.724643, 0.724643, 0.724643, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15oue"]
+texture = ExtResource("7_qeulm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45bqk"]
 bg_color = Color(0.34902, 0.34902, 0.34902, 0.34902)
@@ -49,6 +50,43 @@ corner_radius_bottom_left = 10
 [sub_resource type="Gradient" id="Gradient_e47fy"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_tgyix"]
+offsets = PackedFloat32Array(0.016129, 0.0967742, 0.182796)
+colors = PackedColorArray(0.118581, 0.118581, 0.118581, 0, 1, 1, 1, 1, 0, 0, 0, 0.227)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_71c28"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tcxas"]
+noise_type = 2
+frequency = 0.0199
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ahn2p"]
+seamless = true
+noise = SubResource("FastNoiseLite_tcxas")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pa5f"]
+frequency = 0.0139
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dyib"]
+seamless = true
+noise = SubResource("FastNoiseLite_2pa5f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg44w"]
+resource_local_to_scene = true
+shader = ExtResource("12_txjdp")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_71c28")
 
 [node name="LevelSelectionMenu" type="Node2D"]
 script = ExtResource("1_8vvga")
@@ -120,8 +158,8 @@ offset_left = -0.496002
 offset_top = -0.0320015
 offset_right = 49.504
 offset_bottom = 49.968
-theme_override_styles/normal = SubResource("StyleBoxTexture_15oue")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1tbd6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_15oue")
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer"]
@@ -240,17 +278,8 @@ grow_horizontal = 0
 [node name="Portal" parent="Container" instance=ExtResource("9_x4jwi")]
 position = Vector2(839, 298)
 
-[node name="LineEdit" parent="Container/Portal/Port2" index="1"]
-visible = false
-
-[node name="LineEdit" parent="Container/Portal/Port1" index="1"]
-visible = false
-
-[node name="LineEdit" parent="Container/Portal/Port3" index="1"]
-visible = false
-
-[node name="PointLight2D" parent="Container/Portal" index="7"]
-energy = 2.65
+[node name="Energy" parent="Container/Portal" index="7"]
+material = SubResource("ShaderMaterial_qg44w")
 
 [node name="MeteorDetailedLarge" parent="Container" instance=ExtResource("8_o8clx")]
 position = Vector2(600, 182)

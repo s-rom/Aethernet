@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://cppqdavaeudcq"]
 
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_yexpy"]
-[ext_resource type="Script" path="res://SandboxMode/Toolbox.gd" id="2_56k2l"]
+[ext_resource type="Script" path="res://SandboxMode/Gui/Toolbox/Toolbox.gd" id="2_56k2l"]
 [ext_resource type="Texture2D" uid="uid://dvuj7jt4yig3x" path="res://Station/station_C.png" id="2_sxesv"]
-[ext_resource type="PackedScene" uid="uid://5iaswq83b80c" path="res://SandboxMode/ToolboxItemButton.tscn" id="3_l5s1i"]
+[ext_resource type="PackedScene" uid="uid://5iaswq83b80c" path="res://SandboxMode/Gui/Toolbox/ToolboxItemButton.tscn" id="3_l5s1i"]
 [ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="4_7lddq"]
 [ext_resource type="Texture2D" uid="uid://dtseuo2w53q0d" path="res://Portal/magic_03.png" id="4_dvw38"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="5_f3eln"]

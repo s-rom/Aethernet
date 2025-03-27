@@ -1,15 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=18 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Planet/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_ct0dd"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="4_8mkfj"]
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="5_n1iw5"]
-[ext_resource type="PackedScene" uid="uid://cppqdavaeudcq" path="res://SandboxMode/Toolbox.tscn" id="6_rhqn8"]
+[ext_resource type="PackedScene" uid="uid://cppqdavaeudcq" path="res://SandboxMode/Gui/Toolbox/Toolbox.tscn" id="6_rhqn8"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_uxh6k"]
+[ext_resource type="Texture2D" uid="uid://fevv7g7itv13" path="res://GUI/ButtonsPropios/lock.png" id="7_tuig3"]
+[ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
+[ext_resource type="Texture2D" uid="uid://3jxnfkkpb0ew" path="res://GUI/ButtonsPropios/saveb.png" id="9_yrwxa"]
+[ext_resource type="Script" path="res://SandboxMode/sandbox_manager.gd" id="11_0r7h5"]
 
 [sub_resource type="Gradient" id="Gradient_r7kvg"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pto0h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shrd5"]
+texture = ExtResource("9_yrwxa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnrqc"]
+texture = ExtResource("7_tuig3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yox3d"]
+texture = ExtResource("8_qlaxh")
 
 [sub_resource type="Environment" id="Environment_1q0gd"]
 background_mode = 3
@@ -57,6 +73,12 @@ range_item_cull_mask = 3
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_n1iw5")]
 
+[node name="MainButtons" parent="CanvasLayer" index="2"]
+anchor_right = 0.988
+anchor_bottom = 0.103
+offset_right = 5.82397
+offset_bottom = 3.256
+
 [node name="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="0"]
 visible = false
 
@@ -69,6 +91,33 @@ visible = false
 [node name="GoalButton" parent="CanvasLayer/MainButtons/AspectRatioContainer2" index="0"]
 visible = false
 
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainButtons" index="4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pto0h")
+
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="5"]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer5"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("6_uxh6k")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/normal = SubResource("StyleBoxTexture_shrd5")
+
+[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="6"]
+layout_mode = 2
+
+[node name="LockButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer6"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("6_uxh6k")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bnrqc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yox3d")
+toggle_mode = true
+
 [node name="GoalPanel" parent="CanvasLayer" index="3"]
 visible = false
 
@@ -79,5 +128,8 @@ environment = SubResource("Environment_1q0gd")
 
 [node name="DragLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="SandboxManager" type="Node" parent="."]
+script = ExtResource("11_0r7h5")
 
 [editable path="CanvasLayer"]

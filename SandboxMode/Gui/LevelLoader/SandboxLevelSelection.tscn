@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvvcyadmk8xc7"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_nbcil"]
+[ext_resource type="Script" path="res://SandboxMode/Gui/LevelLoader/select_save_file.gd" id="2_5ybde"]
+[ext_resource type="PackedScene" uid="uid://dnwg2vvn3j27d" path="res://SandboxMode/Gui/LevelLoader/LevelItem.tscn" id="3_gvktg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eiom"]
+bg_color = Color(1, 1, 1, 0)
+
+[node name="Panel" type="PanelContainer"]
+offset_right = 480.0
+offset_bottom = 274.0
+theme = ExtResource("1_nbcil")
+theme_type_variation = &"PanelContainerInner"
+script = ExtResource("2_5ybde")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2eiom")
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="MarginContainer2" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer3" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer4" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer5" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer6" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="MarginContainer7" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("3_gvktg")]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_nbcil")
+theme_type_variation = &"LevelLoadPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="New" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nuevo"
+
+[node name="Rename" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Renombrar"
+
+[node name="Delete" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Eliminar"
+
+[node name="Load" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Cargar"
+
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Rename" to="." method="_on_rename_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Load" to="." method="_on_load_pressed"]
