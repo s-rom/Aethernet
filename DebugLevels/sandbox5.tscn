@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cv52ngr6nfvgy"]
 
-[ext_resource type="Script" path="res://Planet/root_node.gd" id="1_mi0ic"]
+[ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_mi0ic"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="2_ciyyw"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="3_lsmaj"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_gplw2"]

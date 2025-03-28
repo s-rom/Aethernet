@@ -13,7 +13,7 @@ script = ExtResource("2_6lnfr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 857.0
+offset_right = 640.0
 offset_bottom = 128.0
 theme_override_constants/separation = 10
 

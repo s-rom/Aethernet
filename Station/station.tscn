@@ -116,6 +116,6 @@ script = ExtResource("8_b17xu")
 rotationSpeed = 0.5
 
 [node name="SpawnInputButtons" type="Node2D" parent="."]
-position = Vector2(-81, -87)
+position = Vector2(-94, -108)
 scale = Vector2(4.16667, -11.8333)
 script = ExtResource("12_2wwin")

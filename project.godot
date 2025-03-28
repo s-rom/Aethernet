@@ -29,6 +29,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 SandboxShowHide="Used by the sandbox mode \"lock\" button to show or hide gui elements"
+VisualizationLowPrio=""
 
 [gui]
 

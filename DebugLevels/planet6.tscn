@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bgv0huk3bgahi"]
 
-[ext_resource type="Script" path="res://Planet/root_node.gd" id="1_74bii"]
+[ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_74bii"]
 [ext_resource type="PackedScene" uid="uid://dm2uy0antohin" path="res://GUI/DebugSend/debug_send.tscn" id="3_vf12j"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="4_l2wt5"]
 [ext_resource type="Script" path="res://DebugLevels/planet_system.gd" id="5_mhj4v"]

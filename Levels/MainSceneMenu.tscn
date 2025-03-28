@@ -164,9 +164,6 @@ grow_horizontal = 0
 [node name="Portal" parent="Container" instance=ExtResource("5_0jv6b")]
 position = Vector2(839, 298)
 
-[node name="PointLight2D" parent="Container/Portal" index="6"]
-energy = 2.65
-
 [node name="Energy" parent="Container/Portal" index="7"]
 material = SubResource("ShaderMaterial_j2ex3")
 
