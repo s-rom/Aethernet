@@ -11,6 +11,14 @@ func _ready():
 	self.connect("text_changed", _on_text_changed)
 	self.focus_exited.connect(_on_focus_exited)
 
+
+func reduce_visibility() -> void:
+	self.modulate.a = 0.35
+
+func reset_visibility() -> void:
+	self.modulate.a = 1.0
+
+
 func _process(_delta: float):
 	if not followTarget:
 		return

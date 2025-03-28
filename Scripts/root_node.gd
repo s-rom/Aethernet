@@ -114,8 +114,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		and currentConnection != null):
 			currentConnection.queue_free()
 			currentConnection = null 
-			connectionOrigin = null
+			get_tree().call_group("VisualizationLowPrio", "reset_visibiliy")
 			get_tree().call_group("ClickHighlight", "disable_highlight")
+			connectionOrigin = null
 	
 	if event.is_action_pressed("toggle_fullscreen"):
 		var mode = DisplayServer.window_get_mode()
@@ -150,6 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			assert(portal is Portal)
 			portal.set_hightlight(false)
 		get_tree().call_group("ClickHighlight", "disable_highlight")
+		get_tree().call_group("VisualizationLowPrio", "reset_visibility")
 				
 	if event.is_action_pressed("ui_drag_camera"):
 		_lastMousePosition = get_global_mouse_position()
@@ -264,7 +266,9 @@ func _on_connector_click(connector: Node2D):
 		
 	if currentConnection != null:
 		get_tree().call_group("ClickHighlight", "disable_highlight")
-		
+		get_tree().call_group("VisualizationLowPrio", "reset_visibility")
+
+
 		# Remove mouse point
 		currentConnection.remove_point(1)
 		# Add second connector point
@@ -278,6 +282,8 @@ func _on_connector_click(connector: Node2D):
 	# Create a new connection
 	if currentConnection == null:		
 		get_tree().call_group("ClickHighlight", "set_highlighted")
+		get_tree().call_group("VisualizationLowPrio", "reduce_visibility")
+		
 		
 		connectionOrigin = connector
 		currentConnection = connectionScn.instantiate()

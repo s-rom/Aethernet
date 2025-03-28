@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dkmslp5ptm1dl" path="res://GUI/ButtonsPropios/drag.png" id="3_r12yo"]
 [ext_resource type="Texture2D" uid="uid://b3m602riwd8hb" path="res://GUI/ButtonsPropios/delete.png" id="4_y112g"]
 
-[node name="Control" type="Control" groups=["SandboxShowHide"]]
+[node name="Control" type="Control" groups=["SandboxShowHide", "VisualizationLowPrio"]]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(0.2, 0.2)

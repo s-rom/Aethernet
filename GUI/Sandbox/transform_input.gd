@@ -29,6 +29,13 @@ func _ready() -> void:
 			call_deferred("hide")
 
 
+### VisualizationLowPrio group methods
+func reduce_visibility() -> void:
+	self.modulate.a = 0.35
+
+func reset_visibility() -> void:
+	self.modulate.a = 1.0
+
 func _process(delta: float) -> void:
 	if not input_position:
 		return
