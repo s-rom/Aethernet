@@ -1,13 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhyh2l84m7ihr"]
+[gd_scene load_steps=18 format=3 uid="uid://bhyh2l84m7ihr"]
 
 [ext_resource type="Script" path="res://Planet/planet.gd" id="1_jmkuo"]
 [ext_resource type="Texture2D" uid="uid://c6rxqn2euirtf" path="res://Planet/meteor_detailedLarge.png" id="1_wuty0"]
 [ext_resource type="Script" path="res://Planet/PlanetSprite.gd" id="2_3766x"]
-[ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="4_fcnc4"]
 [ext_resource type="Script" path="res://Station/PortHighlighter.gd" id="4_xdakr"]
 [ext_resource type="Texture2D" uid="uid://cvpcgwvaq685m" path="res://Planet/meteor_detailedLarge_normal.png" id="4_xub7b"]
 [ext_resource type="Script" path="res://Scripts/port_component.gd" id="5_w2vvg"]
-[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_0uh1c"]
 [ext_resource type="Texture2D" uid="uid://dseb3a4ogemns" path="res://GUI/Vector/Green/Icon_Check.png" id="6_q8mnm"]
 [ext_resource type="Script" path="res://Planet/SendShipFeedback.gd" id="7_3rues"]
 [ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="10_qqlhi"]
@@ -138,22 +136,6 @@ _portComponent = NodePath("../../PortComponent")
 
 [node name="PortComponent" type="Node" parent="."]
 script = ExtResource("5_w2vvg")
-
-[node name="LineEdit" type="LineEdit" parent="."]
-visible = false
-light_mask = 0
-offset_left = 28.0
-offset_top = -52.0
-offset_right = 104.0
-offset_bottom = -6.0
-scale = Vector2(0.825879, 0.825879)
-theme = ExtResource("6_0uh1c")
-theme_type_variation = &"InLevelTextField"
-placeholder_text = "A?"
-alignment = 1
-max_length = 2
-expand_to_text_length = true
-script = ExtResource("4_fcnc4")
 
 [node name="SendShipFeedback" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
