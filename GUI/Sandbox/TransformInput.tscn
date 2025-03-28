@@ -8,33 +8,28 @@
 [node name="Control" type="Control" groups=["SandboxShowHide"]]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
 script = ExtResource("2_6lnfr")
 
-[node name="Rotate" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 18.0
-offset_bottom = 18.0
-texture = ExtResource("1_b254m")
-expand_mode = 1
+offset_right = 857.0
+offset_bottom = 128.0
+theme_override_constants/separation = 10
 
-[node name="Move" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 19.0
-offset_right = 59.0
-offset_bottom = 40.0
-scale = Vector2(0.143636, 0.143636)
+[node name="Rotate" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_b254m")
+
+[node name="Move" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("3_r12yo")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 97.0
-offset_right = 225.0
-offset_bottom = 128.0
-scale = Vector2(0.15, 0.15)
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
 texture = ExtResource("4_y112g")
 
-[connection signal="gui_input" from="Rotate" to="." method="_on_rotate_gui_input"]
-[connection signal="gui_input" from="Move" to="." method="_on_move_gui_input"]
-[connection signal="gui_input" from="TextureRect" to="." method="_on_delete_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Rotate" to="." method="_on_rotate_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Move" to="." method="_on_move_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/TextureRect" to="." method="_on_delete_gui_input"]

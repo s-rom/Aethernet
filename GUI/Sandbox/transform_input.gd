@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 					+ _offset * camera2D.zoom
 	screenPos -= camera2D.get_screen_center_position() * camera2D.zoom
 	self.set_position(screenPos)
-	self.scale = camera2D.zoom
+	self.scale = Vector2(0.3, 0.3) *  camera2D.zoom
 	
 		
 

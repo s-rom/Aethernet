@@ -617,5 +617,5 @@ preprocess = 0.5
 explosiveness = 1.0
 
 [node name="SpawnInputButtons" type="Node2D" parent="."]
-position = Vector2(-126.829, -136.585)
+position = Vector2(-112.195, -163.415)
 script = ExtResource("17_0cl0e")
