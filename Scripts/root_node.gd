@@ -114,7 +114,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		and currentConnection != null):
 			currentConnection.queue_free()
 			currentConnection = null 
-			get_tree().call_group("VisualizationLowPrio", "reset_visibiliy")
+			print("Cancel connection")
+			get_tree().call_group("VisualizationLowPrio", "reset_visibility")
 			get_tree().call_group("ClickHighlight", "disable_highlight")
 			connectionOrigin = null
 	

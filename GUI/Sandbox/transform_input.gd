@@ -36,11 +36,9 @@ func reduce_visibility() -> void:
 func reset_visibility() -> void:
 	self.modulate.a = 1.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not input_position:
 		return
-	
-	
 
 	var screenPos = camera2D.get_screen_transform() * position_target.global_position\
 					+ _offset * camera2D.zoom
