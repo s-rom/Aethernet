@@ -16,6 +16,19 @@ func _ready():
 	for portComponent  in self.find_children("PortComponent"):
 		portComponent.connect("ship_arrived", _on_ship_arrived)
 
+
+func save() -> Dictionary:
+	var dict = {
+		"scene_path": "res://Station/station.tscn",
+		"x": position.x,
+		"y": position.y,
+		"rotation": rotation
+	}
+	return dict
+	
+func from_data(data: Dictionary) -> void:
+	pass
+
 	
 func _on_ship_arrived(shipData: ShipData):
 	var dstCoord = shipData.destinationCoordinates

@@ -75,4 +75,4 @@ func _on_load_pressed() -> void:
 	if not _selected_level:
 		return
 	
-	level_load.emit()
+	level_load.emit(_selected_level.level_path)

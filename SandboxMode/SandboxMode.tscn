@@ -73,6 +73,17 @@ range_item_cull_mask = 3
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_n1iw5")]
 
+[node name="PortalTable" parent="CanvasLayer" index="0"]
+z_index = 19
+anchor_left = 0.151
+anchor_top = 0.23
+anchor_right = 0.44
+anchor_bottom = 0.801
+offset_left = 0.0479889
+offset_top = -0.0400085
+offset_right = -332.88
+offset_bottom = -370.048
+
 [node name="MainButtons" parent="CanvasLayer" index="2"]
 anchor_right = 0.988
 anchor_bottom = 0.103
@@ -121,7 +132,9 @@ toggle_mode = true
 [node name="GoalPanel" parent="CanvasLayer" index="3"]
 visible = false
 
-[node name="Toolbox" parent="CanvasLayer" groups=["SandboxShowHide"] instance=ExtResource("6_rhqn8")]
+[node name="Toolbox" parent="CanvasLayer" node_paths=PackedStringArray("drag_layer") groups=["SandboxShowHide"] instance=ExtResource("6_rhqn8")]
+z_index = 18
+drag_layer = NodePath("../../DragLayer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q0gd")
@@ -129,9 +142,11 @@ environment = SubResource("Environment_1q0gd")
 [node name="DragLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="SandboxManager" type="Node" parent="."]
+[node name="SandboxManager" type="Node" parent="." node_paths=PackedStringArray("root_scene")]
 script = ExtResource("11_0r7h5")
+root_scene = NodePath("..")
 
+[connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer5/SaveButton" to="SandboxManager" method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_toggled"]
 [connection signal="object_dropped" from="CanvasLayer/Toolbox" to="SandboxManager" method="_on_toolbox_object_dropped"]

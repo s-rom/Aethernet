@@ -50,11 +50,13 @@ func _process(_delta: float) -> void:
 
 
 func _on_move_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed()\
+		and event.button_index == MOUSE_BUTTON_LEFT:
 		_moving = true
 		start_moving.emit()
 	
-	if event is InputEventMouseButton and event.is_released():
+	if event is InputEventMouseButton and event.is_released()\
+		and event.button_index == MOUSE_BUTTON_LEFT:
 		_moving = false
 		stop_moving.emit()
 
@@ -65,10 +67,12 @@ func _on_move_gui_input(event: InputEvent) -> void:
 
 
 func _on_rotate_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed()\
+		and event.button_index == MOUSE_BUTTON_LEFT:
 		_rotating = true
 	
-	if event is InputEventMouseButton and event.is_released():
+	if event is InputEventMouseButton and event.is_released()\
+		and event.button_index == MOUSE_BUTTON_LEFT:
 		_rotating = false
 	
 	if event is InputEventMouseMotion and _rotating:
@@ -77,5 +81,6 @@ func _on_rotate_gui_input(event: InputEvent) -> void:
 
 
 func _on_delete_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed()\
+		and event.button_index == MOUSE_BUTTON_LEFT:
 		deleted.emit()

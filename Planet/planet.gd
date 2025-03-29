@@ -5,7 +5,12 @@ signal onPlanetClick(planet: Sprite2D)
 signal shipReceived(planet: Planet, success: bool, shipData)
 signal replyReceived(planet: Planet, shipData)
 
-@onready var portComponent: PortComponent = find_child("PortComponent") as PortComponent
+var portComponent: PortComponent
+
+
+func _ready() -> void:
+	portComponent = self.find_child("PortComponent")
+	print("Planet ready")
 
 
 var is_linked: bool:
@@ -16,6 +21,7 @@ var coordinates: String:
 	get: 
 		return portComponent.coordinates
 	set(new_coordinates):
+		print("set new coord")
 		portComponent.coordinates = new_coordinates
 		
 
@@ -30,16 +36,19 @@ func play_success() -> void:
 func play_error() -> void:
 	$SendShipFeedback.play_error()
 
-
-func to_json_dict() -> Variant:
-	var json_dict = {
-		"scene_filename" : get_scene_file_path(),
-		"x": self.position.x,
-		"y": self.position.y,
-		"rotation": self.rotation,
-		"coordinates": self.coordinates 
+func save() -> Dictionary:
+	var dict = {
+		"scene_path": "res://Planet/planet.tscn",
+		"x": position.x,
+		"y": position.y,
+		"rotation": rotation,
+		"coordinates": self.coordinates
 	}
-	return json_dict
+	return dict
+
+func from_data(data: Dictionary) -> void:
+	pass
+
 
 func _on_port_component_ship_arrived(shipData: ShipData):
 	var myPort = self.find_child("PortComponent")

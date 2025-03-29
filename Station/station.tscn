@@ -22,7 +22,7 @@ light_mode = 1
 diffuse_texture = ExtResource("3_ldjl8")
 normal_texture = ExtResource("4_abkyp")
 
-[node name="Station" type="Node2D" groups=["port"]]
+[node name="Station" type="Node2D" groups=["Persist", "port"]]
 material = SubResource("CanvasItemMaterial_43r6j")
 script = ExtResource("1_qtt3d")
 

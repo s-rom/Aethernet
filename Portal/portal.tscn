@@ -503,7 +503,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.0854701, 0.918803)
 
-[node name="Portal" type="Node2D" groups=["port"]]
+[node name="Portal" type="Node2D" groups=["Persist", "port"]]
 light_mask = 2
 position = Vector2(0, -1)
 scale = Vector2(0.41, 0.41)

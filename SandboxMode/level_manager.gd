@@ -28,8 +28,45 @@ func get_base_directory() -> DirAccess:
 	
 func save_custom_level() -> void:
 	pass
+
+
+func load_save_file(file_path: String):
+	var absolute_path = base_path + file_path
+
+	if not FileAccess.file_exists(absolute_path):
+		print("File {} does not exists".format(absolute_path))
+		return []
+
+	var data = []
+	var file = FileAccess.open(absolute_path, FileAccess.READ)
 	
 	
+	
+	while file.get_position() < file.get_length():
+		var json_string = file.get_line().strip_edges()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+		
+		data.append(json.data)
+
+	return data
+
+
+## Data is array of dictionaries (each entry is a dict returned by a save() call)
+func write_save_file(data, file_path: String) -> void:
+	var absolute_path = base_path + file_path
+	if not FileAccess.file_exists(absolute_path):
+		print("File {} does not exists".format(absolute_path))
+		return
+	
+	var file = FileAccess.open(absolute_path, FileAccess.WRITE)
+	for entry in data:
+		file.store_line(JSON.stringify(entry))
+
+
 func get_next_level_name_with_ext() -> String:
 	
 	var base_name = "Nuevo nivel"
@@ -74,7 +111,6 @@ func delete_level(level_path: String) -> void:
 	
 
 func create_custom_level() -> void:
-	var base_dir = get_base_directory()
 	var level_path = base_path + get_next_level_name_with_ext()
 	
 	if FileAccess.file_exists(level_path):

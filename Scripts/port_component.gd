@@ -8,6 +8,7 @@ class_name PortComponent
 @export var coordinates = "" : 
 	set(value): 
 		coordinates = value
+		coordinatesLineEdit.text = value
 		has_ip = (value != null && value != "")
 	get:
 		return coordinates
@@ -32,7 +33,6 @@ func _ready():
 	if canvasLayer and (isPortal or isPlanet):
 		coordinatesLineEdit = lineEditScn.instantiate()
 		canvasLayer.add_child(coordinatesLineEdit)
-
 		var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
 		if lineEditPositionNode:
 			coordinatesLineEdit.followTarget = lineEditPositionNode
@@ -114,6 +114,7 @@ func show_line_edit() -> void:
 		coordinatesLineEdit.visible = true
 
 func _exit_tree() -> void:
+	print("PortComponent exit tree")
 	if coordinatesLineEdit:
 		coordinatesLineEdit.queue_free()
 		

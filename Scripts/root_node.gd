@@ -154,6 +154,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().call_group("ClickHighlight", "disable_highlight")
 		get_tree().call_group("VisualizationLowPrio", "reset_visibility")
 				
+	
+			
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_drag_camera"):
 		_lastMousePosition = get_global_mouse_position()
 		_draggingCamera = true
@@ -164,7 +168,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _draggingCamera:
 		if event is InputEventMouseMotion:
 			_mouseMovement  = event.relative
-			
 
 
 func _on_portal_click(portal: Portal):
@@ -394,14 +397,17 @@ func add_planet(object: Planet):
 func add_station(object: Station):
 	object.connect("portClicked", _on_station_port_clicked)
 
-
-func _on_object_created(object):
+func register_node(object):
 	if object is Portal:
 		add_portal(object)
 	elif object is Planet:
 		add_planet(object)
 	elif object is Station:
 		add_station(object)	
+
+
+func _on_object_created(object):
+	register_node(object)
 
 
 func _on_debug_send_send_ship(from, to):

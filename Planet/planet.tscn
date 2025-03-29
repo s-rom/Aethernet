@@ -109,7 +109,7 @@ _data = {
 "SendSuccess": SubResource("Animation_4v737")
 }
 
-[node name="Planet" type="Node2D"]
+[node name="Planet" type="Node2D" groups=["Persist"]]
 material = SubResource("CanvasItemMaterial_6oaoi")
 script = ExtResource("1_jmkuo")
 

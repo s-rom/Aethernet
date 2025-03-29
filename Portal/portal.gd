@@ -116,6 +116,30 @@ func _on_port_clicked(portParent, port):
 	portClicked.emit(portParent, port)
 	
 
+func save() -> Dictionary:
+	var dict = {
+		"scene_path": "res://Portal/portal.tscn",
+		"x": position.x,
+		"y": position.y,
+		"rotation": rotation,
+		"_rules": _rules
+	}
+
+	var ports = self.find_children("", "PortComponent")	
+	var i = 0
+	for port: PortComponent in ports:
+		dict["port_" + str(i)] = port.coordinates
+		i += 1
+	
+	return dict
+
+func from_data(data: Dictionary) -> void:
+	var ports = self.find_children("", "PortComponent")	
+	var i = 0
+	for port: PortComponent in ports:
+		port.coordinates = data["port_" + str(i)]
+		i += 1
+	
 func _restart_particles():
 	$Energy/GPUParticles2D.one_shot = true
 	$Energy/GPUParticles2D.restart()

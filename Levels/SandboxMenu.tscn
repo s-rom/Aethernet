@@ -23,3 +23,5 @@ offset_bottom = 405.272
 [connection signal="level_delete" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_delete"]
 [connection signal="level_load" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_load"]
 [connection signal="level_rename" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_rename"]
+
+[editable path="CanvasLayer/SandboxLevelSelection"]

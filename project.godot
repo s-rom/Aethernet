@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 LevelsData="*res://Scripts/levels_data.gd"
 ColorsNet="*res://Scripts/colorsNet.tscn"
 LevelManager="*res://SandboxMode/level_manager.gd"
+SandboxGlobal="*res://Scripts/sandbox_global.gd"
 
 [display]
 
@@ -30,6 +31,7 @@ window/stretch/aspect="expand"
 
 SandboxShowHide="Used by the sandbox mode \"lock\" button to show or hide gui elements"
 VisualizationLowPrio=""
+Persist=""
 
 [gui]
 

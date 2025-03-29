@@ -207,6 +207,7 @@ text = "OBJETIVOS"
 
 [node name="HelpPanel" type="PanelContainer" parent="."]
 visible = false
+z_index = 20
 anchors_preset = -1
 anchor_left = 0.396
 anchor_top = 0.338
