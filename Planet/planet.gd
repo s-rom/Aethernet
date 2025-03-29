@@ -5,23 +5,23 @@ signal onPlanetClick(planet: Sprite2D)
 signal shipReceived(planet: Planet, success: bool, shipData)
 signal replyReceived(planet: Planet, shipData)
 
-@onready var _portComponent: PortComponent = find_child("PortComponent") as PortComponent
+@onready var portComponent: PortComponent = find_child("PortComponent") as PortComponent
 
 
 var is_linked: bool:
 	get: 
-		return _portComponent and _portComponent.is_linked()
+		return portComponent and portComponent.is_linked()
 
 var coordinates: String: 
 	get: 
-		return _portComponent.coordinates
+		return portComponent.coordinates
 	set(new_coordinates):
-		_portComponent.coordinates = new_coordinates
+		portComponent.coordinates = new_coordinates
 		
 
 var has_coordinates: bool:
 	get:
-		return _portComponent and coordinates != ""
+		return portComponent and coordinates != ""
 
 func play_success() -> void:
 	$SendShipFeedback.play_success()

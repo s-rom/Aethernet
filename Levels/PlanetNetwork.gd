@@ -30,7 +30,7 @@ static func _compilePattern():
 		_networkPattern = RegEx.new()
 		
 	if _networkPattern.get_pattern().is_empty():
-		_networkPattern.compile("^([A-Z]+)[0-9]+$")
+		_networkPattern.compile("^([A-Z]+)[0-9]*$")
 
 
 
@@ -73,6 +73,9 @@ func check_all_connected():
 	return true
 
 static func _extract_network_from_coordinates(coordinates):
+	if coordinates.is_empty():
+		return ""
+
 	_compilePattern()
 	var result = _networkPattern.search(coordinates)
 	if result:

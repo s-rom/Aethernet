@@ -4,7 +4,7 @@ class_name PortComponent
 
 @export var has_ip = false
 @export var connected_to: PortComponent = null 
-@export var coordinatesLineEdit: LineEdit
+@export var coordinatesLineEdit: CoordinatesLineEdit
 @export var coordinates = "" : 
 	set(value): 
 		coordinates = value
@@ -19,7 +19,7 @@ var isPortal = false
 var isPlanet = false
 
 signal ship_arrived(shipData)
-
+signal network_changed(owner, old_net, new_net)
 
 @onready var camera2D = get_viewport().get_camera_2d()
 
@@ -40,11 +40,20 @@ func _ready():
 			coordinatesLineEdit.followTarget = self.get_parent()
 
 	if coordinatesLineEdit:
-		coordinatesLineEdit.connect("text_changed", on_coordinates_text_changed)
+		coordinatesLineEdit.connect("coordinates_changed", on_coordinates_text_changed)
 
 func on_coordinates_text_changed(new_text: String):
+
+	var old_net = planet_network._extract_network_from_coordinates(coordinates)
+	var new_net = planet_network._extract_network_from_coordinates(new_text)
+
+	if old_net != new_net:
+		network_changed.emit(self.owner, old_net, new_net)
+
+
+	print("New coordinates: " + new_text)
 	self.coordinates = new_text
-	#print("new coordinates from LineEdit: " + self.coordinates)
+
 
 func is_linked():
 	return connected_to != null
