@@ -190,6 +190,13 @@ func _on_portal_click(portal: Portal):
 
 
 
+func remove_available_network(network: String) -> void:
+	var idx = _availablePortalNetworks.find(network)
+	if idx == -1:
+		return
+	_availablePortalNetworks.remove_at(idx)
+	
+
 func _pop_stack_portal_network() -> Variant:	
 	var length = len(_availablePortalNetworks)
 	if length == 0:

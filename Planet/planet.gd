@@ -42,12 +42,15 @@ func save() -> Dictionary:
 		"x": position.x,
 		"y": position.y,
 		"rotation": rotation,
-		"coordinates": self.coordinates
+		"coordinates": self.coordinates,
+		"name": name,
+		"port_uids": [self.find_child("PortComponent").uid] 
 	}
 	return dict
 
 func from_data(data: Dictionary) -> void:
-	pass
+	var myPort = self.find_child("PortComponent")
+	myPort.uid = data["port_uids"][0]
 
 
 func _on_port_component_ship_arrived(shipData: ShipData):

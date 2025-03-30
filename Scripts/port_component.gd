@@ -13,6 +13,8 @@ class_name PortComponent
 	get:
 		return coordinates
 
+@export var uid = null
+
 var shipScn = load("res://Ships/ship.tscn")
 var lineEditScn = load("res://Portal/PortalLineEdit.tscn")
 var _connection: Connection = null

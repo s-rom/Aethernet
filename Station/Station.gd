@@ -22,12 +22,21 @@ func save() -> Dictionary:
 		"scene_path": "res://Station/station.tscn",
 		"x": position.x,
 		"y": position.y,
-		"rotation": rotation
+		"rotation": rotation,
+		"name": self.name
 	}
+
+	dict["port_uids"] = []
+	for port in self.find_children("PortComponent"):
+		dict["port_uids"].append(port.uid)
+
 	return dict
 	
 func from_data(data: Dictionary) -> void:
-	pass
+	var i = 0
+	for port:PortComponent in self.find_children("PortComponent"):
+		port.uid = data["port_uids"][i]
+		i += 1
 
 	
 func _on_ship_arrived(shipData: ShipData):

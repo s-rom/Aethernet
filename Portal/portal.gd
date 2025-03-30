@@ -122,7 +122,8 @@ func save() -> Dictionary:
 		"x": position.x,
 		"y": position.y,
 		"rotation": rotation,
-		"_rules": _rules
+		"_rules": _rules,
+		"name": name
 	}
 
 	var ports = self.find_children("", "PortComponent")	
@@ -130,6 +131,10 @@ func save() -> Dictionary:
 	for port: PortComponent in ports:
 		dict["port_" + str(i)] = port.coordinates
 		i += 1
+
+	dict["port_uids"] = []
+	for port in self.find_children("PortComponent"):
+		dict["port_uids"].append(port.uid)
 	
 	return dict
 
@@ -138,7 +143,9 @@ func from_data(data: Dictionary) -> void:
 	var i = 0
 	for port: PortComponent in ports:
 		port.coordinates = data["port_" + str(i)]
+		port.uid = data["port_uids"][i]
 		i += 1
+	
 	
 func _restart_particles():
 	$Energy/GPUParticles2D.one_shot = true
