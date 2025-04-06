@@ -5,7 +5,7 @@ class_name MenuAnimations
 var shipScn = preload("res://Ships/ship.tscn")
 var rng = RandomNumberGenerator.new()
 @export var shipColor: Color = Color.WHITE
-var radius = 1200.0
+@export var radius = 1200.0
 
 func _enter_tree():
 	var to_remove = get_tree().root.find_children("LineEdit", "", true, false)
@@ -21,11 +21,11 @@ func _enter_tree():
 
 func _ready():
 	
-	for i in 6:
+	for i in 10:
 		spawnShip()
 	
 	while true:
-		await get_tree().create_timer(0.75).timeout
+		await get_tree().create_timer(0.1).timeout
 		spawnShip()
 	
 
@@ -56,7 +56,7 @@ func spawnShip():
 	ship.global_position = generate_random_point_on_circumference(originAngle)
 	
 	var scaleFactor = rng.randf_range(0.2, 0.55)
-	var velocity = rng.randf_range(100.0, 225.0)
+	var velocity = rng.randf_range(100.0, 325.0)
 	
 	var goal = generate_random_point_on_circumference(randomAngleDestination) * 3
 

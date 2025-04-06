@@ -2,6 +2,15 @@ extends RefCounted
 
 class_name ShipData 
 
+
+# static var next_id = 0
+
+# func _init() -> void:
+# 	id = next_id
+# 	next_id += 1
+
+# @export var id: int
+
 @export var originCoordinates: String 
 @export var destinationCoordinates: String 
 

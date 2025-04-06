@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb2wp2m0oynjq"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_14naa"]
+[ext_resource type="Script" path="res://Levels/delete_dialog.gd" id="1_puxkq"]
+
+[node name="DeleteDialog" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -78.0
+offset_right = 137.5
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_14naa")
+theme_type_variation = &"PanelContainerInner"
+script = ExtResource("1_puxkq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_14naa")
+theme_type_variation = &"GuiLabel"
+theme_override_colors/font_color = Color(0.867201, 0.0284328, 6.73831e-07, 1)
+text = "¿Quieres borrar '...'?
+
+Esta acción no puede deshacerse"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ConfirmDelete" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_14naa")
+theme_type_variation = &"MainGUIButton"
+text = "Eliminar"
+
+[node name="CancelDelete" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_14naa")
+theme_type_variation = &"MainGUIButton"
+text = "Cancelar"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmDelete" to="." method="_on_confirm_delete_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelDelete" to="." method="_on_cancel_delete_pressed"]

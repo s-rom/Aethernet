@@ -2,7 +2,6 @@ extends PanelContainer
 
 signal send_ship(from: String, to: String)
 
-
 func set_origin(origin):
 	find_child("Origin").text = origin
 

@@ -2,6 +2,8 @@ extends Node2D
 
 
 @onready var _sandbox_level_selection: SandboxLevelSelection = $CanvasLayer/SandboxLevelSelection
+@onready var _delete_dialog: DeleteDialog = $CanvasLayer/DeleteDialog
+@onready var _gui_mask: ColorRect = $CanvasLayer/GUIMask
 
 func _on_panel_level_create() -> void:
 	print("Click on create")
@@ -31,5 +33,21 @@ func _on_panel_level_rename(level_path: Variant, new_name: Variant) -> void:
 
 func _on_sandbox_level_selection_level_delete(level_path: Variant) -> void:
 	print("Trying to delete " + level_path)
-	LevelManager.delete_level(level_path)
+
+
+	_gui_mask.visible = true	
+	_delete_dialog.file_name = level_path
+	_delete_dialog.visible = true
+	
+	var result = await _delete_dialog.resolved
+	
+	var status = result[0]
+	if status == DeleteDialog.Status.CONFIRMED:
+		print("Confirm delete")
+		LevelManager.delete_level(level_path)
+	else:
+		print("Cancel delete")
+	
+	_gui_mask.visible = false	
+	_delete_dialog.visible = false
 	_sandbox_level_selection.update_items()

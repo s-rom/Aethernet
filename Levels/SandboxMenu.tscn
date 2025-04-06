@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://s125nfw7jhhl"]
+[gd_scene load_steps=5 format=3 uid="uid://s125nfw7jhhl"]
 
 [ext_resource type="PackedScene" uid="uid://bvvcyadmk8xc7" path="res://SandboxMode/Gui/LevelLoader/SandboxLevelSelection.tscn" id="1_2ci7s"]
 [ext_resource type="Script" path="res://Levels/sandbox_menu.gd" id="1_i7sql"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="3_ny6ia"]
+[ext_resource type="PackedScene" uid="uid://cb2wp2m0oynjq" path="res://Levels/delete_dialog.tscn" id="4_i56an"]
 
 [node name="SandboxMenu" type="Node2D"]
 script = ExtResource("1_i7sql")
@@ -18,6 +20,46 @@ offset_left = -0.208
 offset_top = 0.271999
 offset_right = 479.792
 offset_bottom = 405.272
+
+[node name="New" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(128.53, 0)
+theme = ExtResource("3_ny6ia")
+theme_type_variation = &"MainGUIButton"
+theme_override_font_sizes/font_size = 22
+
+[node name="Rename" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(128.53, 0)
+theme = ExtResource("3_ny6ia")
+theme_type_variation = &"MainGUIButton"
+theme_override_font_sizes/font_size = 22
+
+[node name="Delete" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(128.53, 0)
+theme = ExtResource("3_ny6ia")
+theme_type_variation = &"MainGUIButton"
+theme_override_font_sizes/font_size = 22
+
+[node name="Load" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(128.53, 0)
+theme = ExtResource("3_ny6ia")
+theme_type_variation = &"MainGUIButton"
+theme_override_font_sizes/font_size = 22
+
+[node name="GUIMask" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0.0475577, 0.0475576, 0.0475576, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_force_pass_scroll_events = false
+color = Color(0.212, 0.212, 0.212, 0.946)
+
+[node name="DeleteDialog" parent="CanvasLayer" instance=ExtResource("4_i56an")]
+visible = false
 
 [connection signal="level_create" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_create"]
 [connection signal="level_delete" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_delete"]

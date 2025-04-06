@@ -163,12 +163,13 @@ grow_horizontal = 0
 
 [node name="Portal" parent="Container" instance=ExtResource("5_0jv6b")]
 position = Vector2(839, 298)
+rotation = 0.261799
 
 [node name="Energy" parent="Container/Portal" index="7"]
 material = SubResource("ShaderMaterial_j2ex3")
 
 [node name="MeteorDetailedLarge" parent="Container" instance=ExtResource("7_dpdx7")]
-position = Vector2(600, 182)
+position = Vector2(638, 132)
 rotationSpeed = 0.3
 
 [node name="MeteorDetailedLarge2" parent="Container" instance=ExtResource("7_dpdx7")]
@@ -186,7 +187,7 @@ position = Vector2(1074, 106)
 rotationSpeed = 0.3
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.59
+energy = 0.49
 range_item_cull_mask = 3
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
