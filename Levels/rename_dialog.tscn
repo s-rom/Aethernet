@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4c3f7dxxj654"]
+
+[ext_resource type="Script" path="res://Levels/rename_dialog.gd" id="1_bs0iv"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_t2jpo"]
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="3_5ln75"]
+
+[node name="RenameDialog" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -82.5
+offset_right = 293.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelContainerInner"
+script = ExtResource("1_bs0iv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_t2jpo")
+theme_type_variation = &"GuiLabel"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "NOMBRE"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5ln75")
+theme_override_font_sizes/font_size = 32
+text = "Nivel_kasdjfkkajsdkfjak"
+max_length = 32
+expand_to_text_length = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.650036, 0.40308, 0, 1)
+theme_override_fonts/font = ExtResource("3_5ln75")
+theme_override_font_sizes/font_size = 32
+text = "Estado de la operación"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ConfirmDelete" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_t2jpo")
+theme_type_variation = &"MainGUIButton"
+text = "RENOMBRAR"
+
+[node name="CancelDelete" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_t2jpo")
+theme_type_variation = &"MainGUIButton"
+text = "CANCELAR"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmDelete" to="." method="_on_confirm_delete_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelDelete" to="." method="_on_cancel_delete_pressed"]

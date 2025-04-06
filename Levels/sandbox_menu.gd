@@ -4,6 +4,8 @@ extends Node2D
 @onready var _sandbox_level_selection: SandboxLevelSelection = $CanvasLayer/SandboxLevelSelection
 @onready var _delete_dialog: DeleteDialog = $CanvasLayer/DeleteDialog
 @onready var _gui_mask: ColorRect = $CanvasLayer/GUIMask
+@onready var _rename_dialog: RenameDialog = $CanvasLayer/RenameDialog
+
 
 func _on_panel_level_create() -> void:
 	print("Click on create")
@@ -27,8 +29,6 @@ func _load_level(level_path: Variant) -> void:
 func _on_panel_level_load(level_path: Variant) -> void:
 	call_deferred("_load_level", level_path)
 	
-func _on_panel_level_rename(level_path: Variant, new_name: Variant) -> void:
-	pass # Replace with function body.
 
 
 func _on_sandbox_level_selection_level_delete(level_path: Variant) -> void:
@@ -51,3 +51,28 @@ func _on_sandbox_level_selection_level_delete(level_path: Variant) -> void:
 	_gui_mask.visible = false	
 	_delete_dialog.visible = false
 	_sandbox_level_selection.update_items()
+
+
+func _on_sandbox_level_selection_level_rename(level_path: Variant) -> void:
+	var file_name = (level_path as String).replace(".anet", "")
+
+	print("Sandbox Menu -> Rename callback")
+
+	_gui_mask.visible = true	
+	_rename_dialog.file_path = level_path
+	_rename_dialog.file_name = file_name
+	_rename_dialog.visible = true
+
+
+
+func _on_rename_dialog_resolved(status: RenameDialog.Status, old_path: String, new_name: String) -> void:
+
+	if status == RenameDialog.Status.CONFIRMED:
+		var status_dict = LevelManager.rename_file(old_path, new_name)
+		
+		if status_dict["status"]:
+			_gui_mask.visible = false
+			_rename_dialog.visible = false
+			_sandbox_level_selection.update_items()
+		else:
+			_rename_dialog.log_result(status_dict["message"])

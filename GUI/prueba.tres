@@ -10,10 +10,10 @@
 [ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="4_xgbak"]
 [ext_resource type="Texture2D" uid="uid://c0bfqy8m0s78q" path="res://GUI/Vector/Extra/button_square_line.svg" id="5_v4ggm"]
 [ext_resource type="Texture2D" uid="uid://usskvwuqjp55" path="res://GUI/Vector/Extra/button_rectangle_line.svg" id="5_vu0dx"]
-[ext_resource type="Texture2D" uid="uid://rh61owlg8dwk" path="res://GUI/Vector/Grey/button_rectangle_flat.svg" id="6_vkk0g"]
 [ext_resource type="FontFile" uid="uid://bkb5yb5uqamjk" path="res://GUI/exo2_font/Exo2-ExtraBold.otf" id="7_fug0x"]
 [ext_resource type="Texture2D" uid="uid://cw1q8ddtry7y0" path="res://GUI/Vector/Grey/button_rectangle_line.svg" id="7_ky706"]
 [ext_resource type="Texture2D" uid="uid://dt435g7esn62v" path="res://GUI/Vector/Blue/button_rectangle_depth_flat.svg" id="7_ptwq0"]
+[ext_resource type="Texture2D" uid="uid://ej5evq16d2ra" path="res://GUI/prueba_panel.png" id="8_1ykmw"]
 [ext_resource type="Texture2D" uid="uid://m1c7d5n27oxm" path="res://GUI/Vector/Green/button_rectangle_depth_gradient.svg" id="9_u12bd"]
 
 [sub_resource type="Image" id="Image_b8aos"]
@@ -2207,12 +2207,13 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x44h1"]
-texture = ExtResource("6_vkk0g")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-modulate_color = Color(0.121534, 0.193001, 0.215584, 1)
+texture = ExtResource("8_1ykmw")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(29.1156, 51.0436, 154.565, 100.182)
+modulate_color = Color(0.11187, 0.0970858, 0.180401, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hbv1"]
 texture = ExtResource("4_r1pxv")
@@ -2312,7 +2313,7 @@ InLevelTextField/base_type = &"LineEdit"
 InLevelTextField/colors/font_color = Color(1, 1, 1, 1)
 InLevelTextField/colors/font_placeholder_color = Color(0.589096, 0.589096, 0.589095, 1)
 InLevelTextField/constants/caret_width = 2
-InLevelTextField/font_sizes/font_size = 28
+InLevelTextField/font_sizes/font_size = 24
 InLevelTextField/fonts/font = ExtResource("7_fug0x")
 InLevelTextField/icons/clear = null
 InLevelTextField/styles/normal = SubResource("StyleBoxTexture_x44h1")

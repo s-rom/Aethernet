@@ -7,6 +7,8 @@ class_name CoordinatesLineEdit
 @onready var _previous_text: String = ""
 @onready var camera2D: Camera2D = get_viewport().get_camera_2d()
 
+@onready var original_scale = self.scale
+
 signal coordinates_changed(new_coord)
 
 # Called when the node enters the scene tree for the first time.
@@ -30,7 +32,7 @@ func _process(_delta: float):
 	var screenPos = camera2D.get_screen_transform() * followTarget.global_position
 	screenPos -= camera2D.get_screen_center_position() * camera2D.zoom
 	self.set_position(screenPos)
-	self.scale = camera2D.zoom
+	self.scale = original_scale *  camera2D.zoom
 
 
 func _on_focus_exited() -> void:

@@ -6,8 +6,9 @@
 [node name="LineEdit" type="LineEdit" groups=["VisualizationLowPrio"]]
 light_mask = 0
 z_index = -1
-offset_right = 98.0
-offset_bottom = 45.0
+offset_right = 108.0
+offset_bottom = 50.0
+scale = Vector2(0.625, 0.625)
 theme = ExtResource("1_1f21r")
 theme_type_variation = &"InLevelTextField"
 placeholder_text = "??"

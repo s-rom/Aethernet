@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://s125nfw7jhhl"]
+[gd_scene load_steps=6 format=3 uid="uid://s125nfw7jhhl"]
 
 [ext_resource type="PackedScene" uid="uid://bvvcyadmk8xc7" path="res://SandboxMode/Gui/LevelLoader/SandboxLevelSelection.tscn" id="1_2ci7s"]
 [ext_resource type="Script" path="res://Levels/sandbox_menu.gd" id="1_i7sql"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="3_ny6ia"]
 [ext_resource type="PackedScene" uid="uid://cb2wp2m0oynjq" path="res://Levels/delete_dialog.tscn" id="4_i56an"]
+[ext_resource type="PackedScene" uid="uid://b4c3f7dxxj654" path="res://Levels/rename_dialog.tscn" id="5_8432f"]
 
 [node name="SandboxMenu" type="Node2D"]
 script = ExtResource("1_i7sql")
@@ -13,13 +14,13 @@ script = ExtResource("1_i7sql")
 [node name="SandboxLevelSelection" parent="CanvasLayer" instance=ExtResource("1_2ci7s")]
 anchors_preset = -1
 anchor_left = 0.054
-anchor_top = 0.086
-anchor_right = 0.054
-anchor_bottom = 0.086
+anchor_top = 0.168
+anchor_right = 0.326
+anchor_bottom = 0.826
 offset_left = -0.208
-offset_top = 0.271999
-offset_right = 479.792
-offset_bottom = 405.272
+offset_top = 0.135994
+offset_right = 310.448
+offset_bottom = -0.248047
 
 [node name="New" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="0"]
 custom_minimum_size = Vector2(128.53, 0)
@@ -65,9 +66,13 @@ color = Color(0.212, 0.212, 0.212, 0.946)
 [node name="DeleteDialog" parent="CanvasLayer" instance=ExtResource("4_i56an")]
 visible = false
 
+[node name="RenameDialog" parent="CanvasLayer" instance=ExtResource("5_8432f")]
+visible = false
+
 [connection signal="level_create" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_create"]
 [connection signal="level_delete" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_delete"]
 [connection signal="level_load" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_load"]
-[connection signal="level_rename" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_rename"]
+[connection signal="level_rename" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_rename"]
+[connection signal="resolved" from="CanvasLayer/RenameDialog" to="." method="_on_rename_dialog_resolved"]
 
 [editable path="CanvasLayer/SandboxLevelSelection"]

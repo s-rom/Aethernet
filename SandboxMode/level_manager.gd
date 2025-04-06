@@ -26,9 +26,6 @@ func get_base_directory() -> DirAccess:
 		return null
 	return base_dir
 	
-func save_custom_level() -> void:
-	pass
-
 
 func load_save_file(file_path: String):
 	var absolute_path = base_path + file_path
@@ -109,6 +106,30 @@ func delete_level(level_path: String) -> void:
 	if result != OK:
 		print("Error deleting " + level_path)
 	
+
+func rename_file(old_path: String, new_name: String) -> Dictionary:
+
+	var base_dir = get_base_directory() as DirAccess
+	var new_path = base_path + new_name + _extension
+
+
+	if base_dir.file_exists(new_path):
+		return {"status": false, "message": "El fichero ya existe!"}
+
+
+	var result = base_dir.rename(old_path, new_path)
+
+	if result != OK:
+		return {"status": false, "message": result}
+
+
+	return {"status": true, "message": "Fichero renombrado"}
+
+
+
+	
+	
+
 
 func create_custom_level() -> void:
 	var level_path = base_path + get_next_level_name_with_ext()

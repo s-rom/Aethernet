@@ -13,7 +13,7 @@ var _selected_level: LevelItem = null
 signal level_delete(level_path)
 signal level_create()
 signal level_load(level_path)
-signal level_rename(level_path, new_name)
+signal level_rename(level_path)
 
 
 func _ready() -> void:
@@ -60,7 +60,8 @@ func _on_rename_pressed() -> void:
 	if not _selected_level:
 		return
 	
-	print("Todo")
+	level_rename.emit(_selected_level.level_path)
+	print("rename pressed")
 
 
 func _on_delete_pressed() -> void:
