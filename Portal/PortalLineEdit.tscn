@@ -6,10 +6,11 @@
 [node name="LineEdit" type="LineEdit" groups=["VisualizationLowPrio"]]
 light_mask = 0
 z_index = -1
-offset_right = 66.0
-offset_bottom = 36.0
+offset_right = 98.0
+offset_bottom = 45.0
 theme = ExtResource("1_1f21r")
 theme_type_variation = &"InLevelTextField"
 placeholder_text = "??"
 alignment = 1
+max_length = 4
 script = ExtResource("2_j1sw8")

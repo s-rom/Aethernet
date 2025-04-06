@@ -26,24 +26,28 @@ custom_minimum_size = Vector2(128.53, 0)
 theme = ExtResource("3_ny6ia")
 theme_type_variation = &"MainGUIButton"
 theme_override_font_sizes/font_size = 22
+text = "NUEVO"
 
 [node name="Rename" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(128.53, 0)
 theme = ExtResource("3_ny6ia")
 theme_type_variation = &"MainGUIButton"
 theme_override_font_sizes/font_size = 22
+text = "RENOMBRAR"
 
 [node name="Delete" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="2"]
 custom_minimum_size = Vector2(128.53, 0)
 theme = ExtResource("3_ny6ia")
 theme_type_variation = &"MainGUIButton"
 theme_override_font_sizes/font_size = 22
+text = "ELIMINAR"
 
 [node name="Load" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="3"]
 custom_minimum_size = Vector2(128.53, 0)
 theme = ExtResource("3_ny6ia")
 theme_type_variation = &"MainGUIButton"
 theme_override_font_sizes/font_size = 22
+text = "CARGAR"
 
 [node name="GUIMask" type="ColorRect" parent="CanvasLayer"]
 visible = false

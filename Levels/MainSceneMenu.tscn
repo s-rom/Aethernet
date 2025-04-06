@@ -133,17 +133,7 @@ text = "NIVELES"
 [node name="SandboxButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"MainGUIButton"
-text = "Modo Libre"
-
-[node name="LoadButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"MainGUIButton"
-text = "Cargar"
-
-[node name="SandboxButton2" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"MainGUIButton"
-text = "2025 DEBUG"
+text = "MODO LIBRE"
 
 [node name="ShipsLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -192,6 +182,5 @@ range_item_cull_mask = 3
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SandboxButton" to="." method="_on_sandbox_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/SandboxButton2" to="." method="_on_debug_test"]
 
 [editable path="Container/Portal"]

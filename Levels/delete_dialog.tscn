@@ -48,14 +48,14 @@ size_flags_vertical = 10
 layout_mode = 2
 theme = ExtResource("1_14naa")
 theme_type_variation = &"MainGUIButton"
-text = "Eliminar"
+text = "ELIMINAR"
 
 [node name="CancelDelete" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("1_14naa")
 theme_type_variation = &"MainGUIButton"
-text = "Cancelar"
+text = "CANCELAR"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ConfirmDelete" to="." method="_on_confirm_delete_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelDelete" to="." method="_on_cancel_delete_pressed"]
