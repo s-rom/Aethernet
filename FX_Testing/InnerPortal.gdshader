@@ -21,11 +21,11 @@ uniform float radius: hint_range(0.0, 1.0);
 float get_energy(sampler2D noise, vec2 uv, float rotSpeed, vec2 scrollVec)
 {
 	vec2 center = vec2(0.5, 0.5);
-	
+
 	float w = TIME * -rotSpeed;
 	mat2 rot = mat2(vec2(-cos(w), -sin(w)),
 	         vec2(sin(w),  -cos(w)));
-	
+
 	vec2 rotatedUV = uv - center;
 	rotatedUV = rot * rotatedUV;
 	rotatedUV += center;
@@ -37,8 +37,8 @@ float get_energy(sampler2D noise, vec2 uv, float rotSpeed, vec2 scrollVec)
 void fragment() {
 	vec2 center = vec2(0.5, 0.5);
 	float circle = smoothstep(radius, 0.00, distance(center, UV));
-	
-	
+
+
 	float noise = get_energy(noiseTexture, UV, rotationSpeed, scroll) * circle;
 	float noise2 = get_energy(noiseTexture2, UV, rotationSpeed2, scroll2) * circle;
 	float energy = noise * noise2;

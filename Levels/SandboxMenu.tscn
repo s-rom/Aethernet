@@ -1,13 +1,118 @@
-[gd_scene load_steps=6 format=3 uid="uid://s125nfw7jhhl"]
+[gd_scene load_steps=17 format=3 uid="uid://s125nfw7jhhl"]
 
 [ext_resource type="PackedScene" uid="uid://bvvcyadmk8xc7" path="res://SandboxMode/Gui/LevelLoader/SandboxLevelSelection.tscn" id="1_2ci7s"]
 [ext_resource type="Script" path="res://Levels/sandbox_menu.gd" id="1_i7sql"]
+[ext_resource type="Script" path="res://Scripts/WebFix.gd" id="2_uysfo"]
+[ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="3_4bul3"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="3_ny6ia"]
+[ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="3_tnupv"]
+[ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="4_4fjap"]
 [ext_resource type="PackedScene" uid="uid://cb2wp2m0oynjq" path="res://Levels/delete_dialog.tscn" id="4_i56an"]
 [ext_resource type="PackedScene" uid="uid://b4c3f7dxxj654" path="res://Levels/rename_dialog.tscn" id="5_8432f"]
+[ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="5_rpb56"]
+[ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="7_cq1pu"]
+[ext_resource type="PackedScene" uid="uid://cfkto5bxfvb5g" path="res://Portal/PortalMainMenu.tscn" id="8_rqtyo"]
+[ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="13_fi5qb"]
+
+[sub_resource type="Gradient" id="Gradient_kif72"]
+offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1uji1"]
+texture = ExtResource("13_fi5qb")
+modulate_color = Color(0.724643, 0.724643, 0.724643, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r404u"]
+texture = ExtResource("13_fi5qb")
 
 [node name="SandboxMenu" type="Node2D"]
 script = ExtResource("1_i7sql")
+
+[node name="WebFix" type="Node" parent="."]
+script = ExtResource("2_uysfo")
+
+[node name="MenuAnimations" type="Node2D" parent="."]
+script = ExtResource("3_4bul3")
+shipColor = Color(1, 1, 1, 0.690196)
+seconds_between_spawn = 0.5
+initial_ships = 5
+tick_quantity = 3.0
+max_scale = 0.6
+min_velocity = 90.0
+max_velocity = 250.0
+
+[node name="SpawnTimer" type="Timer" parent="MenuAnimations"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 323)
+script = ExtResource("3_tnupv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D"]
+z_index = -1
+amount = 400
+lifetime = 12.0
+preprocess = 16.0
+texture = ExtResource("4_4fjap")
+emission_shape = 3
+emission_rect_extents = Vector2(1920, 1080)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+color_ramp = SubResource("Gradient_kif72")
+hue_variation_min = 0.73
+hue_variation_max = 0.75
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+modulate = Color(0.227981, 0.196153, 0.367317, 1)
+light_mask = 5
+z_index = -2
+position = Vector2(268, 464)
+scale = Vector2(164.779, 111.942)
+texture = ExtResource("5_rpb56")
+
+[node name="ShipsLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Container" type="Control" parent="ShipsLayer"]
+z_index = 2
+layout_mode = 3
+anchor_left = 0.739
+anchor_top = 0.5
+anchor_right = 0.739
+anchor_bottom = 0.5
+offset_left = -852.328
+offset_top = -325.0
+offset_right = -852.328
+offset_bottom = -325.0
+grow_horizontal = 0
+
+[node name="MeteorDetailedLarge" parent="ShipsLayer/Container" instance=ExtResource("7_cq1pu")]
+z_index = 10
+position = Vector2(680, 79)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge2" parent="ShipsLayer/Container" instance=ExtResource("7_cq1pu")]
+z_index = 10
+position = Vector2(589, 518)
+scale = Vector2(0.773323, 0.773323)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge3" parent="ShipsLayer/Container" instance=ExtResource("7_cq1pu")]
+z_index = 10
+position = Vector2(1064, 553)
+scale = Vector2(1.22928, 1.22928)
+rotationSpeed = 0.3
+
+[node name="MeteorDetailedLarge4" parent="ShipsLayer/Container" instance=ExtResource("7_cq1pu")]
+z_index = 10
+position = Vector2(1074, 106)
+rotationSpeed = 0.3
+
+[node name="PortalMainMenu" parent="ShipsLayer/Container" instance=ExtResource("8_rqtyo")]
+z_index = 10
+position = Vector2(847, 324)
+rotation = -0.261799
+scale = Vector2(0.5, 0.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -15,12 +120,12 @@ script = ExtResource("1_i7sql")
 anchors_preset = -1
 anchor_left = 0.054
 anchor_top = 0.168
-anchor_right = 0.326
+anchor_right = 0.418
 anchor_bottom = 0.826
 offset_left = -0.208
-offset_top = 0.135994
-offset_right = 310.448
-offset_bottom = -0.248047
+offset_top = 0.135986
+offset_right = 204.464
+offset_bottom = -0.247986
 
 [node name="New" parent="CanvasLayer/SandboxLevelSelection/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" index="0"]
 custom_minimum_size = Vector2(128.53, 0)
@@ -69,10 +174,30 @@ visible = false
 [node name="RenameDialog" parent="CanvasLayer" instance=ExtResource("5_8432f")]
 visible = false
 
+[node name="HomeButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = -1
+anchor_left = 0.023
+anchor_top = 0.034
+anchor_right = 0.023
+anchor_bottom = 0.034
+offset_left = -0.496002
+offset_top = -0.0320015
+offset_right = 49.504
+offset_bottom = 49.968
+theme_override_styles/hover = SubResource("StyleBoxTexture_1uji1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_r404u")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+range_item_cull_mask = 3
+
+[connection signal="timeout" from="MenuAnimations/SpawnTimer" to="MenuAnimations" method="_on_spawn_timer_timeout"]
 [connection signal="level_create" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_create"]
 [connection signal="level_delete" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_delete"]
 [connection signal="level_load" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_panel_level_load"]
 [connection signal="level_rename" from="CanvasLayer/SandboxLevelSelection" to="." method="_on_sandbox_level_selection_level_rename"]
 [connection signal="resolved" from="CanvasLayer/RenameDialog" to="." method="_on_rename_dialog_resolved"]
+[connection signal="pressed" from="CanvasLayer/HomeButton" to="." method="_on_home_button_pressed"]
 
 [editable path="CanvasLayer/SandboxLevelSelection"]

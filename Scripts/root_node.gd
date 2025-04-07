@@ -103,7 +103,12 @@ func _process(delta: float):
 		currentConnection.add_point(get_global_mouse_position())
 	
 	if _draggingCamera:
-		$Camera2D.position -= _mouseMovement * delta * cameraSpeed
+		var zoom = $Camera2D.zoom.x
+		var speed = cameraSpeed
+		if zoom != 0.0:
+			speed /= zoom
+		
+		$Camera2D.position -= _mouseMovement * delta * speed
 		_mouseMovement = Vector2.ZERO
 
 

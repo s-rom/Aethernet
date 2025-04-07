@@ -107,10 +107,17 @@ func delete_level(level_path: String) -> void:
 		print("Error deleting " + level_path)
 	
 
+static var _invalid_filename_chars = ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"]
+
+
 func rename_file(old_path: String, new_name: String) -> Dictionary:
 
 	var base_dir = get_base_directory() as DirAccess
 	var new_path = base_path + new_name + _extension
+
+	for invalid in _invalid_filename_chars:
+		if new_name.find(invalid) != -1:
+			return {"status": false, "message": "Nombre inválido"}
 
 
 	if base_dir.file_exists(new_path):
@@ -120,7 +127,7 @@ func rename_file(old_path: String, new_name: String) -> Dictionary:
 	var result = base_dir.rename(old_path, new_path)
 
 	if result != OK:
-		return {"status": false, "message": result}
+		return {"status": false, "message": str(result)}
 
 
 	return {"status": true, "message": "Fichero renombrado"}

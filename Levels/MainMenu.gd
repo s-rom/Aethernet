@@ -1,9 +1,20 @@
 extends Node2D
 
 
+var ANIM_MAIN_MENU = "MainMenu_Start"
+
+static var first_time = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Main menu ready")
+	
+	if first_time:
+		print("Main menu ready")
+		$AnimationPlayer.play(ANIM_MAIN_MENU)
+		first_time = false
+	else:
+		$AnimationPlayer.play("RESET")
+
 
 
 

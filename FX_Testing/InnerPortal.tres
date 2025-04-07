@@ -10,31 +10,31 @@ colors = PackedColorArray(0.118581, 0.118581, 0.118581, 0, 1, 1, 1, 1, 0, 0, 0, 
 resource_local_to_scene = true
 gradient = SubResource("Gradient_tgyix")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tcxas"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nwos7"]
 noise_type = 2
 frequency = 0.0199
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ahn2p"]
 seamless = true
-noise = SubResource("FastNoiseLite_tcxas")
+noise = SubResource("FastNoiseLite_nwos7")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pa5f"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryksc"]
 frequency = 0.0139
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dyib"]
 seamless = true
-noise = SubResource("FastNoiseLite_2pa5f")
+noise = SubResource("FastNoiseLite_ryksc")
 
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_qaif2")
 shader_parameter/rotationSpeed = -1.901
 shader_parameter/rotationSpeed2 = 1.266
-shader_parameter/hdr_intensity = 1.731
-shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/hdr_intensity = 0.0
+shader_parameter/hdr_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 shader_parameter/scroll = Vector2(0, 0)
 shader_parameter/scroll2 = Vector2(0, 0)
-shader_parameter/radius = 0.603
+shader_parameter/radius = 0.0
 shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
 shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
 shader_parameter/colorTexture = SubResource("GradientTexture1D_nfq1s")

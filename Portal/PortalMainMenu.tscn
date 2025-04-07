@@ -1,35 +1,28 @@
-[gd_scene load_steps=37 format=3 uid="uid://boyrjboqn8hjt"]
+[gd_scene load_steps=30 format=3 uid="uid://cfkto5bxfvb5g"]
 
-[ext_resource type="Script" path="res://Portal/portal.gd" id="1_skunw"]
-[ext_resource type="Script" path="res://Scripts/port.gd" id="3_6q58t"]
-[ext_resource type="Texture2D" uid="uid://6s1nlcgihf2w" path="res://Portal/spaceStation_009_normal.png" id="4_uwqn2"]
-[ext_resource type="Script" path="res://Scripts/port_component.gd" id="4_x7y2p"]
-[ext_resource type="Script" path="res://Station/PortHighlighter.gd" id="6_4xt3q"]
-[ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="8_1d827"]
-[ext_resource type="Texture2D" uid="uid://cgb2wwetmcyas" path="res://Portal/circle2.svg" id="9_620mx"]
-[ext_resource type="Shader" path="res://Portal/port.gdshader" id="9_ah1gn"]
-[ext_resource type="Texture2D" uid="uid://dcvr6vyb43t5n" path="res://Pruebas/crosshair135_normal.png" id="11_32sf2"]
-[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="13_g5nvq"]
-[ext_resource type="Script" path="res://Portal/HighlightCircle.gd" id="14_s6jug"]
-[ext_resource type="Texture2D" uid="uid://y5yd5e8r0k22" path="res://Portal/circle3.svg" id="14_sjuo0"]
-[ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="16_tpn24"]
-[ext_resource type="Script" path="res://Scripts/rotation_input.gd" id="17_0cl0e"]
-[ext_resource type="Texture2D" uid="uid://bxyms6ewgdx14" path="res://Pruebas/crosshair135.png" id="17_s7pub"]
-[ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="18_yj1sx"]
-[ext_resource type="Material" uid="uid://bwidme6mcdwtg" path="res://FX_Testing/InnerPortal.tres" id="21_j50ip"]
+[ext_resource type="Script" path="res://Portal/portal_main_menu.gd" id="1_e8meu"]
+[ext_resource type="Shader" path="res://Portal/port.gdshader" id="1_ia3jp"]
+[ext_resource type="Texture2D" uid="uid://ftue0a2xavt8" path="res://Portal/spaceStation_009.png" id="2_4ext0"]
+[ext_resource type="Texture2D" uid="uid://6s1nlcgihf2w" path="res://Portal/spaceStation_009_normal.png" id="3_7ihpk"]
+[ext_resource type="Texture2D" uid="uid://bxyms6ewgdx14" path="res://Pruebas/crosshair135.png" id="5_65k6x"]
+[ext_resource type="Texture2D" uid="uid://dcvr6vyb43t5n" path="res://Pruebas/crosshair135_normal.png" id="6_jnes0"]
+[ext_resource type="Texture2D" uid="uid://y5yd5e8r0k22" path="res://Portal/circle3.svg" id="8_414xx"]
+[ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="11_mfo2g"]
+[ext_resource type="Material" uid="uid://bwidme6mcdwtg" path="res://FX_Testing/InnerPortal.tres" id="12_y4nwa"]
+[ext_resource type="Texture2D" uid="uid://ck738xyy6pvsp" path="res://icon.svg" id="13_qkw2u"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_blicw"]
-shader = ExtResource("9_ah1gn")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atcry"]
+shader = ExtResource("1_ia3jp")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_mlklw"]
-diffuse_texture = ExtResource("8_1d827")
-normal_texture = ExtResource("4_uwqn2")
+[sub_resource type="CanvasTexture" id="CanvasTexture_04qio"]
+diffuse_texture = ExtResource("2_4ext0")
+normal_texture = ExtResource("3_7ihpk")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i7m2x"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mhbl2"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_x73we"]
-diffuse_texture = ExtResource("17_s7pub")
-normal_texture = ExtResource("11_32sf2")
+[sub_resource type="CanvasTexture" id="CanvasTexture_vrdb5"]
+diffuse_texture = ExtResource("5_65k6x")
+normal_texture = ExtResource("6_jnes0")
 
 [sub_resource type="Animation" id="Animation_oa3yy"]
 resource_name = "Portal_Delete"
@@ -247,6 +240,70 @@ tracks/5/keys = {
 "args": [],
 "method": &"show_all_line_edits"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_2ob4n"]
+resource_name = "Portal_MainMenu"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667, 1.03333, 1.56667, 2.13333, 3.1, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.189465, 1),
+"update": 0,
+"values": [0.0, 0.4, 0.2, 0.35, 0.15, 0.72, 0.61]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.866667, 2.76667, 3.36667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.731, 1.1, 2.5, 1.731]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.33333, 2.2, 2.6, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0177324, 0.0177324, 0.0177324, 1), Color(0.225743, 0.133429, 0.326935, 1), Color(0.860805, 0.453452, 0.695967, 1), Color(0.640298, 0.53419, 0.955871, 1), Color(0.595389, 0.372356, 0.782502, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796), PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PointLight2D:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(-0.0333333, 0, 3.03333, 3.43333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 2.3, 2.0]
 }
 
 [sub_resource type="Animation" id="Animation_5a1va"]
@@ -468,70 +525,6 @@ tracks/5/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_2ob4n"]
-resource_name = "Portal_MainMenu"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.566667, 1.03333, 1.56667, 2.13333, 3.1, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 0.189465, 1),
-"update": 0,
-"values": [0.0, 0.4, 0.2, 0.35, 0.15, 0.72, 0.61]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_parameter/hdr_intensity")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.866667, 2.76667, 3.36667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.731, 1.1, 2.5, 1.731]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:material:shader_parameter/hdr_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.33333, 2.2, 2.6, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.0177324, 0.0177324, 0.0177324, 1), Color(0.225743, 0.133429, 0.326935, 1), Color(0.860805, 0.453452, 0.695967, 1), Color(0.640298, 0.53419, 0.955871, 1), Color(0.595389, 0.372356, 0.782502, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:material:shader_parameter/colorTexture:gradient:offsets")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [PackedFloat32Array(0.016129, 0.0967742, 0.182796), PackedFloat32Array(0.016129, 0.0967742, 0.182796)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../PointLight2D:energy")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(-0.0333333, 0, 3.03333, 3.43333, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 2.3, 2.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7a8h"]
 _data = {
 "Portal_Delete": SubResource("Animation_oa3yy"),
@@ -543,21 +536,21 @@ _data = {
 "RESET": SubResource("Animation_nrpq2")
 }
 
-[sub_resource type="Curve" id="Curve_yh8sf"]
+[sub_resource type="Curve" id="Curve_ffmq6"]
 _data = [Vector2(0.00409836, 0), 0.0, -0.905159, 0, 0, Vector2(0.217213, 0.274725), -0.40626, -0.40626, 0, 0, Vector2(0.729508, 0.89011), 5.06471, 5.06471, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_sbyxp"]
-curve = SubResource("Curve_yh8sf")
+[sub_resource type="CurveTexture" id="CurveTexture_irfhc"]
+curve = SubResource("Curve_ffmq6")
 
-[sub_resource type="Curve" id="Curve_1q5ef"]
+[sub_resource type="Curve" id="Curve_wfpi4"]
 _data = [Vector2(0, 0.076923), 0.0, 0.0, 0, 0, Vector2(0.27459, 0.549451), 0.928149, 0.928149, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wp6as"]
-curve = SubResource("Curve_1q5ef")
+[sub_resource type="CurveTexture" id="CurveTexture_v6ja6"]
+curve = SubResource("Curve_wfpi4")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_viacc"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h3ch7"]
 particle_flag_disable_z = true
 angle_min = 1.07288e-05
 angle_max = 1.07288e-05
@@ -566,119 +559,69 @@ initial_velocity_min = 42.86
 initial_velocity_max = 85.72
 gravity = Vector3(0, 0, 0)
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_wp6as")
+scale_curve = SubResource("CurveTexture_v6ja6")
 color = Color(1.622, 1.2, 3, 1)
-alpha_curve = SubResource("CurveTexture_sbyxp")
+alpha_curve = SubResource("CurveTexture_irfhc")
 
-[sub_resource type="Gradient" id="Gradient_dtjnx"]
+[sub_resource type="Gradient" id="Gradient_yrequ"]
 offsets = PackedFloat32Array(0, 0.995968)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7okdr"]
-gradient = SubResource("Gradient_dtjnx")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nccpx"]
+gradient = SubResource("Gradient_yrequ")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.0854701, 0.918803)
 
-[node name="Portal" type="Node2D" groups=["Persist", "port"]]
-light_mask = 2
-position = Vector2(0, -1)
-scale = Vector2(0.41, 0.41)
-script = ExtResource("1_skunw")
+[node name="PortalMainMenu" type="Node2D"]
+script = ExtResource("1_e8meu")
 
 [node name="Port2" type="Sprite2D" parent="."]
 light_mask = 2
-material = SubResource("ShaderMaterial_blicw")
+material = SubResource("ShaderMaterial_atcry")
 position = Vector2(214.161, 96.182)
 rotation = -2.72795
 scale = Vector2(1.41, 1.41)
-texture = SubResource("CanvasTexture_mlklw")
-script = ExtResource("3_6q58t")
-
-[node name="PortComponent" type="Node" parent="Port2"]
-script = ExtResource("4_x7y2p")
-
-[node name="PortHighlighter" type="Node" parent="Port2" node_paths=PackedStringArray("portSprite")]
-script = ExtResource("6_4xt3q")
-portSprite = NodePath("..")
-selfModulate = true
-
-[node name="LineEditPosition" type="Node2D" parent="Port2"]
-position = Vector2(-3.86234, -0.211018)
-rotation = -2.4026
+texture = SubResource("CanvasTexture_04qio")
 
 [node name="Port1" type="Sprite2D" parent="."]
 light_mask = 2
-material = SubResource("ShaderMaterial_blicw")
+material = SubResource("ShaderMaterial_atcry")
 position = Vector2(-212.699, 101.389)
 rotation = -0.447552
 scale = Vector2(1.41, 1.41)
-texture = SubResource("CanvasTexture_mlklw")
-script = ExtResource("3_6q58t")
-
-[node name="PortComponent" type="Node" parent="Port1"]
-script = ExtResource("4_x7y2p")
-
-[node name="PortHighlighter" type="Node" parent="Port1" node_paths=PackedStringArray("portSprite")]
-script = ExtResource("6_4xt3q")
-portSprite = NodePath("..")
-selfModulate = true
-
-[node name="LineEditPosition" type="Node2D" parent="Port1"]
-position = Vector2(-5.42337, -0.713364)
+texture = SubResource("CanvasTexture_04qio")
 
 [node name="Port3" type="Sprite2D" parent="."]
 light_mask = 2
-material = SubResource("ShaderMaterial_blicw")
+material = SubResource("ShaderMaterial_atcry")
 position = Vector2(-6.14727, -236.619)
 rotation = 1.54594
 scale = Vector2(1.41, 1.41)
-texture = SubResource("CanvasTexture_mlklw")
-script = ExtResource("3_6q58t")
-
-[node name="PortComponent" type="Node" parent="Port3"]
-script = ExtResource("4_x7y2p")
-
-[node name="PortHighlighter" type="Node" parent="Port3" node_paths=PackedStringArray("portSprite")]
-script = ExtResource("6_4xt3q")
-portSprite = NodePath("..")
-selfModulate = true
-
-[node name="LineEditPosition" type="Node2D" parent="Port3"]
-position = Vector2(0.0518036, -1.72903)
+texture = SubResource("CanvasTexture_04qio")
 
 [node name="Circle2" type="Sprite2D" parent="."]
 self_modulate = Color(0.301961, 0.278431, 0.505882, 1)
 light_mask = 2
-material = SubResource("CanvasItemMaterial_i7m2x")
+material = SubResource("CanvasItemMaterial_mhbl2")
 scale = Vector2(3.18368, 3.18368)
-texture = SubResource("CanvasTexture_x73we")
-script = ExtResource("18_yj1sx")
-rotationSpeed = 0.2
+texture = SubResource("CanvasTexture_vrdb5")
 
 [node name="Circle" type="Sprite2D" parent="."]
 light_mask = 3
 scale = Vector2(1.055, 1.055)
-texture = ExtResource("14_sjuo0")
-
-[node name="HighlightCircle" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.318944, 0.854946, 0, 1)
-rotation = 0.18326
-scale = Vector2(1.055, 1.055)
-texture = ExtResource("9_620mx")
-script = ExtResource("14_s6jug")
+texture = ExtResource("8_414xx")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(12.207, -2.3787)
 scale = Vector2(3.3801, 3.02844)
 energy = 2.0
-texture = ExtResource("16_tpn24")
+texture = ExtResource("11_mfo2g")
 
 [node name="Energy" type="Sprite2D" parent="."]
-material = ExtResource("21_j50ip")
+material = ExtResource("12_y4nwa")
 scale = Vector2(2.97592, 2.97592)
-texture = ExtResource("13_g5nvq")
+texture = ExtResource("13_qkw2u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Energy"]
 libraries = {
@@ -688,11 +631,7 @@ libraries = {
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Energy"]
 emitting = false
 amount = 32
-process_material = SubResource("ParticleProcessMaterial_viacc")
-texture = SubResource("GradientTexture2D_7okdr")
+process_material = SubResource("ParticleProcessMaterial_h3ch7")
+texture = SubResource("GradientTexture2D_nccpx")
 preprocess = 0.5
 explosiveness = 1.0
-
-[node name="SpawnInputButtons" type="Node2D" parent="."]
-position = Vector2(-112.195, -163.415)
-script = ExtResource("17_0cl0e")

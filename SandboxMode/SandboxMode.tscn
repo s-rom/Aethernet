@@ -36,7 +36,7 @@ adjustment_saturation = 1.17
 
 [node name="root_script" type="Node2D" node_paths=PackedStringArray("debugSender", "camera")]
 script = ExtResource("1_10m47")
-cameraSpeed = 40.0
+cameraSpeed = 60.0
 debugSender = NodePath("CanvasLayer/DebugSend")
 camera = NodePath("Camera2D")
 

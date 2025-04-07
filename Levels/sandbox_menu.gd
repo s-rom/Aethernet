@@ -7,6 +7,10 @@ extends Node2D
 @onready var _rename_dialog: RenameDialog = $CanvasLayer/RenameDialog
 
 
+func _ready() -> void:
+	$ShipsLayer/Container/PortalMainMenu.play_idle()
+
+
 func _on_panel_level_create() -> void:
 	print("Click on create")
 	LevelManager.create_custom_level()
@@ -56,8 +60,6 @@ func _on_sandbox_level_selection_level_delete(level_path: Variant) -> void:
 func _on_sandbox_level_selection_level_rename(level_path: Variant) -> void:
 	var file_name = (level_path as String).replace(".anet", "")
 
-	print("Sandbox Menu -> Rename callback")
-
 	_gui_mask.visible = true	
 	_rename_dialog.file_path = level_path
 	_rename_dialog.file_name = file_name
@@ -76,3 +78,11 @@ func _on_rename_dialog_resolved(status: RenameDialog.Status, old_path: String, n
 			_sandbox_level_selection.update_items()
 		else:
 			_rename_dialog.log_result(status_dict["message"])
+	
+	elif status == RenameDialog.Status.CANCELED:
+		_gui_mask.visible = false	
+		_rename_dialog.visible = false	
+
+
+func _on_home_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Levels/MainSceneMenu.tscn")

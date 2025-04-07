@@ -11,6 +11,8 @@ func _ready():
 	var completed_levels = 0
 	var total_levels = len(LevelsData.levels_data)
 	
+
+	$ShipsLayer/Container/PortalMainMenu.play_idle()
 	
 	
 	for level in LevelsData.levels_data:
