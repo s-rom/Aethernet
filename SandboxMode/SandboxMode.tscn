@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=21 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="3_ct0dd"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="4_8mkfj"]
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="5_n1iw5"]
+[ext_resource type="FontFile" uid="uid://4li4armit5in" path="res://GUI/exo2_font/Exo2-BoldItalic.otf" id="6_fckjy"]
 [ext_resource type="PackedScene" uid="uid://cppqdavaeudcq" path="res://SandboxMode/Gui/Toolbox/Toolbox.tscn" id="6_rhqn8"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_uxh6k"]
 [ext_resource type="Texture2D" uid="uid://fevv7g7itv13" path="res://GUI/ButtonsPropios/lock.png" id="7_tuig3"]
+[ext_resource type="Script" path="res://SandboxMode/status_log.gd" id="7_ykqve"]
 [ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
 [ext_resource type="Texture2D" uid="uid://3jxnfkkpb0ew" path="res://GUI/ButtonsPropios/saveb.png" id="9_yrwxa"]
 [ext_resource type="Script" path="res://SandboxMode/sandbox_manager.gd" id="11_0r7h5"]
@@ -26,6 +28,13 @@ texture = ExtResource("7_tuig3")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yox3d"]
 texture = ExtResource("8_qlaxh")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_get1l"]
+bg_color = Color(0.259, 0.259, 0.259, 0.773)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Environment" id="Environment_1q0gd"]
 background_mode = 3
@@ -136,15 +145,45 @@ visible = false
 z_index = 18
 drag_layer = NodePath("../../DragLayer")
 
+[node name="LogPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("_label")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 31.0
+offset_right = 119.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_get1l")
+script = ExtResource("7_ykqve")
+info_color = Color(0.481037, 0.8268, 0.703325, 1)
+error_color = Color(0.926975, 0.484087, 0.396742, 1)
+_label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LogPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/LogPanel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fckjy")
+theme_override_font_sizes/font_size = 28
+text = "asdfasdfasdf"
+horizontal_alignment = 1
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q0gd")
 
 [node name="DragLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="SandboxManager" type="Node" parent="." node_paths=PackedStringArray("root_scene")]
+[node name="SandboxManager" type="Node" parent="." node_paths=PackedStringArray("root_scene", "status_logger")]
 script = ExtResource("11_0r7h5")
 root_scene = NodePath("..")
+status_logger = NodePath("../CanvasLayer/LogPanel")
 
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer5/SaveButton" to="SandboxManager" method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]

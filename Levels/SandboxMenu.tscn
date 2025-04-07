@@ -31,18 +31,6 @@ script = ExtResource("1_i7sql")
 [node name="WebFix" type="Node" parent="."]
 script = ExtResource("2_uysfo")
 
-[node name="MenuAnimations" type="Node2D" parent="."]
-script = ExtResource("3_4bul3")
-shipColor = Color(1, 1, 1, 0.690196)
-seconds_between_spawn = 0.5
-initial_ships = 5
-tick_quantity = 3.0
-max_scale = 0.6
-min_velocity = 90.0
-max_velocity = 250.0
-
-[node name="SpawnTimer" type="Timer" parent="MenuAnimations"]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 323)
 script = ExtResource("3_tnupv")
@@ -69,6 +57,18 @@ z_index = -2
 position = Vector2(268, 464)
 scale = Vector2(164.779, 111.942)
 texture = ExtResource("5_rpb56")
+
+[node name="MenuAnimations" type="Node2D" parent="."]
+script = ExtResource("3_4bul3")
+shipColor = Color(1, 1, 1, 0.690196)
+seconds_between_spawn = 0.5
+initial_ships = 5
+tick_quantity = 3.0
+max_scale = 0.6
+min_velocity = 90.0
+max_velocity = 250.0
+
+[node name="SpawnTimer" type="Timer" parent="MenuAnimations"]
 
 [node name="ShipsLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -189,7 +189,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_1uji1")
 theme_override_styles/normal = SubResource("StyleBoxTexture_r404u")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.1
+energy = 0.49
 range_item_cull_mask = 3
 
 [connection signal="timeout" from="MenuAnimations/SpawnTimer" to="MenuAnimations" method="_on_spawn_timer_timeout"]
