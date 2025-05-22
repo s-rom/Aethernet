@@ -116,8 +116,8 @@ func update_curve() -> void:
 
 	var angle_between = direction1.angle_to(direction2)
 	var angle_diff = abs((abs(angle_between) - PI))
-	if angle_diff < deg_to_rad(10):
-		return
+	#if angle_diff < deg_to_rad(10):
+		#return
 
 	var P0 = points[0]
 	var P3 = points[-1]
