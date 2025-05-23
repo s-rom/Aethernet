@@ -129,6 +129,8 @@ func update_curve() -> void:
 	curve.add_point(P0, Vector2.ZERO, out_handle_P0)
 	curve.add_point(P3, in_handle_P3, Vector2.ZERO)
 
+	#self.points = curve.tessellate()
+	#print(len(points), " vs ", len(simplified_points))
 	var simplified_points = curve.get_baked_points()
 	self.points = simplified_points
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=22 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
 [ext_resource type="Texture2D" uid="uid://3jxnfkkpb0ew" path="res://GUI/ButtonsPropios/saveb.png" id="9_yrwxa"]
 [ext_resource type="Script" path="res://SandboxMode/sandbox_manager.gd" id="11_0r7h5"]
+[ext_resource type="Script" path="res://SandboxMode/fps_counter.gd" id="13_ktlq4"]
 
 [sub_resource type="Gradient" id="Gradient_r7kvg"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -43,11 +44,12 @@ glow_normalized = true
 glow_blend_mode = 0
 adjustment_saturation = 1.17
 
-[node name="root_script" type="Node2D" node_paths=PackedStringArray("debugSender", "camera")]
+[node name="root_script" type="Node2D" node_paths=PackedStringArray("debugSender", "camera", "status_logger")]
 script = ExtResource("1_10m47")
 cameraSpeed = 60.0
 debugSender = NodePath("CanvasLayer/DebugSend")
 camera = NodePath("Camera2D")
+status_logger = NodePath("CanvasLayer/LogPanel")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(572, 329)
@@ -158,6 +160,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_get1l")
 script = ExtResource("7_ykqve")
 info_color = Color(0.481037, 0.8268, 0.703325, 1)
 error_color = Color(0.926975, 0.484087, 0.396742, 1)
+fade_out_duration = 4.5
 _label = NodePath("MarginContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LogPanel"]
@@ -173,6 +176,21 @@ theme_override_fonts/font = ExtResource("6_fckjy")
 theme_override_font_sizes/font_size = 28
 text = "asdfasdfasdf"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.149
+anchor_top = 0.039
+anchor_right = 0.149
+anchor_bottom = 0.039
+offset_left = 0.35199
+offset_top = -0.272001
+offset_right = 118.352
+offset_bottom = 61.728
+theme_override_font_sizes/font_size = 36
+text = "FPS"
+script = ExtResource("13_ktlq4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q0gd")

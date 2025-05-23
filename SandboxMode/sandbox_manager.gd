@@ -22,16 +22,16 @@ func is_locked() -> bool:
 func _on_lock_button_toggled(toggled_on: bool) -> void:
 	get_tree().call_group("SandboxShowHide", "hide" if toggled_on else "show")
 	_locked = toggled_on
-
+#
 @export var status_logger: StatusLog
-
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("right_click"):
-		status_logger.log_error("Mensaje de error largo")
-	
-	if Input.is_action_pressed("ui_cancel"):
-		status_logger.log_info("Mensaje de información largo")
-			
+#
+#func _process(_delta: float) -> void:
+	#if Input.is_action_pressed("right_click"):
+		#status_logger.log_error("Mensaje de error largo")
+	#
+	#if Input.is_action_pressed("ui_cancel"):
+		#status_logger.log_info("Mensaje de información largo")
+			#
 
 
 func _save_connections() -> Array[Dictionary]:
@@ -193,3 +193,7 @@ func _on_save_button_pressed() -> void:
 	_save_to_file()
 	status_logger.log_info("¡Guardado con éxito!")
 	
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save_to_file()

@@ -21,9 +21,20 @@ var _mouseMovement: Vector2
 @export var MIN_CAMERA_ZOOM = 0.3
 @export var MAX_CAMERA_ZOOM = 2.5
 
+@export var status_logger: StatusLog
 
 signal camera_zoom_changed()
 
+
+func log_info(text):
+	if status_logger:
+		status_logger.log_info(text)
+		
+
+func log_error(text):
+	if status_logger:
+		status_logger.log_error(text)
+		
 
 
 func _ready():
@@ -272,12 +283,16 @@ func _on_connector_click(connector: Node2D):
 	
 	var port = connector.find_child("PortComponent") as PortComponent
 	if port.is_linked():
-		print("[ERROR] Port is already linked")
+		if currentConnection != null:
+			log_error("Ese puerto ya está ocupado.")
 		return
 
-	if currentConnection != null and connectionOrigin != null and connector == connectionOrigin:
-		print("[ERROR] Cannot connect to the same object") 
-		return
+
+	if currentConnection != null and connectionOrigin != null and\
+		(connector.owner == connectionOrigin.owner or\
+		 connector == connectionOrigin):
+			log_error("No puedes conectar un elemento consigo mismo")
+			return
 	
 		
 	if currentConnection != null:
@@ -365,10 +380,13 @@ func send_ship(from, to):
 			
 	if !origin_planet:
 		print("[ERROR] Origin not found")
+		log_error("No hay ningún planeta con coordenadas " + from)
 		return
 	
 	if !destination_planet:
 		print("[ERROR] Destination not found")
+		log_error("No hay ningún planeta con coordenadas " + to)
+
 		return
 	
 	var originPort = origin_planet.find_child("PortComponent") as PortComponent
@@ -386,13 +404,15 @@ func send_ship(from, to):
 	shipData.color = color
 	
 	shipData.mustBeRouted = (origin_network != destination_network)
-	
+
 	var otherPort = originPort.connected_to 
 	if shipData.mustBeRouted and !(otherPort.owner is Station or otherPort.owner is Portal):
+		log_error("Utiliza un portal para enviar naves entre distintas redes")
 		print("Trying to send a ship to another network without a station or router")
 		origin_planet.play_error()
 		return
-	
+		
+	log_info("Nave enviada desde "+from+" hasta "+ to)
 	shipData.originCoordinates = from
 	shipData.destinationCoordinates = to
 	originPort.send_ship_to_linked_port(shipData)
