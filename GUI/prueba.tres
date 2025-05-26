@@ -1,9 +1,12 @@
-[gd_resource type="Theme" load_steps=36 format=4 uid="uid://bm5adft0k7xfb"]
+[gd_resource type="Theme" load_steps=42 format=4 uid="uid://bm5adft0k7xfb"]
 
 [ext_resource type="Texture2D" uid="uid://c4kr6mcp5mso" path="res://GUI/Vector/Red/check_square_grey_cross.svg" id="1_8rnvd"]
 [ext_resource type="Texture2D" uid="uid://c02rarbglbuqw" path="res://GUI/Prinbles/Panel/Body/Headless.svg" id="1_ang3j"]
+[ext_resource type="Texture2D" uid="uid://dku5i4nf067a5" path="res://GUI/Vector/Grey/check_square_grey_cross.svg" id="1_cy77y"]
 [ext_resource type="Texture2D" uid="uid://bbbvn0v7h875d" path="res://GUI/Vector/Red/icon_cross.svg" id="1_qeey7"]
+[ext_resource type="Texture2D" uid="uid://y8dkwetim0en" path="res://GUI/Vector/Grey/check_square_color_cross.svg" id="2_o5m8g"]
 [ext_resource type="Texture2D" uid="uid://k7nth5c5f4b1" path="res://GUI/Vector/Grey/icon_outline_cross.svg" id="3_g2etg"]
+[ext_resource type="Texture2D" uid="uid://cqiogsoja238q" path="res://GUI/Vector/Grey/icon_cross.svg" id="3_lhbnd"]
 [ext_resource type="Texture2D" uid="uid://dt37eeyb53u4g" path="res://GUI/Vector/Extra/button_square_depth_line.svg" id="4_bfasa"]
 [ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="4_n2d4g"]
 [ext_resource type="Texture2D" uid="uid://dnt3bgvhx7hdw" path="res://GUI/Vector/Grey/button_rectangle_gradient.svg" id="4_r1pxv"]
@@ -1137,6 +1140,15 @@ cache/0/26/0/glyphs/57/uv_rect = Rect2(83, 1, 19, 20)
 cache/0/26/0/glyphs/57/texture_idx = 0
 cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1t46"]
+texture = ExtResource("1_cy77y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5ks1"]
+texture = ExtResource("2_o5m8g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8bqb"]
+texture = ExtResource("3_lhbnd")
 
 [sub_resource type="Image" id="Image_xf2fi"]
 data = {
@@ -2276,6 +2288,10 @@ modulate_color = Color(0.818021, 0.830097, 0.946514, 1)
 
 [resource]
 Button/fonts/font = SubResource("FontFile_kl4gw")
+CloseButton/base_type = &"Button"
+CloseButton/styles/hover = SubResource("StyleBoxTexture_e1t46")
+CloseButton/styles/normal = SubResource("StyleBoxTexture_v5ks1")
+CloseButton/styles/pressed = SubResource("StyleBoxTexture_w8bqb")
 DeleteButton/base_type = &"Button"
 DeleteButton/colors/font_color = Color(0, 0, 0, 1)
 DeleteButton/colors/font_disabled_color = Color(0, 0, 0, 1)

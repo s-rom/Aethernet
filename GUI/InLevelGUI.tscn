@@ -121,52 +121,58 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MainButtons"]
+[node name="AspectRatioContainer" type="HBoxContainer" parent="MainButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 7
 
 [node name="PlayButton" type="Button" parent="MainButtons/AspectRatioContainer"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("6_v6puq")
 playTexture = SubResource("StyleBoxTexture_uent1")
 stopTexture = SubResource("StyleBoxTexture_j0hm6")
 hoverColor = Color(0.381703, 0.381703, 0.381703, 1)
 disabledColor = Color(0.396078, 0.396078, 0.396078, 0.560784)
 
-[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 5
-
-[node name="GoalButton" type="Button" parent="MainButtons/AspectRatioContainer2"]
+[node name="GoalButton" type="Button" parent="MainButtons/AspectRatioContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
 theme_override_styles/hover = SubResource("StyleBoxTexture_hntpv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_33lt6")
 
-[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MainButtons"]
-layout_mode = 2
-size_flags_vertical = 5
-
-[node name="HelpButton" type="Button" parent="MainButtons/AspectRatioContainer3"]
+[node name="HelpButton" type="Button" parent="MainButtons/AspectRatioContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
 theme_override_styles/hover = SubResource("StyleBoxTexture_188c0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_o0bu1")
 
-[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MainButtons"]
-layout_mode = 2
-
-[node name="HomeButton" type="Button" parent="MainButtons/AspectRatioContainer4"]
+[node name="HomeButton" type="Button" parent="MainButtons/AspectRatioContainer"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_ej2v3")
 theme_type_variation = &"MainGUIButton"
 theme_override_styles/hover = SubResource("StyleBoxTexture_xd0w0")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yup47")
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 5
+
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="MainButtons"]
+layout_mode = 2
 
 [node name="GoalPanel" type="PanelContainer" parent="."]
 anchors_preset = -1
@@ -206,7 +212,6 @@ theme_override_font_sizes/font_size = 38
 text = "OBJETIVOS"
 
 [node name="HelpPanel" type="PanelContainer" parent="."]
-visible = false
 z_index = 20
 anchors_preset = -1
 anchor_left = 0.396
@@ -327,9 +332,9 @@ offset_right = 1116.0
 offset_bottom = 65.0
 
 [connection signal="pressed" from="MainButtons/AspectRatioContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainButtons/AspectRatioContainer2/GoalButton" to="." method="_on_goal_button_pressed"]
-[connection signal="pressed" from="MainButtons/AspectRatioContainer3/HelpButton" to="." method="_on_help_button_pressed"]
-[connection signal="pressed" from="MainButtons/AspectRatioContainer4/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer/GoalButton" to="." method="_on_goal_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MainButtons/AspectRatioContainer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="HelpPanel/MarginContainer/HBoxContainer/TextureButton" to="HelpPanel" method="_on_previous_slide_pressed"]
 [connection signal="pressed" from="HelpPanel/MarginContainer/HBoxContainer/TextureButton2" to="HelpPanel" method="_on_next_slide_pressed"]
 [connection signal="pressed" from="GoalCompleted/MarginContainer/VBoxContainer/HBoxContainer/RedoButton" to="." method="_on_redo_button_pressed"]

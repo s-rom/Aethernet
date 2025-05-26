@@ -95,13 +95,13 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("6_lqdo6")
-theme_override_fonts/bold_font = ExtResource("7_2yine")
 theme_override_fonts/italics_font = ExtResource("8_n3os8")
+theme_override_fonts/bold_font = ExtResource("7_2yine")
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
 theme_override_font_sizes/normal_font_size = 22
 theme_override_font_sizes/bold_font_size = 22
-theme_override_font_sizes/italics_font_size = 22
-theme_override_font_sizes/bold_italics_font_size = 22
-theme_override_font_sizes/mono_font_size = 22
 bbcode_enabled = true
 text = "[fill] Haz [u]click[/u] en los planetas para conectarlos mediante una ruta directa.  [/fill]
 "

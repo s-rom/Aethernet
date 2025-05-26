@@ -40,7 +40,7 @@ script = ExtResource("2_2vtkm")
 rulesContainer = NodePath("PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox")
 targetNetworkLineEdit = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Origin")
 nextHopLineEdit = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/Destination")
-nameLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Nombre")
+nameLabel = NodePath("PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Nombre")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -67,17 +67,32 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Nombre" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Nombre" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_1tgcf")
 theme_override_font_sizes/font_size = 33
 text = "Nombre
 "
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("1_njrcu")
+theme_type_variation = &"CloseButton"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -125,7 +140,7 @@ max_length = 2
 layout_mode = 2
 theme = ExtResource("1_njrcu")
 theme_type_variation = &"MainGUIButton"
-text = "Agregar"
+text = "AGREGAR"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -171,4 +186,5 @@ layout_mode = 2
 [node name="HBoxContainer5" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/RulesVBox" instance=ExtResource("2_8elrm")]
 layout_mode = 2
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Button2" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

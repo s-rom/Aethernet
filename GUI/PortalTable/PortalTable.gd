@@ -45,3 +45,7 @@ func _on_delete_rule(ruleString: String):
 	print("Deleting rule that targets network " + ruleString)
 	_linkedPortal.delete_rule_from_string(ruleString)
 	updateRulesDisplay()
+
+
+func _on_close_button_pressed() -> void:
+	self.hide()

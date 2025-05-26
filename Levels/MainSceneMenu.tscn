@@ -39,7 +39,7 @@ tracks/1/path = NodePath("DirectionalLight2D:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.36667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.1, 0.49]
@@ -51,10 +51,10 @@ tracks/2/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.93333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.36667),
+"transitions": PackedFloat32Array(1, 0.116629),
 "update": 0,
-"values": [Color(0, 0, 0, 0.616), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 0.962), Color(0, 0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -63,7 +63,7 @@ tracks/3/path = NodePath("CanvasLayer/ColorRect:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.93333),
+"times": PackedFloat32Array(0, 2.36667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]

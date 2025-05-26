@@ -19,7 +19,7 @@ func set_slide_idx_text(text):
 
 func set_text(text):
 	var rich_label = (self.find_child("RichTextLabel") as RichTextLabel)
-	rich_label.text = "[fill]" + text + "[/fill]"
+	rich_label.text = "[left]" + text + "[/left]"
 
 
 func disable_video():
