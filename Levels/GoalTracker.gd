@@ -35,7 +35,7 @@ func _ready():
 		
 	canvasLayer.add_goal_item("Conecta todos los planetas mediante rutas", SUBGOAL_CONNECTED)
 	canvasLayer.add_goal_item("Asigna una coordenada a cada planeta", SUBGOAL_COORD)
-	canvasLayer.add_goal_item("Consigue comunicación entre planetas de la misma red", SUBGOAL_INTRA)
+	canvasLayer.add_goal_item("Consigue comunicación dentro de cada red", SUBGOAL_INTRA)
 	
 	
 	var portals = get_tree().root.find_children("", "Portal", true, false)
@@ -123,6 +123,16 @@ func _test_goals():
 	Engine.time_scale = 2
 	print("PLAY BUTTON")
 	var networks = get_tree().root.find_children("", "planet_network", true, false)
+	var portals = get_tree().root.find_children("", "Portal", true, false)
+	
+	
+	var progress_bar: ProgressBar = self.get_tree().current_scene.find_child("ProgressBar", true, false)
+	var n = len(networks)
+
+	var total_progress = 2 + n + (n * (n - 1) / 2.0)
+
+
+	progress_bar.max_value = total_progress
 	
 	
 	for network in networks:
@@ -138,6 +148,9 @@ func _test_goals():
 	await get_tree().create_timer(0.5).timeout
 	subGoalCompleted.emit(SUBGOAL_COORD, true)
 	
+	if progress_bar:
+		progress_bar.value = 2
+
 	
 	
 	 #Test send between individual networks
@@ -146,19 +159,23 @@ func _test_goals():
 			return false
 		
 		if network.number_of_planets() < 2:
+			progress_bar.value += 1
 			continue
 		
 		print("----> Testing network ", network.name)
 		var networkStatus = await _test_network(network)
 		print(network.name, " status: ", networkStatus)
 		
+
 		if not networkStatus:
 			return false
+
+		progress_bar.value += 1
+
 	
 	subGoalCompleted.emit(self.SUBGOAL_INTRA, true)
 
 
-	var portals = get_tree().root.find_children("", "Portal", true, false)
 	if len(portals) > 0:
 		var networkCount = len(networks)
 		for idx in range(networkCount):
@@ -170,7 +187,10 @@ func _test_goals():
 				var status = await _test_two_networks(networks[idx], networks[idx2])	
 				if not status:
 					return
-	
+				
+				progress_bar.value += 1
+
+
 	
 	subGoalCompleted.emit(self.SUBGOAL_INTER, true)
 

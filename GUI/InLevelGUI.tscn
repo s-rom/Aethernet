@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cois2m5p2dndf"]
+[gd_scene load_steps=42 format=3 uid="uid://cois2m5p2dndf"]
 
 [ext_resource type="Script" path="res://GUI/UIManager.gd" id="1_0doye"]
 [ext_resource type="PackedScene" uid="uid://bjqm7ub12fxpk" path="res://GUI/PortalTable/PortalTable.tscn" id="2_j8y8a"]
@@ -16,9 +16,14 @@
 [ext_resource type="Script" path="res://GUI/HelpPanel.gd" id="12_1cc74"]
 [ext_resource type="Texture2D" uid="uid://dn81dru6jrapr" path="res://GUI/Vector/Grey/arrow_basic_w.svg" id="12_tjauy"]
 [ext_resource type="PackedScene" uid="uid://c6webnls1b04e" path="res://GUI/HelpSlideVideo.tscn" id="13_5niwy"]
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="13_u12as"]
+[ext_resource type="Texture2D" uid="uid://c25cviej1rol0" path="res://GUI/Vector/Green/check_square_grey.svg" id="14_h7oyf"]
+[ext_resource type="Texture2D" uid="uid://clxfujqvkl4en" path="res://GUI/Vector/Green/check_square_color.svg" id="15_du4t2"]
 [ext_resource type="Texture2D" uid="uid://bvbwlpm37j32c" path="res://GUI/Vector/Grey/arrow_basic_e.svg" id="15_yqyhw"]
 [ext_resource type="Texture2D" uid="uid://c1qg07juucgdj" path="res://GUI/ButtonsPropios/next_depth.png" id="18_fr634"]
 [ext_resource type="Texture2D" uid="uid://cmpq3flx253tv" path="res://GUI/ButtonsPropios/redo_depth.png" id="18_fvb4e"]
+[ext_resource type="Script" path="res://SandboxMode/status_log.gd" id="20_aikvg"]
+[ext_resource type="FontFile" uid="uid://4li4armit5in" path="res://GUI/exo2_font/Exo2-BoldItalic.otf" id="21_dr224"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uent1"]
 texture = ExtResource("5_thyr0")
@@ -54,6 +59,20 @@ texture_margin_top = 15.0
 texture_margin_right = 15.0
 texture_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_872cv"]
+texture = ExtResource("14_h7oyf")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_68n04"]
+texture = ExtResource("15_du4t2")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qm6b"]
 texture = ExtResource("11_yuojx")
 texture_margin_left = 10.0
@@ -74,6 +93,13 @@ modulate_color = Color(0.4, 0.4, 0.4, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ryhgl"]
 texture = ExtResource("18_fr634")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfwdn"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.917647)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("goalPanel", "helpPanel", "goalCompleted")]
 script = ExtResource("1_0doye")
@@ -192,24 +218,45 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_1eaua")
 
 [node name="MarginContainer" type="MarginContainer" parent="GoalPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GoalPanel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 1
 
-[node name="Label" type="Label" parent="GoalPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GoalPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="GoalPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
 theme = ExtResource("4_ej2v3")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.493545, 0.493546, 0.493546, 1)
 theme_override_fonts/font = ExtResource("8_pdr4e")
 theme_override_font_sizes/font_size = 38
 text = "OBJETIVOS"
+
+[node name="ProgressBar" type="ProgressBar" parent="GoalPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_u12as")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/background = SubResource("StyleBoxTexture_872cv")
+theme_override_styles/fill = SubResource("StyleBoxTexture_68n04")
+step = 1.0
+
+[node name="HSeparator" type="HSeparator" parent="GoalPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="HelpPanel" type="PanelContainer" parent="."]
 z_index = 20
@@ -324,12 +371,36 @@ layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_0wtfm")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ryhgl")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
-offset_left = 893.0
-offset_top = 19.0
-offset_right = 1116.0
-offset_bottom = 65.0
+[node name="LogPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("_label")]
+z_index = 18
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 31.0
+offset_right = 119.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nfwdn")
+script = ExtResource("20_aikvg")
+info_color = Color(0.481037, 0.8268, 0.703325, 1)
+error_color = Color(0.926975, 0.484087, 0.396742, 1)
+fade_out_duration = 4.5
+_label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="LogPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="LogPanel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("21_dr224")
+theme_override_font_sizes/font_size = 28
+text = "Mensaje de error/información dinámica"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MainButtons/AspectRatioContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainButtons/AspectRatioContainer/GoalButton" to="." method="_on_goal_button_pressed"]

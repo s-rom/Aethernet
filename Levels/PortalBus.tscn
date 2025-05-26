@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkw0scuhh6eec"]
+[gd_scene load_steps=26 format=3 uid="uid://dkw0scuhh6eec"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_2y88u"]
 [ext_resource type="Script" path="res://Levels/TwoPortalsLevel.gd" id="2_t6d10"]
@@ -9,12 +9,86 @@
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="6_f4sgl"]
 [ext_resource type="PackedScene" uid="uid://boyrjboqn8hjt" path="res://Portal/portal.tscn" id="7_2y7jp"]
 [ext_resource type="PackedScene" uid="uid://dv41hkd5wd3u5" path="res://Station/station.tscn" id="8_u15bc"]
+[ext_resource type="Shader" path="res://FX_Testing/InnerPortal.gdshader" id="9_ia763"]
 [ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="9_xme2m"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="10_b1rtv"]
 
 [sub_resource type="Gradient" id="Gradient_e66pd"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_tgyix"]
+offsets = PackedFloat32Array(0.016129, 0.0967742, 0.182796)
+colors = PackedColorArray(0.118581, 0.118581, 0.118581, 0, 1, 1, 1, 1, 0, 0, 0, 0.227)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a5q88"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nwos7"]
+noise_type = 2
+frequency = 0.0199
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ahn2p"]
+seamless = true
+noise = SubResource("FastNoiseLite_nwos7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryksc"]
+frequency = 0.0139
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7dyib"]
+seamless = true
+noise = SubResource("FastNoiseLite_ryksc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd2ke"]
+resource_local_to_scene = true
+shader = ExtResource("9_ia763")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_a5q88")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_owtu4"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxyih"]
+resource_local_to_scene = true
+shader = ExtResource("9_ia763")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_owtu4")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_haub7"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tgyix")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggnmf"]
+resource_local_to_scene = true
+shader = ExtResource("9_ia763")
+shader_parameter/rotationSpeed = -1.901
+shader_parameter/rotationSpeed2 = 1.266
+shader_parameter/hdr_intensity = 1.731
+shader_parameter/hdr_color = Color(0.595389, 0.372356, 0.782502, 1)
+shader_parameter/scroll = Vector2(0, 0)
+shader_parameter/scroll2 = Vector2(0, 0)
+shader_parameter/radius = 0.603
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_ahn2p")
+shader_parameter/noiseTexture2 = SubResource("NoiseTexture2D_7dyib")
+shader_parameter/colorTexture = SubResource("GradientTexture1D_haub7")
 
 [sub_resource type="Environment" id="Environment_cqlxo"]
 background_mode = 3
@@ -75,8 +149,14 @@ position = Vector2(278, 325)
 [node name="Port3" parent="Portal" index="2"]
 visible = false
 
+[node name="Energy" parent="Portal" index="7"]
+material = SubResource("ShaderMaterial_hd2ke")
+
 [node name="Portal2" parent="." instance=ExtResource("7_2y7jp")]
 position = Vector2(915, 315)
+
+[node name="Energy" parent="Portal2" index="7"]
+material = SubResource("ShaderMaterial_jxyih")
 
 [node name="Station" parent="." instance=ExtResource("8_u15bc")]
 position = Vector2(-44, 433)
@@ -126,6 +206,9 @@ position = Vector2(1535, 314)
 
 [node name="Port3" parent="Portal3" index="2"]
 visible = false
+
+[node name="Energy" parent="Portal3" index="7"]
+material = SubResource("ShaderMaterial_ggnmf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cqlxo")

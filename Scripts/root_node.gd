@@ -38,6 +38,9 @@ func log_error(text):
 
 
 func _ready():
+
+	if not status_logger:
+		status_logger = self.find_child("LogPanel", true, false)
 	
 	_init_portal_networks()
 	
