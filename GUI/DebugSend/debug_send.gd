@@ -9,3 +9,7 @@ func _on_button_pressed():
 	var origin = find_child("Origin").text
 	var dst = find_child("Destination").text
 	send_ship.emit(origin, dst)
+
+
+func _on_close_button_pressed() -> void:
+	hide()

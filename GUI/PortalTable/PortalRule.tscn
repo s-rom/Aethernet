@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="2_cf45b"]
 
 [node name="HBoxContainer2" type="HBoxContainer"]
+mouse_filter = 0
 theme_override_constants/separation = 10
 script = ExtResource("1_8iybc")
 

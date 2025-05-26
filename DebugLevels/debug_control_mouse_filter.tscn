@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://by1ogtlrbwjwb"]
+
+[node name="DebugControlMouseFilter" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 86.0
+offset_right = 369.0
+offset_bottom = 156.0
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+offset_left = 90.0
+offset_top = 106.0
+offset_right = 157.063
+offset_bottom = 137.0

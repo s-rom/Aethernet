@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=24 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://4li4armit5in" path="res://GUI/exo2_font/Exo2-BoldItalic.otf" id="6_fckjy"]
 [ext_resource type="PackedScene" uid="uid://cppqdavaeudcq" path="res://SandboxMode/Gui/Toolbox/Toolbox.tscn" id="6_rhqn8"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_uxh6k"]
+[ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="7_qfeo4"]
 [ext_resource type="Texture2D" uid="uid://fevv7g7itv13" path="res://GUI/ButtonsPropios/lock.png" id="7_tuig3"]
 [ext_resource type="Script" path="res://SandboxMode/status_log.gd" id="7_ykqve"]
 [ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
@@ -18,6 +19,9 @@
 [sub_resource type="Gradient" id="Gradient_r7kvg"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
 colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.992917, 0.992917, 0.992917, 0.0437757, 1, 1, 1, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cckdh"]
+texture = ExtResource("7_qfeo4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pto0h"]
 
@@ -31,7 +35,7 @@ texture = ExtResource("7_tuig3")
 texture = ExtResource("8_qlaxh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_get1l"]
-bg_color = Color(0.259, 0.259, 0.259, 0.773)
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.917647)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -95,30 +99,41 @@ offset_top = -0.0400085
 offset_right = -332.88
 offset_bottom = -370.048
 
+[node name="DebugSend" parent="CanvasLayer" index="1"]
+z_index = 18
+
 [node name="MainButtons" parent="CanvasLayer" index="2"]
+z_index = 15
 anchor_right = 0.988
 anchor_bottom = 0.103
 offset_right = 5.82397
 offset_bottom = 3.256
 
-[node name="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="0"]
+[node name="AspectRatioContainer7" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="0"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer7"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme = ExtResource("6_uxh6k")
+theme_type_variation = &"MainGUIButton"
+theme_override_styles/normal = SubResource("StyleBoxTexture_cckdh")
+
+[node name="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="1"]
 visible = false
 
 [node name="PlayButton" parent="CanvasLayer/MainButtons/AspectRatioContainer" index="0"]
 visible = false
 
-[node name="AspectRatioContainer2" parent="CanvasLayer/MainButtons" index="1"]
+[node name="AspectRatioContainer2" parent="CanvasLayer/MainButtons" index="2"]
 visible = false
 
-[node name="GoalButton" parent="CanvasLayer/MainButtons/AspectRatioContainer2" index="0"]
-visible = false
-
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainButtons" index="4"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/MainButtons" index="5"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pto0h")
 
-[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="5"]
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="6"]
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer5"]
@@ -128,7 +143,7 @@ theme = ExtResource("6_uxh6k")
 theme_type_variation = &"MainGUIButton"
 theme_override_styles/normal = SubResource("StyleBoxTexture_shrd5")
 
-[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="6"]
+[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="7"]
 layout_mode = 2
 
 [node name="LockButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer6"]
@@ -142,12 +157,20 @@ toggle_mode = true
 
 [node name="GoalPanel" parent="CanvasLayer" index="3"]
 visible = false
+z_index = 18
+
+[node name="HelpPanel" parent="CanvasLayer" index="4"]
+visible = false
+
+[node name="GoalCompleted" parent="CanvasLayer" index="5"]
+z_index = 18
 
 [node name="Toolbox" parent="CanvasLayer" node_paths=PackedStringArray("drag_layer") groups=["SandboxShowHide"] instance=ExtResource("6_rhqn8")]
 z_index = 18
 drag_layer = NodePath("../../DragLayer")
 
 [node name="LogPanel" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("_label")]
+z_index = 18
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -174,11 +197,12 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fckjy")
 theme_override_font_sizes/font_size = 28
-text = "asdfasdfasdf"
+text = "Mensaje de error/información dinámica"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
+z_index = 300
 anchors_preset = -1
 anchor_left = 0.149
 anchor_top = 0.039
@@ -188,6 +212,7 @@ offset_left = 0.35199
 offset_top = -0.272001
 offset_right = 118.352
 offset_bottom = 61.728
+mouse_filter = 0
 theme_override_font_sizes/font_size = 36
 text = "FPS"
 script = ExtResource("13_ktlq4")
@@ -203,6 +228,7 @@ script = ExtResource("11_0r7h5")
 root_scene = NodePath("..")
 status_logger = NodePath("../CanvasLayer/LogPanel")
 
+[connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer7/HomeButton" to="CanvasLayer" method="_on_home_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer5/SaveButton" to="SandboxManager" method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_toggled"]

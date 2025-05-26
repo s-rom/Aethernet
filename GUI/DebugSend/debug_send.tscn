@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://GUI/DebugSend/debug_send.gd" id="1_05f42"]
 [ext_resource type="Texture2D" uid="uid://ctj5vw6lxbdpf" path="res://GUI/Vector/Grey/button_rectangle_depth_flat.svg" id="2_43bvd"]
-[ext_resource type="FontFile" uid="uid://ddl3t4tuusiw6" path="res://GUI/Vector/Grey/ThaleahFat.ttf" id="3_7a35l"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="4_mgxn4"]
 [ext_resource type="Script" path="res://Planet/CoordinatesLineEdit.gd" id="4_pav8n"]
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="5_ey6a7"]
 [ext_resource type="Texture2D" uid="uid://m1c7d5n27oxm" path="res://GUI/Vector/Green/button_rectangle_depth_gradient.svg" id="5_oyam2"]
 [ext_resource type="Texture2D" uid="uid://cgc8gbjv5e5ei" path="res://GUI/Vector/Green/button_rectangle_flat.svg" id="6_hfflg"]
 
@@ -27,8 +27,9 @@ texture_margin_bottom = 12.0
 
 [node name="DebugSend" type="PanelContainer"]
 anchors_preset = -1
-anchor_right = 0.240451
-anchor_bottom = 0.364198
+anchor_top = -0.00154321
+anchor_right = 0.34809
+anchor_bottom = 0.421296
 offset_left = -1.0
 offset_right = -1.0
 theme = ExtResource("4_mgxn4")
@@ -47,16 +48,30 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme = ExtResource("4_mgxn4")
 theme_type_variation = &"MainLabel"
 theme_override_colors/font_outline_color = Color(0.905882, 0.427451, 0.662745, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 33
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 48
 text = "Panel de envio"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("4_mgxn4")
+theme_type_variation = &"CloseButton"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -67,7 +82,7 @@ layout_mode = 2
 theme = ExtResource("4_mgxn4")
 theme_type_variation = &"GuiLabel"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 7
 text = "Origen"
 
 [node name="Origin" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -88,7 +103,7 @@ layout_mode = 2
 theme = ExtResource("4_mgxn4")
 theme_type_variation = &"GuiLabel"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 7
 text = "Destino"
 
 [node name="Destination" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -110,10 +125,11 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("3_7a35l")
+theme_override_fonts/font = ExtResource("5_ey6a7")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/hover = SubResource("StyleBoxTexture_yt2yh")
 theme_override_styles/normal = SubResource("StyleBoxTexture_h32rc")
 text = "Lanzar"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer4/Button2" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

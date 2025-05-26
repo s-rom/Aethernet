@@ -44,6 +44,7 @@ func _create_buttons() -> void:
 		_buttons_instance = _rotationInputControlScn.instantiate() as TransformInput
 
 		canvasLayer.add_child(_buttons_instance)
+		canvasLayer.move_child(_buttons_instance, 0)
 		
 		_buttons_instance.position_target = self.get_parent()
 		_buttons_instance.input_position = self

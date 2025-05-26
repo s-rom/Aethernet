@@ -93,6 +93,7 @@ func _load_level():
 	var level_data = LevelManager.load_save_file(SandboxGlobal.current_sandbox_level_path)
 	for node_data: Dictionary in level_data:
 
+		# Load connections
 		if "start_uid" in node_data:
 			connection_data.append(node_data)
 
@@ -118,6 +119,8 @@ func _load_level():
 			var max_uid = node_data["port_uids"].max()
 			if port_component_uid < max_uid:
 				port_component_uid = max_uid
+			
+			port_component_uid += 1
 			
 		for key in node_data.keys():
 			if key == "x" or key == "y" or key == "scene_path":
@@ -147,6 +150,7 @@ func _load_level():
 	var ports = get_tree().current_scene.find_children("", "PortComponent", true, false)
 	for connection in connection_data:
 		_load_connection(connection, ports)
+
 
 
 func _save_to_file():
@@ -180,7 +184,8 @@ func _on_toolbox_object_dropped(object: Variant) -> void:
 	if object is Planet:
 		var planet = object as Planet
 		planet.portComponent.network_changed.connect(_on_network_changed)
-		
+	
+
 	for port: PortComponent in object.find_children("", "PortComponent", true):
 		port.uid = port_component_uid
 		port_component_uid += 1

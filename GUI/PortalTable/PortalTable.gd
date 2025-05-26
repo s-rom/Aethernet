@@ -31,6 +31,9 @@ func unlink():
 	_linkedPortal = null
 
 func _on_button_pressed():
+	if targetNetworkLineEdit.text.is_empty() or nextHopLineEdit.text.is_empty():
+		print("Attempting to add empty rule")
+		return
 	print("Add rule button pressed")
 	
 	if not _linkedPortal:

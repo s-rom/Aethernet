@@ -35,6 +35,10 @@ func _ready():
 	if canvasLayer and (isPortal or isPlanet):
 		coordinatesLineEdit = lineEditScn.instantiate()
 		canvasLayer.add_child(coordinatesLineEdit)
+		canvasLayer.move_child(coordinatesLineEdit, 0)
+		# raise on tree
+		# coordinatesLineEdit.move_to_front()
+
 		var lineEditPositionNode = self.get_parent().find_child("LineEditPosition", false, false)
 		if lineEditPositionNode:
 			coordinatesLineEdit.followTarget = lineEditPositionNode

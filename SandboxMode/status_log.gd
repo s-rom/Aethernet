@@ -5,6 +5,7 @@ class_name StatusLog
 
 @export var info_color: Color
 @export var error_color: Color
+@export var full_duration = 6
 @export var fade_out_duration = 2.5
 @export var _label: Label
 
@@ -19,6 +20,7 @@ func _start_tween() -> void:
 		
 	self.modulate.a = 1.0
 	_tween = get_tree().create_tween()
+	_tween.tween_property(self, "modulate:a", 1.0, full_duration - fade_out_duration)
 	_tween.tween_property(self, "modulate:a", 0.0, fade_out_duration)
 
 

@@ -288,13 +288,20 @@ func _on_connector_click(connector: Node2D):
 		return
 
 
-	if currentConnection != null and connectionOrigin != null and\
-		(connector.owner == connectionOrigin.owner or\
-		 connector == connectionOrigin):
-			log_error("No puedes conectar un elemento consigo mismo")
-			return
-	
-		
+	var can_connect = true
+	if currentConnection != null and connectionOrigin != null:
+
+		if connector is Planet and connectionOrigin is Planet:
+			if connector == connectionOrigin:
+				can_connect = false	
+		elif connector.owner == connectionOrigin.owner:
+			can_connect = false
+
+
+	if not can_connect:
+		log_error("No puedes conectar un elemento consigo mismo")
+		return
+
 	if currentConnection != null:
 		get_tree().call_group("ClickHighlight", "disable_highlight")
 		get_tree().call_group("VisualizationLowPrio", "reset_visibility")
@@ -444,3 +451,7 @@ func _on_object_created(object):
 
 func _on_debug_send_send_ship(from, to):
 	send_ship(from, to)
+
+
+func _on_home_button_pressed() -> void:
+	pass # Replace with function body.
