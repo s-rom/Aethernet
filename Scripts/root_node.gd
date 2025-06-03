@@ -57,6 +57,11 @@ func _ready():
 		for portal in self.find_children("*", "Portal", true, false):
 			var portalLight = portal.find_child("PointLight2D", true, false) as PointLight2D
 			portalLight.energy = portalLight.energy * 0.4
+			
+		var world_env := $WorldEnvironment as WorldEnvironment
+		var env := world_env.environment
+		env.glow_intensity = 0.3
+		env.glow_strength = 0.35
 
 	
 	print("CURRENT LEVEL: ", LevelsData.current_level)
