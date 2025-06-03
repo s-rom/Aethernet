@@ -35,6 +35,7 @@ layout_mode = 2
 theme = ExtResource("1_14naa")
 theme_type_variation = &"GuiLabel"
 theme_override_colors/font_color = Color(0.867201, 0.0284328, 6.73831e-07, 1)
+theme_override_constants/outline_size = 5
 text = "¿Quieres borrar '...'?
 
 Esta acción no puede deshacerse"

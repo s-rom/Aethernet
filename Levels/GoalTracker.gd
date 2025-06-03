@@ -129,7 +129,10 @@ func _test_goals():
 	var progress_bar: ProgressBar = self.get_tree().current_scene.find_child("ProgressBar", true, false)
 	var n = len(networks)
 
-	var total_progress = 2 + n + (n * (n - 1) / 2.0)
+	var total_progress = 2 + n 
+
+	if len(portals) > 0:	
+		total_progress += (n * (n - 1) / 2.0)
 
 
 	progress_bar.max_value = total_progress

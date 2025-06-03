@@ -132,6 +132,9 @@ position = Vector2(278, 325)
 [node name="Port3" parent="Portal" index="2"]
 visible = false
 
+[node name="PortComponent" parent="Portal/Port3" index="0"]
+enabled = false
+
 [node name="Energy" parent="Portal" index="7"]
 material = SubResource("ShaderMaterial_xhdqm")
 
@@ -140,6 +143,9 @@ position = Vector2(915, 315)
 
 [node name="Port2" parent="Portal2" index="0"]
 visible = false
+
+[node name="PortComponent" parent="Portal2/Port2" index="0"]
+enabled = false
 
 [node name="Energy" parent="Portal2" index="7"]
 material = SubResource("ShaderMaterial_ypscl")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qsnxg6wkl6bt"]
+[gd_scene load_steps=12 format=3 uid="uid://qsnxg6wkl6bt"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_jqioy"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_orond"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cois2m5p2dndf" path="res://GUI/InLevelGUI.tscn" id="6_kneq3"]
 [ext_resource type="Script" path="res://Levels/PlanetNetwork.gd" id="7_8hbw5"]
 [ext_resource type="PackedScene" uid="uid://bhyh2l84m7ihr" path="res://Planet/planet.tscn" id="8_d1cq8"]
+[ext_resource type="Script" path="res://Levels/ConnectTwoPlanets.gd" id="9_wwkf1"]
 
 [sub_resource type="Gradient" id="Gradient_e66pd"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -61,14 +62,8 @@ script = ExtResource("7_8hbw5")
 [node name="Planet" parent="planet_network" instance=ExtResource("8_d1cq8")]
 position = Vector2(328, 362)
 
-[node name="LineEdit" parent="planet_network/Planet" index="3"]
-text = "A2"
-
 [node name="Planet2" parent="planet_network" instance=ExtResource("8_d1cq8")]
 position = Vector2(749, 320)
-
-[node name="LineEdit" parent="planet_network/Planet2" index="3"]
-text = "A1"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.59
@@ -76,6 +71,9 @@ range_item_cull_mask = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w2nqo")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("9_wwkf1")
 
 [editable path="planet_network/Planet"]
 [editable path="planet_network/Planet2"]

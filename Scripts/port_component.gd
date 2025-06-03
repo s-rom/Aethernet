@@ -13,6 +13,7 @@ class_name PortComponent
 	get:
 		return coordinates
 
+@export var enabled: bool = true
 @export var uid = null
 
 var shipScn = load("res://Ships/ship.tscn")
@@ -27,6 +28,9 @@ signal network_changed(owner, old_net, new_net)
 @onready var camera2D = get_viewport().get_camera_2d()
 
 func _ready():
+	
+	if not enabled:
+		return
 	
 	isPortal = self.owner is Portal
 	isPlanet = self.owner is Planet
