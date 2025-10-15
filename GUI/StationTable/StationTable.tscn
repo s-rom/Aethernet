@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://kn6ntn48jsrc"]
+
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="1_8foxx"]
+[ext_resource type="Script" path="res://GUI/StationTable/station_table.gd" id="2_1q8oq"]
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="2_bo7lm"]
+
+[node name="StationTablePanel" type="PanelContainer"]
+offset_right = 238.0
+offset_bottom = 225.0
+theme = ExtResource("2_bo7lm")
+theme_type_variation = &"PanelContainerKenney"
+script = ExtResource("2_1q8oq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MetaHeader" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StationName" type="Label" parent="MarginContainer/VBoxContainer/MetaHeader"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "Estación 1"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MetaHeader"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("2_bo7lm")
+theme_type_variation = &"CloseButton"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "Puerto"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "Dirección"
+horizontal_alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "1
+"
+horizontal_alignment = 1
+
+[node name="V" type="Label" parent="MarginContainer/VBoxContainer/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "A1"
+horizontal_alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "2"
+horizontal_alignment = 1
+
+[node name="V" type="Label" parent="MarginContainer/VBoxContainer/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "A3"
+horizontal_alignment = 1
+
+[node name="Row3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "3"
+horizontal_alignment = 1
+
+[node name="V" type="Label" parent="MarginContainer/VBoxContainer/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "A4"
+horizontal_alignment = 1
+
+[node name="Row4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "4"
+horizontal_alignment = 1
+
+[node name="V" type="Label" parent="MarginContainer/VBoxContainer/Row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_8foxx")
+theme_override_font_sizes/font_size = 22
+text = "A2"
+horizontal_alignment = 1

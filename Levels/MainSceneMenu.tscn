@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gl4eipjtscdy"]
+[gd_scene load_steps=16 format=3 uid="uid://gl4eipjtscdy"]
 
 [ext_resource type="Script" path="res://Levels/MenuAnimations.gd" id="1_2b7hx"]
 [ext_resource type="Script" path="res://Levels/MainMenu.gd" id="1_ukv4a"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bv3uks6j78adm" path="res://Portal/star_06.png" id="4_bibmi"]
 [ext_resource type="PackedScene" uid="uid://suu34jdlipkk" path="res://Planet/MenuPlanet.tscn" id="7_dpdx7"]
 [ext_resource type="Texture2D" uid="uid://jvsjh7i1hnuk" path="res://rect.png" id="8_l10oo"]
+[ext_resource type="PackedScene" uid="uid://b5btx6l3kdunn" path="res://GUI/MenuOpciones/AetherOptionsMenu.tscn" id="9_n36go"]
 [ext_resource type="PackedScene" uid="uid://cfkto5bxfvb5g" path="res://Portal/PortalMainMenu.tscn" id="10_y18sq"]
 
 [sub_resource type="Gradient" id="Gradient_guf61"]
@@ -214,6 +215,12 @@ layout_mode = 2
 theme_type_variation = &"MainGUIButton"
 text = "MODO LIBRE"
 
+[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_pdar3")
+theme_type_variation = &"MainGUIButton"
+text = "OPCIONES"
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -222,6 +229,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="AetherOptionsMenu" parent="CanvasLayer" instance=ExtResource("9_n36go")]
+visible = false
+offset_left = 357.0
+offset_top = 196.0
+offset_right = 865.0
+offset_bottom = 429.0
 
 [node name="ShipsLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -279,3 +293,4 @@ libraries = {
 [connection signal="timeout" from="MenuAnimations/SpawnTimer" to="MenuAnimations" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/VBoxContainer/SandboxButton" to="." method="_on_sandbox_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

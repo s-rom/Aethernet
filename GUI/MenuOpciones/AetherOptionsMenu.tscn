@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5btx6l3kdunn"]
+
+[ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="1_ehd33"]
+[ext_resource type="Script" path="res://GUI/MenuOpciones/aether_options_menu.gd" id="2_h87ia"]
+[ext_resource type="PackedScene" uid="uid://b2numvphf2kau" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/video/video_options_menu.tscn" id="2_ihgta"]
+
+[node name="AetherOptionsMenu" type="PanelContainer"]
+offset_right = 508.0
+offset_bottom = 233.0
+theme = ExtResource("1_ehd33")
+theme_type_variation = &"PanelContainerKenney"
+script = ExtResource("2_h87ia")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("1_ehd33")
+theme_type_variation = &"CloseButton"
+
+[node name="Video" parent="VBoxContainer" instance=ExtResource("2_ihgta")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

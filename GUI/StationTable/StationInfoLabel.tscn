@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs6pptntor26f"]
+
+[ext_resource type="FontFile" uid="uid://bkb5yb5uqamjk" path="res://GUI/exo2_font/Exo2-ExtraBold.otf" id="1_2txlm"]
+[ext_resource type="Script" path="res://GUI/StationTable/station_info_label.gd" id="2_spw7a"]
+
+[node name="StationInfoLabel" type="Label" groups=["SandboxShowHideStationInfo", "VisualizationLowPrio"]]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.399319, 0.464153, 0.999998, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_2txlm")
+theme_override_font_sizes/font_size = 54
+text = "Info
+"
+script = ExtResource("2_spw7a")

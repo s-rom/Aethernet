@@ -445,6 +445,7 @@ func add_station(object: Station):
 	object.connect("portClicked", _on_station_port_clicked)
 
 func register_node(object):
+	
 	if object is Portal:
 		add_portal(object)
 	elif object is Planet:

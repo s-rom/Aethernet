@@ -10,11 +10,15 @@ var port_component_uid = 0
 
 
 var _locked = false
+var _show_station_info = false
 @export var root_scene: root_script
+@export var stationPanelManager: StationPanelTest
 
 func _ready() -> void:
 	get_tree().current_scene.find_child("HelpPanel", true, false).visible = false
 	call_deferred("_load_level")
+	get_tree().call_group("SandboxShowHideStationInfo", "hide")
+
 	
 func is_locked() -> bool:
 	return _locked
@@ -101,11 +105,15 @@ func _load_level():
 		if not node_data.has('scene_path'):
 			continue
 
+
+
 		var scene = node_data['scene_path']
 		if not _scenes.has(scene):
 			_scenes[scene] = load(scene)
 			
 		var node: Node2D = _scenes[scene].instantiate()
+		if "name" in node_data:
+			node.name = node_data["name"]
 		root_scene.add_child(node)
 		node.owner = root_scene
 		root_scene.register_node(node)
@@ -142,6 +150,9 @@ func _load_level():
 				var port_net = planet_network._extract_network_from_coordinates(port_coord)
 				if not port_net.is_empty():
 					root_scene.remove_available_network(port_net)
+		
+		if node is Station:
+			stationPanelManager.register_station(node as Station)
 		
 		var buttons = node.find_child("SpawnInputButtons")
 		if buttons:
@@ -180,6 +191,7 @@ func _on_toolbox_object_dropped(object: Variant) -> void:
 	if object is Station:
 		stations += 1
 		object.name = "Station"+str(stations)
+		stationPanelManager.register_station((object as Station))
 	
 	if object is Planet:
 		var planet = object as Planet
@@ -202,3 +214,9 @@ func _on_save_button_pressed() -> void:
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		_save_to_file()
+
+
+func _on_station_info_button_toggled(toggled_on: bool) -> void:
+	print("Station info: ", toggled_on)
+	get_tree().call_group("SandboxShowHideStationInfo", "hide" if toggled_on else "show")
+	_show_station_info = toggled_on

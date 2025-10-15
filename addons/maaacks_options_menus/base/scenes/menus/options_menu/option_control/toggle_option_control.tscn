@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsxh6v7j0257h"]
+
+[ext_resource type="PackedScene" uid="uid://d7te75il06t7" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/option_control/option_control.tscn" id="1_8rnmo"]
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="2_8svyu"]
+
+[node name="OptionControl" instance=ExtResource("1_8rnmo")]
+
+[node name="OptionLabel" parent="." index="0"]
+theme_override_fonts/font = ExtResource("2_8svyu")
+theme_override_font_sizes/font_size = 22
+
+[node name="CheckButton" type="CheckButton" parent="." index="1"]
+layout_mode = 2

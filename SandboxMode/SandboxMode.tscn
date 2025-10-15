@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=25 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
@@ -9,10 +9,12 @@
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="6_uxh6k"]
 [ext_resource type="Texture2D" uid="uid://bph6tqo5vnyda" path="res://GUI/ButtonsPropios/home_button.png" id="7_qfeo4"]
 [ext_resource type="Texture2D" uid="uid://fevv7g7itv13" path="res://GUI/ButtonsPropios/lock.png" id="7_tuig3"]
+[ext_resource type="Texture2D" uid="uid://b04ty5xsiulo6" path="res://GUI/ButtonsPropios/grid.png" id="8_15i75"]
 [ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
 [ext_resource type="Texture2D" uid="uid://3jxnfkkpb0ew" path="res://GUI/ButtonsPropios/saveb.png" id="9_yrwxa"]
 [ext_resource type="Script" path="res://SandboxMode/sandbox_manager.gd" id="11_0r7h5"]
 [ext_resource type="Script" path="res://SandboxMode/fps_counter.gd" id="13_ktlq4"]
+[ext_resource type="PackedScene" uid="uid://dei2c17f5fnyi" path="res://GUI/StationTable/StationPanelTest.tscn" id="14_env8h"]
 
 [sub_resource type="Gradient" id="Gradient_r7kvg"]
 offsets = PackedFloat32Array(0, 0.264615, 0.730303, 1)
@@ -22,6 +24,13 @@ colors = PackedColorArray(1, 1, 1, 0, 0.945098, 0.945098, 0.945098, 0.627451, 0.
 texture = ExtResource("7_qfeo4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pto0h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tioa2"]
+texture = ExtResource("8_15i75")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4lng"]
+texture = ExtResource("8_15i75")
+modulate_color = Color(0.493545, 0.493546, 0.493546, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shrd5"]
 texture = ExtResource("9_yrwxa")
@@ -36,7 +45,6 @@ texture = ExtResource("8_qlaxh")
 background_mode = 3
 glow_enabled = true
 glow_normalized = true
-glow_strength = 0.5
 glow_blend_mode = 0
 adjustment_saturation = 1.17
 
@@ -125,7 +133,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_pto0h")
 
-[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="6"]
+[node name="AspectRatioContainer8" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="6"]
+layout_mode = 2
+
+[node name="StationInfoButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer8"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tioa2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_f4lng")
+toggle_mode = true
+
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="7"]
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer5"]
@@ -135,7 +153,7 @@ theme = ExtResource("6_uxh6k")
 theme_type_variation = &"MainGUIButton"
 theme_override_styles/normal = SubResource("StyleBoxTexture_shrd5")
 
-[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="7"]
+[node name="AspectRatioContainer6" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="8"]
 layout_mode = 2
 
 [node name="LockButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer6"]
@@ -157,8 +175,15 @@ visible = false
 [node name="GoalCompleted" parent="CanvasLayer" index="5"]
 z_index = 18
 
+[node name="LogPanel" parent="CanvasLayer" index="6"]
+mouse_filter = 1
+
 [node name="Toolbox" parent="CanvasLayer" node_paths=PackedStringArray("drag_layer") groups=["SandboxShowHide"] instance=ExtResource("6_rhqn8")]
 z_index = 18
+offset_left = -6.928
+offset_top = -171.0
+offset_right = 107.072
+offset_bottom = 148.0
 drag_layer = NodePath("../../DragLayer")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -178,18 +203,33 @@ theme_override_font_sizes/font_size = 36
 text = "FPS"
 script = ExtResource("13_ktlq4")
 
+[node name="StationTablePanel" parent="CanvasLayer" groups=["SandboxShowHideStationInfo"] instance=ExtResource("14_env8h")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -212.0
+offset_top = -260.0
+offset_right = 212.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q0gd")
 
 [node name="DragLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="SandboxManager" type="Node" parent="." node_paths=PackedStringArray("root_scene", "status_logger")]
+[node name="SandboxManager" type="Node" parent="." node_paths=PackedStringArray("root_scene", "stationPanelManager", "status_logger")]
 script = ExtResource("11_0r7h5")
 root_scene = NodePath("..")
+stationPanelManager = NodePath("../CanvasLayer/StationTablePanel")
 status_logger = NodePath("../CanvasLayer/LogPanel")
 
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer7/HomeButton" to="CanvasLayer" method="_on_home_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer8/StationInfoButton" to="SandboxManager" method="_on_station_info_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer5/SaveButton" to="SandboxManager" method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_toggled"]

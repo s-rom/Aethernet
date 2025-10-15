@@ -3,6 +3,7 @@ extends Node2D
 class_name Station
 
 signal portClicked(portParent: Node2D, port: PortComponent)
+signal tableUpdated()
 
 @export var port_by_coordinates = {}
 @export var coordinates_by_port = {}
@@ -143,6 +144,19 @@ func _on_port_clicked(portParent, port):
 	#print("Clicked on port " + port.name + " from " + portParent.name)
 	portClicked.emit(portParent, port)
 
+
+func get_port_table_gui():
+	var table = {}
+	for portSprite in self.find_children("Port*", "PortSprite", true, false):
+		var port = portSprite.find_child("PortComponent") as PortComponent
+	 	
+		if port in coordinates_by_port:
+			table[portSprite.name] = coordinates_by_port[port]
+		else:
+			table[portSprite.name] = ""
+	
+	return table
+
 func clear_port_table():
 	self.port_by_coordinates = {}
 	self.coordinates_by_port = {}
@@ -150,3 +164,4 @@ func clear_port_table():
 func _update_port_table(portComponent: PortComponent, endpointCoordinates: String):
 	self.port_by_coordinates[endpointCoordinates] = portComponent
 	self.coordinates_by_port[portComponent] = endpointCoordinates
+	self.tableUpdated.emit()

@@ -25,6 +25,9 @@ SandboxGlobal="*res://Scripts/sandbox_global.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
 window/stretch/aspect="expand"
 
 [global_group]
@@ -32,6 +35,7 @@ window/stretch/aspect="expand"
 SandboxShowHide="Used by the sandbox mode \"lock\" button to show or hide gui elements"
 VisualizationLowPrio=""
 Persist=""
+SandboxShowHideStationInfo=""
 
 [gui]
 

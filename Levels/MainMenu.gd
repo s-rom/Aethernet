@@ -8,6 +8,11 @@ static var first_time = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	if OS.has_feature("web"):
+		$CanvasLayer/AetherOptionsMenu.hide()
+		$CanvasLayer/VBoxContainer2/VBoxContainer/OptionsButton.hide()
+
+	
 	if first_time:
 		print("Main menu ready")
 		$AnimationPlayer.play(ANIM_MAIN_MENU)
@@ -35,3 +40,7 @@ func _on_debug_test() -> void:
 
 func _on_sandbox_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/SandboxMenu.tscn")
+
+
+func _on_options_button_pressed() -> void:
+	$CanvasLayer/AetherOptionsMenu.show()

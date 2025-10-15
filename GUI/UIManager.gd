@@ -15,7 +15,6 @@ signal playButtonPressed()
 signal stopButtonPressed()
 
 func _ready():
-
 	#var editorGoalItems = self.find_children("*", "GoalGuiItem", true, false)
 	#for item in editorGoalItems:
 		#item.queue_free()

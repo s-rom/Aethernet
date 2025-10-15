@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dv41hkd5wd3u5"]
+[gd_scene load_steps=17 format=3 uid="uid://dv41hkd5wd3u5"]
 
 [ext_resource type="Script" path="res://Station/Station.gd" id="1_qtt3d"]
 [ext_resource type="Texture2D" uid="uid://cc8jfo2yxuhmf" path="res://Pruebas/512x512 textures (82).png" id="2_0x0ah"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Station/ConstantRotation.gd" id="8_b17xu"]
 [ext_resource type="Texture2D" uid="uid://dh25w5d4bxchu" path="res://Pruebas/crosshair175.png" id="10_6t3ov"]
 [ext_resource type="Script" path="res://Scripts/rotation_input.gd" id="12_2wwin"]
+[ext_resource type="Script" path="res://Station/spawn_info_labels.gd" id="13_e1uhk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_43r6j"]
 light_mode = 1
@@ -52,6 +53,9 @@ script = ExtResource("5_ubgrs")
 script = ExtResource("6_ae131")
 portSprite = NodePath("..")
 
+[node name="SpawnInfoLabels" type="Node2D" parent="StationSprite/Port1"]
+script = ExtResource("13_e1uhk")
+
 [node name="Port2" type="Sprite2D" parent="StationSprite"]
 modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
 position = Vector2(-36.0624, 36.0624)
@@ -65,6 +69,9 @@ script = ExtResource("6_ae131")
 
 [node name="PortComponent" type="Node" parent="StationSprite/Port2"]
 script = ExtResource("5_ubgrs")
+
+[node name="SpawnInfoLabels" type="Node2D" parent="StationSprite/Port2"]
+script = ExtResource("13_e1uhk")
 
 [node name="Port3" type="Sprite2D" parent="StationSprite"]
 modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
@@ -80,6 +87,9 @@ script = ExtResource("5_ubgrs")
 [node name="PortHighlighter2" type="Node" parent="StationSprite/Port3"]
 script = ExtResource("6_ae131")
 
+[node name="SpawnInfoLabels" type="Node2D" parent="StationSprite/Port3"]
+script = ExtResource("13_e1uhk")
+
 [node name="Port4" type="Sprite2D" parent="StationSprite"]
 modulate = Color(0.180254, 0.23495, 0.304461, 0.380392)
 position = Vector2(-36.0624, -36.0625)
@@ -93,6 +103,9 @@ script = ExtResource("5_ubgrs")
 
 [node name="PortHighlighter2" type="Node" parent="StationSprite/Port4"]
 script = ExtResource("6_ae131")
+
+[node name="SpawnInfoLabels" type="Node2D" parent="StationSprite/Port4"]
+script = ExtResource("13_e1uhk")
 
 [node name="Lights" type="Node2D" parent="."]
 visible = false
@@ -119,3 +132,6 @@ rotationSpeed = 0.5
 position = Vector2(-94, -108)
 scale = Vector2(4.16667, -11.8333)
 script = ExtResource("12_2wwin")
+
+[node name="SpawnInfoLabels" type="Node2D" parent="."]
+script = ExtResource("13_e1uhk")

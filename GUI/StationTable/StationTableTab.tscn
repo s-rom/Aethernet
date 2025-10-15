@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://uakm5xbllgm"]
+
+[ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="1_7o4d1"]
+[ext_resource type="PackedScene" uid="uid://kn6ntn48jsrc" path="res://GUI/StationTable/StationTable.tscn" id="1_xt0tq"]
+[ext_resource type="Texture2D" uid="uid://djbpicp8c8is2" path="res://GUI/metalPanel.png" id="3_1n743"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6uyw4"]
+texture = ExtResource("3_1n743")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5v5t"]
+
+[node name="StationTableTab" type="TabContainer"]
+offset_right = 362.0
+offset_bottom = 256.0
+theme_override_colors/font_outline_color = Color(0.339965, 0.611178, 0.6084, 1)
+theme_override_colors/font_unselected_color = Color(0.650712, 0.728097, 1, 1)
+theme_override_colors/font_selected_color = Color(0.206141, 0.335839, 1, 1)
+theme_override_fonts/font = ExtResource("1_7o4d1")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/tab_focus = SubResource("StyleBoxTexture_6uyw4")
+theme_override_styles/tab_disabled = SubResource("StyleBoxTexture_6uyw4")
+theme_override_styles/tabbar_background = SubResource("StyleBoxTexture_f5v5t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6uyw4")
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_6uyw4")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_6uyw4")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_6uyw4")
+current_tab = 0
+
+[node name="Estacion 1" parent="." instance=ExtResource("1_xt0tq")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Estacion 2" parent="." instance=ExtResource("1_xt0tq")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1

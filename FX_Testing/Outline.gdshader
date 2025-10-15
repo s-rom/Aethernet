@@ -9,7 +9,7 @@ uniform float line_thickness: hint_range(0.0, 0.5, 0.01) = 0.03;
 
 void fragment() {
     vec4 base_color = texture(TEXTURE, UV);
-    
+
     vec4 circle_outline;
     vec2 pos = UV - vec2(0.5);
     float circle = step(length(pos), radius);
@@ -17,9 +17,9 @@ void fragment() {
     float wave = 0.5 * sin(direction * frequency * angle + TIME * speed) + 0.5;
     circle *= step(0.5, wave);
     circle_outline = vec4(color.rgb, circle * color.a);
-    
+
     float rect_alpha = 1.0 - step(abs(pos.x), (0.5-line_thickness)) * step(abs(pos.y), (0.5-line_thickness));
     vec4 effect = circle_outline * vec4(1.0, 1.0, 1.0, rect_alpha);
-    
+
     COLOR = mix(base_color, effect, effect.a);
 }
