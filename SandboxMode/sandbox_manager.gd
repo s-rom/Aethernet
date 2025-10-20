@@ -10,18 +10,22 @@ var port_component_uid = 0
 
 
 var _locked = false
-var _show_station_info = false
+var _is_showing_station_info = false
 @export var root_scene: root_script
 @export var stationPanelManager: StationPanelTest
+
 
 func _ready() -> void:
 	get_tree().current_scene.find_child("HelpPanel", true, false).visible = false
 	call_deferred("_load_level")
 	get_tree().call_group("SandboxShowHideStationInfo", "hide")
-
+	_is_showing_station_info = false
 	
 func is_locked() -> bool:
 	return _locked
+
+func is_showing_station_info() -> bool:
+	return _is_showing_station_info
 
 func _on_lock_button_toggled(toggled_on: bool) -> void:
 	get_tree().call_group("SandboxShowHide", "hide" if toggled_on else "show")
@@ -218,5 +222,5 @@ func _notification(what):
 
 func _on_station_info_button_toggled(toggled_on: bool) -> void:
 	print("Station info: ", toggled_on)
-	get_tree().call_group("SandboxShowHideStationInfo", "hide" if toggled_on else "show")
-	_show_station_info = toggled_on
+	_is_showing_station_info = not toggled_on
+	get_tree().call_group("SandboxShowHideStationInfo", "show" if _is_showing_station_info else "hide")
