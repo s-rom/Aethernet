@@ -105,15 +105,13 @@ func _on_ship_arrived(shipData: ShipData):
 	if dstCoord in self.port_by_coordinates:
 		
 		# No funciona, sospecho que es el _update_port_table
+		# oct 2025: Por qué puse esto? 
 		#print("---> the destination is known")
 		var nextPort: PortComponent = port_by_coordinates[dstCoord]
 		nextPort.send_ship_to_linked_port(shipData)
 
 	else:
 		#print("---> looking for a viable port")
-		
-		
-		
 		for next_port in self.find_children("PortComponent"):
 			assert(next_port is PortComponent)
 			
@@ -146,15 +144,24 @@ func _on_port_clicked(portParent, port):
 
 
 func get_port_table_gui():
+
+	var nameByPort = {}
+	
 	var table = {}
 	for portSprite in self.find_children("Port*", "PortSprite", true, false):
 		var port = portSprite.find_child("PortComponent") as PortComponent
-	 	
-		if port in coordinates_by_port:
-			table[portSprite.name] = coordinates_by_port[port]
-		else:
-			table[portSprite.name] = ""
-	
+		var portName = portSprite.name
+
+		table[portName] = ""
+		nameByPort[port] = portName
+		
+	for coordinates in port_by_coordinates:
+		var port = port_by_coordinates[coordinates]
+		var portName = nameByPort[port]
+		
+		table[portName] += coordinates + " "
+		
+		
 	return table
 
 func clear_port_table():

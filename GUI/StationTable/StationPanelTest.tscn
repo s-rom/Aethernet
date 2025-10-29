@@ -1,19 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dei2c17f5fnyi"]
+[gd_scene load_steps=4 format=3 uid="uid://dei2c17f5fnyi"]
 
 [ext_resource type="Script" path="res://GUI/StationTable/station_table_manager.gd" id="1_188eh"]
 [ext_resource type="PackedScene" uid="uid://kn6ntn48jsrc" path="res://GUI/StationTable/StationTable.tscn" id="1_jww6t"]
+[ext_resource type="Texture2D" uid="uid://dkmslp5ptm1dl" path="res://GUI/ButtonsPropios/drag.png" id="2_ajl2y"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 424.0
 offset_bottom = 260.0
 script = ExtResource("1_188eh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-
-[node name="Button" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "Ocultar"
+size_flags_horizontal = 0
+texture = ExtResource("2_ajl2y")
+expand_mode = 2
 
 [node name="TablesContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -23,3 +24,5 @@ layout_mode = 2
 
 [node name="Table2" parent="TablesContainer" instance=ExtResource("1_jww6t")]
 layout_mode = 2
+
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]

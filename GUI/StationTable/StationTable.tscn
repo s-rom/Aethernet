@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://kn6ntn48jsrc"]
+[gd_scene load_steps=5 format=3 uid="uid://kn6ntn48jsrc"]
 
 [ext_resource type="FontFile" uid="uid://c2vlxymv8a5aj" path="res://GUI/exo2_font/Exo2-Black.otf" id="1_8foxx"]
 [ext_resource type="Script" path="res://GUI/StationTable/station_table.gd" id="2_1q8oq"]
 [ext_resource type="Theme" uid="uid://bm5adft0k7xfb" path="res://GUI/prueba.tres" id="2_bo7lm"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5kksl"]
+color = Color(1, 1, 1, 0.503)
+thickness = 2
+
 [node name="StationTablePanel" type="PanelContainer"]
-offset_right = 238.0
+offset_right = 222.0
 offset_bottom = 225.0
 theme = ExtResource("2_bo7lm")
 theme_type_variation = &"PanelContainerKenney"
@@ -42,13 +46,14 @@ theme_type_variation = &"CloseButton"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_5kksl")
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
 theme_override_font_sizes/font_size = 22
 text = "Puerto"
@@ -66,6 +71,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row1"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
@@ -79,15 +85,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
 theme_override_font_sizes/font_size = 22
-text = "A1"
+text = "A1 A2 A3 A4 A5 A6"
 horizontal_alignment = 1
 
 [node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row2"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
 theme_override_font_sizes/font_size = 22
 text = "2"
@@ -105,8 +111,8 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row3"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
 theme_override_font_sizes/font_size = 22
 text = "3"
@@ -124,8 +130,8 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="P" type="Label" parent="MarginContainer/VBoxContainer/Row4"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("1_8foxx")
 theme_override_font_sizes/font_size = 22
 text = "4"

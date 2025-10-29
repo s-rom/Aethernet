@@ -43,6 +43,6 @@ func update_data():
 		var coord = table[portName]
 		
 		(portLabels[index] as Label).text = _get_shorted_string(portName)
-		(coordLabels[index] as Label).text = _get_shorted_string(coord)
+		(coordLabels[index] as Label).text = coord
 		
 		index += 1
