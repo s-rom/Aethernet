@@ -224,3 +224,12 @@ func _on_station_info_button_toggled(toggled_on: bool) -> void:
 	print("Station info: ", toggled_on)
 	_is_showing_station_info = not toggled_on
 	get_tree().call_group("SandboxShowHideStationInfo", "show" if _is_showing_station_info else "hide")
+
+
+func _on_pause_button_toggled(toggled_on: bool) -> void:
+	get_tree().paused = toggled_on
+	
+	if toggled_on:
+		print("paused")
+	else:
+		print("resumed")

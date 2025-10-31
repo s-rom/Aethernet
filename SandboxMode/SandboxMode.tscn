@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ckdevmwq4n70b"]
+[gd_scene load_steps=31 format=3 uid="uid://ckdevmwq4n70b"]
 
 [ext_resource type="Script" path="res://Scripts/root_node.gd" id="1_10m47"]
 [ext_resource type="Script" path="res://Levels/LevelCamera.gd" id="2_1gvom"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cwe812q0w4lwk" path="res://GUI/ButtonsPropios/unlocked.png" id="8_qlaxh"]
 [ext_resource type="Texture2D" uid="uid://3jxnfkkpb0ew" path="res://GUI/ButtonsPropios/saveb.png" id="9_yrwxa"]
 [ext_resource type="Script" path="res://SandboxMode/sandbox_manager.gd" id="11_0r7h5"]
+[ext_resource type="Texture2D" uid="uid://dksuyorf061r6" path="res://GUI/ButtonsPropios/play_depth.png" id="12_he47f"]
 [ext_resource type="Script" path="res://SandboxMode/fps_counter.gd" id="13_ktlq4"]
+[ext_resource type="Texture2D" uid="uid://csk53tkyr705f" path="res://GUI/ButtonsPropios/pause_button.png" id="13_wvf3t"]
 [ext_resource type="PackedScene" uid="uid://dei2c17f5fnyi" path="res://GUI/StationTable/StationPanelTest.tscn" id="14_env8h"]
 
 [sub_resource type="Gradient" id="Gradient_r7kvg"]
@@ -40,6 +42,20 @@ texture = ExtResource("7_tuig3")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yox3d"]
 texture = ExtResource("8_qlaxh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xo0pv"]
+texture = ExtResource("12_he47f")
+modulate_color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dbcld"]
+texture = ExtResource("13_wvf3t")
+modulate_color = Color(0.601223, 0.601223, 0.601223, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4vu1x"]
+texture = ExtResource("12_he47f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2lds0"]
+texture = ExtResource("13_wvf3t")
 
 [sub_resource type="Environment" id="Environment_1q0gd"]
 background_mode = 3
@@ -102,6 +118,7 @@ offset_bottom = -370.048
 z_index = 18
 
 [node name="MainButtons" parent="CanvasLayer" index="2"]
+process_mode = 3
 z_index = 15
 anchor_right = 0.988
 anchor_bottom = 0.103
@@ -176,6 +193,18 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bnrqc")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yox3d")
 toggle_mode = true
 
+[node name="AspectRatioContainer9" type="AspectRatioContainer" parent="CanvasLayer/MainButtons" index="9"]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="CanvasLayer/MainButtons/AspectRatioContainer9"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_xo0pv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dbcld")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4vu1x")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2lds0")
+toggle_mode = true
+
 [node name="GoalPanel" parent="CanvasLayer" index="3"]
 visible = false
 z_index = 18
@@ -247,6 +276,7 @@ status_logger = NodePath("../CanvasLayer/LogPanel")
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer5/SaveButton" to="SandboxManager" method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer6/LockButton" to="SandboxManager" method="_on_lock_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/MainButtons/AspectRatioContainer9/PauseButton" to="SandboxManager" method="_on_pause_button_toggled"]
 [connection signal="object_dropped" from="CanvasLayer/Toolbox" to="SandboxManager" method="_on_toolbox_object_dropped"]
 
 [editable path="CanvasLayer"]
