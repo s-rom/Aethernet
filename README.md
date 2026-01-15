@@ -4,7 +4,7 @@
 ## Features showcase trailer
 
 
-[![Features showcase](https://img.youtube.com/vi/3PIDKms0nUY?si=JiBwOXsiecqpbs-n/0.jpg)](https://youtu.be/3PIDKms0nUY?si=JiBwOXsiecqpbs-n)
+[![Features showcase](https://youtu.be/3PIDKms0nUY?si=JiBwOXsiecqpbs-n)
 
 https://github.com/user-attachments/assets/2a4789df-ed97-43eb-811e-36db14d7ca37
 
