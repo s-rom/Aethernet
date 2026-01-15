@@ -1,9 +1,13 @@
 # Aethernet
 
 
+## Features showcase trailer
 
-<video src="https://github.com/user-attachments/assets/c4f0c8cc-8587-456d-a8ef-984ef41737ff" controls autoplay loop muted style="max-width: 100%;">
-</video>
+
+[![Features showcase](https://img.youtube.com/vi/3PIDKms0nUY?si=JiBwOXsiecqpbs-n/0.jpg)](https://youtu.be/3PIDKms0nUY?si=JiBwOXsiecqpbs-n)
+
+https://github.com/user-attachments/assets/2a4789df-ed97-43eb-811e-36db14d7ca37
+
 
 
 
