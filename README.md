@@ -2,8 +2,8 @@
 
 
 
-https://github.com/user-attachments/assets/c4f0c8cc-8587-456d-a8ef-984ef41737ff
-
+<video src="https://github.com/user-attachments/assets/c4f0c8cc-8587-456d-a8ef-984ef41737ff" controls autoplay loop muted style="max-width: 100%;">
+</video>
 
 
 
